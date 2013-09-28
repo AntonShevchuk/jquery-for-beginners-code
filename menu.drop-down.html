@@ -13,13 +13,15 @@
     $(function(){
         $('.topmenu ul li').hover(
             function() {
-                $(this).addClass("active");
-                $(this).find('ul').stop(true, true);
-                $(this).find('ul').slideDown();
+                var $this = $(this);
+                $this.addClass("active");
+                $this.find('ul').stop(true, true);
+                $this.find('ul').slideDown();
             },
             function() {
-                $(this).removeClass("active");
-                $(this).find('ul').slideUp('slow');
+                var $this = $(this);
+                $this.removeClass("active");
+                $this.find('ul').slideUp('slow');
             }
         );
     });

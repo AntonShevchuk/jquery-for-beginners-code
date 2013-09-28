@@ -257,11 +257,14 @@
             <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
             <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
             <hr/>
-            <pre><code>$(<span>'article'</span>).expose()</code></pre>
+            <pre><code><em>// run widget and try to click on article</em>
+$(<span>'article'</span>).expose()</code></pre>
             <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true">$(<span>'article'</span>).expose({speed:2000})</code></pre>
+            <pre><code contenteditable="true"><em>// configuration was changed</em>
+$(<span>'article'</span>).expose({speed:2000})</code></pre>
             <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true">$(<span>'article img'</span>).expose({speed:100})</code></pre>
+            <pre><code contenteditable="true"><em>// run widget and try to click on image</em>
+$(<span>'article img'</span>).expose({speed:100})</code></pre>
             <button type="button" class="code">Run Code</button>
             <pre><code><em>// try widget API - trigger</em>
 $(<span>'article:eq(0)'</span>).bind(<span>'exposemask'</span>,

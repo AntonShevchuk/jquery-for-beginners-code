@@ -22,15 +22,15 @@
             <a href="callbacks.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
             <hr/>
 <pre><code contenteditable="true">$.ajax(<span>'ajax/example.json'</span>)
-    .pipe(function(){
+    .then(function(){
         appendOut(<span>'Ajax\n'</span>);
         return $(<span>'article img'</span>).slideUp(2000)
     })
-    .pipe(function(){
+    .then(function(){
         appendOut(<span>'Images\n'</span>);
         return $(<span>'article p'</span>).slideUp(2000)
     })
-    .pipe(function(){
+    .then(function(){
         appendOut(<span>'Paragraph\n'</span>);
         return $(<span>'article'</span>).hide(2000);
     })

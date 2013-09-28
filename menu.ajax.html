@@ -13,7 +13,8 @@
     $(function(){
         $('.topmenu ul li').hover(
             function() {
-                if ($(this).find('ul').length == 0) {
+                var $this = $(this);
+                if ($this.find('ul').length == 0) {
                     var file = $(this).data('file');
                     var li = $(this);
                     $.ajax({
@@ -29,14 +30,15 @@
                         }
                     });
                 } else {
-                    $(this).find('ul').stop(true, true);
-                    $(this).find('ul').slideDown();
+                    $this.find('ul').stop(true, true);
+                    $this.find('ul').slideDown();
                 }
-                $(this).addClass("active");
+                $this.addClass("active");
             },
             function() {
-                $(this).find('ul').slideUp('fast');
-                $(this).removeClass("active");
+                var $this = $(this);
+                $this.find('ul').slideUp('fast');
+                $this.removeClass("active");
             }
         );
     });
