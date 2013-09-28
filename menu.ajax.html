@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Выпадающее меню с AJAX</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+
+    <script type="text/javascript">
+    $(function(){
+        $('.topmenu ul li').hover(
+            function() {
+                if ($(this).find('ul').length == 0) {
+                    var file = $(this).data('file');
+                    var li = $(this);
+                    $.ajax({
+                        url: 'ajax/'+file+'.html',
+                        beforeSend: function(){
+                             li.addClass('loading');
+                        },
+                        success: function(data){
+                             li.append(data);
+                             li.find('ul').stop(true, true);
+                             li.find('ul').slideDown();
+                             li.removeClass('loading');
+                        }
+                    });
+                } else {
+                    $(this).find('ul').stop(true, true);
+                    $(this).find('ul').slideDown();
+                }
+                $(this).addClass("active");
+            },
+            function() {
+                $(this).find('ul').slideUp('fast');
+                $(this).removeClass("active");
+            }
+        );
+    });
+    </script>
+
+<style type="text/css">
+    .topmenu ul, .topmenu ul li{
+        margin: 0;
+        padding: 0;
+        display: inline;
+        margin-right:2px;
+    }
+    .topmenu ul li {
+        float: left;
+        position:relative;
+        width:140px;
+    }
+    .topmenu li a{
+        display: block;
+        padding:10px 10px 10px 30px;
+        margin:1px 0px;
+        color: #0000FF;
+        text-decoration: none;
+        border:1px solid #999;
+        background: url('images/window.gif') no-repeat 10px center;
+    }
+    .topmenu ul li a:HOVER{
+        color: #0000CC;
+    }
+
+    .topmenu ul ul {
+        display: none;
+        position:absolute;
+        top:38px;
+    }
+
+    .topmenu li li {
+        display:block;
+        border-top:0;
+    }
+    .active {
+        background-color:#eee;
+    }
+    .loading {
+        background: url('images/ajax-loader.gif') no-repeat right;
+    }
+    article {
+        height: 240px;
+        padding: 20px;
+        position: relative;
+    }
+</style>
+</head>
+<body>
+<div id="content" class="wrapper box">
+    <menu label="Try...">
+        <a href="ajax.google.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev</a>
+        <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+        <hr/>
+    </menu>
+    <hgroup>
+        <h1>Выпадающее меню</h1>
+        <h2>Простое и лаконичное</h2>
+    </hgroup>
+    <article>
+        <div class="topmenu">
+            <ul>
+                <li class="drop" data-file="menu1"><a href="#" title="Меню 1">Меню 1</a></li>
+                <li class="drop" data-file="menu2"><a href="#" title="Меню 2">Меню 2</a></li>
+                <li class="drop" data-file="menu3"><a href="#" title="Меню 3">Меню 3</a></li>
+            </ul>
+        </div>
+    </article>
+    <footer>
+        &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-1669896-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</div>
+</body>
+</html>

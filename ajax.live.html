@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Пример загрузки HTML посредством AJAX</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/code.js"></script>
+    <script>
+        $(function(){
+            $('article').on('click', 'a', function(){
+                var href = $(this).attr('href');
+                $.ajax({
+                    url:href,
+                    dataType:'html',
+                    success:function(data){
+                        $('article').html(
+                            $('article', data).contents()
+                        );
+                    }
+                });
+                return false;
+            })
+        });
+    </script>
+    <style>
+        article {
+            border:1px dotted #ccc
+        }
+    </style>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <menu>
+            <a href="ajax.script.html" title="go prev" class="button alignleft" rel="prev">&larr; Back</a>
+            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <a href="ajax.jsonp.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
+            <hr/>
+			<pre><code>$(function(){
+    $(<span>'article'</span>).on(<span>'click'</span>, <span>'a'</span>, function(){
+        var href = $(this).attr(<span>'href'</span>);
+        $.ajax({
+            url:href,
+            dataType:<span>'html'</span>,
+            success:function(data){
+                $(<span>'article'</span>).html(
+                    $(<span>'article'</span>, data).contents()
+                );
+            }
+        });
+        return false;
+    })
+});</code></pre>
+        </menu>
+        <hgroup>
+            <h1>Живой AJAX</h1>
+            <h2>Простой пример использования метода load()</h2>
+        </hgroup>
+        <article>
+			<h2>Пробуем загрузить контент &rarr;</h2>
+            <p>Подгрузим <a href="index.html">главную страницу</a></p>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

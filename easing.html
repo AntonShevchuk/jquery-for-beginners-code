@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Пример расширения объекта easing</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <style type="text/css">
+        .heart{
+            width:200px;
+            height:200px;
+            background:#fff;
+            margin:0 auto;
+            overflow:hidden;
+            position: relative;
+            border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            margin-bottom: 4px;;
+        }
+        .heart img{
+            position:absolute;
+            margin:50px;
+            width: 100px;
+            height: 100px;
+            border: 0
+        }
+        .heart p{
+            position:absolute;
+            width:200px;
+            padding: 0;
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 700;
+        }
+        .block {
+            height: 100px;
+        }
+        .target {
+            height: 10px;
+            background: #999999;
+        }
+    </style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript">
+        $.extend($.easing, {
+            /**
+             * Heart Beat
+             *
+             * @param x
+             * @param t current time
+             * @param b begining
+             * @param c change in value
+             * @param d duration
+             *
+             * @link http://habrahabr.ru/blogs/mootools/43379/
+             */
+            heart: function (x, t, b, c, d) {
+                if (x < 0.3)  return Math.pow(x, 4) * 49.4;
+                if (x < 0.4)  return 9 * x - 2.3;
+                if (x < 0.5)  return -13 * x + 6.5;
+                if (x < 0.6)  return 4 * x - 2;
+                if (x < 0.7)  return 0.4;
+                if (x < 0.75) return 4 * x - 2.4;
+                if (x < 0.8)  return -4 * x + 3.6;
+                if (x >= 0.8) return 1 - Math.sin(Math.acos(x));
+            },
+            heartIn: function (x, t, b, c, d) {
+                return $.easing.heart(x, t, b, c, d);
+            },
+            heartOut: function (x, t, b, c, d) {
+                return c - $.easing.heart(1 - x, t, b, c, d) + b;
+            },
+            heartInOut: function (x, t, b, c, d) {
+                if (t < d/2) return $.easing.heartIn(x, t, b, c, d);
+                return $.easing.heartOut(x, t, b, c, d);
+            }
+
+        });
+        $(function(){
+            $('.heart').click(function(){
+                var easing = $(this).data('easing');
+                $(this).find('img')
+                        .animate({width:"-=100px",height:"-=100px",left:"+=50px",top:"+=50px"},3000, easing)
+                        .animate({width:"+=100px",height:"+=100px",left:"-=50px",top:"-=50px"},200);
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <menu>
+            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <hr/>
+            <pre><code>$(<span>'.target'</span>).animate({height:<span>'+=100px'</span>}, 2000, <span>'heartIn'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code>$(<span>'.target'</span>).animate({height:<span>'+=100px'</span>}, 2000, <span>'heartOut'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code>$(<span>'.target'</span>).animate({height:<span>'+=100px'</span>}, 2000, <span>'heartInOut'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+        </menu>
+        <hgroup>
+            <h1>Пример расширять объект easing</h1>
+            <h2>Пробуем, играемся, и мотаем на ус (покликайте по сердцам)</h2>
+        </hgroup>
+        <article>
+            <div class="block">
+                <div class="target"></div>
+            </div>
+            <div class="heart" data-easing="heartIn">
+                <p>heartIn</p>
+                <img src="images/heart.png" alt="Heart" />
+            </div>
+            <div class="heart" data-easing="heartOut">
+                <p>heartOut</p>
+                <img src="images/heart.png" alt="Heart" />
+            </div>
+            <div class="heart" data-easing="heartInOut">
+                <p>heartInOut</p>
+                <img src="images/heart.png" alt="Heart" />
+            </div>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Тест на знание селекторов</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <style>
+        #content {
+            padding: 2px;
+        }
+        #content:before {
+            color:#777;
+            font-size: 14px;
+            content: '<div id="content" class="wrapper box">'
+        }
+        #content:after {
+            color:#777;
+            font-size: 14px;
+            content: '</div>'
+        }
+        hgroup {
+            background: #fff;
+            padding: 2px;
+            margin: 20px;
+            border-left: 1px solid #ddd;
+        }
+        hgroup:before {
+            color:#777;
+            font-size: 12px;
+            content: "<hgroup>"
+        }
+        hgroup:after {
+            color:#777;
+            font-size: 12px;
+            content: "</hgroup>"
+        }
+
+        article {
+            background: #fff;
+            padding: 2px;
+            margin: 20px;
+            border-left: 1px solid #ddd;
+        }
+        article:before{
+            color:#777;
+            font-size: 12px;
+            content: "<article>"
+        }
+        article#stick:before{
+            content: '<article id="stick" class="box">'
+        }
+        article:after{
+            color:#777;
+            font-size: 12px;
+            content: "</article>"
+        }
+        footer {
+            background: #fff;
+            margin: 12px 8px;
+        }
+        footer:before{
+            color:#777;
+            font-size: 12px;
+            content: "<footer>"
+        }
+        footer:after{
+            color:#777;
+            font-size: 12px;
+            content: "</footer>"
+        }
+        ul {
+            font-size: 12px;
+            background: #fff;
+            padding-left: 20px;
+        }
+        ul:before{
+            color:#777;
+            font-size: 12px;
+            content: "<ul>"
+        }
+        ul:after{
+            color:#777;
+            font-size: 12px;
+            content: "</ul>"
+        }
+        li {
+            list-style: none;
+            padding-left: 20px;
+            background: #fff;
+        }
+        li:before{
+            color:#777;
+            font-size: 12px;
+            content: "<li>"
+        }
+        li:after{
+            color:#777;
+            font-size: 12px;
+            content: "</li>"
+        }
+
+        #my  {
+            background: #fff;
+        }
+        #my:before{
+            color:#777;
+            font-size: 12px;
+            content: '<a href="#" id="my">'
+        }
+        #my:after{
+            color:#777;
+            font-size: 12px;
+            content: "</a>"
+        }
+        h1 {
+            background: #fff;
+        }
+        h1:before{
+            color:#777;
+            font-size: 12px;
+            content: "<h1>"
+        }
+        h1:after{
+            color:#777;
+            font-size: 12px;
+            content: "</h1>"
+        }
+        h2 {
+            background: #fff;
+            border: 0 !important;
+        }
+        h2:before{
+            color:#777;
+            font-size: 12px;
+            content: "<h2>"
+        }
+        h2:after{
+            color:#777;
+            font-size: 12px;
+            content: "</h2>"
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.color.js"></script>
+    <script type="text/javascript">
+
+        $(function(){
+
+            $('button.code').click(function(){
+
+                var hl = $('ul:first li:last').data('bingo', true);
+
+                var rand = Math.floor(Math.random()*11)+1;
+                for (var i = 0; i<rand; i++) {
+                    $('ul li:first').after('<li>List Item</li>');
+                    $('ul li:last ').before('<li>List Item</li>');
+                }
+
+                var article = $('article:last').clone();
+
+                    $('article:first').before(article);
+
+                var code = $(this).prev().text();
+
+                if (code) {
+                    var els = eval(code);
+                        els
+                          .stop(true,true)
+                          .animate({'background-color':'#ff5'}, 500)
+                          .delay(100)
+                          .animate({'background-color':'#fff'}, 500);
+
+
+                    if (els.length == 1 && els.data('bingo')) {
+                        $('h1').html('Test complete!')
+                               .css('color','green')
+                    }
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <menu label="Try...">
+
+            <a href="css.selectors.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
+            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <hr/>
+			Ваша задача &mdash; подсветить последний элемент в первом списке статьи &laquo;Target&raquo; (и только в нём)
+<pre><code contenteditable="true"><em>// highlight last item in first list</em>
+$(<span>'li'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            
+        </menu>
+        <hgroup>
+            <h1>Тест на знание селекторов</h1>
+            <h2>Необходимо подсветить указанный элемент</h2>
+        </hgroup>
+        <article>
+            <h2>Target</h2>
+            <ul>
+                <li><a href="index.html" id="my">Custom link</a></li>
+                <li>List Item</li>
+                <li>Подсвети меня!</li>
+            </ul>
+        </article>
+        <article>
+            <h2>Article</h2>
+            <ul>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+            </ul>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

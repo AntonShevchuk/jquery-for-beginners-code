@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Приоритет CSS селекторов</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/code.js"></script>
+    <script>
+        function appendStyle(rule) {
+            $('head').append('<style>'+rule+'</style>');
+        }
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <menu>
+        <a href="css.float.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
+        <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+        <a href="css.selectors.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
+        <hr/>
+		<h3>Шпаргалка</h3>
+<pre><code><em>// weight</em>
+#id    = [1,0,0]
+.class = [0,1,0]
+tag    = [0,0,1]
+<em>// compare</em>
+[1,0,0] > [0,1,0] > [0,0,1]
+[1,0,0] > [0,100,100]
+[0,1,0] > [0,0,100]
+</code></pre>
+        <hr/>
+        <pre><code contenteditable="true">appendStyle(<span>'p { color:orange }'</span>)</code></pre>
+        <button type="button" class="code">Run Code</button>
+        <pre><code>appendStyle(<span>'.content p { color:green }'</span>)</code></pre>
+        <button type="button" class="code">Run Code</button>
+        <pre><code>appendStyle(<span>'article.content p { color:blue }'</span>)</code></pre>
+        <button type="button" class="code">Run Code</button>
+        <pre><code>appendStyle(<span>'.wrapper .content p { color:red }'</span>)</code></pre>
+        <button type="button" class="code">Run Code</button>
+        <pre><code>appendStyle(<span>'#id { color:darkblue }'</span>)</code></pre>
+        <button type="button" class="code">Run Code</button>
+        <pre><code>appendStyle(<span>'#my p { color:darkcyan }'</span>)</code></pre>
+        <button type="button" class="code">Run Code</button>
+        <pre><code>appendStyle(<span>'#my #id { color:darkgreen }'</span>)</code></pre>
+        <button type="button" class="code">Run Code</button>
+        <pre><code>appendStyle(<span>'#my p#id { color:black }'</span>)</code></pre>
+        <button type="button" class="code">Run Code</button>
+    </menu>
+    <hgroup>
+        <h1>Приоритет CSS селекторов</h1>
+        <h2>Сохраните страницу и попробуйте изменить CSS стили</h2>
+    </hgroup>
+    <article id="my" class="content">
+        <h2>Article Title</h2>
+        <p id="id">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+        lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+        in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+        euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+        eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+        at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+        nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+        tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+        fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+        lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
+    </article>
+    <footer>
+        &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-1669896-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</div>
+</body>
+</html>

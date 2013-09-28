@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Пример расширения анимации</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+	<script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    /**
+     * @author Anton Shevchuk (AntonShevchuk@gmail.com)
+     * @uri    http://anton.shevchuk.name
+     */
+    (function($) {
+        /**
+         * parse HEX color to DEC
+         * e.g. #f00    => [255,0,0]
+         *      #ff00ff => [255,0,255]
+         * @param Array color
+         */
+        function parseColor(color) {
+            if (color.length != 4 &&
+                    color.length != 7) {
+                return [0,0,0];
+            }
+            color = color.substr(1);
+
+            if (color.length == 3) {
+                color = color[0]+color[0]+
+                        color[1]+color[1]+
+                        color[2]+color[2];
+            }
+
+            var R = parseInt(color.substr(0,2),16);
+            var G = parseInt(color.substr(2,2),16);
+            var B = parseInt(color.substr(4,2),16);
+
+            return [R,G,B];
+        };
+
+        /**
+         * Build color for apply as style
+         */
+        function buildColor(start, end, progress) {
+            // нехитрое вычисление
+            var R = Math.round(((end[0] - start[0]) * progress) + start[0]);
+            var G = Math.round(((end[1] - start[1]) * progress) + start[1]);
+            var B = Math.round(((end[2] - start[2]) * progress) + start[2]);
+
+            return 'rgb('+R+','+G+','+B+')';
+        }
+
+        $.Tween.propHooks.color = {
+            set: function(tween) {
+                // console.log(tween);
+                // испытуемый элемент
+                tween.elem;
+                // текущий easing
+                tween.easing
+                // настройки анимация
+                tween.options;
+                // текущий прогресс
+                tween.pos;
+                // свойство которое изменяем
+                tween.prop;
+                // начальные значения
+                tween.start = parseColor(tween.start);
+                // текущее значение
+                tween.now;
+                // результирующие значения
+                tween.end = parseColor(tween.end);
+                // еденицы измерения
+                tween.unit;
+
+
+                tween.run = function(progress) {
+                    // непосредственно измение свойств элемента
+                    tween.elem.style['color'] = buildColor(tween.start, tween.end, progress);
+                }
+            }
+        }
+    })(jQuery);
+    $(function(){
+        $('p:eq(0)').animate({color:'#ff0000'},1000);
+        $('p:eq(1)').animate({color:'#ff0000'},3000);
+        $('p:eq(2)').animate({color:'#ff0000'},5000);
+    });
+</script>
+
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <menu>
+            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+        </menu>
+        <hgroup>
+            <h1>Пример расширения анимации</h1>
+            <h2>Данный пример работает лишь с jQuery 1.8+</h2>
+        </hgroup>
+        <article>
+            <h2>Article Title</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+            lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+            in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+            euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+            eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+            at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+            nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+            tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+            fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+            lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
+        </article>
+        <article>
+            <h2>Article Title</h2>
+            <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+            Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
+            turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
+            nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
+            blandit sapien bibendum. Proin vel vulputate nisl. Duis tempor imperdiet placerat. Pellentesque
+            faucibus consequat magna, et bibendum nisl egestas non. Pellentesque sit amet mattis augue.
+            Aenean at diam tincidunt purus sollicitudin gravida non in nisi. Fusce bibendum, magna in
+            adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
+            adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
+            nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
+            libero. Fusce et ultrices lectus.</p>
+        </article>
+        <article>
+            <h2>Article</h2>
+            <p>Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
+            laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
+            non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
+            ipsum vitae massa accumsan ullamcorper. Maecenas commodo lacus turpis. Proin sit amet mauris
+            sem, imperdiet faucibus lorem. Fusce ullamcorper consectetur ligula vel pretium. Sed et elit
+            vitae orci adipiscing condimentum id sed turpis. Morbi ultrices feugiat ullamcorper. Fusce at
+            magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
+            cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

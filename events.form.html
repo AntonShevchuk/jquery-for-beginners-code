@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>События формы</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        var sel = function(ev) {
+            /*if (ev.target != undefined) {
+                $('#element').html(ev.target.id);
+            }*/
+
+            var el = '#' + ev.type;
+
+            var counter = $(el).find('span').html();
+            if (counter == '') counter = 0;
+            $(el).find('span').html(++counter)
+                              .css({background:"#fe3456",color:"#ffffff"});
+            return false;
+        };
+
+//		    $('body').error(sel);
+//			$('body').load(sel);
+
+        $(function(ev){
+			$('#text').focus(sel)
+                    .blur(sel)
+                    .change(sel)
+                    .keypress(sel);
+
+			$('#text2').parent()
+                    .focusin(sel)
+                    .focusout(sel)
+                    .keydown(sel)
+                    .keypress(sel)
+                    .keyup(sel);
+
+			$('textarea').select(sel);
+
+			$('#options').change(sel);
+			$('input[name=radio]').change(sel);
+
+			$('form').submit(sel);
+
+			sel(ev);
+        });
+    </script>
+    <style type="text/css">
+          ul.events {
+              list-style:none;
+              padding:0;
+          }
+          .events li {
+              padding:2px;
+          }
+          .events li span{
+              border-radius: 2px;
+              -moz-border-radius: 2px;
+              -webkit-border-radius: 2px;
+              display:inline-block;
+              padding:0 4px;
+              margin:0 4px;
+              min-width:20px;
+              text-align:center;
+              background:#fe3456;
+              color:#ffffff;
+          }
+		fieldset {
+			padding: 10px;
+			margin: 10px;
+			border: 1px solid #ddd;
+            border-radius: 2px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+		}
+    </style>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <menu label="Try...">
+            <a href="events.mouse.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
+            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <a href="events.namespace.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
+            <hr/>
+            <ul class="events">
+				<li id="change"><span>0</span><strong>change</strong>( fn ) - измение элемента </li>
+				<li id="focus"><span>0</span><strong>focus</strong>( fn ) - фокус на элементе</li>
+				<li id="blur"><span>0</span><strong>blur</strong>( fn ) - фокус ушел с элемента</li>                
+				<li id="focusin"><span>0</span><strong>focusin</strong>( fn ) - фокус на элементе, событие предка</li>
+				<li id="focusout"><span>0</span><strong>focusout</strong>( fn ) - фокус ушел с элемента, событие предка</li>
+				<li id="keydown"><span>0</span><strong>keydown</strong>( fn ) - нажатие клавиши на клавиатуре</li>
+				<li id="keypress"><span>0</span><strong>keypress</strong>( fn ) - нажатие клавиши на клавиатуре keydown+keyup</li>
+				<li id="keyup"><span>0</span><strong>keyup</strong>( fn ) - отжатие клавиши на клавиатуре</li>
+				
+				<li id="select"><span>0</span><strong>select</strong>( fn ) - выбор текста - актуален только для input[type=text] и textarea</li>
+				<li id="submit"><span>0</span><strong>submit</strong>( fn ) - отправка формы</li>
+            </ul>
+        </menu>
+        <hgroup>
+            <h1>События формы</h1>
+            <h2>Отправка, редактирование и т.д.</h2>
+        </hgroup>
+        <article>
+			<form action="">
+				<fieldset>
+					<p><input type="text" id="text" name="text"/></p>
+					<p><input type="text" id="text2" name="text2" value="try input"/></p>
+					<p><textarea cols="76" rows="16">Lorem ipsum dolor sit amet, consectetur adipiscing lit. Phasellus rutrum,
+lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</textarea>
+					</p>
+					<p>
+					<select name="select" id="options">
+					  <option>Option 1</option>
+					  <option>Option 2</option>
+					  <option>Option 3</option>
+					</select>
+					</p>
+					<p>
+					<label><input type="radio" name="radio" id="radio-1" value="1"/> choose 1</label><br/>
+					<label><input type="radio" name="radio" id="radio-2" value="2"/> choose 2</label><br/>
+					<label><input type="radio" name="radio" id="radio-3" value="3"/> choose 3</label><br/>
+					</p>
+					<input type="submit" name="submit" class="button"/>
+				</fieldset>
+			</form>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

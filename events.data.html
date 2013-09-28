@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Работа с событиями setData/GetData</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/code.js"></script>
+    <script>
+        $(function (options) {
+            $('p')
+                .on('getData', function(event, prop, value) {
+                    appendOut('getData: '+prop+'\n');
+                    return 83 + '\n';
+                })
+                .on('setData', function(event, prop, value) {
+                    appendOut('setData: '+ prop+'='+value+'\n');
+                })
+                .on('changeData', function(event, prop, value) {
+                    appendOut('changeData: '+prop+'='+value+'\n');
+                    $.data(this, prop, 42);
+                });
+            $('article').on('getData', function(){
+                appendOut('getData on <article>');
+            })
+        });
+
+    </script>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <div id="output">
+            <h3>Output</h3>
+            <pre></pre>
+        </div>
+        <menu>
+            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back</a>
+            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <hr/>
+			<pre><code contenteditable="true">$(<span>'p'</span>).data(<span>'answer'</span>, 38)</code></pre>
+            <button type="button" class="code">Run Code</button>
+			<pre data-append="1"><code contenteditable="true">$(<span>'p'</span>).data(<span>'answer'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+			<pre data-append="1"><code contenteditable="true">$.data($(<span>'p'</span>).get(0), <span>'answer'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+        </menu>
+        <hgroup>
+            <h1>Работа с событиями setData/GetData</h1>
+            <h2>Пример надуманный</h2>
+        </hgroup>
+        <article>
+			<p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+                lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+                in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+                euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+                eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+                at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+                nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+                tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+                fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+                lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.
+			</p>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

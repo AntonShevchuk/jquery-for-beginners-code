@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Пример создания фильтра для Sizzle</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/code.js"></script>
+    <script>
+        (function($, window, undefined){
+            $.extend($.expr[':'], {
+                /**
+                 * Get internal elements
+                 *
+                 * @param element DOM Element
+                 * @param i Integer Index
+                 * @param match Object All matched data
+                 * @param elements Array of Dom Elements
+                 */
+                internal: function(element, i, match, elements) {
+                    // internal links
+                    if (element.tagName.toUpperCase() != 'A') return false;
+                    if (element.getAttribute('href')) {
+                        if ((element.getAttribute('href').indexOf('/') === 0)
+                            || (element.getAttribute('href').indexOf(window.location.hostname) === 7) // http://...
+                            || (element.getAttribute('href').indexOf(window.location.hostname) === 8) // https://...
+                            ) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                },
+                anchor: function(element) {
+                    // anchor only
+                    if (element.tagName.toUpperCase() != 'A') return false;
+                    if (element.getAttribute('href')) {
+                        return (element.getAttribute('href').indexOf('#') === 0);
+                    } else {
+                        return false;
+                    }
+                },
+                external: function(element) {
+                    // external link
+                    if (element.tagName.toUpperCase() != 'A') return false;
+                    if (element.getAttribute('href')) {
+                        if ((element.getAttribute('href').indexOf('/') === 0)
+                            || (element.getAttribute('href').indexOf('#') === 0)                      // #anchor
+                            || (element.getAttribute('href').indexOf(window.location.hostname) === 7) // http://...
+                            || (element.getAttribute('href').indexOf(window.location.hostname) === 8) // https://...
+                                ) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+            })
+        })(jQuery, window);
+    </script>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <menu>
+            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back</a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <hr/>
+			<pre><code>$(<span>'a:internal'</span>).css({
+    color:<span>'#ff5555'</span>,
+    fontSize:<span>'24px'</span>
+});</code></pre>
+            <button type="button" class="code">Run Code</button>
+			<pre><code>$(<span>'a:anchor'</span>).css({
+    color:<span>'#33aa33'</span>,
+    fontSize:<span>'24px'</span>
+});</code></pre>
+            <button type="button" class="code">Run Code</button>
+			<pre><code>$(<span>'a:external'</span>).css({
+    color:<span>'#5555ff'</span>,
+    fontSize:<span>'24px'</span>
+});</code></pre>
+            <button type="button" class="code">Run Code</button>
+        </menu>
+        <hgroup>
+            <h1>Пример создания фильтра для Sizzle</h1>
+            <h2>Пробуем найти элементы по своему фильтру</h2>
+        </hgroup>
+        <article>
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia quam nec enim scelerisque porta.
+            In ut lorem ipsum. <a href="#">Proin iaculis viverra rutrum</a>. Maecenas quis ante enim. Vestibulum ante ipsum primis
+            in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum luctus tristique feugiat. Morbi
+            dictum est dolor, at condimentum nisl. Ut id nunc augue, at luctus enim. Phasellus urna nunc, aliquam
+            sit amet rutrum ac, imperdiet in nunc. Cras mattis massa et est sodales ac auctor mi sagittis. Fusce
+            elementum ultrices nunc, eu scelerisque massa sodales quis. Aliquam bibendum accumsan nibh ut blandit.
+            Vestibulum suscipit leo vitae magna tincidunt pharetra. Sed consequat, ligula non pretium ultrices,
+            ligula enim venenatis urna, in scelerisque urna turpis vel neque. Praesent nibh urna, eleifend et
+            fringilla eu, pellentesque sit amet nisl.
+            </p>
+            <p>
+            <a href="http://google.com">Praesent venenatis dictum ante</a>, et viverra diam ultrices et. Maecenas egestas augue eget nibh
+            consequat tempus. Quisque facilisis ipsum non mi molestie faucibus. Integer sapien est, mattis
+            eu suscipit nec, auctor id dolor. In hac habitasse platea dictumst. Duis adipiscing tristique
+            ipsum, ut tempus eros porta ut. Nulla enim quam, auctor ut venenatis at, pharetra eget enim.
+            Nam suscipit quam eu erat adipiscing aliquam. Etiam aliquet sagittis viverra. <a href="http://anton.shevchuk.name/jquery/">Ut ultricies</a>,
+            neque nec bibendum commodo, sem arcu lobortis nunc, ut luctus tellus erat at sem.
+            </p>
+            <p>
+            Aliquam erat volutpat. <a href="/index.html">Nunc vel augue sagittis lacus aliquet consequat</a>. Integer eros risus,
+            posuere non volutpat a, mattis et elit. Curabitur congue enim in purus sagittis eu ultrices sem
+            sollicitudin. Morbi sit amet nibh sapien. Nulla facilisi. Integer neque purus, commodo eu tempor eu,
+            interdum sit amet quam. <a href="http://hohli.com/">Vestibulum mollis ullamcorper ipsum sit amet imperdiet</a>. Nullam lorem nunc,
+            scelerisque ac volutpat ut, elementum ut risus. Integer placerat turpis purus. Vestibulum quis turpis
+            ut justo sodales vulputate. Duis lectus tellus, gravida non commodo eu, dictum a tellus.
+            Praesent a nibh vel nisl sodales tincidunt at ac leo.
+            </p>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

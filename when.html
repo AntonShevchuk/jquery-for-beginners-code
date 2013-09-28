@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Пример работы с $.when</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <menu label="Try...">
+
+            <a href="deferred.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
+            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <a href="deferred.pipe.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
+            <hr/>
+<pre><code contenteditable="true">$.when(
+    $(<span>'article img'</span>).slideUp(1000),
+    $(<span>'article p'</span>).hide(3000)
+).done(function(){
+     $(<span>'article'</span>).slideUp(500)
+})</code></pre>
+            <button type="button" class="code">Run Code</button>
+        </menu>
+        <hgroup>
+            <h1>Пример работы метода $.when()</h1>
+            <h2>Поддержка анимации</h2>
+        </hgroup>
+        <article id="stick" class="box">
+            <h2>Article</h2>
+            <p>
+                <img src="images/photo-bumblebee-tumb.jpg" alt="Bumblebee" class="left" width="200"/>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+            lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+            in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+            euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+            eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+            at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+            nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+            tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+            fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+            lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
+        </article>
+        <article>
+            <h2>Article</h2>
+            <p>
+                <img src="images/photo-chamomile-tumb.jpg" alt="Chamomile" class="left" width="200"/>
+            Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+            Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
+            turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
+            nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
+            blandit sapien bibendum. Proin vel vulputate nisl. Duis tempor imperdiet placerat. Pellentesque
+            faucibus consequat magna, et bibendum nisl egestas non. Pellentesque sit amet mattis augue.
+            Aenean at diam tincidunt purus sollicitudin gravida non in nisi. Fusce bibendum, magna in
+            adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
+            adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
+            nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
+            libero. Fusce et ultrices lectus.</p>
+        </article>
+        <article>
+            <h2>Article</h2>
+            <p>
+                <img src="images/photo-maple-leaf-tumb.jpg" alt="Maple Leaf" class="left" width="200"/>
+            Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
+            laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
+            non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
+            ipsum vitae massa accumsan ullamcorper. Maecenas commodo lacus turpis. Proin sit amet mauris
+            sem, imperdiet faucibus lorem. Fusce ullamcorper consectetur ligula vel pretium. Sed et elit
+            vitae orci adipiscing condimentum id sed turpis. Morbi ultrices feugiat ullamcorper. Fusce at
+            magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
+            cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+	</div>
+</body>
+</html>
+

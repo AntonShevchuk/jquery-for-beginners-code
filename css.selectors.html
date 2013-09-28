@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>CSS селекторы, игровая площадка</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <style>
+        #content {
+            padding: 2px;
+        }
+        #content:before {
+            color:#777;
+            font-size: 14px;
+            content: '<div id="content" class="wrapper box">'
+        }
+        #content:after {
+            color:#777;
+            font-size: 14px;
+            content: '</div>'
+        }
+        hgroup {
+            background: #fff;
+            padding: 2px;
+            margin: 20px;
+            border-left: 1px solid #ddd;
+        }
+        hgroup:before {
+            color:#777;
+            font-size: 12px;
+            content: "<hgroup>"
+        }
+        hgroup:after {
+            color:#777;
+            font-size: 12px;
+            content: "</hgroup>"
+        }
+
+        article {
+            background: #fff;
+            padding: 2px;
+            margin: 20px;
+            border-left: 1px solid #ddd;
+        }
+        article:before{
+            color:#777;
+            font-size: 12px;
+            content: "<article>"
+        }
+        article#stick:before{
+            content: '<article id="stick" class="box">'
+        }
+        article:after{
+            color:#777;
+            font-size: 12px;
+            content: "</article>"
+        }
+        footer {
+            background: #fff;
+            margin: 12px 8px;
+        }
+        footer:before{
+            color:#777;
+            font-size: 12px;
+            content: "<footer>"
+        }
+        footer:after{
+            color:#777;
+            font-size: 12px;
+            content: "</footer>"
+        }
+        p {
+            background: #fff;
+            margin: 12px 8px;
+        }
+        p:before{
+            color:#777;
+            font-size: 12px;
+            content: "<p>"
+        }
+        p:after{
+            color:#777;
+            font-size: 12px;
+            content: "</p>"
+        }
+        h1 {
+            background: #fff;
+        }
+        h1:before{
+            color:#777;
+            font-size: 12px;
+            content: "<h1>"
+        }
+        h1:after{
+            color:#777;
+            font-size: 12px;
+            content: "</h1>"
+        }
+        h2 {
+            background: #fff;
+            border: 0 !important;
+        }
+        h2:before{
+            color:#777;
+            font-size: 12px;
+            content: "<h2>"
+        }
+        h2:after{
+            color:#777;
+            font-size: 12px;
+            content: "</h2>"
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.color.js"></script>
+    <script type="text/javascript">
+
+        $(function(){
+            $('button').click(function(){
+                var fnc = $(this).data('fnc');
+                if (fnc) {
+                    var els = eval(fnc);
+
+                    els
+                      .stop(true,true)
+					  .animate({'background-color':'#ff5'}, 500)
+					  .delay(100)
+					  .animate({'background-color':'#fff'}, 500)
+                }
+            });
+
+            $('button.code').click(function(){
+                var code = $(this).prev().text();
+
+                if (code) {
+                    var els = eval(code);
+                        els
+                          .stop(true,true)
+                          .animate({'background-color':'#ff5'}, 500)
+                          .delay(100)
+                          .animate({'background-color':'#fff'}, 500)
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <menu label="Try...">
+
+            <a href="css.priority.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
+            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <a href="sizzle.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
+            <hr/>
+            <h3><a href="css.selectors-test.html">Тест на смекалку</a></h3>
+            <hr/>
+<pre><code contenteditable="true">$(<span>'p'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <hr/>
+            <button type="button" data-fnc="$('#content')">$('#content')</button>
+            <button type="button" data-fnc="$('div#content')">$('div#content')</button>
+            <hr/>
+            <button type="button" data-fnc="$('.wrapper')">$('.wrapper')</button>
+            <button type="button" data-fnc="$('.box')">$('.box')</button>
+            <button type="button" data-fnc="$('.wrapper.box')">$('.wrapper.box')</button>
+            <button type="button" data-fnc="$('article.box')">$('article.box')</button>
+            <hr/>
+            <button type="button" data-fnc="$('h2')">$('h2')</button>
+            <button type="button" data-fnc="$('h1, h2')">$('h1, h2')</button>
+
+            <hr/>
+
+            <button type="button" data-fnc="$('article h2')">$('article h2')</button>
+            <button type="button" data-fnc="$('div article h2')">$('div article h2')</button>
+            <button type="button" data-fnc="$('article').find('h2')">$('article').find('h2')</button>
+            <button type="button" data-fnc="$('div').find('article').find('h2')">$('div').find('article').find('h2')</button>
+
+            <hr/>
+
+            <button type="button" data-fnc="$('h1+h2')">$('h1 + h2')</button>
+            <button type="button" data-fnc="$('#stick ~ article')">$('#stick ~ article')</button>
+            <button type="button" data-fnc="$('#stick').prev()">$('#stick').prev()</button>
+            <button type="button" data-fnc="$('#stick').next()">$('#stick').next()</button>
+
+            <hr/>
+
+            <button type="button" data-fnc="$('*')">$('*')</button>
+            <button type="button" data-fnc="$('article > h2')">$('article > h2')</button>
+            <button type="button" data-fnc="$('article > *')">$('article > *')</button>
+            <button type="button" data-fnc="$('article').children()">$('article').children()</button>
+
+            <hr/>
+
+            <button type="button" data-fnc="$('p').parent()">$('p').parent()</button>
+            <button type="button" data-fnc="$('p').parents()">$('p').parents()</button>
+            <button type="button" data-fnc="$('p').parents('div')">$('p').parents('div')</button>
+
+        </menu>
+        <hgroup>
+            <h1><a href="#">Page Title</a></h1>
+            <h2>Page Description</h2>
+        </hgroup>
+        <article id="stick" class="box">
+            <h2>Article</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+            lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+            in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+            euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+            eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+            at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+            nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+            tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+            fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+            lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
+        </article>
+        <article>
+            <h2>Article</h2>
+            <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+            Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
+            turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
+            nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
+            blandit sapien bibendum. Proin vel vulputate nisl. Duis tempor imperdiet placerat. Pellentesque
+            faucibus consequat magna, et bibendum nisl egestas non. Pellentesque sit amet mattis augue.
+            Aenean at diam tincidunt purus sollicitudin gravida non in nisi. Fusce bibendum, magna in
+            adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
+            adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
+            nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
+            libero. Fusce et ultrices lectus.</p>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

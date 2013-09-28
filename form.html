@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Работа с формой</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('form').submit(function(){
+
+                $(this).find('.error').remove();
+
+                if ($(this).find('[name=text]').val() == '') {
+                    $(this).find('[name=text]').before('<div class="error">Введите имя</div>');
+                    return false;
+                }
+
+                out($(this).serialize()+'\n'+$(this).serializeArray());
+                return false;
+            })
+        });
+    </script>
+    <style>
+        form {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <div id="output">
+            <h3>Output</h3>
+            <pre></pre>
+        </div>
+        <menu label="Try...">
+            <a href="height.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
+            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <hr/>
+            <h3>Text input</h3>
+            <pre><code contenteditable="true">$(<span>'input[type=text]'</span>).val(<span>'new text'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre data-out="1"><code>$(<span>'input[type=text]'</span>).val()</code></pre>
+            <button type="button" class="code">Run Code</button>
+
+            <h3>Text area</h3>
+            <pre><code contenteditable="true">$(<span>'textarea'</span>).val('Some text')</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre data-out="1"><code>$(<span>'textarea'</span>).val()</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <h3>Selectbox</h3>
+            <pre><code contenteditable="true">$(<span>'select'</span>).val('Option 2')</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre data-out="1"><code>$(<span>'select'</span>).val()</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code>$(<span>'select option:eq(2)'</span>).prop(<span>'selected'</span>, true)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code>$(<span>'select option:eq(2)'</span>).prop(<span>'selected'</span>, false)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code contenteditable="true">$(<span>'select'</span>).append(<span>'&lt;option&gt;New Option&lt;/option&gt;'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code>$(<span>'select'</span>).attr(<span>'size'</span>,
+    $(<span>'select option'</span>).length
+)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code>$(<span>'select option'</span>).remove()</code></pre>
+            <button type="button" class="code">Run Code</button>
+
+            <h3>Checboxes</h3>
+            <pre><code>$(<span>'input[type=checkbox]'</span>).prop(<span>'checked'</span>, true)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre data-out="1"><code>$(<span>'input[type=checkbox]'</span>).is(<span>':checked'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <h3>Radiobuttons</h3>
+            <pre><code>$(<span>'input[type=radio][name=choose][value=2]'</span>)
+    .prop(<span>'checked'</span>, true)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code>$(<span>'input[type=radio][name=choose][value=2]'</span>)
+    .prop(<span>'checked'</span>, false)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre data-out="1"><code>$(<span>'input[type=radio][name=choose]:checked'</span>).val()</code></pre>
+            <button type="button" class="code">Run Code</button>
+        </menu>
+        <hgroup>
+            <h1>Работа с формой</h1>
+            <h2>Попробуйте изменить данные, и получить данные</h2>
+        </hgroup>
+        <article>
+			<form action="">
+				<fieldset>
+					<input type="text" name="text"/>
+					<textarea name="editor" cols="64" rows="16">Lorem ipsum dolor sit amet, consectetur adipiscing lit. Phasellus rutrum,
+lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</textarea>
+
+					<select name="select">
+					  <option>Option 1</option>
+					  <option>Option 2</option>
+					  <option>Option 3</option>
+					</select>
+					<hr/>
+					<label><input type="checkbox" name="check" value="1"/> checkbox</label><br/>
+					<hr/>
+					<label><input type="radio" name="choose" value="1"/> choose 1</label><br/>
+					<label><input type="radio" name="choose" value="2"/> choose 2</label><br/>
+					<label><input type="radio" name="choose" value="3"/> choose 3</label><br/>
+					<hr/>
+					<input type="submit" name="submit" class="button"/>
+
+				</fieldset>
+			</form>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

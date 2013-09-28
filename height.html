@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Разбор высот</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/code.js"></script>
+    <style>
+        article {
+            border: 1px solid #000;
+        }
+        #block {
+            width:400px;
+            height:40px;
+            margin:40px;
+            padding:40px;
+            border:40px solid #777;
+            background: #ddd;
+        }
+        #text {
+            background: #fff;
+            font-size: 20px;
+            line-height: 40px;
+            text-indent: 8px;
+        }
+        .contentBox {
+            box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+        }
+        .borderBox {
+            box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <div id="output">
+            <h3>Output</h3>
+            <pre></pre>
+        </div>
+        <menu>
+            <a href="property.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
+            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <a href="form.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
+            <hr/>
+            <h3>Style</h3>
+            <pre><code>#block {
+    height:40px;
+    margin:40px;
+    padding:40px;
+    border:40px solid #777;
+}</code></pre>
+            <!--<h3>Switch <em>box-sizing</em></h3>-->
+            <!--<pre><code contenteditable="true">$(<span>'#block'</span>).addClass(<span>'borderBox'</span>)</code></pre>-->
+            <!--<button type="button" class="code">Run Code</button>-->
+            <!--<pre><code contenteditable="true">$(<span>'#block'</span>).addClass(<span>'contentBox'</span>)</code></pre>-->
+            <!--<button type="button" class="code">Run Code</button>-->
+            <h3>Получаем высоту</h3>
+            <pre data-out="1"><code>$(<span>'#block'</span>).height()</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre data-out="1"><code>$(<span>'#block'</span>).innerHeight()</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre data-out="1"><code>$(<span>'#block'</span>).outerHeight()</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre data-out="1"><code>$(<span>'#block'</span>).outerHeight(true)</code></pre>
+            <button type="button" class="code">Run Code</button>
+        </menu>
+        <hgroup>
+            <h1>Пример вычисление &laquo;высот&raquo;</h1>
+        </hgroup>
+        <article>
+            <div id="block">
+                <div id="text">Content</div>
+            </div>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

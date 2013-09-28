@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Пример widget'а для jQuery UI</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <style>
+        .expose-widget {
+            position: absolute;
+            z-index: 999;
+            background-color: rgba(0, 0, 0, 0.42);
+            display: none;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+	<script>
+        (function( $, undefined ) {
+            $.widget( "book.expose", {
+                version: "1.0.0",
+                // наши настройки
+                options: {
+                    color: null, // цвет фона
+                    speed: 500,  // скорость анимации
+                    show: 500,   // настройки для метода _show()
+                    hide: {      // настройки для метода _hide()
+                        effect: "fade",
+                        duration: 500
+                    }
+                },
+                // инициализация
+                _create: function() {
+                    var self = this;
+                    // выбранному элементу добавляем наш класс
+                    // и вешаем обработчик события "клик"
+                    this.element
+                        .addClass( "book-widget" )
+                        .on('click.expose-widget.'+this.eventNamespace, function() {
+                            // вызываем метод виджета
+                            // виджет доступен в переменной self
+                            if (self.element.data('expose-it')) {
+                                self.unmask();
+                            } else {
+                                self.mask();
+                            }
+                            return false;
+                        });
+
+                    // нам необходимо инициировать окружение лишь один раз для всех элементов
+                    // это наш флаг
+                    var totalInited = $.data(document.body, 'expose');
+
+                    if (!totalInited) {
+                        // изменяем флаг - у нас уже запущена инициализация
+                        $.data(document.body, 'expose', 1);
+                        // инициализация верхнего "бокса"
+                        // и добавление в DOM
+                        var $topBox = $('<div></div>');
+                            $topBox.addClass("expose-widget");
+                            $topBox.appendTo(document.body);
+
+                        // сохраняем на него ссылку в реестре
+                        $.data(document.body, 'topBox',    $topBox);
+
+                        // клонируем верхний бокс
+                        // добавляем и сохраняем
+                        var $bottomBox = $topBox.clone();
+                            $bottomBox.appendTo(document.body);
+                        $.data(document.body, 'bottomBox', $bottomBox);
+
+                        // повторяем для левого
+                        var $leftBox = $topBox.clone();
+                            $leftBox.appendTo(document.body);
+                        $.data(document.body, 'leftBox',   $leftBox);
+
+                        // и для правого
+                        var $rightBox = $topBox.clone();
+                            $rightBox.appendTo(document.body);
+                        $.data(document.body, 'rightBox',  $rightBox);
+
+                        // все боксы разом
+                        $allBox = $topBox.add($bottomBox).add($leftBox).add($rightBox);
+                        $.data(document.body, 'allBox',  $allBox);
+
+                        // вешаем единый обработчик события для всех боксов
+                        $(document.body).on('click.expose-widget', '.expose-widget', function() {
+                            // вызов метода виджета
+                            self.unmask();
+                            return false;
+                        });
+
+                        // кидаем событие, на него можно подписаться лишь при инициализации виджета
+                        // иначе толку не будет - будет поздно
+                        this._trigger('build');
+                    } else {
+                        // отслеживаем кол-во виджетов
+                        totalInited++;
+                        $.data(document.body, 'expose', totalInited);
+                    }
+                    // вызываем метод виджета для применения цвета
+                    this._setCurrentColor();
+                },
+                // ломаем всё что строили
+                _destroy: function() {
+                    // подчищаем наш элемент
+                    this.element
+                        .removeClass( "book-widget" )
+                        // данный метод избыточен, т.к. это делает за нас публичный метод destroy()
+                        .off('.'+this.eventNamespace);
+
+                    // декрементим кол-во инициализированных виджетов
+                    var totalInited = $.data(document.body, 'expose');
+
+                    totalInited--;
+
+                    $.data(document.body, 'expose', totalInited);
+
+                    // если больше нет виджетов
+                    // удаляем вспомогательные боксы
+                    if (totalInited==0) {
+                        $.data(document.body, 'allBox').remove();
+                        $(document.body).off('.expose-widget');
+                        this._trigger('destroy');
+                    }
+                },
+                // применяем настройки
+                _setOption: function( key, value ) {
+                    if (key == 'disabled') {
+                        // тут должен быть код по отключению виджета
+                    }
+                    if (key == 'speed') {
+                        this.options.show = value;
+                        this.options.hide.duration = value;
+                    }
+                    this._super( key, value );
+                },
+                // применяем настройки цвета
+                _setCurrentColor: function() {
+                    this.options.color = $.data(document.body, 'topBox').css('background-color');
+                },
+                // изменяем цвет
+                color: function(value) {
+                    $.data(document.body, 'allBox').css('background-color', value);
+                    this._setCurrentColor();
+                },
+                // прячем боксы
+                unmask: function() {
+                    var self = this;
+                    // получаем набор
+                    var $allBox = $.data(document.body, 'allBox');
+                    // вызываем функцию анимации
+                    this._hide($allBox, this.options.hide, function() {
+                        // бросаем событие по завершению
+                        self._trigger('unmask')
+                    });
+                    this._resetFlag();
+                    // изменяем флаг
+                    this.element.data('expose-it', false);
+                },
+                // показываем боксы
+                mask: function() {
+                    var self = this;
+                    // берём все "боксы"
+                    var $allBox = $.data(document.body, 'allBox');
+                    var $topBox = $.data(document.body, 'topBox');
+                    var $bottomBox = $.data(document.body, 'bottomBox');
+                    var $leftBox = $.data(document.body, 'leftBox');
+                    var $rightBox = $.data(document.body, 'rightBox');
+
+
+                    // вычисляем текущие координаты элемента и размеры окна
+                    var offset = this.element.offset();
+                    var height = this.element.outerHeight();
+                    var width  = this.element.outerWidth();
+                    var winWidth = $(document).width();
+                    var winHeight = $(document).height();
+
+                    var topSettings = {
+                        top:0,
+                        left:0,
+                        width:winWidth,
+                        height:offset.top,
+                        backgroundColor:this.options.color
+                    };
+
+                    var leftSettings = {
+                        top:offset.top,
+                        left:0,
+                        width:offset.left,
+                        height:height,
+                        backgroundColor:this.options.color
+                    };
+
+                    var rightSettings = {
+                        top:offset.top,
+                        left:offset.left+width,
+                        width:winWidth - (offset.left+width),
+                        height:height,
+                        backgroundColor:this.options.color
+                    };
+
+                    var bottomSettings = {
+                        top:offset.top+height,
+                        left:0,
+                        width:winWidth,
+                        height:winHeight - (offset.top+height),
+                        backgroundColor:this.options.color
+                    };
+
+                    // проверяем - отображается у нас боксы в данный момент времени или нет
+                    if ($topBox.is(':hidden')) {
+                        // применяем настройки
+                        $topBox.css(topSettings);
+                        $leftBox.css(leftSettings);
+                        $rightBox.css(rightSettings);
+                        $bottomBox.css(bottomSettings);
+                        // показываем все наши боксы
+                        this._show( $allBox, this.options.show, function() {
+                            // событие mask
+                            self._trigger('mask');
+                        });
+                    } else {
+                        this._resetFlag();
+                        // применяем настройки через анимацию
+                        $topBox.animate(topSettings, this.options.speed);
+                        $leftBox.animate(leftSettings, this.options.speed);
+                        $rightBox.animate(rightSettings, this.options.speed);
+                        $bottomBox.animate(bottomSettings, this.options.speed, function(){
+                            // событие mask
+                            self._trigger('mask');
+                        });
+                    }
+
+                    // изменяем флаг
+                    this.element.data('expose-it', true);
+                },
+                _resetFlag:function() {
+                    // workaround - надо "сбросить" флаг для всех других элементов
+                    // надо будет придумать более красивое решение
+                    $.each($.cache, function(i, el) {
+                        if (el.data != undefined && el.data.exposeIt != undefined) {
+                            el.data.exposeIt = false;
+                        }
+                    });
+                }
+            });
+        })( jQuery );
+	</script>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <menu label="Try...">
+			<a href="tabs.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
+            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <hr/>
+            <pre><code>$(<span>'article'</span>).expose()</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code contenteditable="true">$(<span>'article'</span>).expose({speed:2000})</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code contenteditable="true">$(<span>'article img'</span>).expose({speed:100})</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code><em>// try widget API - trigger</em>
+$(<span>'article:eq(0)'</span>).bind(<span>'exposemask'</span>,
+    function(){
+        $(this).css(<span>'color'</span>, <span>'red'</span>);
+    });
+$(<span>'article:eq(0)'</span>).bind(<span>'exposeunmask'</span>,
+    function(){
+        $(this).css(<span>'color'</span>, <span>'black'</span>);
+    })</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code><em>// try widget API - call method</em>
+$(<span>'article:eq(1)'</span>).expose(<span>'mask'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+            <pre><code contenteditable="true"><em>// try widget API - call method+args</em>
+$(<span>'article:eq(1)'</span>).expose(
+    <span>'color'</span>,
+    <span>'rgba(255, 0, 0, 0.5)'</span>
+)</code></pre>
+            <button type="button" class="code">Run Code</button>
+        </menu>
+        <hgroup>
+            <h1>widget</h1>
+            <h2>Пишем своё виджет для jQuery UI</h2>
+        </hgroup>
+        <article>
+            <h2>Article</h2>
+            <p>
+                <img src="images/photo-bumblebee-tumb.jpg" alt="Bumblebee" class="left" width="200"/>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+            lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+            in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+            euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+            eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+            at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+            nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+            tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+            fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+            lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
+        </article>
+        <article>
+            <h2>Article</h2>
+            <p>
+                <img src="images/photo-chamomile-tumb.jpg" alt="Chamomile" class="left" width="200"/>
+            Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+            Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
+            turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
+            nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
+            blandit sapien bibendum. Proin vel vulputate nisl. Duis tempor imperdiet placerat. Pellentesque
+            faucibus consequat magna, et bibendum nisl egestas non. Pellentesque sit amet mattis augue.
+            Aenean at diam tincidunt purus sollicitudin gravida non in nisi. Fusce bibendum, magna in
+            adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
+            adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
+            nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
+            libero. Fusce et ultrices lectus.</p>
+        </article>
+        <article>
+            <h2>Article</h2>
+            <p>
+                <img src="images/photo-maple-leaf-tumb.jpg" alt="Maple Leaf" class="left" width="200"/>
+            Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
+            laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
+            non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
+            ipsum vitae massa accumsan ullamcorper. Maecenas commodo lacus turpis. Proin sit amet mauris
+            sem, imperdiet faucibus lorem. Fusce ullamcorper consectetur ligula vel pretium. Sed et elit
+            vitae orci adipiscing condimentum id sed turpis. Morbi ultrices feugiat ullamcorper. Fusce at
+            magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
+            cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+	</div>
+</body>
+</html>
+

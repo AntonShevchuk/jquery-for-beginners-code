@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Пример загрузки HTML посредством AJAX и метода load()</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/code.js"></script>
+    <style>
+        article {
+            border:1px dotted #ccc
+        }
+    </style>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <menu>
+            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back</a>
+            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <a href="ajax.datatype.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
+            <hr/>
+			<pre><code contenteditable="true"><em>// AJAX is easy</em>
+$(<span>'article'</span>).load(<span>'index.html'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+			<pre><code contenteditable="true"><em>// easy to load</em>
+$(<span>'article'</span>).load(<span>'index.html hgroup'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+			<pre><code contenteditable="true"><em>// easy to handle</em>
+$(<span>'article'</span>).load(<span>'index.html article'</span>, function(){
+	$(<span>'article'</span>).show().fadeOut(2000, function(){
+        $(this).html('<strong>&rarr;</strong>').fadeIn();
+    });
+})</code></pre>
+            <button type="button" class="code">Run Code</button>
+        </menu>
+        <hgroup>
+            <h1>load()</h1>
+            <h2>Простой пример использования метода load()</h2>
+        </hgroup>
+        <article>
+			<h2>Пробуем загрузить контент &rarr;</h2>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

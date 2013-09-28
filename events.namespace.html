@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>События и пространства имён</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#myButton').click(function(event){
+                return false;
+            });
+        });
+    </script>
+	<style>
+		article ul {
+			margin: 20px;
+			float:left;
+			list-style: none
+		}
+		article a {
+			display: block;
+			padding: 4px 8px;
+			border:1px solid #456;
+			border-radius: 2px;
+			-moz-border-radius: 2px;
+			-webkit-border-radius: 2px;
+		}
+	</style>
+</head>
+<body>
+    <div id="content" class="wrapper box">
+        <div id="output">
+            <h3>Output</h3>
+            <pre></pre>
+        </div>
+        <menu label="Try...">
+
+			<a href="events.form.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
+			<a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+			<a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+            <hr/>
+<pre><code>$(<span>'#myButton'</span>).on(<span>'click'</span>, function(){
+    appendOut(<span>"click\n"</span>); })</code></pre>
+<button type="button" class="code">Run Code</button>
+<pre><code>$(<span>'#myButton'</span>).on(<span>'click.space'</span>, function(){
+    appendOut(<span>"click.space\n"</span>); })</code></pre>
+<button type="button" class="code">Run Code</button>
+<pre><code>$(<span>'#myButton'</span>).on(<span>'click.my'</span>, function(){
+    appendOut(<span>"click.my\n"</span>); })</code></pre>
+<button type="button" class="code">Run Code</button>
+<pre><code>$(<span>'#myButton'</span>).on(<span>'click.my.space'</span>, function(){
+    appendOut(<span>"click.my.space\n"</span>); })</code></pre>
+<button type="button" class="code">Run Code</button>
+<pre><code>$(<span>'#myButton'</span>).trigger(<span>'click'</span>)</code></pre>
+<button type="button" class="code">Run Code</button>
+<pre><code>$(<span>'#myButton'</span>).trigger(<span>'click!'</span>)</code></pre>
+<button type="button" class="code">Run Code</button>
+<pre><code>$(<span>'#myButton'</span>).trigger(<span>'click.my!'</span>)</code></pre>
+<button type="button" class="code">Run Code</button>
+<pre><code>$(<span>'#myButton'</span>).off(<span>'.space'</span>)</code></pre>
+<button type="button" class="code">Run Code</button>
+        </menu>
+        <hgroup>
+            <h1>Работа с пространством имён</h1>
+            <h2>Это уже круто знать и использовать</h2>
+        </hgroup>
+        <article>
+            <a href="#" id="myButton" class="button">#myButton</a>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
+

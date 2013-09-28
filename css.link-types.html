@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Селекторы по CSS3 атрибутам</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <style type="text/css">
+        a {
+            color:#333399;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        a.pdf {
+            background: url(images/file-red.gif) no-repeat;
+            padding-left: 16px;
+        }
+        a.zip {
+            background: url(images/file-orange.gif) no-repeat;
+            padding-left: 16px;
+        }
+        a.png {
+            background: url(images/file-blue.gif) no-repeat;
+            padding-left: 16px;
+        }
+        a.external {
+            background: url(images/window.gif) no-repeat;
+            padding-left: 16px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.color.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('button.code').click(function(){
+                var code = $(this).prev().text();
+                if (code) {
+                    var els = eval(code);
+                        els
+                          .stop(true,true)
+                          .animate({'background-color':'#ff5'}, 500)
+                          .delay(100)
+                          .animate({'background-color':'#fff'}, 500)
+                }
+
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function(){
+            $("a[href$=pdf]").addClass("pdf");
+
+            $("a[href$=zip]").addClass("zip");
+
+            $("a[href$=png]").addClass("png");
+
+            $("a[href^=\\/]").addClass("internal");
+            
+            $("a[href^=#]").addClass("anchor");
+
+            $("article a[href^=http\\:\\/\\/]").addClass("external")
+                               .attr({ target: "_blank" });
+
+            /*
+            $("a:not(a[href*=anton.shevchuk.name])") //.not("[href^=#]")
+                .addClass("external")
+                .attr({ target: "_blank" });
+            */
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="content" class="wrapper box">
+        <menu label="Try...">
+            <a href="css.selectors.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
+            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+            <hr/>
+<pre><code contenteditable="true"><em>// highlight elements</em>
+$(<span>'a[href]'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+<pre><code contenteditable="true"><em>// highlight internal links</em>
+$(<span>'a[href^=\\/]'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+<pre><code contenteditable="true"><em>// highlight document anchors</em>
+$(<span>'a[href^=#]'</span>)</code></pre>
+            <button type="button" class="code">Run Code</button>
+        </menu>
+        <hgroup>
+            <h1>Селекторы по CSS атрибутам</h1>
+            <h2>Пример с определением расширения файла</h2>
+        </hgroup>
+        <article>
+            <h2>Article</h2>
+            <p><a href="?jquery.pdf">PDF file</a> (jquery.pdf)</p>
+            <p><a href="?jquery.png">PNG file</a> (jquery.png)</p>
+            <p><a href="?jquery.zip">Zip file</a> (jquery.zip)</p>
+
+            <p><a href="#anchor">#anchor link</a> (#anchor)</p>
+            <p><a href="http://hohli.com/">HoHli projects</a> (http://hohli.com)</p>
+            <p><a href="http://anton.shevchuk.name/">Back to Blog</a> (http://anton.shevchuk.name)</p>
+            <p><a href="/book/code/">Back to Examples</a> (/book/code)</p>
+        </article>
+        <footer>
+            &copy;copyright 2012 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        </footer>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-1669896-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+         </script>
+	</div>
+</body>
+</html>
