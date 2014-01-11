@@ -161,13 +161,13 @@ code {
 		right: 0;
 	}
 /*header*/
-hgroup  {
+header  {
     margin-bottom: 16px;
 }
-    hgroup h1 {
+    header h1 {
         margin-bottom: 0;
     }
-    hgroup h2 {
+    header h2 {
         font-weight: 400;
         font-size: 1.3rem;
         color:#999;

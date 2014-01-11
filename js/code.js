@@ -1,7 +1,7 @@
 /**
  * Run inline code
  *
- * @author   Anton Shevchuk
+ * @author Anton Shevchuk
  */
 (function($, undefined) {
     $(function(){
