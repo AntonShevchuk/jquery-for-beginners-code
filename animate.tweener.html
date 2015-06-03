@@ -2,6 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Пример расширения animate через tweener</title>
     <link rel="profile" href="http://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
@@ -55,10 +56,6 @@
 </head>
 <body>
     <div id="content" class="wrapper box">
-        <div id="output">
-            <h3>Output</h3>
-            <pre></pre>
-        </div>
         <menu label="Try...">
 			<a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
             <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
@@ -68,6 +65,10 @@
 }, 2000)</code></pre>
             <button type="button" class="code">Run Code</button>
         </menu>
+        <div id="output">
+            <h3>Output</h3>
+            <pre></pre>
+        </div>
         <header>
             <h1><a href="index.html">Анимация</a></h1>
             <h2>Пример расширения анимации через tweener</h2>

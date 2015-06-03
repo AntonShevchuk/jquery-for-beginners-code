@@ -2,6 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Пример использования с $.Callbacks</title>
     <link rel="profile" href="http://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
@@ -123,10 +124,6 @@
 </head>
 <body>
     <div id="content" class="wrapper box">
-        <div id="output">
-            <h3>Output</h3>
-            <pre></pre>
-        </div>
         <menu label="Try...">
             <a href="deferred.pipe.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
             <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
@@ -156,6 +153,10 @@ C.add(function(speed){
             <h2>На практике мне ещё не приходилось использовать, поэтому пример немного надуманный - запрограммируйте поездку
                 машинки используя стрелки на клавиатуре, а затем запустите программу, указав скорость</h2>
         </header>
+        <div id="output">
+            <h3>Output</h3>
+            <pre></pre>
+        </div>
         <article>
             <div id="car"></div>
         </article>

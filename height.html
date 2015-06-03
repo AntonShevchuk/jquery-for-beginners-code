@@ -2,6 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Разбор высот</title>
     <link rel="profile" href="http://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
@@ -36,14 +37,22 @@
             -moz-box-sizing: content-box;
             -webkit-box-sizing: content-box;
         }
+
+        @media screen and (max-width: 480px) {
+            article {
+                border: 0;
+            }
+            #block {
+                width:auto;
+            }
+            #text {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
     <div id="content" class="wrapper box">
-        <div id="output">
-            <h3>Output</h3>
-            <pre></pre>
-        </div>
         <menu>
             <a href="property.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
             <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
@@ -79,6 +88,10 @@
         <header>
             <h1>Пример вычисление &laquo;высот&raquo;</h1>
         </header>
+        <div id="output">
+            <h3>Output</h3>
+            <pre></pre>
+        </div>
         <article>
             <div id="block">
                 <div id="text">Content</div>

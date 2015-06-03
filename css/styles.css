@@ -339,3 +339,36 @@ menu {
         border:1px solid #ff9999;
     }
 /*/menu*/
+@media screen and (max-width: 480px) {
+    .wrapper {
+        width: 100%;
+        border: 0
+    }
+    menu {
+        width: 96%;
+        position: inherit;
+        /*border: 0;*/
+        padding:0;
+        margin:0 auto;
+    }
+    menu > a.button {
+        margin: 3px;
+    }
+
+    code {
+        margin: 8px 4px;
+    }
+
+    #output {
+        position: inherit;
+        width: 96%;
+        padding:0;
+        margin:0 auto;
+    }
+    #output pre {
+        margin:4px;
+    }
+    textarea {
+        width: 98%;
+    }
+}
