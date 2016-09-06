@@ -268,11 +268,11 @@ $(<span>'article'</span>).expose({speed:2000})</code></pre>
 $(<span>'article img'</span>).expose({speed:100})</code></pre>
             <button type="button" class="code">Run Code</button>
             <pre><code><em>// try widget API - trigger</em>
-$(<span>'article:eq(0)'</span>).bind(<span>'exposemask'</span>,
+$(<span>'article:eq(0)'</span>).on(<span>'exposemask'</span>,
     function(){
         $(this).css(<span>'color'</span>, <span>'red'</span>);
     });
-$(<span>'article:eq(0)'</span>).bind(<span>'exposeunmask'</span>,
+$(<span>'article:eq(0)'</span>).on(<span>'exposeunmask'</span>,
     function(){
         $(this).css(<span>'color'</span>, <span>'black'</span>);
     })</code></pre>
@@ -336,7 +336,7 @@ $(<span>'article:eq(1)'</span>).expose(
             cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
         </article>
         <footer>
-            &copy;copyright 2014 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+            &copy;copyright 2014-2016 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
         </footer>
         <script type="text/javascript">
             var _gaq = _gaq || [];

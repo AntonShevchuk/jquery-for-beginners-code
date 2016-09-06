@@ -10,47 +10,48 @@
     <script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/code.js"></script>
     <script type="text/javascript">
-    $(function(){
-        
-        $('#f').submit(function(){
-        
-            var urlFull = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&key=ABQIAAAACKQaiZJrS0bhr9YARgDqUxQBCBLUIYB7IF2WaNrkYqF0tBovNBQFDtM_KNtb3xQxWff2mI5hipc3lg&rsz=large&q='+ encodeURIComponent(jQuery('#q').val()) + '&callback=GoogleCallback&context=?';
-            
-            $.ajax({
-                // AJAX-specified URL
-               url: urlFull,
-               dataType : "jsonp",
-               
-               
-               // Handle the success event
-               success: function (data, textStatus) {
-    				var ol = document.createElement("ol");
-                    // build results set
-                    $.each(data.results,
-        					function(i, val) {
-        						var li = document.createElement("li");
-        						
-        						li.innerHTML = '<a href="'+val.url+'" title="'+val.url+'" target="_blank">'+val.title+"</a> - "+val.content;        						
-        						
-        //						val.GsearchResultClass;
-        //						val.unescapedUrl;						
-        //						val.url;                
-        //						val.visibleUrl;
-        //						val.cacheUrl;
-        //						val.title;
-        //						val.titleNoFormatting;
-        //						val.content;
-        						
-                                ol.appendChild(li);
-        					}
-        				);
-    				$('#results').html(ol);
-    		    }				
-    		});
-            return false;
+        $(function () {
+
+            $('#f').submit(function () {
+
+                var urlFull = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&key=ABQIAAAACKQaiZJrS0bhr9YARgDqUxQBCBLUIYB7IF2WaNrkYqF0tBovNBQFDtM_KNtb3xQxWff2mI5hipc3lg&rsz=large&q=' + encodeURIComponent(jQuery('#q').val()) + '&callback=GoogleCallback&context=?';
+
+                $.ajax({
+                    // AJAX-specified URL
+                    url: urlFull,
+                    dataType: "jsonp",
+
+
+                    // Handle the success event
+                    success: function (data, textStatus) {
+                        var ol = document.createElement("ol");
+                        console.log(data);
+                        // build results set
+                        $.each(data.results,
+                                function (i, val) {
+                                    var li = document.createElement("li");
+
+                                    li.innerHTML = '<a href="' + val.url + '" title="' + val.url + '" target="_blank">' + val.title + "</a> - " + val.content;
+
+                                    //						val.GsearchResultClass;
+                                    //						val.unescapedUrl;
+                                    //						val.url;
+                                    //						val.visibleUrl;
+                                    //						val.cacheUrl;
+                                    //						val.title;
+                                    //						val.titleNoFormatting;
+                                    //						val.content;
+
+                                    ol.appendChild(li);
+                                }
+                        );
+                        $('#results').html(ol);
+                    }
+                });
+                return false;
+            });
+
         });
-        
-    });
     
     function GoogleCallback (func, data) {
         window[func](data);
@@ -99,7 +100,7 @@
 
         </article>
         <footer>
-            &copy;copyright 2014 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+            &copy;copyright 2014-2016 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
         </footer>
         <script type="text/javascript">
             var _gaq = _gaq || [];
