@@ -58,7 +58,7 @@
              *
              * @link http://habrahabr.ru/blogs/mootools/43379/
              */
-            heart: function (x, t, b, c, d) {
+            heart: function (x) {
                 if (x < 0.3)  return Math.pow(x, 4) * 49.4;
                 if (x < 0.4)  return 9 * x - 2.3;
                 if (x < 0.5)  return -13 * x + 6.5;
@@ -68,15 +68,15 @@
                 if (x < 0.8)  return -4 * x + 3.6;
                 if (x >= 0.8) return 1 - Math.sin(Math.acos(x));
             },
-            heartIn: function (x, t, b, c, d) {
-                return $.easing.heart(x, t, b, c, d);
+            heartIn: function (x) {
+                return $.easing.heart(x);
             },
-            heartOut: function (x, t, b, c, d) {
-                return c - $.easing.heart(1 - x, t, b, c, d) + b;
+            heartOut: function (x) {
+                return $.easing.heart(1 - x);
             },
-            heartInOut: function (x, t, b, c, d) {
-                if (t < d/2) return $.easing.heartIn(x, t, b, c, d);
-                return $.easing.heartOut(x, t, b, c, d);
+            heartInOut: function (x) {
+                if (x < 0.5) return $.easing.heartIn(x);
+                return $.easing.heartOut(x);
             }
 
         });
