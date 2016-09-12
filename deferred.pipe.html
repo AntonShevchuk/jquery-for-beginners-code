@@ -21,17 +21,17 @@
 <pre><code contenteditable="true">$.ajax(<span>'ajax/example.json'</span>)
     .then(function(){
         appendOut(<span>'Ajax\n'</span>);
-        return $(<span>'article img'</span>).slideUp(2000)
+        return $(<span>'article img'</span>).slideUp(2000).promise();
     })
     .then(function(){
         appendOut(<span>'Images\n'</span>);
-        return $(<span>'article p'</span>).slideUp(2000)
+        return $(<span>'article p'</span>).slideUp(2000).promise();
     })
     .then(function(){
         appendOut(<span>'Paragraph\n'</span>);
-        return $(<span>'article'</span>).hide(2000);
+        return $(<span>'article'</span>).hide(2000).promise();
     })
-    .done(function(){
+    .then(function(){
         appendOut(<span>"All Ok"</span>);
     });
 </code></pre>
@@ -39,7 +39,6 @@
         </menu>
         <header>
             <h1>Пример построение цепочек $.Deferred</h1>
-            <h2>C animate(), метод pipe() не подружился :(</h2>
         </header>
         <div id="output">
             <h3>Output</h3>
