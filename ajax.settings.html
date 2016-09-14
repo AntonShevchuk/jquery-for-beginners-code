@@ -18,30 +18,38 @@
 <body>
     <div id="content" class="wrapper box">
         <menu>
-            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back</a>
+            <a href="ajax.load.html" title="go prev" class="button alignleft" rel="prev">&larr; Back</a>
             <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
             <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <a href="ajax.settings.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
+            <a href="ajax.datatype.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
             <hr/>
 			<pre><code contenteditable="true"><em>// AJAX is easy</em>
-$(<span>'article'</span>).load(<span>'index.html'</span>)</code></pre>
+$.ajax({
+    url: <span>'index.html'</span>,
+    success: function(data) {
+        var part = $(data).filter(<span>'.jumbotron'</span>);
+        $(<span>'article'</span>).append(part);
+    }
+})</code></pre>
             <button type="button" class="code">Run Code</button>
-			<pre><code contenteditable="true"><em>// easy to load</em>
-$(<span>'article'</span>).load(<span>'index.html .jumbotron'</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-			<pre><code contenteditable="true"><em>// easy to handle</em>
-$(<span>'article'</span>).load(<span>'index.html .lead'</span>, function(){
-	$(<span>'article'</span>).show().fadeOut(2000, function(){
-        $(this).html('<strong>&rarr;</strong>').fadeIn();
-    });
+            <pre><code contenteditable="true"><em>// AJAX with Promise</em>
+$.ajax({
+    url: <span>'index.html'</span>,
+    success: function(data) {
+        var part = $(data).filter(<span>'.jumbotron'</span>);
+        $(<span>'article'</span>).append(part);
+    }
+}).then(function() {
+     $(<span>'article'</span>).show().fadeOut(2000);
 })</code></pre>
             <button type="button" class="code">Run Code</button>
         </menu>
         <header>
-            <h1>load()</h1>
-            <h2>Простой пример использования метода load()</h2>
+            <h1>ajax()</h1>
+            <h2>Пример использования метода ajax(), аналогичный предыдущему примеру с load()</h2>
+            <p><code>$(<span>'article'</span>).load(<span>'index.html .jumbotron'</span>)</code></p>
         </header>
-        <article style="height: 480px; overflow: auto">
+        <article>
 			<h2>Пробуем загрузить контент &rarr;</h2>
         </article>
         <footer>
