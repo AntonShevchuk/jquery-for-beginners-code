@@ -71,65 +71,63 @@
 
 <body>
 <div id="content" class="wrapper box">
-       <menu>
-           <a href="accordion.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
-           <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-           <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-           <a href="widget.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-       </menu>
-       <header>
-           <h1>Реализация закладок</h1>
-           <h2>На jQuery без использования jQuery UI</h2>
-       </header>
-       <article>
-           <ul>
-               <li><a href="#pan1">First Article</a></li>
-               <li><a href="#pan2">Second Article</a></li>
-               <li><a href="#pan3">Third Article</a></li>
-           </ul>
+    <menu>
+       <a href="accordion.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
+       <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
+       <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
+       <a href="widget.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
+    </menu>
+    <header>
+       <h1>Реализация закладок</h1>
+       <h2>На jQuery без использования jQuery UI</h2>
+    </header>
+    <article>
+        <ul>
+           <li><a href="#pan1">First Article</a></li>
+           <li><a href="#pan2">Second Article</a></li>
+           <li><a href="#pan3">Third Article</a></li>
+        </ul>
 
-           <p id="pan1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
-           lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
-           in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
-           euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
-           eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
-           at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
-           nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
-           tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
-           fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
-           lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
-           <p id="pan2">Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
-           Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
-           turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
-           nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
-           blandit sapien bibendum. Proin vel vulputate nisl. Duis tempor imperdiet placerat. Pellentesque
-           faucibus consequat magna, et bibendum nisl egestas non. Pellentesque sit amet mattis augue.
-           Aenean at diam tincidunt purus sollicitudin gravida non in nisi. Fusce bibendum, magna in
-           adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
-           adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
-           nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
-           libero. Fusce et ultrices lectus.</p>
-           <p id="pan3">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-           Morbi dapibus, dui in consequat pulvinar, nunc erat consequat ipsum, ut blandit nulla eros ac purus.
-           In at justo sed lorem consequat fermentum. Nunc scelerisque purus sed neque rutrum adipiscing. Sed
-           vehicula tristique dolor, quis porttitor magna dictum eu. Cras tristique erat non orci aliquam tempor.
-           In hac habitasse platea dictumst. Nam eget sodales neque. Aenean adipiscing consequat diam, eu
-           molestie diam dictum eu.</p>
-       </article>
-       <footer>
-           &copy;copyright 2012-2016 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-       </footer>
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-1669896-2']);
-            _gaq.push(['_trackPageview']);
+        <p id="pan1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+        lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+        in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+        euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+        eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+        at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+        nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+        tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+        fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+        lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
+        <p id="pan2">Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+        Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
+        turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
+        nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
+        blandit sapien bibendum. Proin vel vulputate nisl. Duis tempor imperdiet placerat. Pellentesque
+        faucibus consequat magna, et bibendum nisl egestas non. Pellentesque sit amet mattis augue.
+        Aenean at diam tincidunt purus sollicitudin gravida non in nisi. Fusce bibendum, magna in
+        adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
+        adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
+        nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
+        libero. Fusce et ultrices lectus.</p>
+        <p id="pan3">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+        Morbi dapibus, dui in consequat pulvinar, nunc erat consequat ipsum, ut blandit nulla eros ac purus.
+        In at justo sed lorem consequat fermentum. Nunc scelerisque purus sed neque rutrum adipiscing. Sed
+        vehicula tristique dolor, quis porttitor magna dictum eu. Cras tristique erat non orci aliquam tempor.
+        In hac habitasse platea dictumst. Nam eget sodales neque. Aenean adipiscing consequat diam, eu
+        molestie diam dictum eu.</p>
+    </article>
+    <footer>
+        &copy;copyright 2012-2016 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-            (function() {
-             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
+        ga('create', 'UA-1669896-15', 'auto');
+        ga('send', 'pageview');
+    </script>
 </div>
 </body>
 </html>
