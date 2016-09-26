@@ -13,13 +13,18 @@
         jQuery("article h2").css("font-size", "24px");
 
         // it's working
+        // deprecated
         jQuery(document).ready(function(){
             jQuery("article h2").css("background-color", "green");
         });
 
-        // it's too
+        // it's working too
         $(function(){
             $("article h2").css("color", "#fff");
+        });
+
+        $.ready.then(function(){
+            $("article p").css("font-size", "8px");
         });
 
         // anonymous function - best practices
@@ -42,6 +47,7 @@ jQuery(<span>"article h2"</span>).css(
 );
 
 <em>// it's working</em>
+<em>// deprecated</em>
 jQuery(document).ready(function(){
     jQuery(<span>"article h2"</span>).css(
         <span>"background-color"</span>,
@@ -49,9 +55,14 @@ jQuery(document).ready(function(){
     );
 });
 
-<em>// it's too</em>
+<em>// it's working too</em>
 $(function(){
     $(<span>"article h2"</span>).css(<span>"color"</span>, <span>"#fff"</span>);
+});
+
+<em>// for jQuery 3.x+</em>
+$.ready.then(function(){
+    $(<span>"article p"</span>).css(<span>"font-size"</span>, <span>"8px"</span>);
 });
 
 <em>// anonymous function - best practices</em>
