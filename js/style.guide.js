@@ -12,22 +12,19 @@
  *
  * @param jQuery $  - be sure `$` is `jQuery`
  * @param window w  - be sure `w` is `window`
- * @param undefined - be sure `undefined` is undefined
  */
-;(function ($, w, undefined) {
+(function ($, w) {
   /**
    * Use ONLY private variables inside module
+   * or use `let` and `const` if it possible in your project
    */
   var version = "1.0";
 
   /**
-   * Simple cache function for jQuery selector with lazy loading
-   *
-   *  Use function as cache mechanism for selectors
-   *  its needs for avoid spend time and memory to init and store jQuery
-   *
+   * Simple cache function for jQuery lookup with lazy loading
+   * its needs for avoid spend time and memory to init and store jQuery objects
    */
-  var _$ = function (selector) {
+  var $function = function (selector) {
     var elements;
     /**
      * @return jQuery
@@ -43,8 +40,8 @@
   /**
    * Define simple functions
    */
-  var $headers = _$("h2");
-  var $articles = _$("article");
+  var $headers = $function("h2");
+  var $articles = $function("article");
 
   /**
    * Only ONE function for handle document ready event
@@ -55,43 +52,43 @@
     // use `on` syntax, to easy support event handler
     // use namespace to prevent side-effect with another handlers
     // use simple named function as callback, for readability and reusability
-    $headers().on("click.styleguide", load_json_data);
+    $headers().on("click.styleguide", loadJSON);
 
     // use `on` for live events
-    $articles().on("click.styleguide", "p", change_color_to_green);
+    $articles().on("click.styleguide", "p", changeColorToGreen);
   });
 
   /**
    * Simplest functions with nice names
-   *  - load smth - e.g. load_users
-   *  - change smth to smth - change_color_to_red
-   *  - hide smth - hide_element
-   *  - show smth - show_header
-   *  - toggle smth - toggle_box, toggle_box_color
+   *  - load smth - e.g. loadUsers
+   *  - change smth to smth - changeColorToRed
+   *  - hide smth - hideLoginForm
+   *  - show smth - showErrorModal
+   *  - toggle smth - toggleMap, toggleMapLayer
    */
 
   /**
    * AJAX function COULD forward context to callbacks
    * @param event
    */
-  function load_json_data(event) {
+  function loadJSON(event) {
     $.ajax("ajax/example.json", {context: event.currentTarget})
-      .done(change_color_to_green)
-      .fail(change_color_to_red)
+      .done(changeColorToGreen)
+      .fail(changeColorToRed)
     ;
   }
 
   /**
    * Simple function with readable name
    */
-  function change_color_to_green() {
+  function changeColorToGreen() {
     $(this).css("color", "green");
   }
 
   /**
    * Another simple function with readable name
    */
-  function change_color_to_red() {
+  function changeColorToRed() {
     $(this).css("color", "red");
   }
 

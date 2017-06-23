@@ -67,10 +67,32 @@ body {
 
 /* /sidebar */
 
+/* table */
+.table td {
+  width: 50%;
+}
+
+/* /table */
+
 /* code */
-code span {
+pre.good {
+  background: #dfd;
+}
+
+pre.bad {
+  background: #fdd;
+}
+
+code em {
   color: #777;
-  font-style: italic;
+}
+
+code strong {
+  color: #300;
+}
+
+code span {
+  color: #050;
 }
 
 /* /code */

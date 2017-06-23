@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="js/jquery.js"></script>
-  <script src="js/style.guide.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/index.css"/>
 </head>
@@ -44,15 +43,15 @@
         <h3 id="html-common-rules">Общие правила</h3>
         <ol>
           <li>Стандарт - HTML5: <code>&lt;!DOCTYPE html&gt;</code></li>
-          <li>Язык в HTML: <code>&lt;html dir="ltr" lang="ru"&gt;</code></li>
-          <li>Кодировка - UTF8: <code>&lt;meta charset="utf-8"&gt;</code></li>
+          <li>Указываем язык страницы в HTML: <code>&lt;html dir="ltr" lang="ru"&gt;</code></li>
+          <li>Кодировка текста и файлов - UTF8: <code>&lt;meta charset="utf-8"&gt;</code></li>
           <li>
             Валидный HTML - используем сервис <a href="https://validator.w3.org/nu/">W3C HTML Validator</a> для
             проверки ваших творений
           </li>
           <li>Семантичный HTML - используйте элементы согласно назначения</li>
           <li>Отделяйте данные от представления и поведения - не стоит выравнивать текст пробелами, кесарю кесарево</li>
-          <li>Использование inline стилей и обработчиков событий недопустимо, от слова совсем</li>
+          <li>Использование inline стилей и обработчиков событий НЕДОПУСТИМО, от слова совсем</li>
           <li>
             Избегайте использования блоков <code>&lt;style&gt;</code> и <code>&lt;script&gt;</code>, подключайте
             внешние скрипты и стили, даже если там «одна маленькая функция»
@@ -84,7 +83,18 @@
           </li>
           <li>Следите за тем, чтобы у вас не было пробелов в конце строк</li>
         </ol>
-
+        <h3 id="html-template">Шаблон</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html dir="ltr" lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- content --&gt;
+&lt;/body&gt;
+&lt;/html&gt;  
+</code></pre>
       </article>
       <article>
         <h2 id="css" class="page-header">CSS</h2>
@@ -101,6 +111,8 @@
         <h3 id="css-common-rules">Общие правила</h3>
         <ol>
           <li>Кодировка файлов - UTF8</li>
+          <li>Названия селекторов - только на английском языке</li>
+          <li>Комментарии только на английском языке, любой другой - только в сопроводительной документации</li>
           <li>Валидный CSS - используем сервис <a href="https://jigsaw.w3.org/css-validator/">W3C CSS validator</a></li>
           <li>
             Никогда не используйте <code>#ID</code> в CSS, у них нет никаких преимуществ перед классами,
@@ -119,22 +131,47 @@
             возможность повторного использования
           </li>
           <li>
+            Имя класса (или ID) должен быть как можно меньше, но при этом оно должно быть всё так же информативным
+          </li>
+          <li>
             При выборе имени класса (или ID) следует помнить, что имя должно однозначно указывать на назначение либо
             содержание элементов, но никак не визуальные атрибуты
           </li>
-          <li>
-            Имя класса (или ID) должен быть как можно меньше, но при этом оно должно быть всё так же информативным
-          </li>
         </ol>
+        <table class="table">
+          <tr>
+            <td>
+              <pre class="good"><code><em>// nice</em>
+<strong>.warning-text</strong> {
+  color: #f00;
+}
+</code></pre>
+            </td>
+            <td>
+              <pre class="bad"><code><em>// too sad</em>
+<strong>.red</strong>{
+  color: #f00;
+}
+</code></pre>
+            </td>
+          </tr>
+        </table>
         <blockquote>
           <small>Исходя из данных правил, может сложиться впечатление, что нельзя использовать ID в проекте, но это не так,
-          правило касается только CSS, т.е. если вы хотите применить стиль к элементу с ID, то вам следует присвоить
-          ему класс и применять стили уже непосредственно к нему</small>
+            правило касается только CSS, т.е. если вы хотите применить стиль к элементу с ID, то вам следует присвоить
+            ему класс и применять стили уже непосредственно к нему</small>
         </blockquote>
         <h3 id="css-format-rules">Правила форматирования</h3>
         <p>
           Для проверки форматирования используйте <a href="https://stylelint.io/">stylelint</a>
           со <a href="https://github.com/stylelint/stylelint-config-standard">стандартным конфигом</a>
+        </p>
+        <p>
+          Подробная инструкция по подключению данной утилиты к продуктам компании JetBrains можно найти в
+          <a href="https://www.jetbrains.com/help/phpstorm/2017.1/stylelint.html">официальном руководстве</a>
+        </p>
+        <p>
+          Но чтобы долго не томить, вот вам краткое содержание последних двадцати серий:
         </p>
         <ol>
           <li>Отступы - два пробела</li>
@@ -150,101 +187,309 @@
           <li>Каждое новое свойство следует записывать с новой строки</li>
           <li>В конце строчки со свойствами следует писать точку с запятой</li>
           <li>Для отключение границ, следует использовать <code>border: 0;</code> вместо <code>border: none</code></li>
+          <li>
+            Избегайте сокращенных объявлений, используйте <code>margin-bottom: 10px;</code> вместо
+            <code>margin: 0 0 10px;</code>
+          </li>
           <li>Закрывающаяся фигурная скобочка должна быть на новой строке</li>
           <li>Удаляем пробелы в конце строк</li>
-          <li>Между правилами должна быть пустая строка</li>
+          <li>Между блоками правил должна быть пустая строка</li>
         </ol>
-        <h4>Примеры</h4>
-        <pre><code><span>// пример плохого форматирования</span>
-.avatar{
-    border-radius:50%;border-collapse:separate;
-    border:2px solid white; }
-.no, .nope, .not_good {
-    border:none
-}
-#lol-no {
-  // ...
-}
-</code></pre>
-
-        <pre><code><span>// пример правильного форматирования</span>
-.avatar {
+        <h3 id="css-samples">Примеры</h3>
+        <table class="table">
+          <tr>
+            <td>
+              <pre class="good"><code><em>// looks good</em>
+<strong>.avatar</strong> {
   border-radius: 50%;
   border-collapse:separate;
   border: 2px solid white;
 }
 
-.one,
+<strong>.one,
 .selector,
-.per-line {
+.per-line</strong> {
   border: 0;
 }
 </code></pre>
+            </td>
+            <td>
+              <pre class="bad"><code><em>// so sad</em>
+<strong>.avatar</strong>{
+    border-radius:50%;border-collapse:separate;
+    border:2px solid white; }
+<strong>.no, .nope, .not_good</strong> {
+    border:none
+}
+<strong>#lol-no</strong> {
+  // ...
+}
+
+
+</code></pre>
+            </td>
+          </tr>
+        </table>
       </article>
       <article>
         <h2 id="javascript" class="page-header">JavaScript</h2>
         <p>
-          Данный раздел - это лишь разъяснение к правилам <a href="https://github.com/airbnb/javascript">Airbnb
+          Данный раздел - это лишь небольшое дополнение к правилам <a href="https://github.com/airbnb/javascript">Airbnb
           JavaScript Style Guide</a>
         </p>
         <h3 id="javascript-common-rules">Общие правила</h3>
         <ol>
+          <li>Кодировка файлов - UTF8</li>
+          <li>Названия переменных и функций - только на английском языке</li>
           <li>
-
+            Комментирование кода только на английском языке, любой другой - только в сопроводительной документации
           </li>
         </ol>
         <h3 id="javascript-format-rules">Правила форматирования</h3>
+        <p>
+          Для проверки форматирования используйте <a href="http://eslint.org/">ESLint</a>
+          с <a href="https://github.com/airbnb/javascript">Airbnb конфигом</a>.
+        </p>
+        <p>
+          Подробная инструкция по подключению данной утилиты к продуктам компании JetBrains можно найти в
+          <a href="https://www.jetbrains.com/help/phpstorm/2017.1/javascript-code-quality-tools.html#ESLint">
+            официальном руководстве</a>, а из статьи
+          <a href="https://www.themarketingtechnologist.co/eslint-with-airbnb-javascript-style-guide-in-webstorm/">
+            How to set up ESLint with Airbnb JavaScript Style Guide in WebStorm</a>
+          можно узнать как подключить стандарт от Airbnb
+        </p>
       </article>
       <article>
         <h2 id="jquery" class="page-header">jQuery</h2>
+        <h3 id="jquery-module">Модульность</h3>
         <p>
-          Весь код должен быть инкапсулирован внутри модуля
+          Весь код должен быть инкапсулирован внутри модуля (все функции и переменные).
         </p>
-        <pre><code><span>/**
+        <p>
+          Один модуль === один файл, откройте для примера файл <a href="js/style.guide.js">style.guide.js</a>
+        </p>
+        <pre><code><em>/**
  * @param jQuery $  - be sure `$` is `jQuery`
  * @param window w  - be sure `w` is `window`
- * @param undefined - be sure `undefined` is undefined
- */</span>
-;(function($, w, undefined){
-    <span>// your code here</span>
+ */</em>
+(function($, w){
+  <em>// your code here</em>
+  var <strong>foo</strong> = <span>"bar"</span>;
+  <em>// ... </em>
 })(jQuery, window);
 </code></pre>
-        <p>
-          Один модуль == один файл, откройте для примера файл <a href="js/style.guide.js">style.guide.js</a>
-        </p>
+        <h3 id="jquery-vars">Именование переменных</h3>
         <p>
           Переменные содержащие jQuery объект должны начинаться со знака <code>$</code>
         </p>
-        <pre><code>var <strong>$header</strong> = $('#header');
-var <strong>$articles</strong> = $('article');
+        <pre><code>var <strong>$header</strong> = $(<span>"#header"</span>);
+var <strong>$articles</strong> = $(<span>"article"</span>);
 </code></pre>
+        <p>Используйте правильно единственное (singular) и множественное (plural) числа</p>
+        <pre><code>var <strong>$sidebar</strong> = $(<span>"#sidebar"</span>);
+var <strong>$articles</strong> = $(<span>".article"</span>);
+</code></pre>
+        <p>
+          Правильно указывайте множественное число (plural) для слов исключений:
+        </p>
+        <pre><code>var <strong>$child</strong> = $(<span>"#child"</span>);
+var <strong>$children</strong> = $(<span>".child"</span>);
+</code></pre>
+
+        <h3 id="jquery-functions">Именование функций</h3>
         <p>
           Имена функций-оберток над селекторами должны начинаться со знака <code>$</code>
         </p>
-        <pre><code>var _$ = function(selector) {
-    var elements;
-    return function() {
-        if (!elements) {
-            elements = $(selector);
-        }
-        return elements;
-    }
-};
-
-var <strong>$headers</strong> = _$('h2');
-var <strong>$articles</strong> = _$('article');
-<strong>$articles()</strong>.on('click', smth)
+        <pre><code>function <strong>$articles</strong>() {
+  return $(<span>"body"</span>).find(<span>".content > article"</span>);
+};</code></pre>
+        <p>
+          Имена функций должны быть короткими и содержательными, не нужно без нужды баламутить воду.
+        </p>
+        <table class="table">
+          <tr>
+            <td>
+        <pre class="good"><code>function changeColorToGreen() {}
+function loadJSON() {}
+function showErrorDialog() {}
 </code></pre>
+            </td>
+            <td>
+        <pre class="bad"><code>function makeGreen() {} <em>// color? background? WAT?</em>
+function loadData() {}  <em>// data? rly?</em>
+function error() {}     <em>// error in your DNA</em>
+</code></pre>
+            </td>
+          </tr>
+        </table>
+        <h3 id="jquery-callback">Callback функции</h3>
+        <p>
+          Для упрощения чтения кода следует избегать использования анонимных функций, т.к. это сводит на нет повтороное
+          использование такого кода, и затрудняет чтение.
+        </p>
+        <table class="table">
+          <tr>
+            <td>
+        <pre class="good"><code><em>// on click handler</em>
+$(<span>"body"</span>).on(<span>"click.module"</span>, <span>"p"</span>, changeColorToGreen);
+<em>// callback function</em>
+function changeColorToGreen() {
+  $(this).css(<span>"color"</span>, <span>"green"</span>);
+}
+</code></pre>
+            </td>
+            <td>
+        <pre class="bad"><code><em>// on click handler + callback function</em>
+$(<span>"body"</span>).on(<span>"click.module"</span>, <span>"p"</span>, function() {
+  $(this).css(<span>"color"</span>, <span>"green"</span>);
+});
+
+
+</code></pre>
+            </td>
+          </tr>
+        </table>
+        <p>
+          Конечно данный пример ещё можно отнести к читабельным вариантам, но вот повторное использование функции
+          уже стало невозможным
+        </p>
+        <p>
+          Более комплексный пример:
+        </p>
+        <pre><code><em>// on click handler</em>
+$(<span>"header"</span>).on(<span>"click.module"</span>, loadJSON);
+
+<em>// callback with AJAX call</em>
+function loadJSON(event) {
+  $.ajax(<span>"ajax/example.json"</span>, {context: event.currentTarget})
+    .done(changeColorToGreen)
+    .fail(changeColorToRed)
+  ;
+}
+
+<em>// callback for success</em>
+function changeColorToGreen() {
+  $(this).css(<span>"color"</span>, <span>"green"</span>);
+}
+
+<em>// callback for error</em>
+function changeColorToRed() {
+  $(this).css(<span>"color"</span>, <span>"red"</span>);
+}
+</code></pre>
+        <h3 id="jquery-namespace">Пространство имён</h3>
+        <p>
+          Все обработчики событий внутри модуля следует «вешать» внутри единого пространства имён,
+          таким образом можно избежать конфликтов при одновременной работе сразу нескольких модулей
+        </p>
+        <pre><code><em>// file `module.js`</em>
+(function($, w){
+  $(<span>"header"</span>).on(<span>"click.module"</span>, function(){
+    <em>// ...</em>
+  });
+  $(<span>"header"</span>).trigger(<span>"click.module"</span>);
+})(jQuery, window);
+</code></pre>
+        <h3 id="jquery-cache">Кэширование</h3>
+        <p>
+          Если вы пропустили этот момент в моей книге, то повторю ещё разок ПОИСК ЭЛЕМЕНТОВ НЕ КЭШИРУЕТСЯ,
+          следовательно вам надо самостоятельно позаботиться о кэшировании ваших выборок:
+        </p>
+        <table class="table">
+          <tr>
+            <td>
+        <pre class="good"><code>var <strong>$sidebar</strong> = $(<span>"#sidebar"</span>);
+<em>// ...</em>
+<strong>$sidebar</strong>.css(<span>"color"</span>, <span>"#ff0"</span>);
+<em>// ...</em>
+<strong>$sidebar</strong>.hide();
+</code></pre>
+            </td>
+            <td>
+        <pre class="bad"><code><strong>$(<span>"#sidebar"</span>)</strong>;
+<em>// ...</em>
+<strong>$(<span>"#sidebar"</span>)</strong>.css(<span>"color"</span>, <span>"#ff0"</span>);
+<em>// ...</em>
+<strong>$(<span>"#sidebar"</span>)</strong>.hide();
+</code></pre>
+            </td>
+          </tr>
+        </table>
+        <p>
+          Как вариант можете использовать следующую функцию, возможно она вам пригодится:
+        </p>
+        <pre><code>var <strong>$function</strong> = function(<strong>selector</strong>) {
+  var <strong>elements</strong>;
+  return function() {
+    if (!<strong>elements</strong>) {
+      <strong>elements</strong> = $(<strong>selector</strong>);
+    }
+    return <strong>elements</strong>;
+  }
+};</code></pre>
+        <p>С её помощью получается красивый КЭШИРУЕМЫЙ вариант для выборок элементов, которые не изменяются</p>
+<pre><code>var <strong>$headers</strong> = $function(<span>"h2"</span>);
+var <strong>$articles</strong> = $function(<span>"article"</span>);
+<strong>$articles()</strong>.on(<span>"click.module"</span>, e => false)
+</code></pre>
+
+        <h3 id="jquery-optimization">Оптимизация</h3>
+        <p>
+          Стоит так же напомнить простое правило по оптимизации поиска элементов -
+          <a href="https://jsperf.com/jquery-find-vs-context-sel/16">указывайте контекст поиска</a>
+        </p>
+
+        <table class="table">
+          <tr>
+            <td>
+<pre class="good"><code><em>// fastest</em>
+$(DOMElement).find(<span>"p"</span>)
+<em>// fast</em>
+$(<span>"p"</span>, DOMElement)
+<em>// fast too</em>
+$(<span>"p"</span>, $article[0])
+</code></pre>
+            </td>
+            <td>
+        <pre class="bad"><code><em>// slowest</em>
+$(<span>"article"</span>).find(<span>"p"</span>)
+<em>// slow too</em>
+$(<span>"p"</span>, <span>"article"</span>)
+
+
+</code></pre>
+            </td>
+          </tr>
+        </table>
+        <p>
+          Если данное правило вам не подходит, то посмотрите в сторону использования каскадных селекторов или селекторов
+          вида <code>parent > child</code>
+        </p>
+        <pre><code><em>// not fast, not bad</em>
+$(<span>"article > p"</span>)
+<em>// slower, not bad</em>
+$(<span>"article p"</span>)
+<em>// slower</em>
+$article.find(<span>"p"</span>)
+</code></pre>
+        <blockquote>
+          <small>В данных примерах используется <code>var</code>, если вам нет нужды поддерживать старые браузеры,
+          то смело используйте <code>let</code> и <code>const</code> в соответствии со стандартами от Airbnb</small>
+          <br>
+          <small>Так же следует быть осторожным, когда используете функции-стрелки, недопускайте ситуации, когда
+          читаемость кода становится жертвой погони за синтаксическим сахаром, соблюдайте баланс</small>
+        </blockquote>
       </article>
     </div>
     <div class="col-md-3">
-      <nav id="sidebar" class="sidebar" data-spy="affix" data-offset-top="315" data-offset-bottom="20">
+      <nav id="sidebar" class="sidebar" data-spy="affix" data-offset-top="315">
         <ul class="nav nav-stacked">
           <li>
             <a href="#html">HTML</a>
             <ul class="nav nav-stacked ">
               <li><a href="#html-common-rules">Общие правила</a></li>
               <li><a href="#html-format-rules">Форматирование</a></li>
+              <li><a href="#html-template">Шаблон</a></li>
             </ul>
           </li>
           <li>
@@ -252,6 +497,7 @@ var <strong>$articles</strong> = _$('article');
             <ul class="nav nav-stacked">
               <li><a href="#css-common-rules">Общие правила</a></li>
               <li><a href="#css-format-rules">Форматирование</a></li>
+              <li><a href="#css-samples">Примеры</a></li>
             </ul>
           </li>
           <li>
@@ -263,6 +509,14 @@ var <strong>$articles</strong> = _$('article');
           </li>
           <li>
             <a href="#jquery">jQuery</a>
+            <ul class="nav nav-stacked">
+              <li><a href="#jquery-module">Модульность</a></li>
+              <li><a href="#jquery-vars">Именование переменных</a></li>
+              <li><a href="#jquery-functions">Именование функций</a></li>
+              <li><a href="#jquery-namespace">Пространство имён</a></li>
+              <li><a href="#jquery-cache">Кэширование</a></li>
+              <li><a href="#jquery-optimization">Оптимизации</a></li>
+            </ul>
           </li>
         </ul>
       </nav>
