@@ -1,77 +1,298 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<html dir="ltr" lang="ru">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Учебник: jQuery для начинающих. Стандарты кодирования</title>
-    <link rel="profile" href="http://gmpg.org/xfn/11"/>
-    <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
-    <!-- Latest compiled and minified CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.js"></script>
-    <script src="js/style.guide.js"></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Учебник: jQuery для начинающих. Стандарты кодирования</title>
+  <link rel="profile" href="http://gmpg.org/xfn/11"/>
+  <link rel="shortcut icon" href="http://anton.shevchuk.name/favicon.ico"/>
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery.js"></script>
+  <script src="js/style.guide.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/index.css"/>
 </head>
-<body>
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Style Guide <small>для начинающих web-разработчиков</small></h1>
-            <p>
-                Часть информации из книги которая касается стандартизации я вынес на данную страницу,
-                это позволит легко и быстро добавить данную страницу в избранное :)
-            </p>
-        </div>
-    </div>
-    <div class="container">
-        <article>
-            <h2>HTML</h2>
-            <p>
-                На основе https://google.github.io/styleguide/htmlcssguide.html
-            </p>
-        </article>
-        <article>
-            <h2>CSS</h2>
-            <p>
-                На основе https://google.github.io/styleguide/htmlcssguide.html и https://github.com/airbnb/css
-            </p>
-        </article>
-        <article>
-            <h2>JavaScript</h2>
-            <p>
-                На основе https://github.com/airbnb/javascript
-            </p>
-        </article>
-        <article>
-            <h2>jQuery</h2>
-            <ol>
-                <li>
-                    переменные содержащие jQuery объект должны начинаться зо знака $.
-                </li>
-                <li>
-                    имена функций-оберток над селекторами должны начинаться со знака $
-                </li>
-            </ol>
+<body data-spy="scroll" data-target="#sidebar">
+<div class="jumbotron">
+  <div class="container">
+    <h1>Style Guide
+      <small>Write less, do more</small>
+    </h1>
+    <p>
+      Часть информации из книги которая касается стандартизации я вынес на данную страницу,
+      это позволит легко и быстро добавить данную страницу в избранное :)
+    </p>
+    <p>
+      Пишите код, только когда это действительно необходимо.
+    </p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <article>
+        <h2 id="html" class="page-header">HTML</h2>
+        <p>
+          Данное раздел написан на основе руководства от Google
+          <a href="https://google.github.io/styleguide/htmlcssguide.html">HTML/CSS Style Guide</a>
+        </p>
+        <h3 id="html-common-rules">Общие правила</h3>
+        <ol>
+          <li>Стандарт - HTML5: <code>&lt;!DOCTYPE html&gt;</code></li>
+          <li>Язык в HTML: <code>&lt;html dir="ltr" lang="ru"&gt;</code></li>
+          <li>Кодировка - UTF8: <code>&lt;meta charset="utf-8"&gt;</code></li>
+          <li>
+            Валидный HTML - используем сервис <a href="https://validator.w3.org/nu/">W3C HTML Validator</a> для
+            проверки ваших творений
+          </li>
+          <li>Семантичный HTML - используйте элементы согласно назначения</li>
+          <li>Отделяйте данные от представления и поведения - не стоит выравнивать текст пробелами, кесарю кесарево</li>
+          <li>Использование inline стилей и обработчиков событий недопустимо, от слова совсем</li>
+          <li>
+            Избегайте использования блоков <code>&lt;style&gt;</code> и <code>&lt;script&gt;</code>, подключайте
+            внешние скрипты и стили, даже если там «одна маленькая функция»
+          </li>
+          <li>
+            Не указывайте стандартный <code>type</code> для подключаемых скриптов и стилей
+            (т.е. указываем только в том случае, если они отличаются от <code>text/css</code> и
+            <code>text/javascript</code>)
+          </li>
+          <li>
+            Указывайте альтернативное содержание для мультимедиа <code>alt</code> для картинок, <code>caption</code>
+            для видео и т.д.
+          </li>
+          <li>Для тегов <code>&lt;img&gt;</code> указывайте размеры (в пикселях или процентах)</li>
+          <li>Не используйте entity: <code>&amp;mdash;</code>, <code>&amp;quot;</code> и т.д.</li>
+        </ol>
+        <h3 id="html-format-rules">Правила форматирования</h3>
+        <ol>
+          <li>Отступы - два пробела (никогда не используйте табуляцию)</li>
+          <li>Каждый блочный элемент должен начинаться с новой строки</li>
+          <li>Дочерние элементы должны иметь отступы относительно родительского элемента</li>
+          <li>Теги и атрибуты должны быть строчными (lowercase)</li>
+          <li>
+            Значение атрибутов должны заключаться в двойные кавычки: <code>&lt;img src="/img.jpg" alt="image
+            alt"&gt;</code>
+          </li>
+          <li>
+            Порядок атрибутов должен быть единообразным, атрибуты <code>data-*</code> пусть будут последними
+          </li>
+          <li>Следите за тем, чтобы у вас не было пробелов в конце строк</li>
+        </ol>
 
-        </article>
-    </div>
-    <div class="jumbotron">
-        <div class="container">
-            <footer class="row text-center">
-                &copy; copyright 2012-2017 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-            </footer>
-        </div>
-    </div>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      </article>
+      <article>
+        <h2 id="css" class="page-header">CSS</h2>
+        <p>
+          Данное раздел написан на основе следующих руководств:
+        </p>
+        <ul>
+          <li><a href="https://google.github.io/styleguide/htmlcssguide.html">Google HTML/CSS Style Guide</a></li>
+          <li><a href="https://github.com/airbnb/css">Airbnb CSS/Sass Styleguide</a></li>
+          <li><a href="https://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/">Hacks for dealing with
+            specificity</a></li>
+          <li><a href="https://epixx.github.io/code-guide/">Руководство по написанию кода</a></li>
+        </ul>
+        <h3 id="css-common-rules">Общие правила</h3>
+        <ol>
+          <li>Кодировка файлов - UTF8</li>
+          <li>Валидный CSS - используем сервис <a href="https://jigsaw.w3.org/css-validator/">W3C CSS validator</a></li>
+          <li>
+            Никогда не используйте <code>#ID</code> в CSS, у них нет никаких преимуществ перед классами,
+            но при этом - высокая специфичность и отсутствие возможности повторного использования
+          </li>
+          <li>
+            Используйте минимально необходимую вложенность селектора, если работает <code>.nav-head</code>,
+            то не нужно прописывать <code>.nav .nav-head</code>, результат тот же
+          </li>
+          <li>
+            Не квалифицируйте селектор без необходимости, не стоит писать <code>ul.nav</code>, если можно
+            обойтись лишь <code>.nav</code>
+          </li>
+          <li>
+            Всегда используйте селекторы классов - низкая (одинаковая) специфичность, высокая портативность и
+            возможность повторного использования
+          </li>
+          <li>
+            При выборе имени класса (или ID) следует помнить, что имя должно однозначно указывать на назначение либо
+            содержание элементов, но никак не визуальные атрибуты
+          </li>
+          <li>
+            Имя класса (или ID) должен быть как можно меньше, но при этом оно должно быть всё так же информативным
+          </li>
+        </ol>
+        <blockquote>
+          <small>Исходя из данных правил, может сложиться впечатление, что нельзя использовать ID в проекте, но это не так,
+          правило касается только CSS, т.е. если вы хотите применить стиль к элементу с ID, то вам следует присвоить
+          ему класс и применять стили уже непосредственно к нему</small>
+        </blockquote>
+        <h3 id="css-format-rules">Правила форматирования</h3>
+        <p>
+          Для проверки форматирования используйте <a href="https://stylelint.io/">stylelint</a>
+          со <a href="https://github.com/stylelint/stylelint-config-standard">стандартным конфигом</a>
+        </p>
+        <ol>
+          <li>Отступы - два пробела</li>
+          <li>Теги и свойства в нижнем регистре (lowercase)</li>
+          <li>
+            Для именования классов вы можете использовать или camelCase, или underscore, или любую другую нотацию
+            в зависимости от требований вашего проекта (например вы используете БЭМ), НО необходимо использовать
+            только ОДНУ выбранную нотацию
+          </li>
+          <li>При перечислении селекторов каждый из них должен быть записан с новой строки</li>
+          <li>Между селектором и открывающей фигурной скобочкой должен быть пробел</li>
+          <li>При описании свойств добавляйте пробел только после двоеточия</li>
+          <li>Каждое новое свойство следует записывать с новой строки</li>
+          <li>В конце строчки со свойствами следует писать точку с запятой</li>
+          <li>Для отключение границ, следует использовать <code>border: 0;</code> вместо <code>border: none</code></li>
+          <li>Закрывающаяся фигурная скобочка должна быть на новой строке</li>
+          <li>Удаляем пробелы в конце строк</li>
+          <li>Между правилами должна быть пустая строка</li>
+        </ol>
+        <h4>Примеры</h4>
+        <pre><code><span>// пример плохого форматирования</span>
+.avatar{
+    border-radius:50%;border-collapse:separate;
+    border:2px solid white; }
+.no, .nope, .not_good {
+    border:none
+}
+#lol-no {
+  // ...
+}
+</code></pre>
 
-        ga('create', 'UA-1669896-15', 'auto');
-        ga('send', 'pageview');
-    </script>
+        <pre><code><span>// пример правильного форматирования</span>
+.avatar {
+  border-radius: 50%;
+  border-collapse:separate;
+  border: 2px solid white;
+}
+
+.one,
+.selector,
+.per-line {
+  border: 0;
+}
+</code></pre>
+      </article>
+      <article>
+        <h2 id="javascript" class="page-header">JavaScript</h2>
+        <p>
+          Данный раздел - это лишь разъяснение к правилам <a href="https://github.com/airbnb/javascript">Airbnb
+          JavaScript Style Guide</a>
+        </p>
+        <h3 id="javascript-common-rules">Общие правила</h3>
+        <ol>
+          <li>
+
+          </li>
+        </ol>
+        <h3 id="javascript-format-rules">Правила форматирования</h3>
+      </article>
+      <article>
+        <h2 id="jquery" class="page-header">jQuery</h2>
+        <p>
+          Весь код должен быть инкапсулирован внутри модуля
+        </p>
+        <pre><code><span>/**
+ * @param jQuery $  - be sure `$` is `jQuery`
+ * @param window w  - be sure `w` is `window`
+ * @param undefined - be sure `undefined` is undefined
+ */</span>
+;(function($, w, undefined){
+    <span>// your code here</span>
+})(jQuery, window);
+</code></pre>
+        <p>
+          Один модуль == один файл, откройте для примера файл <a href="js/style.guide.js">style.guide.js</a>
+        </p>
+        <p>
+          Переменные содержащие jQuery объект должны начинаться со знака <code>$</code>
+        </p>
+        <pre><code>var <strong>$header</strong> = $('#header');
+var <strong>$articles</strong> = $('article');
+</code></pre>
+        <p>
+          Имена функций-оберток над селекторами должны начинаться со знака <code>$</code>
+        </p>
+        <pre><code>var _$ = function(selector) {
+    var elements;
+    return function() {
+        if (!elements) {
+            elements = $(selector);
+        }
+        return elements;
+    }
+};
+
+var <strong>$headers</strong> = _$('h2');
+var <strong>$articles</strong> = _$('article');
+<strong>$articles()</strong>.on('click', smth)
+</code></pre>
+      </article>
+    </div>
+    <div class="col-md-3">
+      <nav id="sidebar" class="sidebar" data-spy="affix" data-offset-top="315" data-offset-bottom="20">
+        <ul class="nav nav-stacked">
+          <li>
+            <a href="#html">HTML</a>
+            <ul class="nav nav-stacked ">
+              <li><a href="#html-common-rules">Общие правила</a></li>
+              <li><a href="#html-format-rules">Форматирование</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#css">CSS</a>
+            <ul class="nav nav-stacked">
+              <li><a href="#css-common-rules">Общие правила</a></li>
+              <li><a href="#css-format-rules">Форматирование</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#javascript">JavaScript</a>
+            <ul class="nav nav-stacked">
+              <li><a href="#javascript-common-rules">Общие правила</a></li>
+              <li><a href="#javascript-format-rules">Форматирование</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#jquery">jQuery</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+<div class="jumbotron">
+  <div class="container">
+    <footer class="row text-center">
+      &copy; copyright 2012-2017 Anton Shevchuk &mdash; <a href="http://anton.shevchuk.name/jquery-book/">jQuery
+      Book</a>
+    </footer>
+  </div>
+</div>
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-1669896-15', 'auto');
+  ga('send', 'pageview');
+</script>
 </body>
 </html>
 
