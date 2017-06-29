@@ -47,7 +47,8 @@
           <li>Кодировка текста и файлов - UTF8: <code>&lt;meta charset="utf-8"&gt;</code></li>
           <li>
             Валидный HTML - используем сервис <a href="https://validator.w3.org/nu/">W3C HTML Validator</a> для
-            проверки ваших творений
+            проверки ваших творений (хотя лучше настройте свою IDE или даже CI, чтобы не делать вручную монотонную
+            работу)
           </li>
           <li>Семантичный HTML - используйте элементы согласно назначения</li>
           <li>Отделяйте данные от представления и поведения - не стоит выравнивать текст пробелами, кесарю кесарево</li>
@@ -113,7 +114,15 @@
           <li>Кодировка файлов - UTF8</li>
           <li>Названия селекторов - только на английском языке</li>
           <li>Комментарии только на английском языке, любой другой - только в сопроводительной документации</li>
-          <li>Валидный CSS - используем сервис <a href="https://jigsaw.w3.org/css-validator/">W3C CSS validator</a></li>
+          <li>
+            Валидный CSS - используем сервис <a href="https://jigsaw.w3.org/css-validator/">W3C CSS validator</a>
+            (правильная IDE + CI конечно же лучше)
+          </li>
+          <li>
+            Никогда не используйте <code>@import</code>, он очень медленный, куда как предпочтительней использование
+            CSS препроцессоров, или даже несколько <code>&lt;link&gt;</code> - это всё же будет лучше чем
+            <code>@import</code> сам по себе
+          </li>
           <li>
             Никогда не используйте <code>#ID</code> в CSS, у них нет никаких преимуществ перед классами,
             но при этом - высокая специфичность и отсутствие возможности повторного использования
@@ -137,19 +146,22 @@
             При выборе имени класса (или ID) следует помнить, что имя должно однозначно указывать на назначение либо
             содержание элементов, но никак не визуальные атрибуты
           </li>
+          <li>
+            При создании классов для работы с JavaScript используйте префикс <code>js-*</code>
+          </li>
         </ol>
         <table class="table">
           <tr>
             <td>
-              <pre class="good"><code><em>// nice</em>
+              <pre class="good"><code><em>/* nice */</em>
 <strong>.warning-text</strong> {
   color: #f00;
 }
 </code></pre>
             </td>
             <td>
-              <pre class="bad"><code><em>// too sad</em>
-<strong>.red</strong>{
+              <pre class="bad"><code><em>/* too sad */</em>
+<strong>.red</strong> {
   color: #f00;
 }
 </code></pre>
@@ -175,31 +187,53 @@
         </p>
         <ol>
           <li>Отступы - два пробела</li>
-          <li>Теги и свойства в нижнем регистре (lowercase)</li>
-          <li>
-            Для именования классов вы можете использовать или camelCase, или underscore, или любую другую нотацию
-            в зависимости от требований вашего проекта (например вы используете БЭМ), НО необходимо использовать
-            только ОДНУ выбранную нотацию
-          </li>
+          <li>Теги, классы, свойства - всё в нижнем регистре (lowercase)</li>
+          <li>В качестве разделителя в имени классов следует использовать <code>-</code></li>
           <li>При перечислении селекторов каждый из них должен быть записан с новой строки</li>
           <li>Между селектором и открывающей фигурной скобочкой должен быть пробел</li>
           <li>При описании свойств добавляйте пробел только после двоеточия</li>
           <li>Каждое новое свойство следует записывать с новой строки</li>
           <li>В конце строчки со свойствами следует писать точку с запятой</li>
-          <li>Для отключение границ, следует использовать <code>border: 0;</code> вместо <code>border: none</code></li>
           <li>
-            Избегайте сокращенных объявлений, используйте <code>margin-bottom: 10px;</code> вместо
-            <code>margin: 0 0 10px;</code>
+            При указании цвета, не используйте именованные цвета: пишите <code>color: #ff0;</code>
+            вместо <code>color:red;</code>
+          </li>
+          <li>
+            Для отключение границ, следует использовать <code>border: 0;</code>
+            вместо <code>border: none;</code>
+          </li>
+          <li>
+            Избегайте сокращенных объявлений, используйте <code>margin-bottom: 10px;</code>
+            вместо <code>margin: 0 0 10px;</code>
           </li>
           <li>Закрывающаяся фигурная скобочка должна быть на новой строке</li>
           <li>Удаляем пробелы в конце строк</li>
           <li>Между блоками правил должна быть пустая строка</li>
+          <li>Соблюдаем единый порядок следования свойств внутри правил:
+            <ol>
+              <li>позиционирование</li>
+              <li>блочная модель и размеры</li>
+              <li>свойства текста</li>
+              <li>отображение</li>
+              <li>остальные свойства</li>
+              <li>анимация</li>
+            </ol>
+          </li>
         </ol>
+        <blockquote>
+          <small>
+            Если у вас проект будет посложнее чем сайт-визитка вашего питомца, то рекомендуется придерживаться БЭМ
+            методологии, но помните - это отнюдь не панацея, и тянет за собой избыточность в HTML, ломает семантичность
+            классов и обрастает тулзами, которые не всем одинаково полезны. Если вы засомневались, и не можете решиться,
+            то переложите вопрос «БЭМ или неБЭМ» на вашего техлида, пусть у него голова болит.
+          </small>
+        </blockquote>
         <h3 id="css-samples">Примеры</h3>
+        <p>Пример форматирования CSS</p>
         <table class="table">
           <tr>
             <td>
-              <pre class="good"><code><em>// looks good</em>
+              <pre class="good"><code><em>/* looks good */</em>
 <strong>.avatar</strong> {
   border-radius: 50%;
   border-collapse:separate;
@@ -214,7 +248,7 @@
 </code></pre>
             </td>
             <td>
-              <pre class="bad"><code><em>// so sad</em>
+              <pre class="bad"><code><em>/* so sad */</em>
 <strong>.avatar</strong>{
     border-radius:50%;border-collapse:separate;
     border:2px solid white; }
@@ -222,7 +256,7 @@
     border:none
 }
 <strong>#lol-no</strong> {
-  // ...
+    <em>/* ... */</em>
 }
 
 
@@ -230,6 +264,31 @@
             </td>
           </tr>
         </table>
+        <p>Комплексный пример порядка свойств</p>
+        <pre><code><strong>.selector</strong> {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  display: block;
+  float: right;
+  width: 100px;
+  height: 100px;
+
+  font: 13px/1.5 "Helvetica Neue", sans-serif;
+  color: #333;
+  text-align: center;
+
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  opacity: 1;
+
+  transition: all 0.3s;
+}</code></pre>
       </article>
       <article>
         <h2 id="javascript" class="page-header">JavaScript</h2>
@@ -300,8 +359,8 @@ var <strong>$children</strong> = $(<span>".child"</span>);
         <p>
           Имена функций-оберток над селекторами должны начинаться со знака <code>$</code>
         </p>
-        <pre><code>function <strong>$articles</strong>() {
-  return $(<span>"body"</span>).find(<span>".content > article"</span>);
+        <pre><code><b>function</b> <strong>$articles</strong>() {
+  <b>return</b> $(<span>"body"</span>).find(<span>".content > article"</span>);
 };</code></pre>
         <p>
           Имена функций должны быть короткими и содержательными, не нужно без нужды баламутить воду.
@@ -309,15 +368,15 @@ var <strong>$children</strong> = $(<span>".child"</span>);
         <table class="table">
           <tr>
             <td>
-        <pre class="good"><code>function changeColorToGreen() {}
-function loadJSON() {}
-function showErrorDialog() {}
+        <pre class="good"><code><b>function</b> changeColorToGreen() {}
+<b>function</b> loadJSON() {}
+<b>function</b> showErrorDialog() {}
 </code></pre>
             </td>
             <td>
-        <pre class="bad"><code>function makeGreen() {} <em>// color? background? WAT?</em>
-function loadData() {}  <em>// data? rly?</em>
-function error() {}     <em>// error in your DNA</em>
+        <pre class="bad"><code><b>function</b> makeGreen() {} <em>// color? background? WAT?</em>
+<b>function</b> loadData() {}  <em>// data? rly?</em>
+<b>function</b> error() {}     <em>// error in your DNA</em>
 </code></pre>
             </td>
           </tr>
@@ -333,7 +392,7 @@ function error() {}     <em>// error in your DNA</em>
         <pre class="good"><code><em>// on click handler</em>
 $(<span>"body"</span>).on(<span>"click.module"</span>, <span>"p"</span>, changeColorToGreen);
 <em>// callback function</em>
-function changeColorToGreen() {
+<b>function</b> changeColorToGreen() {
   $(this).css(<span>"color"</span>, <span>"green"</span>);
 }
 </code></pre>
@@ -360,7 +419,7 @@ $(<span>"body"</span>).on(<span>"click.module"</span>, <span>"p"</span>, functio
 $(<span>"header"</span>).on(<span>"click.module"</span>, loadJSON);
 
 <em>// callback with AJAX call</em>
-function loadJSON(event) {
+<b>function</b> loadJSON(event) {
   $.ajax(<span>"ajax/example.json"</span>, {context: event.currentTarget})
     .done(changeColorToGreen)
     .fail(changeColorToRed)
@@ -368,12 +427,12 @@ function loadJSON(event) {
 }
 
 <em>// callback for success</em>
-function changeColorToGreen() {
+<b>function</b> changeColorToGreen() {
   $(this).css(<span>"color"</span>, <span>"green"</span>);
 }
 
 <em>// callback for error</em>
-function changeColorToRed() {
+<b>function</b> changeColorToRed() {
   $(this).css(<span>"color"</span>, <span>"red"</span>);
 }
 </code></pre>
@@ -383,8 +442,8 @@ function changeColorToRed() {
           таким образом можно избежать конфликтов при одновременной работе сразу нескольких модулей
         </p>
         <pre><code><em>// file `module.js`</em>
-(function($, w){
-  $(<span>"header"</span>).on(<span>"click.module"</span>, function(){
+(<b>function</b>($, w){
+  $(<span>"header"</span>).on(<span>"click.module"</span>, <b>function</b>() {
     <em>// ...</em>
   });
   $(<span>"header"</span>).trigger(<span>"click.module"</span>);
@@ -418,13 +477,13 @@ function changeColorToRed() {
         <p>
           Как вариант можете использовать следующую функцию, возможно она вам пригодится:
         </p>
-        <pre><code>var <strong>$function</strong> = function(<strong>selector</strong>) {
+        <pre><code>var <strong>$function</strong> = <b>function</b>(<strong>selector</strong>) {
   var <strong>elements</strong>;
-  return function() {
+  <b>return</b> <b>function</b>() {
     if (!<strong>elements</strong>) {
       <strong>elements</strong> = $(<strong>selector</strong>);
     }
-    return <strong>elements</strong>;
+    <b>return</b> <strong>elements</strong>;
   }
 };</code></pre>
         <p>С её помощью получается красивый КЭШИРУЕМЫЙ вариант для выборок элементов, которые не изменяются</p>
