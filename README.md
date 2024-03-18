@@ -1,4 +1,4 @@
 jQuery for beginners
 ====================
 
-Примеры кода для учебника [jQuery для начинающих](http://anton.shevchuk.name/jquery-book/)
+Примеры кода для учебника [jQuery для начинающих](https://anton.shevchuk.name/jquery-book/)
