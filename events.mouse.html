@@ -2,144 +2,155 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Мышиные события</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
-        var sel = function(ev) {
-            /*if (ev.target != undefined) {
-                $('#element').html(ev.target.id);
-            }*/
+      var sel = function (ev) {
+        /*if (ev.target != undefined) {
+            $('#element').html(ev.target.id);
+        }*/
 
-            var el = '#' + ev.type;
+        var el = '#' + ev.type
 
-            var counter = $(el).find('span').html();
-            if (counter == '') counter = 0;
-            $(el).find('span').html(++counter)
-                              .css({background:"#fe3456",color:"#ffffff"});
-            return false;
-        };
+        var counter = $(el).find('span').html()
+        if (counter === '') counter = 0
+        $(el).find('span').html(++counter)
+          .css({ background: '#fe3456', color: '#ffffff' })
+        return false
+      }
 
-//		    $('body').error(sel);
-//			$('body').load(sel);
+      //		    $('body').error(sel);
+      //			$('body').load(sel);
 
-        $(document).ready(function(ev){
-             $('#box').mousedown(sel)
-                     .mouseup(sel)
-                     .click(sel)
-                     .dblclick(sel);
+      $(function (ev) {
+        $('#box').mousedown(sel)
+          .mouseup(sel)
+          .click(sel)
+          .dblclick(sel)
 
+        $('#box21').mousemove(sel)
+        $('#box31').mousemove(sel)
+        $('#box41').mousemove(sel)
 
-             $('#box21').mousemove(sel);
-             $('#box31').mousemove(sel);
-             $('#box41').mousemove(sel);
+        $('#box2').mouseenter(sel)
+          .mouseleave(sel)
 
-             $('#box2').mouseenter(sel)
-                     .mouseleave(sel);
+        $('#box3').mouseout(sel)
+          .mouseover(sel)
 
-             $('#box3').mouseout(sel)
-                     .mouseover(sel);
-
-             sel(ev);
-        });
+        sel(ev)
+      })
     </script>
-    <style type="text/css">
-          ul.events {
-              list-style:none;
-              padding:0;
-          }
-          .events li {
-              padding:2px;
-          }
-          .events li span{
-              border-radius: 2px;
-              -moz-border-radius: 2px;
-              -webkit-border-radius: 2px;
-              display:inline-block;
-              padding:0 4px;
-              margin:0 4px;
-              min-width:20px;
-              text-align:center;
-              background:#fe3456;
-              color:#ffffff;
-          }
-          .example {
-              width:200px;
-              height:200px;
-              margin:10px;
-              float:left;
-              border:1px solid #ddd;
-          }
-          #box {
-              background:#cfc
-          }
-          #box2 {
-              background:#ccf
-          }
-          #box3 {
-              background:#fcf
-          }
-          #box21, #box31, #box41 {
-              width:100px;
-              height:100px;
-              margin:50px;
-              background:#fcc
-          }
-          #box31 {
-              background:#cfc
-          }
+    <style>
+        ul.events {
+            list-style: none;
+            padding: 0;
+        }
+
+        .events li {
+            padding: 2px;
+        }
+
+        .events li span {
+            border-radius: 2px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            display: inline-block;
+            padding: 0 4px;
+            margin: 0 4px;
+            min-width: 20px;
+            text-align: center;
+            background: #fe3456;
+            color: #ffffff;
+        }
+
+        .example {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            float: left;
+            border: 1px solid #ddd;
+        }
+
+        #box {
+            background: #cfc
+        }
+
+        #box2 {
+            background: #ccf
+        }
+
+        #box3 {
+            background: #fcf
+        }
+
+        #box21, #box31, #box41 {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            background: #fcc
+        }
+
+        #box31 {
+            background: #cfc
+        }
     </style>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu label="Try...">
+<main id="content">
+    <header>
+        <h1>События мышки</h1>
+        <h2>Клики и передвижения</h2>
+    </header>
+    <article>
+        <div id="box" class="example">
+            <p>click me, again, double click!</p>
+        </div>
 
-            <a href="events.basic.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <a href="events.form.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-            <hr/>
+        <div id="box2" class="example">
+            <div id="box21"><p>move, move, move</p></div>
+        </div>
 
-            <ul class="events">
-               <li id="mousedown"><span>0</span><strong>mousedown</strong>( fn ) - нажатие клавиши мыши </li>
-               <li id="mouseup"><span>0</span><strong>mouseup</strong>( fn ) - отжатие клавиши мыши </li>
-               <li id="click"><span>0</span><strong>click</strong>( fn ) - клик по элементу </li>
-               <li id="dblclick"><span>0</span><strong>dblclick</strong>( fn ) - двойной клик по элементу </li>
-               <li id="mousemove"><span>0</span><strong>mousemove</strong>( fn ) - движение курсора </li>
-               <li id="mouseenter"><span>0</span><strong>mouseenter</strong>( fn ) - наведение курсора на элемент, не учитывает на дочерние элементы</li>
-               <li id="mouseleave"><span>0</span><strong>mouseleave</strong>( fn ) - вывод курсора из элемента, не учитывает дочерние элементы</li>
-               <li id="mouseout"><span>0</span><strong>mouseout</strong>( fn ) - вывод курсора из элемента</li>
-               <li id="mouseover"><span>0</span><strong>mouseover</strong>( fn ) - наведение курсора на элемент</li>
-            </ul>
-        </menu>
-        <header>
-            <h1>События мышки</h1>
-            <h2>Клики и передвижения</h2>
-        </header>
-        <article>
-            <div id="box" class="example">
-               <p>click me, again, double click!</p>
-            </div>
+        <div id="box3" class="example">
+            <div id="box31"><p>move, move, move</p></div>
+        </div>
+        <div id="box4" class="example">
+            <div id="box41"><p>move, move, move</p></div>
+        </div>
 
-            <div id="box2" class="example">
-               <div id="box21"><p>move, move, move</p></div>
-            </div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="events.basic.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="events.form.html" title="go next" class="button" rel="next">Next &rarr;</a>
+    </nav>
+    <hr/>
 
-            <div id="box3" class="example">
-               <div id="box31"><p>move, move, move</p></div>
-            </div>
-            <div id="box4" class="example">
-                <div id="box41"><p>move, move, move</p></div>
-            </div>
-
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    <ul class="events">
+        <li id="mousedown"><span>0</span><strong>mousedown</strong>( fn ) - нажатие клавиши мыши</li>
+        <li id="mouseup"><span>0</span><strong>mouseup</strong>( fn ) - отжатие клавиши мыши</li>
+        <li id="click"><span>0</span><strong>click</strong>( fn ) - клик по элементу</li>
+        <li id="dblclick"><span>0</span><strong>dblclick</strong>( fn ) - двойной клик по элементу</li>
+        <li id="mousemove"><span>0</span><strong>mousemove</strong>( fn ) - движение курсора</li>
+        <li id="mouseenter"><span>0</span><strong>mouseenter</strong>( fn ) - наведение курсора на элемент, не
+            учитывает на дочерние элементы
+        </li>
+        <li id="mouseleave"><span>0</span><strong>mouseleave</strong>( fn ) - вывод курсора из элемента, не
+            учитывает дочерние элементы
+        </li>
+        <li id="mouseout"><span>0</span><strong>mouseout</strong>( fn ) - вывод курсора из элемента</li>
+        <li id="mouseover"><span>0</span><strong>mouseover</strong>( fn ) - наведение курсора на элемент</li>
+    </ul>
+</aside>
 </body>
 </html>
-

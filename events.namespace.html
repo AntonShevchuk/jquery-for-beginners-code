@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>События и пространства имён</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
@@ -10,72 +10,75 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script type="text/javascript">
-        $(function(){
-            $('#myButton').click(function(event){
-                return false;
-            });
-        });
+      $(function () {
+        $('#myButton').click(function (event) {
+          return false
+        })
+      })
     </script>
-	<style>
-		article ul {
-			margin: 20px;
-			float:left;
-			list-style: none
-		}
-		article a {
-			display: block;
-			padding: 4px 8px;
-			border:1px solid #456;
-			border-radius: 2px;
-			-moz-border-radius: 2px;
-			-webkit-border-radius: 2px;
-		}
-	</style>
+    <style>
+        article ul {
+            margin: 20px;
+            float: left;
+            list-style: none
+        }
+
+        article a {
+            display: block;
+            padding: 4px 8px;
+            border: 1px solid #456;
+            border-radius: 2px;
+        }
+    </style>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <div id="output">
-            <h3>Output</h3>
-            <pre></pre>
-        </div>
-        <menu label="Try...">
-
-			<a href="events.form.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
-			<a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-			<a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <hr/>
-<pre><code>$(<span>'#myButton'</span>).on(<span>'click'</span>, function(){
-    appendOut(<span>"click\n"</span>); })</code></pre>
-<button type="button" class="code">Run Code</button>
-<pre><code>$(<span>'#myButton'</span>).on(<span>'click.space'</span>, function(){
-    appendOut(<span>"click.space\n"</span>); })</code></pre>
-<button type="button" class="code">Run Code</button>
-<pre><code>$(<span>'#myButton'</span>).on(<span>'click.my'</span>, function(){
-    appendOut(<span>"click.my\n"</span>); })</code></pre>
-<button type="button" class="code">Run Code</button>
-<pre><code>$(<span>'#myButton'</span>).on(<span>'click.my.space'</span>, function(){
-    appendOut(<span>"click.my.space\n"</span>); })</code></pre>
-<button type="button" class="code">Run Code</button>
-<pre><code>$(<span>'#myButton'</span>).trigger(<span>'click'</span>)</code></pre>
-<button type="button" class="code">Run Code</button>
-<pre><code>$(<span>'#myButton'</span>).trigger(<span>'click!'</span>)</code></pre>
-<button type="button" class="code">Run Code</button>
-<pre><code>$(<span>'#myButton'</span>).trigger(<span>'click.my!'</span>)</code></pre>
-<button type="button" class="code">Run Code</button>
-<pre><code>$(<span>'#myButton'</span>).off(<span>'.space'</span>)</code></pre>
-<button type="button" class="code">Run Code</button>
-        </menu>
-        <header>
-            <h1>Работа с пространством имён</h1>
-            <h2>Это уже круто знать и использовать</h2>
-        </header>
-        <article>
-            <a href="#" id="myButton" class="button">#myButton</a>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+<main id="content">
+    <header>
+        <h1>Работа с пространством имён</h1>
+        <h2>Это уже круто знать и использовать</h2>
+    </header>
+    <article>
+        <a href="#" id="myButton" class="button">#myButton</a>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="events.form.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+    </nav>
+    <hr/>
+    <pre><code>$(<span>'#myButton'</span>).on(<span>'click'</span>, function(){
+  output(<span>"click\n"</span>);
+})</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$(<span>'#myButton'</span>).on(<span>'click.space'</span>, function(){
+  output(<span>"click.space\n"</span>);
+})</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$(<span>'#myButton'</span>).on(<span>'click.my'</span>, function(){
+  output(<span>"click.my\n"</span>);
+})</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$(<span>'#myButton'</span>).on(<span>'click.my.space'</span>, function(){
+  output(<span>"click.my.space\n"</span>);
+})</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$(<span>'#myButton'</span>).trigger(<span>'click'</span>)</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$(<span>'#myButton'</span>).trigger(<span>'click!'</span>)</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$(<span>'#myButton'</span>).trigger(<span>'click.my!'</span>)</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$(<span>'#myButton'</span>).off(<span>'.space'</span>)</code></pre>
+    <button type="button" class="code">Run Code</button>
+</aside>
+<aside id="output">
+    <h3>Output</h3>
+    <pre></pre>
+</aside>
 </body>
 </html>
-

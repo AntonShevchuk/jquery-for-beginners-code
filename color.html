@@ -2,107 +2,98 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример расширения анимации</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
-	<script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
-    /**
-     * @author Anton Shevchuk (AntonShevchuk@gmail.com)
-     * @uri    https://anton.shevchuk.name
-     */
-    (function($) {
+      (function ($) {
         /**
          * parse HEX color to DEC
          * e.g. #f00    => [255,0,0]
          *      #ff00ff => [255,0,255]
          * @param {Array} color
          */
-        function parseColor(color) {
-            if (color.length !== 4 &&
-                    color.length !== 7) {
-                return [0,0,0];
-            }
-            color = color.substr(1);
+        function parseColor (color) {
+          if (color.length !== 4 &&
+            color.length !== 7) {
+            return [0, 0, 0]
+          }
+          color = color.substr(1)
 
-            if (color.length === 3) {
-                color = color[0]+color[0]+
-                        color[1]+color[1]+
-                        color[2]+color[2];
-            }
+          if (color.length === 3) {
+            color = color[0] + color[0] +
+              color[1] + color[1] +
+              color[2] + color[2]
+          }
 
-            var R = parseInt(color.substr(0,2),16);
-            var G = parseInt(color.substr(2,2),16);
-            var B = parseInt(color.substr(4,2),16);
+          const R = parseInt(color.substr(0, 2), 16)
+          const G = parseInt(color.substr(2, 2), 16)
+          const B = parseInt(color.substr(4, 2), 16)
 
-            return [R,G,B];
-        };
+          return [R, G, B]
+        }
 
         /**
          * Build color for apply as style
          */
-        function buildColor(start, end, progress) {
-            // нехитрое вычисление
-            var R = Math.round(((end[0] - start[0]) * progress) + start[0]);
-            var G = Math.round(((end[1] - start[1]) * progress) + start[1]);
-            var B = Math.round(((end[2] - start[2]) * progress) + start[2]);
+        function buildColor (start, end, progress) {
+          // нехитрое вычисление
+          const R = Math.round(((end[0] - start[0]) * progress) + start[0])
+          const G = Math.round(((end[1] - start[1]) * progress) + start[1])
+          const B = Math.round(((end[2] - start[2]) * progress) + start[2])
 
-            return 'rgb('+R+','+G+','+B+')';
+          return 'rgb(' + R + ',' + G + ',' + B + ')'
         }
 
         $.Tween.propHooks.color = {
-            set: function(tween) {
-                // console.log(tween);
-                // испытуемый элемент
-                tween.elem;
-                // текущий easing
-                tween.easing
-                // настройки анимация
-                tween.options;
-                // текущий прогресс
-                tween.pos;
-                // свойство которое изменяем
-                tween.prop;
-                // начальные значения
-                tween.start = parseColor(tween.start);
-                // текущее значение
-                tween.now;
-                // результирующие значения
-                tween.end = parseColor(tween.end);
-                // еденицы измерения
-                tween.unit;
+          set: function (tween) {
+            // console.log(tween);
+            // испытуемый элемент
+            tween.elem
+            // текущий easing
+            tween.easing
+            // настройки анимация
+            tween.options
+            // текущий прогресс
+            tween.pos
+            // свойство которое изменяем
+            tween.prop
+            // начальные значения
+            tween.start = parseColor(tween.start)
+            // текущее значение
+            tween.now
+            // результирующие значения
+            tween.end = parseColor(tween.end)
+            // еденицы измерения
+            tween.unit
 
-
-                tween.run = function(progress) {
-                    // непосредственно измение свойств элемента
-                    tween.elem.style['color'] = buildColor(tween.start, tween.end, progress);
-                }
+            tween.run = function (progress) {
+              // непосредственно измение свойств элемента
+              tween.elem.style['color'] = buildColor(tween.start, tween.end, progress)
             }
+          }
         }
-    })(jQuery);
-    $(function(){
-        $('p:eq(0)').animate({color:'#ff0000'},1000);
-        $('p:eq(1)').animate({color:'#ff0000'},3000);
-        $('p:eq(2)').animate({color:'#ff0000'},5000);
-    });
-</script>
+      })(jQuery)
 
+      $(function () {
+        $('p:eq(0)').animate({ color: '#ff0000' }, 1000)
+        $('p:eq(1)').animate({ color: '#ff0000' }, 3000)
+        $('p:eq(2)').animate({ color: '#ff0000' }, 5000)
+      })
+    </script>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu>
-            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-        </menu>
-        <header>
-            <h1>Пример расширения анимации</h1>
-            <h2>Данный пример работает лишь с jQuery 1.8+</h2>
-        </header>
-        <article>
-            <h2>Article Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+<main id="content">
+    <header>
+        <h1>Пример расширения анимации</h1>
+        <h2>Код плагина для анимации цвета доступен в исходном коде этой страницы</h2>
+    </header>
+    <article>
+        <h2>Article Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
             euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
@@ -112,10 +103,10 @@
             tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
             fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+    </article>
+    <article>
+        <h2>Article Title</h2>
+        <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
             nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
@@ -126,10 +117,10 @@
             adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
             nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
             libero. Fusce et ultrices lectus.</p>
-        </article>
-        <article>
-            <h2>Article</h2>
-            <p>Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
+    </article>
+    <article>
+        <h2>Article</h2>
+        <p>Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
             laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
             non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
             ipsum vitae massa accumsan ullamcorper. Maecenas commodo lacus turpis. Proin sit amet mauris
@@ -137,11 +128,26 @@
             vitae orci adipiscing condimentum id sed turpis. Morbi ultrices feugiat ullamcorper. Fusce at
             magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
             cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+    </nav>
+    <hr/>
+    <pre><code><em>// run animation after loading</em>
+$(function () {
+  $(<span>'p:eq(0)'</span>)
+    .animate({ color: <span>'#ff0000'</span> }, 1000)
+  $(<span>'p:eq(1)'</span>)
+    .animate({ color: <span>'#ff0000'</span> }, 3000)
+  $(<span>'p:eq(2)'</span>)
+    .animate({ color: <span>'#ff0000'</span> }, 5000)
+})</code></pre>
+</aside>
 </body>
 </html>
-

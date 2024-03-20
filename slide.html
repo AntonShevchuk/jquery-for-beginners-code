@@ -2,53 +2,36 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример анимации с использованием методов семейства Slide</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
-    <link rel="stylesheet" href="css/styles.css"/>s
+    <link rel="stylesheet" href="css/styles.css"/>
     <script src="js/jquery.js"></script>
     <script src="js/code.js"></script>
     <script>
-        function changeClass() {
-            $(this).prev().toggleClass('active')
-        }
-        $(function(){
-            $('article h2').click(function(){
-                $(this).next().slideToggle();
-                $(this).toggleClass('active');
-            });
-        });
+      function changeClass () {
+        $(this).prev().toggleClass('active')
+      }
+
+      $(function () {
+        $('article h2').click(function () {
+          $(this).next().slideToggle()
+          $(this).toggleClass('active')
+        })
+      })
     </script>
 </head>
 <body>
-    <div id="content" class="wrapper box slides">
-        <menu label="Try...">
-
-            <a href="hide.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <a href="fade.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-            <hr/>
-<pre><code><em>// callback function</em>
-function changeClass() {
-    $(this).prev().toggleClass(<span>'active'</span>)
-}</code></pre>
-<pre><code contenteditable="true">$(<span>'article p'</span>).slideUp(<span>'slow'</span>, changeClass)</code></pre>
-            <button type="button" class="code">Run Code</button>
-<pre><code contenteditable="true">$(<span>'article p'</span>).slideDown(<span>'slow'</span>, changeClass)</code></pre>
-            <button type="button" class="code">Run Code</button>
-<pre><code contenteditable="true">$(<span>'article p'</span>).slideToggle(<span>'slow'</span>, changeClass)</code></pre>
-            <button type="button" class="code">Run Code</button>
-        </menu>
-        <header>
-            <h1>Анимация</h1>
-            <h2>SlideUp/SlideDown/SlideToggle</h2>
-        </header>
-        <article id="stick" class="box">
-            <h2>Article</h2>
-            <p>
-                <img src="images/photo-bumblebee-tumb.jpg" alt="Bumblebee" class="left" width="200"/>
+<main id="content" class="wrapper box slides">
+    <header>
+        <h1>Анимация</h1>
+        <h2>SlideUp/SlideDown/SlideToggle</h2>
+    </header>
+    <article id="stick" class="box">
+        <h2>Article</h2>
+        <p>
+            <img src="images/photo-bumblebee-tumb.jpg" alt="Bumblebee" class="left" width="200"/>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -59,11 +42,11 @@ function changeClass() {
             tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
             fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
-        </article>
-        <article>
-            <h2>Article</h2>
-            <p>
-                <img src="images/photo-chamomile-tumb.jpg" alt="Chamomile" class="left" width="200"/>
+    </article>
+    <article>
+        <h2>Article</h2>
+        <p>
+            <img src="images/photo-chamomile-tumb.jpg" alt="Chamomile" class="left" width="200"/>
             Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
@@ -75,12 +58,12 @@ function changeClass() {
             adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
             nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
             libero. Fusce et ultrices lectus.</p>
-        </article>
-        <article>
-            <h2>Article</h2>
-            <p>
-                <img src="images/photo-maple-leaf-tumb.jpg" alt="Maple Leaf" class="left" width="200"/>
-            Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam, 
+    </article>
+    <article>
+        <h2>Article</h2>
+        <p>
+            <img src="images/photo-maple-leaf-tumb.jpg" alt="Maple Leaf" class="left" width="200"/>
+            Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
             laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
             non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
             ipsum vitae massa accumsan ullamcorper. Maecenas commodo lacus turpis. Proin sit amet mauris
@@ -88,11 +71,31 @@ function changeClass() {
             vitae orci adipiscing condimentum id sed turpis. Morbi ultrices feugiat ullamcorper. Fusce at
             magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
             cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="hide.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="fade.html" title="go next" class="button" rel="next">Next &rarr;</a>
+    </nav>
+    <hr/>
+    <pre><code><em>// callback function</em>
+function changeClass() {
+    $(this).prev().toggleClass(<span>'active'</span>)
+}</code></pre>
+    <pre><code
+            contenteditable="true">$(<span>'article p'</span>).slideUp(<span>'slow'</span>, changeClass)</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code contenteditable="true">$(<span>'article p'</span>).slideDown(<span>'slow'</span>, changeClass)</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code
+            contenteditable="true">$(<span>'article p'</span>).slideToggle(<span>'slow'</span>, changeClass)</code></pre>
+    <button type="button" class="code">Run Code</button>
+</aside>
 </body>
 </html>
-

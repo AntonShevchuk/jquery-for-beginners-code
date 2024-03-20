@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Работаем с $.Deferred</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
@@ -11,110 +11,111 @@
         .loading {
             background: url('images/ajax-loader.gif') no-repeat right;
         }
+
         #images div {
             height: 216px;
             width: 310px;
-            float:left;
+            float: left;
             overflow: hidden;
             margin: 4px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            -moz-border-radius: 4px;
-            -webkit-border-radius: 4px;
         }
-        article div img {
+
+        #images div img {
             min-height: 216px;
             min-width: 310px;
-            border:0;
-            padding:0;
-            margin:0;
+            border: 0;
+            padding: 0;
+            margin: 0;
         }
     </style>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script>
-        var Flickr = {
-            search:function(query) {
-                showLoader();
-                var def = $.Deferred();
-                $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {
-                            tags: query,
-                            tagmode: "any",
-                            format: "json"
-                        },
-                        def.resolve
-                );
-                return def.promise();
-            }
-        };
-
-        function buildImages(data) {
-            var def = $.Deferred();
-            var limit = 4;
-            var loaded = 0;
-
-            $.each(data.items, function(i, item){
-                if ( i == limit ) return false;
-                var img         = new Image();
-                    img.onload  = img.onerror = function() {
-                        // изменяем прогресс загрузки
-                        def.notify(1)
-                    };
-                    img.src     = item.media.m;
-                var div = $('<div></div>').append(img);
-                $(div).prependTo("#images");
-            });
-
-            def.progress(function() {
-                loaded ++;
-                if (limit == loaded) {
-                    def.resolve();
-                }
-            });
-            def.done(hideLoader);
+      var Flickr = {
+        search: function (query) {
+          showLoader()
+          let def = $.Deferred()
+          $.getJSON('https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?', {
+              tags: query,
+              tagmode: 'any',
+              format: 'json'
+            },
+            def.resolve
+          )
+          return def.promise()
         }
+      }
 
-        function showLoader() {
-            $('h1').addClass('loading');
-            $('#images').slideUp(function(){
-                $(this).html('')
-            });
-        }
+      function buildImages (data) {
+        let def = $.Deferred()
+        let limit = 4
+        let loaded = 0
 
-        function hideLoader() {
-            $('h1').removeClass('loading');
-            $('#images').slideDown();
-        }
+        $.each(data.items, function (i, item) {
+          if (i === limit) return false
+          let img = new Image()
+          img.onload = img.onerror = function () {
+            // изменяем прогресс загрузки
+            def.notify()
+          }
+          img.src = item.media.m
+          let div = $('<div></div>').append(img)
+          $(div).prependTo('#images')
+        })
+
+        def.progress(function () {
+          loaded++
+          if (limit === loaded) {
+            def.resolve()
+          }
+        })
+        def.then(hideLoader)
+      }
+
+      function showLoader () {
+        $('h1').addClass('loading')
+        $('#images').html('')
+      }
+
+      function hideLoader () {
+        $('h1').removeClass('loading')
+        $('#images').slideDown()
+      }
     </script>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu label="Try...">
-			<a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <a href="when.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-            <hr/>
-            <pre><code contenteditable="true">Flickr
+<main id="content">
+    <header>
+        <h1>Пример работы с $.Deferred</h1>
+        <h2>С использованием AJAX и ожиданием подгрузки картинок. Код функции buildImages вы найдёте в исходном коде
+            данной страницы</h2>
+    </header>
+    <article>
+        <h2>Flickr</h2>
+        <p>Попробуем загрузить картинки используя AJAX+JSONP. По получению ответа с сервера создаём объекты &laquo;Image&raquo;
+            и ждём их загрузки,
+            и лишь после этого отображаем готовый результат</p>
+        <div id="images">
+        </div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="when.html" title="go next" class="button" rel="next">Next &rarr;</a>
+    </nav>
+    <hr/>
+    <pre><code contenteditable="true">Flickr
     .search(<span>'orange'</span>)
     .then(buildImages)</code></pre>
-            <button type="button" class="code">Run Code</button>
-        </menu>
-        <header>
-            <h1>Пример работы с $.Deferred</h1>
-            <h2>С использованием AJAX и ожиданием подгрузки картинок. Код функции buildImages вы найдёте в исходном коде данной страницы</h2>
-        </header>
-        <article>
-            <h2>Flickr</h2>
-            <p>Попробуем загрузить картинки используя AJAX+JSONP. По получению ответа с сервера создаём объекты &laquo;Image&raquo; и ждём их загрузки,
-            и лишь после этого отображаем готовый результат</p>
-            <div id="images">
-            </div>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    <button type="button" class="code">Run Code</button>
+</aside>
 </body>
 </html>
-

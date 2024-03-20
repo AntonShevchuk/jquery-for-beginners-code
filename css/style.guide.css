@@ -1,0 +1,49 @@
+body {
+  position: relative;
+}
+
+/* sidebar */
+#sidebar > .nav-item > a {
+}
+#sidebar > .nav-item > a.nav-link:hover,
+#sidebar > .nav-item > a.nav-link.active {
+  text-decoration: underline;
+}
+#sidebar .nav-item .nav-item a {
+  border-left: 2px solid #fff;
+}
+#sidebar .nav-item .nav-item a:hover,
+#sidebar .nav-item .nav-item a.active {
+  border-left: 2px solid rgb(10, 89, 204);
+}
+/* /sidebar */
+
+/* table */
+.table td {
+  width: 50%;
+}
+
+/* /table */
+
+/* code */
+pre.good {
+  background: #efe;
+}
+
+pre.bad {
+  background: #fee;
+}
+
+code em {
+  color: #777;
+}
+
+code strong {
+  color: #5a1d00;
+}
+
+code span {
+  color: #050;
+}
+
+/* /code */

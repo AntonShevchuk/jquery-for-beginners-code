@@ -2,26 +2,21 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример HTML5</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu>
-            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="css.float.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-        </menu>
-        <header>
-            <h1>Пример HTML5</h1>
-            <h2>Простая, правильная страница, и вполне релевантная вёрстка</h2>
-        </header>
-        <article>
-            <h2>Article Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+<main>
+    <header>
+        <h1>Пример HTML5</h1>
+        <h2>Простая, правильная страница, и вполне релевантная вёрстка</h2>
+    </header>
+    <article>
+        <h2>Article Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
             euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
@@ -31,10 +26,10 @@
             tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
             fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+    </article>
+    <article>
+        <h2>Article Title</h2>
+        <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
             nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
@@ -45,11 +40,18 @@
             adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
             nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
             libero. Fusce et ultrices lectus.</p>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+
+<aside>
+    <nav>
+        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="css.float.html" title="go next" class="button" rel="next">Next &rarr;</a>
+    </nav>
+</aside>
 </body>
 </html>
-

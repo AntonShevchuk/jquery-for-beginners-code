@@ -2,91 +2,76 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример jQuery плагина с расширенными функциями</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
     <script type="text/javascript">
-        (function($) {
+      (function ($) {
 
-            // значени по умолчанию
-            var defaults = { color:'green' };
+        // значение по умолчанию
+        let defaults = { color: 'green' }
 
-            var methods = {
-                init:function(params) {
-                    // актуальные настройки, будут индивидуальными при каждом запуске
-                    var options = $.extend({}, defaults, params);
+        let plugin = {
+          init: function (params) {
+            // актуальные настройки, будут индивидуальными при каждом запуске
+            let options = $.extend({}, defaults, params)
 
-                    if (!this.data('mySimplePlugin')) {
-                        this.data('mySimplePlugin', options);
-                        this.on("click.mySimplePlugin",function(){
-                            $(this).css('color', options.color);
-                        });
-                    }
-                    return this;
-                },
-                color:function(color) {
-                    var options = $(this).data('mySimplePlugin');
-                    options.color = color;
-                    $(this).data('mySimplePlugin', options);
-                },
-                reset:function() {
-                    $(this).css('color', 'black');
-                },
-                destroy:function() {
-                    methods.reset.apply(this);
-                    $(this).removeData('mySimplePlugin');
-                    $(this).off(".mySimplePlugin");
-                }
-            };
+            if (!this.data('mySimplePlugin')) {
+              this.data('mySimplePlugin', options)
+              this.on('click.mySimplePlugin', function () {
+                $(this).css('color', options.color)
+              })
+            }
+            return this
+          },
+          color: function (color) {
+            let options = $(this).data('mySimplePlugin')
+            options.color = color
+            $(this).data('mySimplePlugin', options)
+          },
+          reset: function () {
+            $(this).css('color', 'black')
+          },
+          destroy: function () {
+            plugin.reset.apply(this)
+            $(this).removeData('mySimplePlugin')
+            $(this).off('.mySimplePlugin')
+          }
+        }
 
-            $.fn.mySimplePlugin = function(method){
-                // немного магии
-                if ( methods[method] ) {
-                    // если запрашиваемый метод существует, мы его вызываем
-                    // все параметры, кроме имени метода прийдут в метод
-                    // this так же перекочует в метод
-                    return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
-                } else if ( typeof method === 'object' || ! method ) {
-                    // если первым параметром идет объект, либо совсем пусто
-                    // выполняем метод init
-                    return methods.init.apply( this, arguments );
-                } else {
-                    // если ничего не получилось
-                    $.error( 'Метод "' +  method + '" не найден в плагине jQuery.mySimplePlugin' );
-                }
-            };
-        })(jQuery);
+        $.fn.mySimplePlugin = function (method) {
+          // немного магии
+          if (typeof plugin[method] === 'function') {
+            // если запрашиваемый метод существует, мы его вызываем
+            // все параметры, кроме имени метода придут в метод
+            // this так же перекочует в метод
+            return plugin[method].apply(this, Array.prototype.slice.call(arguments, 1))
+          } else if (typeof method === 'object' || !method) {
+            // если первым параметром идет объект, либо совсем пусто
+            // выполняем метод init
+            return plugin.init.apply(this, arguments)
+          } else {
+            // если ничего не получилось
+            $.error('Метод "' + method + '" не найден в плагине jQuery.mySimplePlugin')
+          }
+        }
+      })(jQuery)
     </script>
 
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu>
-            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <hr/>
-            <pre><code>$(<span>'p'</span>).mySimplePlugin()</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true">$(<span>'p:eq(0)'</span>).mySimplePlugin(<span>'color'</span>, <span>'red'</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code>$(<span>'p'</span>).mySimplePlugin(<span>'reset'</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code>$(<span>'p'</span>).mySimplePlugin(<span>'destroy'</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code>$(<span>'p'</span>).mySimplePlugin(<span>'wrongMethod'</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-        </menu>
-        <header>
-            <h1>Пример плагина с расширенными функциями</h1>
-            <h2>Тут есть много чего &laquo;на заметку&raquo;</h2>
-        </header>
-        <article>
-            <h2>Article Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+<main id="content">
+    <header>
+        <h1>Пример плагина с расширенными функциями</h1>
+        <h2>Тут есть много чего &laquo;на заметку&raquo;</h2>
+    </header>
+    <article>
+        <h2>Article Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
             euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
@@ -96,10 +81,10 @@
             tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
             fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+    </article>
+    <article>
+        <h2>Article Title</h2>
+        <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
             nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
@@ -110,10 +95,10 @@
             adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
             nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
             libero. Fusce et ultrices lectus.</p>
-        </article>
-        <article>
-            <h2>Article</h2>
-            <p>Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
+    </article>
+    <article>
+        <h2>Article</h2>
+        <p>Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
             laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
             non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
             ipsum vitae massa accumsan ullamcorper. Maecenas commodo lacus turpis. Proin sit amet mauris
@@ -121,11 +106,32 @@
             vitae orci adipiscing condimentum id sed turpis. Morbi ultrices feugiat ullamcorper. Fusce at
             magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
             cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+    </nav>
+    <hr/>
+    <p>Инициализация плагина, параграфы станут кликабельными</p>
+    <pre><code>$(<span>'p'</span>).mySimplePlugin()</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <p>Инициализация с настройками</p>
+    <pre><code contenteditable="true">$(<span>'p'</span>).mySimplePlugin(<span>'color'</span>, <span>'red'</span>)</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <p>Вызов метода</p>
+    <pre><code>$(<span>'p'</span>).mySimplePlugin(<span>'reset'</span>)</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <p>Вызов несуществующего метода</p>
+    <pre><code>$(<span>'p'</span>).mySimplePlugin(<span>'wrongMethod'</span>)</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <p>Отключение плагина</p>
+    <pre><code>$(<span>'p'</span>).mySimplePlugin(<span>'destroy'</span>)</code></pre>
+    <button type="button" class="code">Run Code</button>
+</aside>
 </body>
 </html>
-

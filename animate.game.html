@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Работа с произвольными очередями</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
@@ -10,133 +10,137 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script>
-        $(function(){
-            var logX = $("#log-x");
-            var logY = $("#log-y");
-            var $box = $("#box");
+      $(function () {
+        var logX = $('#log-x')
+        var logY = $('#log-y')
+        var $box = $('#box')
 
-            logX.text($box.css('left'));
-            logY.text($box.css('top'));
+        logX.text($box.css('left'))
+        logY.text($box.css('top'))
 
-            var stepX = function(now, obj) {
-                logX.text(Math.floor(now)+obj.unit)
-            };
-            var stepY = function(now, obj) {
-                logY.text(Math.floor(now)+obj.unit)
-            };
-            $(document).keydown(function(e){
-                // 37 - left
-                // 38 - up
-                // 39 - right
-                // 40 - down
-                switch (e.keyCode) {
-                    case 37:
-                        $box.stop('x', true);
-                        $box.animate({'left':'-=100'}, {queue:'x', step:stepX}).dequeue('x');
-                        break;
-                    case 38:
-                        $box.stop('y', true);
-                        $box.animate({'top':'-=100'}, {queue:'y', step:stepY}).dequeue('y');
-                        break;
-                    case 39:
-                        $box.stop('x', true);
-                        $box.animate({'left':'+=100'}, {queue:'x', step:stepX}).dequeue('x');
-                        break;
-                    case 40:
-                        $box.stop('y', true);
-                        $box.animate({'top':'+=100'}, {queue:'y', step:stepY}).dequeue('y');
-                        break;
-                }
+        var stepX = function (now, obj) {
+          logX.text(Math.floor(now) + obj.unit)
+        }
+        var stepY = function (now, obj) {
+          logY.text(Math.floor(now) + obj.unit)
+        }
+        $(document).keydown(function (e) {
+          // 37 - left
+          // 38 - up
+          // 39 - right
+          // 40 - down
+          switch (e.keyCode) {
+            case 37:
+              $box.stop('x', true)
+              $box.animate({ 'left': '-=100' }, { queue: 'x', step: stepX }).dequeue('x')
+              break
+            case 38:
+              $box.stop('y', true)
+              $box.animate({ 'top': '-=100' }, { queue: 'y', step: stepY }).dequeue('y')
+              break
+            case 39:
+              $box.stop('x', true)
+              $box.animate({ 'left': '+=100' }, { queue: 'x', step: stepX }).dequeue('x')
+              break
+            case 40:
+              $box.stop('y', true)
+              $box.animate({ 'top': '+=100' }, { queue: 'y', step: stepY }).dequeue('y')
+              break
+          }
 
-            })
-        });
+        })
+      })
     </script>
     <style>
         article {
             position: relative;
         }
+
         article.withbox {
             height: 600px;
         }
+
         #box {
             background: #55f;
             position: relative;
             margin: 10px;
-            width: 80px;
-            height: 80px;
-            left:270px;
-            top:0;
+            width: 92px;
+            height: 92px;
+            left: 270px;
+            top: 0;
         }
+
         #box span {
             display: inline-block;
             background: #fff;
             font-size: 22px;
             line-height: 22px;
             text-align: center;
-            width: 16px;
+            width: 22px;
             margin: 6px 8px;
-            padding: 2px;
+            padding: 5px 1px;
             border: 1px solid #000;
             border-radius: 2px;
             -moz-border-radius: 2px;
             -webkit-border-radius: 2px;
         }
+
         .red {
-            color:red;
+            color: red;
         }
     </style>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu label="Try...">
-
-            <a href="animate.queue.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <a href="menu.drop-down.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-            <hr/>
-<pre><code contenteditable="true">$(<span>'#box'</span>).animate({
+<main id="content">
+    <header>
+        <h1>Произвольная очередь анимации</h1>
+        <h2>Своя очередь, попробуйте использовать стрелочки на клавиатуре (&larr; и &rarr;, &uarr; и &darr;)</h2>
+    </header>
+    <article>
+        <p>
+            X: <span id="log-x">0px</span>
+            Y: <span id="log-y">0px</span>
+        </p>
+    </article>
+    <article class="withbox">
+        <div id="box">
+            <span>&spades;</span>
+            <span>&clubs;</span>
+            <span class="red">&hearts;</span>
+            <span class="red">&diams;</span>
+        </div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="animate.queue.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="menu.drop-down.html" title="go next" class="button" rel="next">Next &rarr;</a>
+    </nav>
+    <hr/>
+    <pre><code contenteditable="true">$(<span>'#box'</span>).animate({
     <span>'left'</span>:<span>'-=100'</span>
 }, {queue:'x', duration:2000}).dequeue('x')</code></pre>
-            <button type="button" class="code">Left</button>
-<pre><code contenteditable="true">$(<span>'#box'</span>).animate({
+    <button type="button" class="code">Left</button>
+    <pre><code contenteditable="true">$(<span>'#box'</span>).animate({
     <span>'left'</span>:<span>'+=100'</span>
 }, {queue:'x', duration:2000}).dequeue('x')</code></pre>
-            <button type="button" class="code">Right</button>
-<pre><code contenteditable="true">$(<span>'#box'</span>).animate({
+    <button type="button" class="code">Right</button>
+    <pre><code contenteditable="true">$(<span>'#box'</span>).animate({
     <span>'top'</span>:<span>'-=250'</span>
 }, {queue:'y', duration:2000}).dequeue('y')</code></pre>
-            <button type="button" class="code">Up</button>
-<pre><code contenteditable="true">$(<span>'#box'</span>).animate({
+    <button type="button" class="code">Up</button>
+    <pre><code contenteditable="true">$(<span>'#box'</span>).animate({
     <span>'top'</span>:<span>'+=250'</span>
 }, {queue:'y', duration:2000}).dequeue('y')</code></pre>
-            <button type="button" class="code">Down</button>
-<pre><code contenteditable="true">$(<span>'#box'</span>).stop(<span>'x'</span>, true);
+    <button type="button" class="code">Down</button>
+    <pre><code contenteditable="true">$(<span>'#box'</span>).stop(<span>'x'</span>, true);
 $(<span>'#box'</span>).stop(<span>'y'</span>, true);</code></pre>
-            <button type="button" class="code">Stop</button>
-        </menu>
-        <header>
-            <h1>Произвольная очередь анимации</h1>
-            <h2>Своя очередь, попробуйте использовать стрелочки на клавиатуре (&larr; и &rarr;, &uarr; и &darr;)</h2>
-        </header>
-        <article>
-            <p>
-                X: <span id="log-x">0px</span>
-                Y: <span id="log-y">0px</span>
-            </p>
-        </article>
-        <article class="withbox">
-            <div id="box">
-                <span>&spades;</span>
-                <span>&clubs;</span>
-                <span class="red">&hearts;</span>
-                <span class="red">&diams;</span>
-            </div>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    <button type="button" class="code">Stop</button>
+</aside>
 </body>
 </html>
-

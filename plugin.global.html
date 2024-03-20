@@ -2,56 +2,45 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример плагина с лобальными настройками</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
     <script type="text/javascript">
-        (function($) {
-            // значени по умолчанию
-            var defaults = {
-                color:'green'
-            };
-            // актуальные настройки, глобальные
-            var options;
+      (function ($) {
+        // значени по умолчанию
+        var defaults = {
+          color: 'green'
+        }
+        // актуальные настройки, глобальные
+        var options
 
-            $.fn.mySimplePlugin = function(params){
-                // при многократном вызове функции настройки будут сохранятся, и замещаться при необходимости
-                options = $.extend({}, defaults, options, params);
+        $.fn.mySimplePlugin = function (params) {
+          // при многократном вызове функции настройки будут сохранятся, и замещаться при необходимости
+          options = $.extend({}, defaults, options, params)
 
-                $(this).click(function(){
-                    $(this).css('color', options.color);
-                });
+          $(this).click(function () {
+            $(this).css('color', options.color)
+          })
 
-                return this;
-            };
-        })(jQuery);
+          return this
+        }
+      })(jQuery)
     </script>
 
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu>
-            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <hr/>
-            <pre><code>$(<span>'p:eq(0)'</span>).mySimplePlugin()</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code>$(<span>'p:eq(1)'</span>).mySimplePlugin({'color':'red'})</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code>$(<span>'p:eq(2)'</span>).mySimplePlugin({'color':'blue'})</code></pre>
-            <button type="button" class="code">Run Code</button>
-        </menu>
-        <header>
-            <h1>Пример плагина с глобальными настройками</h1>
-            <h2>Запустите плагин с новыми настройками и проклацайте все параграфы</h2>
-        </header>
-        <article>
-            <h2>Article Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+<main id="content">
+    <header>
+        <h1>Пример плагина с глобальными настройками</h1>
+        <h2>Запустите плагин с новыми настройками и проклацайте все параграфы</h2>
+    </header>
+    <article>
+        <h2>Article Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
             euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
@@ -61,10 +50,10 @@
             tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
             fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+    </article>
+    <article>
+        <h2>Article Title</h2>
+        <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
             nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
@@ -75,10 +64,10 @@
             adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
             nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
             libero. Fusce et ultrices lectus.</p>
-        </article>
-        <article>
-            <h2>Article</h2>
-            <p>Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
+    </article>
+    <article>
+        <h2>Article</h2>
+        <p>Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
             laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
             non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
             ipsum vitae massa accumsan ullamcorper. Maecenas commodo lacus turpis. Proin sit amet mauris
@@ -86,11 +75,23 @@
             vitae orci adipiscing condimentum id sed turpis. Morbi ultrices feugiat ullamcorper. Fusce at
             magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
             cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+    </nav>
+    <hr/>
+    <pre><code>$(<span>'p:eq(0)'</span>).mySimplePlugin()</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$(<span>'p:eq(1)'</span>).mySimplePlugin({'color':'red'})</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$(<span>'p:eq(2)'</span>).mySimplePlugin({'color':'blue'})</code></pre>
+    <button type="button" class="code">Run Code</button>
+</aside>
 </body>
 </html>
-

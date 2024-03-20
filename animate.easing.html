@@ -2,96 +2,103 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Анимация с использованием плагина easing</title>
-        <link rel="profile" href="https://gmpg.org/xfn/11"/>
-        <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
-        <link rel="stylesheet" href="css/styles.css"/>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/code.js"></script>
-        <script type="text/javascript" src="js/jquery.easing.js"></script>
-        <script type="text/javascript">
-            var output = null;
-            $(function(){
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Анимация с использованием плагина easing</title>
+    <link rel="profile" href="https://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <script type="text/javascript">
+      let $output = null
+      $(function () {
 
-                output = jQuery('.output');
-                var sel = $("menu select");
+        $output = jQuery('.output')
+        let sel = $('menu select')
 
-                for (var x in jQuery.easing) {
-                    if (x != 'linear' && x != 'swing' &&
-                        x != 'jswing' && x != 'def')
-                        sel.append($('<option>').attr('value', x).text(x));
-                }
+        for (let x in jQuery.easing) {
+          if (x !== 'linear' && x !== 'swing' &&
+            x !== 'jswing' && x !== 'def')
+            sel.append($('<option>').attr('value', x).text(x))
+        }
 
-                sel.change(function(){
-                    $('menu img').attr({'src':'images/'+sel.val()+'.png',
-                                          'alt':sel.val()});
-                });
+        sel.change(function () {
+          $('menu img').attr({
+            'src': 'images/' + sel.val() + '.png',
+            'alt': sel.val()
+          })
+        })
 
-                $('#button').click(function(){
-                    $('.square').animate({top:400}, 2000, sel.val(), function(){
-                        $(this).css({top:20});
-                    });
-                });
+        $('#button').click(function () {
+          $('.square').animate({ top: 400 }, 2000, sel.val(), function () {
+            $(this).css({ top: 20 })
+          })
+        })
 
+      })
+    </script>
+    <style type="text/css">
+        article {
+            position: relative;
+            height: 500px;
+        }
 
-            });
-        </script>
-        <style type="text/css">
-            article {
-                position: relative;
-                height: 500px;
-            }
-            menu img {
-                margin: 10px;
-                padding:4px;
-                border:1px solid #999;
-                border-radius: 4px;
-            }
-            menu div {
-                padding: 4px 16px;
-            }
-            .square {
-                width:100px;
-                height:100px;
+        menu img {
+            margin: 10px;
+            padding: 4px;
+            border: 1px solid #999;
+            border-radius: 4px;
+        }
 
-                top:20px;
-                left:40px;
-                background:#ccf;
-                position:absolute;
-            }
-            .output{
-                width:100%;
-                background:#cfc;
-            }
-        </style>
-    </head>
-    <body>
-    <div id="content" class="wrapper box">
-        <menu label="Try...">
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <hr/>
-            <div>
-                <label for="easing">Easing</label>: <select id="easing" name="easing">
-                    <option>linear</option>
-                    <option>swing</option>
-                </select>
-                <input type="button" name="button" id="button" class="button" value="Go&raquo;" />
-            </div>
-            <img src="images/linear.png" class="alignleft" alt="Linear" />
-        </menu>
-        <header>
-            <h1>Использование плагина <a href="https://gsgd.co.uk/sandbox/jquery/easing/">easing</a></h1>
-            <h2>Плагин из разряда &laquo;must have&raquo;</h2>
-        </header>
-        <article>
-            <div class="square"></div>
-            <div class="output"></div>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
+        menu div {
+            padding: 4px 16px;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+
+            top: 20px;
+            left: 40px;
+            background: #ccf;
+            position: absolute;
+        }
+
+        .output {
+            width: 100%;
+            background: #cfc;
+        }
+    </style>
+</head>
+<body>
+<main id="content">
+    <header>
+        <h1>Использование плагина <a href="https://gsgd.co.uk/sandbox/jquery/easing/">easing</a></h1>
+        <h2>Плагин из разряда &laquo;must have&raquo;</h2>
+    </header>
+    <article>
+        <div class="square"></div>
+        <div class="output"></div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+    </nav>
+    <hr/>
+    <div>
+        <label for="easing">Easing</label>: <select id="easing" name="easing">
+        <option>linear</option>
+        <option>swing</option>
+    </select>
+        <input type="button" name="button" id="button" class="button" value="Go&raquo;"/>
     </div>
-    </body>
+    <img src="images/linear.png" class="alignleft" alt="Linear"/>
+</aside>
+</body>
 </html>

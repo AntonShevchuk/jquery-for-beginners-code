@@ -2,60 +2,63 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример загрузки HTML посредством AJAX и метода load()</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
     <style>
         article {
-            border:1px dotted #ccc
+            border: 1px dotted #ccc
         }
     </style>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu>
-            <a href="ajax.load.html" title="go prev" class="button alignleft" rel="prev">&larr; Back</a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <a href="ajax.datatype.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-            <hr/>
-			<pre><code contenteditable="true"><em>// AJAX is easy</em>
+<main id="content">
+    <header>
+        <h1>ajax()</h1>
+        <h2>Пример использования метода ajax(), аналогичный предыдущему примеру с load()</h2>
+        <p><code>$(<span>'article'</span>).load(<span>'index.html main'</span>)</code></p>
+    </header>
+    <article>
+        <h2>Пробуем загрузить контент &rarr;</h2>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="ajax.load.html" title="go prev" class="button" rel="prev">&larr; Back</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="ajax.datatype.html" title="go next" class="button" rel="next">Next &rarr;</a>
+    </nav>
+    <hr/>
+    <pre><code contenteditable="true"><em>// AJAX is easy</em>
 $.ajax({
-    url: <span>'index.html'</span>,
-    success: function(data) {
-        var part = $(data).filter(<span>'.jumbotron'</span>);
-        $(<span>'article'</span>).append(part);
-    }
+  url: <span>'index.html'</span>,
+  success: function(data) {
+    let part = $(data).filter(<span>'main'</span>);
+     $(<span>'article'</span>).append(part);
+  }
 })</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true"><em>// AJAX with Promise</em>
+    <button type="button" class="code">Run Code</button>
+    <pre><code contenteditable="true"><em>// AJAX with Promise</em>
 $.ajax({
-    url: <span>'index.html'</span>,
-    success: function(data) {
-        var part = $(data).filter(<span>'.jumbotron'</span>);
-        $(<span>'article'</span>).append(part);
-    }
+  url: <span>'index.html'</span>,
+  success: function(data) {
+    let part = $(data).filter(<span>'main'</span>);
+    $(<span>'article'</span>).append(part);
+  }
 }).then(function() {
-     $(<span>'article'</span>).show().fadeOut(2000);
+   $(<span>'article'</span>)
+      .show()
+      .fadeOut(2000);
 })</code></pre>
-            <button type="button" class="code">Run Code</button>
-        </menu>
-        <header>
-            <h1>ajax()</h1>
-            <h2>Пример использования метода ajax(), аналогичный предыдущему примеру с load()</h2>
-            <p><code>$(<span>'article'</span>).load(<span>'index.html .jumbotron'</span>)</code></p>
-        </header>
-        <article>
-			<h2>Пробуем загрузить контент &rarr;</h2>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    <button type="button" class="code">Run Code</button>
+</aside>
 </body>
 </html>
-

@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример работы с атрибутами и свойствами элементов</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
@@ -10,66 +10,70 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script>
-        $(function(){
-            var status = function() {
-                var $input = $("#check");
-                out("$('#check').attr('checked'): " + $input.attr('checked') + "\n"
-                          + "$('#check').prop('checked'): " + $input.prop('checked') + "\n"
-                          + "$('#check').is(':checked'): " + $input.is(':checked'))
-            };
+      $(function () {
+        var status = function () {
+          var $input = $('#check')
+          replaceOutput("#output", `$('#check').attr('checked'): ${$input.attr('checked')}
+$('#check').prop('checked'): ${$input.prop('checked')}
+$('#check').is(':checked'): ${$input.is(':checked')}`)
+        }
 
-            $("#check").change(status);
-            $(".code").click(status);
-        });
+        $('#check').change(status)
+        $('.code').click(status)
+      })
     </script>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu label="Try...">
-            <a href="class.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev </a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <a href="height.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-            <hr/>
-            <h3>attr()</h3>
-            <pre><code contenteditable="true"><em>// "check"</em>
+<main id="content">
+    <header>
+        <h1>Свойства и атрибуты</h1>
+        <h2>Почувствуй разницу между attr() и prop()</h2>
+    </header>
+    <article>
+        <p>
+            <input id="check" type="checkbox" checked="checked">
+            <label for="check">Check me</label>
+        </p>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+
+<aside>
+    <nav>
+        <a href="class.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="height.html" title="go next" class="button" rel="next">Next &rarr;</a>
+    </nav>
+    <hr/>
+    <h3>attr()</h3>
+    <pre><code contenteditable="true"><em>// "check"</em>
 $(<span>'#check'</span>).attr(<span>'checked'</span>, <span>true</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true"><em>// "uncheck"</em>
+    <button type="button" class="code">Run Code</button>
+    <pre><code contenteditable="true"><em>// "uncheck"</em>
 $(<span>'#check'</span>).attr(<span>'checked'</span>, <span>false</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <h3>prop()</h3>
-            <pre><code contenteditable="true"><em>// check</em>
+    <button type="button" class="code">Run Code</button>
+    <h3>prop()</h3>
+    <pre><code contenteditable="true"><em>// check</em>
 $(<span>'#check'</span>).prop(<span>'checked'</span>, <span>true</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true"><em>// uncheck</em>
+    <button type="button" class="code">Run Code</button>
+    <pre><code contenteditable="true"><em>// uncheck</em>
 $(<span>'#check'</span>).prop(<span>'checked'</span>, <span>false</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true"><em>// disable checkbox</em>
+    <button type="button" class="code">Run Code</button>
+    <pre><code contenteditable="true"><em>// disable checkbox</em>
 $(<span>'#check'</span>).prop(<span>'disabled'</span>, <span>true</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true"><em>// enable checkbox</em>
+    <button type="button" class="code">Run Code</button>
+    <pre><code contenteditable="true"><em>// enable checkbox</em>
 $(<span>'#check'</span>).prop(<span>'disabled'</span>, <span>false</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-        </menu>
-        <header>
-            <h1>Свойства и атрибуты</h1>
-            <h2>Почувствуй разницу между attr() и prop()</h2>
-        </header>
-        <div id="output">
-            <h3>Output</h3>
-            <pre></pre>
-        </div>
-        <article>
-            <p>
-                <input id="check" type="checkbox" checked="checked">
-                <label for="check">Check me</label>
-            </p>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    <button type="button" class="code">Run Code</button>
+</aside>
+
+<aside id="output">
+    <h3>Output</h3>
+    <pre></pre>
+</aside>
+
 </body>
 </html>
-

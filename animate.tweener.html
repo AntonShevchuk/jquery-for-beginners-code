@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример расширения animate через tweener</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
@@ -10,73 +10,58 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script>
-        // jQuery.Animation.tweener( propsList, function( property, value ) {})
-        jQuery.Animation.tweener( "diagonal", function( property, value ) {
-            var tween = this.createTween( property, value );
-            var target = tween.cur();
-            var elem = tween.elem;
+      // jQuery.Animation.tweener( propsList, function( property, value ) {})
+      jQuery.Animation.tweener('diagonal', function (property, value) {
+        let tween = this.createTween(property, value)
+        let target = tween.cur()
+        let elem = tween.elem
 
-/*
-            A
-            |\
-          b | \ c
-            |  \
-            |___\
-          C   a   B
-*/
-            var a = jQuery.css( elem, 'width', true );
-            var b = jQuery.css( elem, 'height', true );
-            var c =  Math.sqrt(a*a + b*b);
-            var sinA = a/c;
-            var sinB = b/c;
-            appendOut('Hypotenuse (start): '+c+'\n');
-            tween.start = c;
-            tween.end = value;
+        /*
+                    A
+                    |\
+                  b | \ c
+                    |  \
+                    |___\
+                  C   a   B
+        */
+        let a = jQuery.css(elem, 'width', true)
+        let b = jQuery.css(elem, 'height', true)
+        let c = Math.ceil(Math.sqrt(a * a + b * b))
+        let sinA = a / c
+        let sinB = b / c
+        output(`Hypotenuse (start): ${c}\n`)
+        tween.start = c
+        tween.end = value
 
-            tween.run = function(progress) {
-                // вычисление искомого значения
-                var newc = this.start + ((this.end - this.start) * progress);
+        tween.run = function (progress) {
+          // вычисление искомого значения
+          let newC = this.start + ((this.end - this.start) * progress)
 
-                var width = sinA*newc;
-                var height = sinB*newc;
+          let width = Math.ceil(sinA * newC)
+          let height = Math.ceil(sinB * newC)
 
-                // непосредственно измение свойств элемента
-                if (progress == 1) {
-                    width = Math.ceil(width);
-                    height = Math.ceil(height);
-                    appendOut('Hypotenuse (finish): '+Math.sqrt(width*width + height*height)+'\n');
-                }
+          // непосредственно изменение свойств элемента
+          if (progress === 1) {
+            output(`Hypotenuse (finish): ${Math.ceil(Math.sqrt(width * width + height * height))}\n`)
+          }
 
-                tween.elem.style.width = width + tween.unit;
-                tween.elem.style.height = height + tween.unit;
-            };
-            return tween;
-        });
+          tween.elem.style.width = width + tween.unit
+          tween.elem.style.height = height + tween.unit
+        }
+        return tween
+      })
     </script>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu label="Try...">
-			<a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <hr/>
-            <pre><code contenteditable="true">$(<span>'img'</span>).animate({
-    <span>'diagonal'</span>:400
-}, 2000)</code></pre>
-            <button type="button" class="code">Run Code</button>
-        </menu>
-        <div id="output">
-            <h3>Output</h3>
-            <pre></pre>
-        </div>
-        <header>
-            <h1><a href="index.html">Анимация</a></h1>
-            <h2>Пример расширения анимации через tweener</h2>
-        </header>
-        <article id="stick" class="box">
-            <h2>Article</h2>
-            <p>
-                <img src="images/photo-bumblebee-tumb.jpg" alt="Bumblebee" class="left" width="200" />
+<main id="content">
+    <header>
+        <h1><a href="index.html">Анимация</a></h1>
+        <h2>Пример расширения анимации через tweener</h2>
+    </header>
+    <article id="stick" class="box">
+        <h2>Article</h2>
+        <p>
+            <img src="images/photo-bumblebee-tumb.jpg" alt="Bumblebee" class="left" width="200"/>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -87,11 +72,25 @@
             tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
             fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+    </nav>
+    <hr/>
+    <pre><code contenteditable="true">$(<span>'img'</span>).animate({
+  <span>'diagonal'</span>:400
+}, 2000)</code></pre>
+    <button type="button" class="code">Run Code</button>
+</aside>
+<aside id="output">
+    <h3>Output</h3>
+    <pre></pre>
+</aside>
 </body>
 </html>
-

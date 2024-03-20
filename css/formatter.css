@@ -1,0 +1,171 @@
+header {
+    background: #fff;
+    padding: 2px;
+    margin: 20px;
+    border-left: 1px dotted #ccc;
+}
+
+header:before {
+    color: #777;
+    font-size: 12px;
+    content: "<header>"
+}
+
+header:after {
+    color: #777;
+    font-size: 12px;
+    content: "</header>"
+}
+
+main {
+    padding: 2px;
+}
+
+main:before {
+    color: #777;
+    font-size: 12px;
+    content: '<main id="content">'
+}
+
+main:after {
+    color: #777;
+    font-size: 12px;
+    content: '</main>'
+}
+
+article {
+    background: #fff;
+    padding: 2px;
+    margin: 20px;
+    border-left: 1px dotted #ccc;
+}
+
+article:before {
+    color: #777;
+    font-size: 12px;
+    content: "<article>"
+}
+
+article#stick:before {
+    content: '<article id="stick" class="box">'
+}
+
+article:after {
+    color: #777;
+    font-size: 12px;
+    content: "</article>"
+}
+
+
+h1, h2, h3 {
+    color: #000 !important;
+    font-size: 1.2em !important;
+    font-weight: normal !important;
+    background: #fff;
+}
+
+h1:before {
+    color: #777;
+    font-size: 12px;
+    content: "<h1>"
+}
+
+h1:after {
+    color: #777;
+    font-size: 12px;
+    content: "</h1>"
+}
+
+h2 {
+    background: #fff;
+    border: 0 !important;
+}
+
+h2:before {
+    color: #777;
+    font-size: 12px;
+    content: "<h2>"
+}
+
+h2:after {
+    color: #777;
+    font-size: 12px;
+    content: "</h2>"
+}
+
+p {
+    background: #fff;
+    margin: 12px 8px;
+}
+
+p:before {
+    color: #777;
+    font-size: 12px;
+    content: "<p>"
+}
+
+p:after {
+    color: #777;
+    font-size: 12px;
+    content: "</p>"
+}
+
+ul {
+    font-size: 12px;
+    background: #fff;
+    padding-left: 20px;
+}
+
+ul:before {
+    color: #777;
+    font-size: 12px;
+    content: "<ul>"
+}
+
+ul:after {
+    color: #777;
+    font-size: 12px;
+    content: "</ul>"
+}
+
+li {
+    border-left: 1px dotted #ccc;
+    list-style: none;
+    padding-left: 20px;
+    background: #fff;
+}
+
+li:before {
+    color: #777;
+    font-size: 12px;
+    content: "<li>"
+}
+
+li:after {
+    color: #777;
+    font-size: 12px;
+    content: "</li>"
+}
+
+footer {
+    background: #fff;
+    padding: 2px;
+    margin: 20px;
+    border-left: 1px dotted #ccc;
+}
+
+footer:before {
+    color: #777;
+    display: block;
+    font-size: 12px;
+    text-align: left;
+    content: "<footer>";
+}
+
+footer:after {
+    color: #777;
+    display: block;
+    font-size: 12px;
+    text-align: left;
+    content: "</footer>"
+}

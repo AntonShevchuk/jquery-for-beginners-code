@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Выпадающее меню с AJAX</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
@@ -11,98 +11,97 @@
     <script type="text/javascript" src="js/code.js"></script>
 
     <script type="text/javascript">
-    $(function(){
+      $(function () {
         $('.topmenu ul li').hover(
-            function() {
-                var $this = $(this);
-                if ($this.find('ul').length == 0) {
-                    var file = $(this).data('file');
-                    var li = $(this);
-                    $.ajax({
-                        url: 'ajax/'+file+'.html',
-                        beforeSend: function(){
-                             li.addClass('loading');
-                        },
-                        success: function(data){
-                             li.append(data);
-                             li.find('ul').stop(true, true);
-                             li.find('ul').slideDown();
-                             li.removeClass('loading');
-                        }
-                    });
-                } else {
-                    $this.find('ul').stop(true, true);
-                    $this.find('ul').slideDown();
+          function () {
+            let $this = $(this)
+            if ($this.find('ul').length === 0) {
+              let file = $(this).data('file')
+              let li = $(this)
+              $.ajax({
+                url: 'ajax/' + file + '.html',
+                beforeSend: function () {
+                  li.addClass('loading')
+                },
+                success: function (data) {
+                  li.append(data)
+                  li.find('ul').stop(true, true)
+                  li.find('ul').slideDown()
+                  li.removeClass('loading')
                 }
-                $this.addClass("active");
-            },
-            function() {
-                var $this = $(this);
-                $this.find('ul').slideUp('fast');
-                $this.removeClass("active");
+              })
+            } else {
+              $this.find('ul').stop(true, true)
+              $this.find('ul').slideDown()
             }
-        );
-    });
+            $this.addClass('active')
+          },
+          function () {
+            let $this = $(this)
+            $this.find('ul').slideUp('fast')
+            $this.removeClass('active')
+          }
+        )
+      })
     </script>
 
-<style type="text/css">
-    .topmenu ul, .topmenu ul li{
-        margin: 0;
-        padding: 0;
-        display: inline;
-        margin-right:2px;
-    }
-    .topmenu ul li {
-        float: left;
-        position:relative;
-        width:140px;
-    }
-    .topmenu li a{
-        display: block;
-        padding:10px 10px 10px 30px;
-        margin:1px 0px;
-        color: #0000FF;
-        text-decoration: none;
-        border:1px solid #999;
-        background: url('images/window.gif') no-repeat 10px center;
-    }
-    .topmenu ul li a:HOVER{
-        color: #0000CC;
-    }
+    <style>
+        .topmenu ul, .topmenu ul li {
+            padding: 0;
+            display: inline;
+            margin: 0 2px 0 0;
+        }
 
-    .topmenu ul ul {
-        display: none;
-        position:absolute;
-        top:38px;
-    }
+        .topmenu ul li {
+            float: left;
+            position: relative;
+            width: 140px;
+        }
 
-    .topmenu li li {
-        display:block;
-        border-top:0;
-        background: #fff;
-        z-index: 99;
-    }
-    .active {
-        background-color:#eee;
-    }
-    .loading {
-        background: url('images/ajax-loader.gif') no-repeat right;
-    }
-    article {
-        height: 240px;
-        padding: 20px;
-        position: relative;
-    }
-</style>
+        .topmenu li a {
+            display: block;
+            padding: 10px 10px 10px 30px;
+            margin: 1px 0;
+            color: #0000FF;
+            text-decoration: none;
+            border: 1px solid #999;
+            background: url('images/window.gif') no-repeat 10px center;
+        }
+
+        .topmenu ul li a:HOVER {
+            color: #0000CC;
+        }
+
+        .topmenu ul ul {
+            display: none;
+            position: absolute;
+            top: 38px;
+        }
+
+        .topmenu li li {
+            display: block;
+            border-top: 0;
+            background: #fff;
+            z-index: 99;
+        }
+
+        .active {
+            background-color: #eee;
+        }
+
+        .loading {
+            background: url('images/ajax-loader.gif') no-repeat right;
+        }
+
+        article {
+            height: 240px;
+            padding: 20px;
+            position: relative;
+        }
+    </style>
 </head>
 <body>
-<div id="content" class="wrapper box">
-    <menu label="Try...">
-        <a href="ajax.google.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-        <hr/>
-    </menu>
+<main id="content">
     <header>
         <h1>Выпадающее меню</h1>
         <h2>Простое и лаконичное</h2>
@@ -117,17 +116,16 @@
         </div>
     </article>
     <footer>
-        &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
     </footer>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+</main>
 
-        ga('create', 'UA-1669896-15', 'auto');
-        ga('send', 'pageview');
-    </script>
-</div>
+<aside>
+    <nav>
+        <a href="ajax.jsonp.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+    </nav>
+</aside>
 </body>
 </html>

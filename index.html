@@ -3,28 +3,24 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Учебник: jQuery для начинающих. Примеры</title>
+    <title>jQuery for beginners. Examples</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
-
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- jQuery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 </head>
 <body>
-
 <!-- intro -->
 <header class="container-md my-4">
     <div class="row justify-content-center">
         <div class="bg-light border rounded p-4 col-11 col-md-11 col-lg-10 col-xl-9 col-xxl-8">
             <h1>jQuery для начинающих</h1>
-            <p>Живые примеры, их можно пощупать и скопировать ;)</p>
-
+            <p>«Живые» примеры как дополнение к учебнику, их можно пощупать и скопировать ;)</p>
             <a class="btn btn-primary btn-lg" href="https://anton.shevchuk.name/jquery-book/" role="button">
                 <i class="bi bi-book"></i>
                 Учебник
@@ -42,30 +38,41 @@
 <main class="container-md">
     <div class="row justify-content-center">
         <div class="col-11 col-md-11 col-lg-10 col-xl-9 col-xxl-8 p-0">
+
+            <article class="my-4">
+                <h2 class="sticky-top bg-white p-2">Style Guides!</h2>
+                <ul class="list-group">
+                    <li class="list-group-item py-3">
+                        <a href="style.guide.html">Правила написания поддерживаемого кода</a>
+                        <p class="my-0">Данная статья вне разделов, читайте и следуйте этим простым правилам</p>
+                    </li>
+                </ul>
+            </article>
+
             <article class="my-4">
                 <h2 class="sticky-top bg-white p-2">О HTML и CSS</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="html.example.html">Самая простая страничка на HTML5</a>
-                        <p>На эту страницу я несколько раз ссылаюсь в книге, так что пусть будет первой</p>
+                        <p class="my-0">На эту страницу я несколько раз ссылаюсь в книге, так что пусть будет первой</p>
                     </li>
-                    <li class="list-group-item">
-                        <a href="css.float.html">CSS и float</a>
+                    <li class="list-group-item py-3">
+                        <a href="css.float.html">Свойство float в CSS</a>
+                        <p class="my-0">Наглядный пример, ничего более</p>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="css.priority.html">Приоритеты CSS селекторов</a>
-                        <p>Не все верстальщики читали wikipedia, так что дерзайте</p>
+                        <p class="my-0">Не все верстальщики читали wikipedia, так что дерзайте</p>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="css.selectors.html">Селекторы</a>
-                        <p>Примеры использования CSS3 селекторов (а так же <a href="css.link-types.html">пример с
-                            расширениями
-                            файлов</a> и <a href="css.selectors-test.html">небольшой тест</a> ;)</p>
+                        <p class="my-0">Примеры использования CSS3 селекторов (а так же <a href="css.link-types.html">пример с
+                            расширениями файлов</a> и <a href="css.selectors-test.html">небольшой тест</a> ;)</p>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="sizzle.html">Производительность выборок</a>
-                        <p>Небольшое исследование производительности от <a href="https://javascript.info/">Ильи
-                            Кантора</a></p>
+                        <p class="my-0">Небольшое исследование производительности от <a href="https://javascript.info/">
+                            Ильи Кантора</a></p>
                     </li>
                 </ul>
             </article>
@@ -73,7 +80,7 @@
             <article class="my-4">
                 <h2 class="sticky-top bg-white p-2">Document Ready!</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="ready.html">$(handler)</a> &mdash; Будь готов!
                     </li>
                 </ul>
@@ -82,19 +89,19 @@
             <article class="my-4">
                 <h2 class="sticky-top bg-white p-2">Атрибуты элементов и CSS</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="css.html">Метод css()</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="class.html">Метод addClass() и собратья</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="property.html">Различия методов prop() и attr()</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="height.html">О высотах</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="form.html">Работа с элементами формы</a>
                     </li>
                 </ul>
@@ -103,16 +110,16 @@
             <article class="my-4">
                 <h2 class="sticky-top bg-white p-2">События</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="events.basic.html">Основы работы с событиями</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="events.mouse.html">События мышки</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="events.form.html">События элементов форм</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="events.namespace.html">События и пространства имён</a>
                     </li>
                 </ul>
@@ -121,28 +128,28 @@
             <article class="my-4">
                 <h2 class="sticky-top bg-white p-2">Анимация</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="hide.html">Методы hide, show и toggle</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="slide.html">Семейство методов slide</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="fade.html">Семейство методов fade</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="animate.html">Использование animate без обёрток</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="animate.easing.html">Использование плагина easing</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="animate.queue.html">Пример работы очереди fx</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="animate.game.html">Пример работы с несколькими очередями</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="menu.drop-down.html">Пример выпадающего меню</a>
                     </li>
                 </ul>
@@ -151,25 +158,25 @@
             <article class="my-4">
                 <h2 class="sticky-top bg-white p-2">AJAX</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="ajax.load.html">Метод load()</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="ajax.settings.html">Метод ajax()</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="ajax.datatype.html">Пример загрузки HTML/XML/JSON/TXT</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="ajax.script.html">Динамическая подгрузка скриптов</a>
                     </li>
-                    <li class="list-group-item">
-                        <a href="ajax.live.html">Живой AJAX</a>
+                    <li class="list-group-item py-3">
+                        <a href="ajax.live.html">«Живой» AJAX</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="ajax.jsonp.html">AJAX+JSONP=Power</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="menu.ajax.html">Пример выпадающего меню</a>
                     </li>
                 </ul>
@@ -178,16 +185,16 @@
             <article class="my-4">
                 <h2 class="sticky-top bg-white p-2">Deferred</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="deferred.html">Работаем с $.Deferred</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="when.html">Пробуем $.when</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="deferred.pipe.html">Цепочки вызовов</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="callbacks.html">Используем $.Callbacks</a>
                     </li>
                 </ul>
@@ -196,13 +203,13 @@
             <article class="my-4">
                 <h2 class="sticky-top bg-white p-2">jQuery UI</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="accordion.html">Реализация аккордиона без использования jQuery UI</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="tabs.html">Реализация закладок без jQuery UI</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="widget.html">Реализация виджета для jQuery UI</a>
                     </li>
                 </ul>
@@ -211,36 +218,33 @@
             <article class="my-4">
                 <h2 class="sticky-top bg-white p-2">Ещё примеры кода</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="style.guide.html">Правила для написания поддерживаемого кода</a>
-                    </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="events.optimization.html">Оптимизации в обработке событий</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="color.html">Расширение анимации</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="easing.html">Прокачиваем easing'а</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="animate.step.html">Прокачиваем step</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="animate.prefilter.html">Расширяем префильтры анимации</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="animate.tweener.html">Анимация через tweener</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         Примеры плагинов с <a href="plugin.global.html">глобальными настройками</a>, с <a
                             href="plugin.html">индивидуальными</a>
                         и с <a href="plugin.extend.html">расширенным функционалом</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="ajax.transport.html">Создания нового транспорта для AJAX</a>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item py-3">
                         <a href="sizzle.filter.html">Создания простого фильтра для Sizzle</a>
                     </li>
                 </ul>

@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример манипуляций над CSS</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
@@ -11,40 +11,14 @@
     <script type="text/javascript" src="js/code.js"></script>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu label="Try...">
-            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <a href="class.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-            <hr/>
-            <pre><code contenteditable="true">alert($(<span>'p'</span>).css(<span>'color'</span>))</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true">$(<span>'p'</span>).css(<span>'color'</span>,<span>'red'</span>)</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true">$(<span>'p'</span>).css({
-    <span>'color'</span>:<span>'green'</span>,
-    <span>'background-color'</span>:<span>'#000'</span>
-})</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true">$(<span>'p'</span>).css({
-    color:<span>'#0F0F0F'</span>,
-    backgroundColor:<span>'#fff'</span>,
-    width:<span>'auto'</span>
-})</code></pre>
-            <button type="button" class="code">Run Code</button>
-            <pre><code contenteditable="true">$(<span>'p'</span>).css(<span>'width'</span>, function(i, v){
-    return parseFloat(v) * 1/(i+1)
-})</code></pre>
-            <button type="button" class="code">Run Code</button>
-        </menu>
-        <header>
-            <h1>Пример манипуляций над CSS</h1>
-            <h2>Пробуем... &rarr;</h2>
-        </header>
-        <article>
-            <h2>Article Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+<main id="content">
+    <header>
+        <h1>Пример манипуляций над CSS</h1>
+        <h2>Пробуем... &rarr;</h2>
+    </header>
+    <article>
+        <h2>Article Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
             euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
@@ -54,25 +28,52 @@
             tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
             fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+    </article>
+    <article>
+        <h2>Article Title</h2>
+        <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
             nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
             blandit sapien bibendum. Proin vel vulputate nisl. Duis tempor imperdiet placerat. Pellentesque
             faucibus consequat magna, et bibendum nisl egestas non. Pellentesque sit amet mattis augue.
             Aenean at diam tincidunt purus sollicitudin gravida non in nisi. Fusce bibendum, magna in
-            adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse 
+            adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
             adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
             nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
             libero. Fusce et ultrices lectus.</p>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="class.html" title="go next" class="button" rel="next">Next &rarr;</a>
+    </nav>
+    <hr/>
+    <pre><code contenteditable="true">alert($(<span>'p'</span>).css(<span>'color'</span>))</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code contenteditable="true">$(<span>'p'</span>).css(<span>'color'</span>,<span>'red'</span>)</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code contenteditable="true">$(<span>'p'</span>).css({
+    <span>'color'</span>:<span>'green'</span>,
+    <span>'background-color'</span>:<span>'#000'</span>
+})</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code contenteditable="true">$(<span>'p'</span>).css({
+    color:<span>'#0F0F0F'</span>,
+    backgroundColor:<span>'#fff'</span>,
+    width:<span>'auto'</span>
+})</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code contenteditable="true">$(<span>'p'</span>).css(<span>'width'</span>, function(i, v){
+    return parseFloat(v) * 1/(i+1)
+})</code></pre>
+    <button type="button" class="code">Run Code</button>
+</aside>
 </body>
 </html>
-

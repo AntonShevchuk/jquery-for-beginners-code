@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример использования с $.Callbacks</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
@@ -14,156 +14,143 @@
             margin: 10px;
             position: relative;
         }
+
         #car {
             width: 100px;
             height: 100px;
             position: absolute;
             background: url(images/car.png) 50% 50% no-repeat;
-
-            -webkit-transition: all 0.2s ease-in-out;
-            -moz-transition: all 0.2s ease-in-out;
-            -o-transition: all 0.2s ease-in-out;
-            -ms-transition: all 0.2s ease-in-out;
+            r
             transition: all 0.2s ease-in-out;
         }
+
         .up {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -o-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
             transform: rotate(0deg);
         }
+
         .down {
-            -webkit-transform: rotate(180deg);
-            -moz-transform: rotate(180deg);
-            -o-transform: rotate(180deg);
-            -ms-transform: rotate(180deg);
             transform: rotate(180deg);
         }
+
         .right {
-            -webkit-transform: rotate(90deg);
-            -moz-transform: rotate(90deg);
-            -o-transform: rotate(90deg);
-            -ms-transform: rotate(90deg);
             transform: rotate(90deg);
         }
+
         .left {
-            -webkit-transform: rotate(270deg);
-            -moz-transform: rotate(270deg);
-            -o-transform: rotate(270deg);
-            -ms-transform: rotate(270deg);
             transform: rotate(270deg);
         }
     </style>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script>
-        var C = $.Callbacks();
-        var car;
+      var C = $.Callbacks()
+      var car
 
-        $(function(){
-            car = $('#car');
-            C.add(function(speed){
-                appendOut('\nSpeed 200px per '+speed+' ms: ')
-            });
+      $(function () {
+        car = $('#car')
+        C.add(function (speed) {
+          output('\nSpeed 200px per ' + speed + ' ms: ')
+        })
 
-            $(document).keydown(function(e){
-                // 37 - left
-                // 38 - up
-                // 39 - right
-                // 40 - down
-                switch (e.keyCode) {
-                    case 37:
-                        C.add(function(speed){
-                            car.queue(function(){
-                                $(this).attr('class', 'left')
-                                       .dequeue();
-                            });
-                            car.animate({left:'-=200'}, speed);
-                            appendOut('&larr; ');
-                        });
-                        appendOut('\nAdded &larr;');
-                        break;
-                    case 38:
-                        C.add(function(speed){
-                            car.queue(function(){
-                                $(this).attr('class', 'up')
-                                       .dequeue();
-                            }).animate({top:'-=200'}, speed);
-                            appendOut('&uarr; ');
-                        });
-                        appendOut('\nAdded &uarr;');
-                        break;
-                    case 39:
-                        C.add(function(speed){
-                            car.queue(function(){
-                                $(this).attr('class', 'right')
-                                       .dequeue();
-                            });
-                            car.animate({left:'+=200'}, speed);
-                            appendOut('&rarr; ');
-                        });
-                        appendOut('\nAdded &rarr;');
-                        break;
-                    case 40:
-                        C.add(function(speed){
-                            car.queue(function(){
-                                $(this).attr('class', 'down')
-                                       .dequeue();
-                            });
-                            car.animate({top:'+=200'}, speed);
-                            appendOut('&darr; ');
-                        });
-                        appendOut('\nAdded &darr;');
-                        break;
-                }
-
-            })
-        });
+        $(document).keydown(function (e) {
+          // 37 - left
+          // 38 - up
+          // 39 - right
+          // 40 - down
+          switch (e.keyCode) {
+            case 37:
+              C.add(function (speed) {
+                car.queue(function () {
+                  $(this).attr('class', 'left')
+                    .dequeue()
+                })
+                car.animate({ left: '-=200' }, speed)
+                output('&larr; ')
+              })
+              output('\nAdded &larr;')
+              break
+            case 38:
+              C.add(function (speed) {
+                car.queue(function () {
+                  $(this).attr('class', 'up')
+                    .dequeue()
+                }).animate({ top: '-=200' }, speed)
+                output('&uarr; ')
+              })
+              output('\nAdded &uarr;')
+              break
+            case 39:
+              C.add(function (speed) {
+                car.queue(function () {
+                  $(this).attr('class', 'right')
+                    .dequeue()
+                })
+                car.animate({ left: '+=200' }, speed)
+                output('&rarr; ')
+              })
+              output('\nAdded &rarr;')
+              break
+            case 40:
+              C.add(function (speed) {
+                car.queue(function () {
+                  $(this).attr('class', 'down')
+                    .dequeue()
+                })
+                car.animate({ top: '+=200' }, speed)
+                output('&darr; ')
+              })
+              output('\nAdded &darr;')
+              break
+          }
+        })
+      })
     </script>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu label="Try...">
-            <a href="deferred.pipe.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <hr/>
-            <pre><code><em>// use button up arrow: &uarr;</em>
+<main id="content">
+    <header>
+        <h1>Пример работы $.Callbacks</h1>
+        <p>На практике мне ещё не приходилось использовать, поэтому пример немного надуманный - запрограммируйте
+            поездку машинки используя стрелки на клавиатуре, а затем запустите программу, указав скорость анимации.
+        </p>
+        <p>Чем меньше цифра, тем быстрее будет перемещаться машинка.</p>
+    </header>
+    <article>
+        <div id="car"></div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="deferred.pipe.html" title="go prev" class="button" rel="prev">&larr; Back</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+    </nav>
+    <hr/>
+    <pre><code><em>// use button up arrow: &uarr;</em>
 C.add(function(speed){
     car.animate({top:'-=200px'}, speed)
 })</code></pre>
-            <pre><code><em>// use button down arrow: &darr;</em>
+    <pre><code><em>// use button down arrow: &darr;</em>
 C.add(function(speed){
     car.animate({top:'+=200px'}, speed)
 })</code></pre>
-            <pre><code><em>// use button right arrow: &rarr;</em>
+    <pre><code><em>// use button right arrow: &rarr;</em>
 C.add(function(speed){
     car.animate({left:'+=200px'}, speed)
 })</code></pre>
-            <pre><code><em>// use button left arrow: &larr;</em>
+    <pre><code><em>// use button left arrow: &larr;</em>
 C.add(function(speed){
     car.animate({left:'-=200px'}, speed)
 })</code></pre>
-<pre><code contenteditable="true">C.fire(200)</code></pre>
-            <button type="button" class="code">Run Code</button>
-        </menu>
-        <header>
-            <h1>Пример работы $.Callbacks</h1>
-            <h2>На практике мне ещё не приходилось использовать, поэтому пример немного надуманный - запрограммируйте поездку
-                машинки используя стрелки на клавиатуре, а затем запустите программу, указав скорость</h2>
-        </header>
-        <div id="output">
-            <h3>Output</h3>
-            <pre></pre>
-        </div>
-        <article>
-            <div id="car"></div>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    <pre><code contenteditable="true">C.fire(200)</code></pre>
+    <button type="button" class="code">Run Code</button>
+</aside>
+<aside id="output">
+    <h3>Output</h3>
+    <pre></pre>
+</aside>
 </body>
 </html>
-

@@ -2,7 +2,7 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Accordion</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
@@ -10,24 +10,24 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script type="text/javascript">
-        $(function(){
-            var toDisplay = 1;
+      $(function () {
+        let toDisplay = 1
 
-            $("article h2").click(function(){
-                var $this = $(this);
-                $this
-                    .next("p")
-                        .slideToggle("slow")
-                    .siblings("p:visible")
-                        .slideUp("slow");
-                $this.toggleClass("active");
-                $this.siblings("h2").removeClass("active");
-            })
-                .eq(toDisplay).addClass("active")
-                .next().show();
-        });
+        $('article h2').click(function () {
+          let $this = $(this)
+          $this
+            .next('p')
+            .slideToggle('slow')
+            .siblings('p:visible')
+            .slideUp('slow')
+          $this.toggleClass('active')
+          $this.siblings('h2').removeClass('active')
+        })
+          .eq(toDisplay).addClass('active')
+          .next().show()
+      })
     </script>
-    <style type="text/css">
+    <style>
         article h2 {
             background: #e9e7e7 url(images/arrows.png) no-repeat 618px 7px;
             padding: 7px 15px;
@@ -36,34 +36,31 @@
             border-bottom: none;
             cursor: pointer;
         }
+
         article h2:hover {
             background-color: #e3e2e2;
         }
+
         article h2.active {
             background-position: 618px -23px;
         }
+
         article p {
             display: none;
             margin: 0;
-            padding:  10px 15px 20px;
+            padding: 10px 15px 20px;
         }
     </style>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu>
-            <a href="index.html" title="go prev" class="button alignleft" rel="prev">&larr; Back </a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <a href="tabs.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-        </menu>
-        <header>
-           <h1>Реализация аккордиона</h1>
-           <h2>На jQuery без использования jQuery UI</h2>
-        </header>
-        <article>
-            <h2>Article Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+<main id="content">
+    <header>
+        <h1>Реализация аккордиона</h1>
+        <h2>На jQuery без использования jQuery UI</h2>
+    </header>
+    <article>
+        <h2>Article Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
             euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
@@ -73,8 +70,8 @@
             tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
             fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
-            <h2>Article Title</h2>
-            <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+        <h2>Article Title</h2>
+        <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
             nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
@@ -85,17 +82,27 @@
             adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
             nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
             libero. Fusce et ultrices lectus.</p>
-            <h2>Article Title</h2>
-            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+        <h2>Article Title</h2>
+        <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
             Morbi dapibus, dui in consequat pulvinar, nunc erat consequat ipsum, ut blandit nulla eros ac purus.
             In at justo sed lorem consequat fermentum. Nunc scelerisque purus sed neque rutrum adipiscing. Sed
             vehicula tristique dolor, quis porttitor magna dictum eu. Cras tristique erat non orci aliquam tempor.
             In hac habitasse platea dictumst. Nam eget sodales neque. Aenean adipiscing consequat diam, eu
             molestie diam dictum eu.</p>
-        </article>
-        <footer>
-           &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-    </div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+
+<aside>
+    <nav>
+        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="tabs.html" title="go next" class="button" rel="next">Next &rarr;</a>
+    </nav>
+</aside>
+
 </body>
 </html>

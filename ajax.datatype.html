@@ -2,26 +2,29 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример работы AJAX</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
     <script>
-        function toTextContainer(data) {
-            $('#text').text(data);
-        }
-        function toHtmlContainer(data) {
-            $('#html').text(data);
-        }
-        function toXmlContainer(data, status, xhr) {
-            $('#xml').text(xhr.responseText);
-        }
-        function toJsonContainer(data, status, xhr) {
-            $('#json').text(xhr.responseText);
-        }
+      function toTextContainer (data) {
+        $('#text').text(data)
+      }
+
+      function toHtmlContainer (data) {
+        $('#html').text(data)
+      }
+
+      function toXmlContainer (data, status, xhr) {
+        $('#xml').text(xhr.responseText)
+      }
+
+      function toJsonContainer (data, status, xhr) {
+        $('#json').text(xhr.responseText)
+      }
     </script>
     <style>
         article pre {
@@ -29,66 +32,59 @@
             padding: 20px;
         }
     </style>
- </head>
+</head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu>
-            <a href="ajax.settings.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev</a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <a href="ajax.script.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-            <hr/>
-			<pre><code>$.ajax({
-    url: <span>"ajax/example.txt"</span>, <em>// отткель</em>
+<main id="content">
+    <header>
+        <h1>Метод ajax()</h1>
+        <h2>Пример загрузки разных типов данных</h2>
+    </header>
+    <article>
+        <h3>Text</h3>
+        <pre><code id="text">...</code></pre>
+        <h3>HTML</h3>
+        <pre><code id="html">...</code></pre>
+        <h3>XML</h3>
+        <pre><code id="xml">...</code></pre>
+        <h3>JSON</h3>
+        <pre><code id="json">...</code></pre>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="ajax.settings.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="ajax.script.html" title="go next" class="button" rel="next">Next &rarr;</a>
+    </nav>
+    <hr/>
+    <pre><code>$.ajax({
+    url: <span>"ajax/example.txt"</span>,  <em>// отткель</em>
     dataType: <span>"text"</span>,         <em>// формат</em>
     success: toTextContainer  <em>// callback</em>
 });</code></pre>
-            <button type="button" class="code">Run Code</button>
-			<pre><code>$.ajax({
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$.ajax({
     url: <span>"ajax/example.html"</span>, <em>// отткель</em>
     dataType: <span>"html"</span>,         <em>// формат</em>
     success: toHtmlContainer  <em>// callback</em>
 });</code></pre>
-            <button type="button" class="code">Run Code</button>
-			<pre><code>$.ajax({
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$.ajax({
     url: <span>"ajax/example.xml"</span>, <em>// отткель</em>
     dataType: <span>"xml"</span>,         <em>// формат</em>
     success: toXmlContainer  <em>// callback</em>
 });</code></pre>
-            <button type="button" class="code">Run Code</button>
-			<pre><code>$.ajax({
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$.ajax({
     url: <span>"ajax/example.json"</span>, <em>// отткель</em>
     dataType: <span>"json"</span>,         <em>// формат</em>
     success: toJsonContainer  <em>// callback</em>
 });</code></pre>
-            <button type="button" class="code">Run Code</button>
-        </menu>
-        <header>
-            <h1>Метод ajax()</h1>
-            <h2>Пример загрузки разных типов данных</h2>
-        </header>
-        <article>
-			<h3>Text</h3>
-            <pre id="text">
-
-            </pre>
-			<h3>HTML</h3>
-            <pre id="html">
-
-            </pre>
-			<h3>XML</h3>
-            <pre id="xml">
-
-            </pre>
-			<h3>JSON</h3>
-            <pre id="json">
-
-            </pre>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    <button type="button" class="code">Run Code</button>
+</aside>
 </body>
 </html>
-

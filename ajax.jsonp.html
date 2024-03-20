@@ -2,23 +2,24 @@
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Пример использования JSONP</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
     <script>
-        function toJsonContainer(data, status, xhr) {
-            $('#json').text(data);
-        }
-        function buildImages(data) {
-            $.each(data.items, function(i, item){
-                $("<img/>").attr("src", item.media.m).appendTo("#images");
-                if ( i == 3 ) return false;
-            });
-        }
+      function toJsonContainer (data, status, xhr) {
+        $('#json').text(data)
+      }
+
+      function buildImages (data) {
+        $.each(data.items, function (i, item) {
+          $('<img/>').attr('src', item.media.m).appendTo('#images')
+          if (i === 3) return false
+        })
+      }
     </script>
     <style>
         article pre {
@@ -28,27 +29,48 @@
     </style>
 </head>
 <body>
-    <div id="content" class="wrapper box">
-        <menu>
-            <a href="ajax.script.html" title="go prev" class="button alignleft" rel="prev">&larr; Prev</a>
-            <a href="index.html" title="back to Index" class="button alignleft" rel="index">Index &sect;</a>
-            <a href="#" title="reload" class="button alignleft" onclick="window.location.reload();return false">Reload &curren;</a>
-            <a href="menu.ajax.html" title="go next" class="button alignright" rel="next">Next &rarr;</a>
-            <hr/>
-<pre><code>$.ajax({
+<main id="content">
+    <header>
+        <h1>Пример использования JSONP с простым сервером</h1>
+        <h2>Код сервера <a href="https://anton.shevchuk.name/book/code/ajax/example.code">code/ajax/example.code</a>
+        </h2>
+    </header>
+    <article>
+        <pre id="json">
+
+        </pre>
+    </article>
+    <article>
+        <div id="images">
+
+        </div>
+    </article>
+    <footer>
+        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+    </footer>
+</main>
+<aside>
+    <nav>
+        <a href="ajax.script.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
+        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="menu.ajax.html" title="go next" class="button" rel="next">Next &rarr;</a>
+    </nav>
+    <hr/>
+    <pre><code>$.ajax({
     url: <span>"https://anton.shevchuk.name/book/code/ajax/example.php?callback=?"</span>,
     dataType: <span>"jsonp"</span>,
     success: toJsonContainer
 });</code></pre>
-             <button type="button" class="code">Run Code</button>
-<pre><code>$.ajax({
+    <button type="button" class="code">Run Code</button>
+    <pre><code>$.ajax({
     url: <span>"https://anton.shevchuk.name/book/code/ajax/example.php?callback=?"</span>,
     dataType: <span>"jsonp"</span>,
     jsonpCallback: <span>"toJsonContainer"</span>
 });</code></pre>
-             <button type="button" class="code">Run Code</button>
-            <h3>Flickr API</h3>
-<pre><code contenteditable="true">$.getJSON(
+    <button type="button" class="code">Run Code</button>
+    <h3>Flickr API</h3>
+    <pre><code contenteditable="true">$.getJSON(
     <span>"https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?"</span>,
     {
         tags: <span>"orange"</span>,
@@ -57,25 +79,7 @@
     },
     buildImages
 );</code></pre>
-             <button type="button" class="code">Run Code</button>
-        </menu>
-        <header>
-            <h1>Пример использования JSONP с простым сервером</h1>
-            <h2>Код сервера <a href="https://anton.shevchuk.name/book/code/ajax/example.code">code/ajax/example.code</a></h2>
-        </header>
-        <article>
-            <pre id="json">
-
-            </pre>
-        </article>
-        <article>
-            <div id="images">
-
-            </div>
-        </article>
-        <footer>
-            &copy;copyright 2012-2017 Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
-        </footer>
-	</div>
+    <button type="button" class="code">Run Code</button>
+</aside>
 </body>
 </html>
