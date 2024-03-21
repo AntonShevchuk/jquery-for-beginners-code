@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Sizzle</title>
+    <title>Меряем производительность селекторов</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -28,36 +28,36 @@
     <script type="text/javascript" src="js/code.js"></script>
     <script>
       function query () {
-        return document.querySelectorAll('.my > div').length
+        document.querySelectorAll('.my > div')
       }
 
       function normal () {
-        return $('.my > div').length
+        $('.my > div')
       }
 
       function slow () {
         // to disable native FF query
         document.querySelectorAll = null
         slow = function () {
-          return $('.my > div').length
+          $('.my > div')
         }
-        return slow()
+        slow()
       }
 
       function findMore () {
-        return $('.my').find('>div').length
+        $('.my').find('>div')
       }
 
       function context () {
-        return $('>div', $('.my')).length
+        $('>div', $('.my'))
       }
 
       function context2 () {
-        return $('>div', '.my').length
+        $('>div', '.my')
       }
 
       function fast () {
-        return $('.my').children('div').length
+        $('.my').children('div')
         //$.grep($('.my').children(), function(a) { return a.tagName=='DIV' }).length
       }
 
@@ -75,7 +75,6 @@
             child = child.nextSibling
           }
         }
-        return arr.length
       }
 
       function runAllTests () {

@@ -10,27 +10,27 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
       // nothing, tag h2 is not exists
-      jQuery('article h2').append('<h2>Level 2</h2>')
+      jQuery('article h2').append('<h2>Level 1</h2>')
 
       // it's working
       // deprecated
       jQuery(document).ready(function () {
-        jQuery('article h2').append('<h3>Level 3</h3>')
+        jQuery('article h2').append('<h3>Level 2</h3>')
       })
 
       // it's working too
       $(function () {
-        jQuery('article h2').append('<h4>Level 4</h4>')
+        jQuery('article h2').append('<h4>Level 3</h4>')
       })
 
       $.ready.then(function () {
-        jQuery('article h2').append('<h4>Level 5</h4>')
+        jQuery('article h2').append('<h4>Level 4</h4>')
       });
 
       // anonymous function - best practices
       (function ($, undefined) {
         $(function () {
-          jQuery('article h2').append('<h5>Level 6</h5>')
+          jQuery('article h2').append('<h5>Level 5</h5>')
         })
       })(jQuery)
     </script>
@@ -79,34 +79,34 @@
     <hr/>
     <pre><code><em>// nothing, tag h2 is not exists</em>
 jQuery(<span>"article h2"</span>)
-  .append(<span>"Level 2"</span>)
+  .append(<span>"Level 1"</span>)
 
 <em>// it's working</em>
 <em>// deprecated</em>
 jQuery(document).ready(function(){
   jQuery(<span>"article h2"</span>)
-    .append(<span>"Level 3"</span>)
+    .append(<span>"Level 2"</span>)
 });
 
 <em>// it's working too</em>
 $(function(){
   jQuery(<span>"article h2"</span>)
-    .append(<span>"Level 4"</span>)
+    .append(<span>"Level 3"</span>)
 });
 
 <em>// for jQuery 3.x+</em>
 $.ready.then(function(){
   jQuery(<span>"article h2"</span>)
-    .append(<span>"Level 5"</span>)
+    .append(<span>"Level 4"</span>)
 });
 
 <em>// anonymous function - best practices</em>
-(function($, undefined){
+;(function($, undefined){
   $(function(){
     jQuery(<span>"article h2"</span>)
-      .append(<span>"Level 6"</span>)
+      .append(<span>"Level 5"</span>)
   });
-})(jQuery);</code></pre>
+})(jQuery)</code></pre>
 </aside>
 </body>
 </html>
