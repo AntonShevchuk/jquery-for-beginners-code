@@ -30,7 +30,7 @@
     <script type="text/javascript">
       $(function () {
         $('button.code').click(function () {
-          let hl = $('ul:first li:last').data('bingo', true)
+          $('ul:first li:last').data('bingo', true)
 
           let rand = Math.floor(Math.random() * 11) + 1
           for (let i = 0; i < rand; i++) {

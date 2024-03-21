@@ -24,14 +24,9 @@
             // internal links
             if (element.tagName.toUpperCase() !== 'A') return false
             if (element.getAttribute('href')) {
-              if ((element.getAttribute('href').indexOf('/') === 0)
+              return (element.getAttribute('href').indexOf('/') === 0)
                 || (element.getAttribute('href').indexOf(window.location.hostname) === 7) // http://...
-                || (element.getAttribute('href').indexOf(window.location.hostname) === 8) // https://...
-              ) {
-                return true
-              } else {
-                return false
-              }
+                || (element.getAttribute('href').indexOf(window.location.hostname) === 8);
             } else {
               return false
             }

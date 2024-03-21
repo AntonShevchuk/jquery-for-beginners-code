@@ -11,14 +11,14 @@
     <script type="text/javascript" src="js/code.js"></script>
     <script type="text/javascript">
       (function ($) {
-        // значени по умолчанию
-        var defaults = {
+        // значение по умолчанию
+        let defaults = {
           color: 'green'
         }
 
         $.fn.mySimplePlugin = function (params) {
           // актуальные настройки, будут индивидуальными при каждом запуске
-          var options = $.extend({}, defaults, options, params)
+          let options = $.extend({}, defaults, params)
 
           $(this).click(function () {
             $(this).css('color', options.color)

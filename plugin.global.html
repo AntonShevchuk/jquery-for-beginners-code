@@ -10,16 +10,17 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script type="text/javascript">
+      // актуальные настройки, глобальные
+      var options
+
       (function ($) {
-        // значени по умолчанию
-        var defaults = {
+        // значение по умолчанию
+        let defaults = {
           color: 'green'
         }
-        // актуальные настройки, глобальные
-        var options
 
         $.fn.mySimplePlugin = function (params) {
-          // при многократном вызове функции настройки будут сохранятся, и замещаться при необходимости
+          // при многократном вызове функции настройки будут сохранены, и замещаться при необходимости
           options = $.extend({}, defaults, options, params)
 
           $(this).click(function () {
