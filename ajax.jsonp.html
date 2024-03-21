@@ -15,8 +15,12 @@
       }
 
       function buildImages (data) {
+        const images = document.getElementById('images')
         $.each(data.items, function (i, item) {
-          $('<img/>').attr('src', item.media.m).appendTo('#images')
+          let img = document.createElement('img')
+          img.alt = `Flickr image #${i}`
+          img.src = item.media.m
+          images.append(img)
           if (i === 3) return false
         })
       }
@@ -25,6 +29,12 @@
         article pre {
             font-size: 14px;
             padding: 20px;
+        }
+
+        article img {
+            width: 300px;
+            padding: 3px;
+            float: left;
         }
     </style>
 </head>
@@ -46,7 +56,7 @@
         </div>
     </article>
     <footer>
-        &copy; Anton Shevchuk &mdash; <a href="https://anton.shevchuk.name/jquery-book/">jQuery Book</a>
+        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
     </footer>
 </main>
 <aside>
