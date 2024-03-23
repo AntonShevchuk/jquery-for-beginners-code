@@ -8,13 +8,13 @@ header {
 
 header:before {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "<header>"
 }
 
 header:after {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "</header>"
 }
 
@@ -24,13 +24,13 @@ main {
 
 main:before {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: '<main id="content">'
 }
 
 main:after {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: '</main>'
 }
 
@@ -44,7 +44,7 @@ article {
 
 article:before {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "<article>"
 }
 
@@ -54,27 +54,27 @@ article#stick:before {
 
 article:after {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "</article>"
 }
 
 
 h1, h2, h3 {
     color: #000 !important;
-    font-size: 1.2em !important;
+    font-size: 1.3rem !important;
     font-weight: normal !important;
     background: #fff;
 }
 
 h1:before {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "<h1>"
 }
 
 h1:after {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "</h1>"
 }
 
@@ -85,13 +85,13 @@ h2 {
 
 h2:before {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "<h2>"
 }
 
 h2:after {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "</h2>"
 }
 
@@ -102,31 +102,31 @@ article p {
 
 article p:before {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "<p>"
 }
 
 article p:after {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "</p>"
 }
 
 ul {
-    font-size: 12px;
+    font-size: 1.4rem;
     background: #fff;
     padding-left: 20px;
 }
 
 ul:before {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "<ul>"
 }
 
 ul:after {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "</ul>"
 }
 
@@ -139,13 +139,13 @@ li {
 
 li:before {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "<li>"
 }
 
 li:after {
     color: #777;
-    font-size: 12px;
+    font-size: 1.4rem;
     content: "</li>"
 }
 
@@ -159,7 +159,7 @@ footer {
 footer:before {
     color: #777;
     display: block;
-    font-size: 12px;
+    font-size: 1.4rem;
     text-align: left;
     content: "<footer>";
 }
@@ -167,7 +167,7 @@ footer:before {
 footer:after {
     color: #777;
     display: block;
-    font-size: 12px;
+    font-size: 1.4rem;
     text-align: left;
     content: "</footer>"
 }
