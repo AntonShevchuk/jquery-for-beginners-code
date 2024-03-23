@@ -68,7 +68,7 @@ select {
 html {
     min-height: 100%;
     font-family: Verdana, Tahoma, sans-serif;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 body {
@@ -84,7 +84,7 @@ hr {
     height: 1px;
     clear: both;
     background: #777;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 
 h1,
@@ -99,44 +99,32 @@ h6 {
 }
 
 h1 {
-    font-size: 1.8rem;
-    margin: 12px 8px;
-    padding: 6px 8px;
+    font-size: 1.6rem;
+    padding: 1.6rem 2rem;
 }
 
 h2 {
-    font-size: 1.6rem;
-    margin: 12px 8px;
-    padding: 6px 8px;
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
 }
 
 h3 {
     font-size: 1.4rem;
-    margin: 8px;
-    padding: 2px 8px;
+    padding: 1rem 2rem;
 }
 
-h4 {
+h4, h5, h6 {
     font-size: 1.2rem;
-    margin: 8px;
-    padding: 2px 8px;
+    padding: 1rem 2rem;
 }
 
-h5 {
-    font-size: 1.1rem;
-    margin: 8px;
-    padding: 2px 8px;
-}
-
-h6 {
-    font-size: 1.1rem;
-    margin: 8px;
-    padding: 2px 8px;
+p {
+    padding: 1rem 2rem;
 }
 
 pre {
     font-size: 1rem;
-    line-height: 1.4em;
+    line-height: 1.4rem;
     white-space: pre-wrap; /* css-3 */
     word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
@@ -185,10 +173,11 @@ a img {
 
 main {
     width: 640px;
-    margin: 10px auto;
+    margin: 1em auto;
+    padding: 0;
     background: #fff;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px;
     box-shadow: 2px 2px 4px #ccc;
 }
 
@@ -239,26 +228,28 @@ code[contenteditable] div {
 
 /* header */
 header {
-    margin-bottom: 16px;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+    background: #f5f5f5;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 header h1 {
-    margin-bottom: 0;
+
 }
 
 header h2 {
     font-weight: 400;
-    font-size: 1.3rem;
-    color: #999;
-    margin-top: 0;
+    font-size: 1.4rem;
+    color: #555;
 }
 
 header p {
     font-weight: 400;
     font-size: 1.2rem;
-    color: #777;
-    margin: 12px 8px;
-    padding: 6px 8px;
+    color: #333;
+    padding: 1rem 1.2rem;
 }
 
 /* /header */
@@ -266,16 +257,17 @@ header p {
 /* article */
 article {
     overflow: hidden;
-}
-
-article h2 {
     border-bottom: 1px solid #ccc;
 }
 
+article h2 {
+    padding-top: 2rem;
+}
+
 article p {
-    font-size: 1.2rem;
-    line-height: 1.6rem;
-    padding: 8px;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    padding: 1rem 2rem;
     text-align: justify;
     text-justify: newspaper;
 }
@@ -344,6 +336,9 @@ footer {
     text-align: center;
     font-size: 1.2em;
     padding: 16px;
+    background: #f5f5f5;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 /* code output */
@@ -400,6 +395,11 @@ aside label {
     font-size: 14px;
     font-weight: 700;
     font-family: monospace;
+}
+
+aside p {
+    font-size: 1.2rem;
+    padding: 1rem;
 }
 
 button,

@@ -3,6 +3,7 @@ header {
     padding: 2px;
     margin: 20px;
     border-left: 1px dotted #ccc;
+    border-bottom: 0;
 }
 
 header:before {
@@ -38,6 +39,7 @@ article {
     padding: 2px;
     margin: 20px;
     border-left: 1px dotted #ccc;
+    border-bottom: 0;
 }
 
 article:before {
@@ -93,18 +95,18 @@ h2:after {
     content: "</h2>"
 }
 
-p {
+article p {
     background: #fff;
-    margin: 12px 8px;
+    margin: 1rem 0;
 }
 
-p:before {
+article p:before {
     color: #777;
     font-size: 12px;
     content: "<p>"
 }
 
-p:after {
+article p:after {
     color: #777;
     font-size: 12px;
     content: "</p>"

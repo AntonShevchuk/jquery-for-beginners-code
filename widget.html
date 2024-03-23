@@ -15,6 +15,9 @@
             display: none;
         }
     </style>
+
+<!--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/jquery-ui@1.13.2/dist/jquery-ui.min.js"></script>-->
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
@@ -34,7 +37,7 @@
           },
           // инициализация
           _create: function () {
-            var self = this
+            let self = this
             // выбранному элементу добавляем наш класс
             // и вешаем обработчик события "клик"
             this.element
@@ -52,14 +55,14 @@
 
             // нам необходимо инициировать окружение лишь один раз для всех элементов
             // это наш флаг
-            var totalInited = $.data(document.body, 'expose')
+            let totalInited = $.data(document.body, 'expose')
 
             if (!totalInited) {
               // изменяем флаг - у нас уже запущена инициализация
               $.data(document.body, 'expose', 1)
               // инициализация верхнего "бокса"
               // и добавление в DOM
-              var $topBox = $('<div></div>')
+              let $topBox = $('<div></div>')
               $topBox.addClass('expose-widget')
               $topBox.appendTo(document.body)
 
@@ -68,22 +71,25 @@
 
               // клонируем верхний бокс
               // добавляем и сохраняем
-              var $bottomBox = $topBox.clone()
+              let $bottomBox = $topBox.clone()
               $bottomBox.appendTo(document.body)
               $.data(document.body, 'bottomBox', $bottomBox)
 
               // повторяем для левого
-              var $leftBox = $topBox.clone()
+              let $leftBox = $topBox.clone()
               $leftBox.appendTo(document.body)
               $.data(document.body, 'leftBox', $leftBox)
 
               // и для правого
-              var $rightBox = $topBox.clone()
+              let $rightBox = $topBox.clone()
               $rightBox.appendTo(document.body)
               $.data(document.body, 'rightBox', $rightBox)
 
               // все боксы разом
-              $allBox = $topBox.add($bottomBox).add($leftBox).add($rightBox)
+              let $allBox = $topBox
+                .add($bottomBox)
+                .add($leftBox)
+                .add($rightBox)
               $.data(document.body, 'allBox', $allBox)
 
               // вешаем единый обработчик события для всех боксов
@@ -149,9 +155,9 @@
           },
           // прячем боксы
           unmask: function () {
-            var self = this
+            let self = this
             // получаем набор
-            var $allBox = $.data(document.body, 'allBox')
+            let $allBox = $.data(document.body, 'allBox')
             // вызываем функцию анимации
             this._hide($allBox, this.options.hide, function () {
               // бросаем событие по завершению
@@ -163,22 +169,22 @@
           },
           // показываем боксы
           mask: function () {
-            var self = this
+            let self = this
             // берём все "боксы"
-            var $allBox = $.data(document.body, 'allBox')
-            var $topBox = $.data(document.body, 'topBox')
-            var $bottomBox = $.data(document.body, 'bottomBox')
-            var $leftBox = $.data(document.body, 'leftBox')
-            var $rightBox = $.data(document.body, 'rightBox')
+            let $allBox = $.data(document.body, 'allBox')
+            let $topBox = $.data(document.body, 'topBox')
+            let $bottomBox = $.data(document.body, 'bottomBox')
+            let $leftBox = $.data(document.body, 'leftBox')
+            let $rightBox = $.data(document.body, 'rightBox')
 
             // вычисляем текущие координаты элемента и размеры окна
-            var offset = this.element.offset()
-            var height = this.element.outerHeight()
-            var width = this.element.outerWidth()
-            var winWidth = $(document).width()
-            var winHeight = $(document).height()
+            let offset = this.element.offset()
+            let height = this.element.outerHeight()
+            let width = this.element.outerWidth()
+            let winWidth = $(document).width()
+            let winHeight = $(document).height()
 
-            var topSettings = {
+            let topSettings = {
               top: 0,
               left: 0,
               width: winWidth,
@@ -186,7 +192,7 @@
               backgroundColor: this.options.color
             }
 
-            var leftSettings = {
+            let leftSettings = {
               top: offset.top,
               left: 0,
               width: offset.left,
@@ -194,7 +200,7 @@
               backgroundColor: this.options.color
             }
 
-            var rightSettings = {
+            let rightSettings = {
               top: offset.top,
               left: offset.left + width,
               width: winWidth - (offset.left + width),
@@ -202,7 +208,7 @@
               backgroundColor: this.options.color
             }
 
-            var bottomSettings = {
+            let bottomSettings = {
               top: offset.top + height,
               left: 0,
               width: winWidth,
@@ -237,6 +243,7 @@
             // изменяем флаг
             this.element.data('expose-it', true)
           },
+          // скидываем флаг
           _resetFlag: function () {
             // workaround - надо "сбросить" флаг для всех других элементов
             // надо будет придумать более красивое решение
@@ -313,8 +320,13 @@
         <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
     </nav>
     <hr/>
-    <pre><code><em>// run widget and try to click on article</em>
+    <pre><code><em>// init widget
+// run animation by click on the articles</em>
 $(<span>'article'</span>).expose()</code></pre>
+    <button type="button" class="code">Run Code</button>
+    <pre><code><em>// try widget API
+// run animation programmatically</em>
+$(<span>'article:eq(0)'</span>).expose('mask')</code></pre>
     <button type="button" class="code">Run Code</button>
     <pre><code contenteditable="true"><em>// configuration was changed</em>
 $(<span>'article'</span>).expose({speed:2000})</code></pre>

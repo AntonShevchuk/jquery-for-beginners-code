@@ -7,6 +7,15 @@
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/formatter.css"/>
+    <style>
+        #my:before {
+            content: '<article id="my" class="content">'
+        }
+        #id:before {
+            content: '<p id="id">'
+        }
+    </style>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
 </head>
@@ -14,7 +23,7 @@
 <main class="wrapper">
     <header>
         <h1>Приоритет CSS селекторов</h1>
-        <h2>Сохраните страницу и попробуйте изменить CSS стили</h2>
+        <h2>Попробуйте применить стили из меню справа</h2>
     </header>
     <article id="my" class="content">
         <h2>Article Title</h2>
@@ -40,7 +49,7 @@
         <a href="css.selectors.html" title="go next" class="button" rel="next">Next &rarr;</a>
     </nav>
     <hr/>
-    <h3>Шпаргалка</h3>
+    <p>Шпаргалка по расчёту специфичности CSS селекторов</p>
     <pre><code><em>// weight</em>
 #id    = [1,0,0]
 .class = [0,1,0]
