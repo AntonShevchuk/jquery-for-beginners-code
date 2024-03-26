@@ -40,10 +40,10 @@
     <script type="text/javascript" src="js/jquery.color.js"></script>
     <script type="text/javascript">
       $(function () {
-        $('button.code').click(function () {
-          var code = $(this).prev().text()
+        $('button').click(function () {
+          let code = $(this).prev().text()
           if (code) {
-            var els = eval(code)
+            let els = eval(code)
             els
               .stop(true, true)
               .animate({ 'background-color': '#ff5' }, 500)
@@ -79,11 +79,11 @@
 
 </head>
 <body>
+<header>
+    <h1>Селекторы по CSS атрибутам</h1>
+    <h2>Пример с определением расширения файла</h2>
+</header>
 <main id="content">
-    <header>
-        <h1>Селекторы по CSS атрибутам</h1>
-        <h2>Пример с определением расширения файла</h2>
-    </header>
     <article>
         <h3 id="anchor">Ссылки</h3>
         <p><a href="?jquery.pdf">PDF file</a> (jquery.pdf)</p>
@@ -95,25 +95,25 @@
         <p><a href="https://anton.shevchuk.name/">Back to Blog</a> (https://anton.shevchuk.name)</p>
         <p><a href="/book/code/">Back to Examples</a> (/book/code)</p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="css.selectors.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
+        <a href="css.selectors.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true"><em>// highlight elements</em>
-$(<span>'a[href]'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// highlight internal links</em>
-$(<span>'a[href^=\\/]'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// highlight document anchors</em>
-$(<span>'a[href^=\\#]'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code contenteditable="true"><em>// highlight elements</em>
+$(<span>'a[href]'</span>)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// highlight internal links</em>
+$(<span>'a[href^=\\/]'</span>)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// highlight document anchors</em>
+$(<span>'a[href^=\\#]'</span>)</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

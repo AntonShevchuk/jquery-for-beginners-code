@@ -31,13 +31,13 @@
 
 </head>
 <body>
+<header>
+    <h1>Пример плагина с индивидуальными настройками</h1>
+    <h2>Разница лишь в одном объявлении var</h2>
+</header>
 <main id="content">
-    <header>
-        <h1>Пример плагина с индивидуальными настройками</h1>
-        <h2>Разница лишь в одном объявлении var</h2>
-    </header>
     <article>
-        <h2>Article Title</h2>
+        <h3>Article Title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -50,7 +50,7 @@
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
     </article>
     <article>
-        <h2>Article Title</h2>
+        <h3>Article Title</h3>
         <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
@@ -64,7 +64,7 @@
             libero. Fusce et ultrices lectus.</p>
     </article>
     <article>
-        <h2>Article</h2>
+        <h3>Article Title</h3>
         <p>Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
             laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
             non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
@@ -74,22 +74,25 @@
             magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
             cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <pre><code>$(<span>'p:eq(0)'</span>).mySimplePlugin()</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code>$(<span>'p:eq(1)'</span>).mySimplePlugin({'color':'red'})</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code>$(<span>'p:eq(2)'</span>).mySimplePlugin({'color':'blue'})</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code>$(<span>'p:eq(0)'</span>)
+  .mySimplePlugin()</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>'p:eq(1)'</span>)
+  .mySimplePlugin({<span>'color'</span>:<span>'red'</span>})</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>'p:eq(2)'</span>)
+  .mySimplePlugin({<span>'color'</span>:<span>'blue'</span>})</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

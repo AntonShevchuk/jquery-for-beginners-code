@@ -10,8 +10,7 @@
     <style>
         article {
             overflow: visible;
-            min-height: 120px;
-            margin: 10px;
+            min-height: 480px;
             position: relative;
         }
 
@@ -19,23 +18,20 @@
             width: 100px;
             height: 100px;
             position: absolute;
-            background: url(images/car.png) 50% 50% no-repeat;
+            background: url(images/car.svg) 50% 50% no-repeat;
             transition: all 0.2s ease-in-out;
         }
 
-        .up {
+        .left {
             transform: rotate(0deg);
         }
-
-        .down {
-            transform: rotate(180deg);
-        }
-
-        .right {
+        .up {
             transform: rotate(90deg);
         }
-
-        .left {
+        .right {
+            transform: rotate(180deg);
+        }
+        .down {
             transform: rotate(270deg);
         }
     </style>
@@ -57,26 +53,28 @@
           // 39 - right
           // 40 - down
           switch (e.keyCode) {
+            case 13:
+              C.fire(400)
+              break
             case 37:
               C.add(function (speed) {
                 car.queue(function () {
                   $(this).attr('class', 'left')
                     .dequeue()
                 })
-                car.animate({ left: '-=200' }, speed)
-                output('&larr; ')
+                car.animate({ left: '-=200' }, speed, () => output('←'))
               })
-              output('\nAdded &larr;')
+              output('Added ←')
               break
             case 38:
               C.add(function (speed) {
                 car.queue(function () {
                   $(this).attr('class', 'up')
                     .dequeue()
-                }).animate({ top: '-=200' }, speed)
-                output('&uarr; ')
+                }).animate({ top: '-=200' }, speed, () => output('↑'))
+                output('↑')
               })
-              output('\nAdded &uarr;')
+              output('Added ↑')
               break
             case 39:
               C.add(function (speed) {
@@ -84,10 +82,9 @@
                   $(this).attr('class', 'right')
                     .dequeue()
                 })
-                car.animate({ left: '+=200' }, speed)
-                output('&rarr; ')
+                car.animate({ left: '+=200' }, speed, () => output('→'))
               })
-              output('\nAdded &rarr;')
+              output('Added →')
               break
             case 40:
               C.add(function (speed) {
@@ -95,61 +92,63 @@
                   $(this).attr('class', 'down')
                     .dequeue()
                 })
-                car.animate({ top: '+=200' }, speed)
-                output('&darr; ')
+                car.animate({ top: '+=200' }, speed, () => output('↓'))
               })
-              output('\nAdded &darr;')
+              output('Added ↓')
               break
           }
+          return false
         })
       })
     </script>
 </head>
 <body>
+<header>
+    <h1>Пример работы $.Callbacks</h1>
+    <p>На практике мне ещё не приходилось использовать, поэтому пример немного надуманный - запрограммируйте
+        поездку машинки используя стрелки на клавиатуре, а затем запустите программу, указав скорость анимации.
+    </p>
+    <p>Чем меньше цифра, тем быстрее будет перемещаться машинка.</p>
+</header>
 <main id="content">
-    <header>
-        <h1>Пример работы $.Callbacks</h1>
-        <p>На практике мне ещё не приходилось использовать, поэтому пример немного надуманный - запрограммируйте
-            поездку машинки используя стрелки на клавиатуре, а затем запустите программу, указав скорость анимации.
-        </p>
-        <p>Чем меньше цифра, тем быстрее будет перемещаться машинка.</p>
-    </header>
     <article>
         <div id="car"></div>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="deferred.pipe.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="deferred.pipe.html" title="go prev" rel="prev">Back</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <pre><code><em>// use button up arrow: &uarr;</em>
+    <code><em>// use button up arrow: &uarr;</em>
 C.add(function(speed){
-    car.animate({top:'-=200px'}, speed)
-})</code></pre>
-    <pre><code><em>// use button down arrow: &darr;</em>
+  car.animate({top:'-=200px'}, speed)
+})</code>
+    <code><em>// use button down arrow: &darr;</em>
 C.add(function(speed){
-    car.animate({top:'+=200px'}, speed)
-})</code></pre>
-    <pre><code><em>// use button right arrow: &rarr;</em>
+  car.animate({top:'+=200px'}, speed)
+})</code>
+    <code><em>// use button right arrow: &rarr;</em>
 C.add(function(speed){
-    car.animate({left:'+=200px'}, speed)
-})</code></pre>
-    <pre><code><em>// use button left arrow: &larr;</em>
+  car.animate({left:'+=200px'}, speed)
+})</code>
+    <code><em>// use button left arrow: &larr;</em>
 C.add(function(speed){
-    car.animate({left:'-=200px'}, speed)
-})</code></pre>
-    <pre><code contenteditable="true">C.fire(200)</code></pre>
-    <button type="button" class="code">Run Code</button>
+  car.animate({left:'-=200px'}, speed)
+})</code>
+    <code contenteditable="true"><em>// run animation</em>
+C.fire(400)</code>
+    <button type="button">Run Code</button>
 </aside>
 <aside id="output">
-    <h3>Output</h3>
-    <pre></pre>
+    <h4>Output:</h4>
+<hr/>
+    <code></code>
 </aside>
 </body>
 </html>

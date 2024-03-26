@@ -1,1 +1,1 @@
-jQuery('article').append('<p>Test completed</p>');
+jQuery('article').append('<p>✅ Test completed</p>');

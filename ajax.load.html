@@ -9,46 +9,46 @@
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
-    <style>
-        article {
-            border: 1px dotted #ccc
-        }
-    </style>
 </head>
 <body>
-<main id="content">
     <header>
-        <h1>load()</h1>
-        <h2>Простой пример использования метода load()</h2>
+        <h1>Метод <code>load()</code></h1>
+        <h2>Простой пример использования</h2>
     </header>
-    <article style="height: 480px; overflow: auto">
-        <h2>Пробуем загрузить контент &rarr;</h2>
-    </article>
+    <main>
+        <article style="height: 480px; overflow: auto">
+            <h2>Пробуем загрузить контент &rarr;</h2>
+        </article>
+    </main>
     <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
+        <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
     </footer>
-</main>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="ajax.settings.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="ajax.settings.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true"><em>// AJAX is easy</em>
-$(<span>'article'</span>).load(<span>'index.html main'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// easy to load</em>
-$(<span>'article'</span>).load(<span>'index.html article:first'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// easy to handle</em>
-$(<span>'article'</span>).load(<span>'index.html article:first p'</span>, function(){
-	$(<span>'article'</span>).show().fadeOut(2000, function(){
-        $(this).html('<strong>&rarr;</strong>').fadeIn();
+    <code contenteditable="true"><em>// AJAX is easy</em>
+$(<span>'article'</span>)
+  .load(<span>'index.html main'</span>)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// easy to load</em>
+$(<span>'article'</span>)
+  .load(<span>'index.html article:first'</span>)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// easy to handle</em>
+$(<span>'article'</span>)
+  .load(<span>'index.html article:first p'</span>, function(){
+	$(<span>'article'</span>)
+      .show()
+      .fadeOut(2000, function(){
+        $(this).html('<span>Run again &rarr;</span>').fadeIn();
     });
-})</code></pre>
-    <button type="button" class="code">Run Code</button>
+})</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

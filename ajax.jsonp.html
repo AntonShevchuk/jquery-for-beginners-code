@@ -20,76 +20,88 @@
           let img = document.createElement('img')
           img.alt = `Flickr image #${i}`
           img.src = item.media.m
-          images.append(img)
+
+          let div = document.createElement('div')
+          div.append(img)
+
+          images.append(div)
           if (i === 3) return false
         })
       }
     </script>
     <style>
-        article pre {
-            font-size: 14px;
-            padding: 20px;
+        #images div {
+            height: 216px;
+            width: 310px;
+            float: left;
+            overflow: hidden;
+            margin: 2rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
-        article img {
-            width: 300px;
-            padding: 3px;
-            float: left;
+        #images div img {
+            min-height: 216px;
+            min-width: 310px;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+        hr {
+            clear: both;
         }
     </style>
 </head>
 <body>
-<main id="content">
     <header>
         <h1>Пример использования JSONP с простым сервером</h1>
         <h2>Код сервера <a href="https://anton.shevchuk.name/book/code/ajax/example.code">code/ajax/example.code</a>
         </h2>
     </header>
+    <main id="content">
     <article>
-        <pre id="json">
-
-        </pre>
+        <code id="json"></code>
+        <hr/>
     </article>
     <article>
-        <div id="images">
-
-        </div>
+        <div id="images"></div>
+        <hr/>
     </article>
+    </main>
     <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
+        <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
     </footer>
-</main>
 <aside>
     <nav>
-        <a href="ajax.script.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="menu.ajax.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="ajax.script.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="menu.ajax.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code>$.ajax({
-    url: <span>"https://anton.shevchuk.name/book/code/ajax/example.php?callback=?"</span>,
-    dataType: <span>"jsonp"</span>,
-    success: toJsonContainer
-});</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code>$.ajax({
-    url: <span>"https://anton.shevchuk.name/book/code/ajax/example.php?callback=?"</span>,
-    dataType: <span>"jsonp"</span>,
-    jsonpCallback: <span>"toJsonContainer"</span>
-});</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code>$.ajax({
+  url: <span>"https://anton.shevchuk.name/book/code/ajax/example.php?callback=?"</span>,
+  dataType: <span>"jsonp"</span>,
+  success: toJsonContainer
+});</code>
+    <button type="button">Run Code</button>
+    <code>$.ajax({
+  url: <span>"https://anton.shevchuk.name/book/code/ajax/example.php?callback=?"</span>,
+  dataType: <span>"jsonp"</span>,
+  jsonpCallback: <span>"toJsonContainer"</span>
+});</code>
+    <button type="button">Run Code</button>
     <h3>Flickr API</h3>
-    <pre><code contenteditable="true">$.getJSON(
+    <code contenteditable="true">$.getJSON(
     <span>"https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?"</span>,
-    {
-        tags: <span>"orange"</span>,
-        tagmode: <span>"any"</span>,
-        format: <span>"json"</span>
-    },
-    buildImages
-);</code></pre>
-    <button type="button" class="code">Run Code</button>
+  {
+    tags: <span>"orange"</span>,
+    tagmode: <span>"any"</span>,
+    format: <span>"json"</span>
+  },
+  buildImages
+);</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

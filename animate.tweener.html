@@ -53,15 +53,15 @@
     </script>
 </head>
 <body>
+<header>
+    <h1>Анимация</h1>
+    <h2>Пример расширения анимации через tweener</h2>
+</header>
 <main id="content">
-    <header>
-        <h1><a href="index.html">Анимация</a></h1>
-        <h2>Пример расширения анимации через tweener</h2>
-    </header>
     <article id="stick" class="box">
-        <h2>Article</h2>
+        <h3>Article Title</h3>
         <p>
-            <img src="images/photo-bumblebee-tumb.jpg" alt="Bumblebee" class="left" width="200"/>
+            <img src="images/photo-bumblebee-thumb.jpg" alt="Bumblebee" class="left" width="200"/>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -73,24 +73,25 @@
             fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true">$(<span>'img'</span>).animate({
+    <code contenteditable="true">$(<span>'img'</span>).animate({
   <span>'diagonal'</span>:400
-}, 2000)</code></pre>
-    <button type="button" class="code">Run Code</button>
+}, 2000)</code>
+    <button type="button">Run Code</button>
 </aside>
 <aside id="output">
-    <h3>Output</h3>
-    <pre></pre>
+    <h4>Output:</h4>
+    <hr/>
+    <code></code>
 </aside>
 </body>
 </html>

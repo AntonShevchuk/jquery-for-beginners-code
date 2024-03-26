@@ -38,22 +38,53 @@
     </script>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Основы JavaScript. Область видимости</h1>
-        <h2>Пример для иллюстрации области видимости в JavaScript</h2>
-    </header>
+<header>
+    <h1>Основы JavaScript. Область видимости</h1>
+    <h2>Пример для иллюстрации области видимости в JavaScript</h2>
+    <p>Результат выполнения кода смотрите в консоли браузера</p>
+</header>
+<main>
     <article>
+        <h3>Переменная <code>var</code></h3>
+        <p>
+            Область видимости: <code>var</code> имеет функциональную область видимости, что означает, что переменная,
+            объявленная с помощью <code>var</code> в функции, доступна везде в этой функции.
+        </p>
+        <p>
+            Поднятие (Hoisting): переменные, объявленные с помощью <code>var</code>, "поднимаются" вверх своей области
+            видимости,  но инициализируются значением <code>undefined</code> до того, как достигается их фактическое
+            место объявления в коде. Это значит, что их можно использовать до их объявления в коде без ошибок.
+        </p>
+        <p>
+            Переобъявление: переменную, объявленную с помощью var, можно повторно объявить в той же области видимости
+            без ошибок.
+        </p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
+    <article>
+        <h3>Переменная <code>let</code></h3>
+        <p>
+            Область видимости: <code>let</code> имеет блочную область видимости, что означает, что переменная доступна
+            только внутри блока (например, цикла или условного оператора), в котором она была объявлена.
+        </p>
+        <p>
+            Поднятие (Hoisting): переменные, объявленные с помощью <code>let</code>, также поднимаются, но доступ к ним
+            до их объявления в коде приведет к ошибке <code>ReferenceError</code>. Это поведение иногда называют
+            "временной мертвой зоной" (Temporal Dead Zone, TDZ).
+        </p>
+        <p>
+            Переобъявление: переменную, объявленную с помощью <code>let</code>, нельзя повторно объявить в той же
+            области видимости. Попытка это сделать приведет к синтаксической ошибке.
+        </p>
+    </article>
 </main>
 <aside>
     <nav>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
 </aside>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 </body>
 </html>

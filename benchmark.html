@@ -11,11 +11,13 @@
         table {
             margin: auto;
         }
-        table p {
+        main table p {
+            padding: 0.5rem;
             border-bottom: 1px solid #ccc;
         }
         table div > div {
             color: #ccc;
+            line-height: 0.9rem;
             text-align: center;
             border-bottom: 1px solid #ccc;
             border-left: 1px solid #ccc;
@@ -102,11 +104,11 @@
     </script>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>.my &gt; div</h1>
-        <h2>Тестирование производительности различных способов получения искомого набора элементов</h2>
-    </header>
+<header>
+    <h1>Benchmark <code>.my &gt; div</code></h1>
+    <h2>Тестирование производительности различных способов получения искомого набора элементов</h2>
+</header>
+<main>
     <article>
         <p>Для надёжности каждая функция вызывается сотню раз, после запуска всех тестов необходимо перегрузить
             страницу</p>
@@ -10755,23 +10757,24 @@
             </tr>
         </table>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="css.selectors.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="css.selectors.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <pre data-replace="#output"><code>runAllTests()</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code data-replace="#output">runAllTests()</code>
+    <button type="button">Run Code</button>
 </aside>
 <aside id="output">
-    <h3>Output</h3>
-    <pre></pre>
+    <h4>Output:</h4>
+<hr/>
+    <code></code>
 </aside>
 </body>
 </html>

@@ -93,47 +93,59 @@
     </script>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Пример расширять объект easing</h1>
-        <h2>Пробуем, играемся, и мотаем на ус (покликайте по сердцам)</h2>
-    </header>
-    <article>
-        <div class="block">
-            <div class="target"></div>
-        </div>
-        <div class="heart" data-easing="heartIn">
-            <p>heartIn</p>
-            <img src="images/heart.png" alt="Heart"/>
-        </div>
-        <div class="heart" data-easing="heartOut">
-            <p>heartOut</p>
-            <img src="images/heart.png" alt="Heart"/>
-        </div>
-        <div class="heart" data-easing="heartInOut">
-            <p>heartInOut</p>
-            <img src="images/heart.png" alt="Heart"/>
-        </div>
-    </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
+<header>
+    <h1>Пример расширять объект easing</h1>
+    <h2>Пробуем, играемся, и мотаем на ус (покликайте по сердцам)</h2>
+</header>
+<main>
+<article>
+    <div class="block">
+        <div class="target"></div>
+    </div>
+    <div class="heart" data-easing="heartIn">
+        <p>heartIn</p>
+        <img src="images/heart.png" alt="Heart"/>
+    </div>
+    <div class="heart" data-easing="heartOut">
+        <p>heartOut</p>
+        <img src="images/heart.png" alt="Heart"/>
+    </div>
+    <div class="heart" data-easing="heartInOut">
+        <p>heartInOut</p>
+        <img src="images/heart.png" alt="Heart"/>
+    </div>
+</article>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <pre><code>$(<span>'.target'</span>)
-  .animate({height:<span>'+=100px'</span>}, 2000, <span>'heartIn'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code>$(<span>'.target'</span>)
-  .animate({height:<span>'+=100px'</span>}, 2000, <span>'heartOut'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code>$(<span>'.target'</span>)
-  .animate({height:<span>'+=100px'</span>}, 2000, <span>'heartInOut'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code>$(<span>'.target'</span>)
+  .animate(
+    {height:<span>'+=200px'</span>},
+    3000,
+    <span>'heartIn'</span>
+)</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>'.target'</span>)
+  .animate(
+    {height:<span>'+=200px'</span>},
+    3000,
+    <span>'heartOut'</span>
+)</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>'.target'</span>)
+  .animate(
+    {height:<span>'+=200px'</span>},
+    3000,
+    <span>'heartInOut'</span>
+)</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

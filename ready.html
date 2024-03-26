@@ -10,27 +10,27 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
       // nothing, tag h2 is not exists
-      jQuery('article h2').append('<h2>Level 1</h2>')
+      jQuery('article h3').append('<h3>Level 1</h3>')
 
       // it's working
       // deprecated
       jQuery(document).ready(function () {
-        jQuery('article h2').append('<h3>Level 2</h3>')
+        jQuery('article h3').append('<h4>Level 2</h4>')
       })
 
       // it's working too
       $(function () {
-        jQuery('article h2').append('<h4>Level 3</h4>')
+        jQuery('article h3').append('<h4>Level 3</h4>')
       })
 
       $.ready.then(function () {
-        jQuery('article h2').append('<h4>Level 4</h4>')
+        jQuery('article h3').append('<h5>Level 4</h5>')
       });
 
       // anonymous function - best practices
       (function ($, undefined) {
         $(function () {
-          jQuery('article h2').append('<h5>Level 5</h5>')
+          jQuery('article h3').append('<h6>Level 5</h6>')
         })
       })(jQuery)
     </script>
@@ -38,11 +38,11 @@
 <body>
 <main id="content">
     <header>
-        <h1>$(document).ready()</h1>
+        <h1><code>$(document).ready()</code></h1>
         <h2>Простой пример использования</h2>
     </header>
     <article>
-        <h2>Title</h2>
+        <h3>Article Title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -55,7 +55,7 @@
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
     </article>
     <article>
-        <h2>Title</h2>
+        <h3>Article Title</h3>
         <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
@@ -69,44 +69,44 @@
             libero. Fusce et ultrices lectus.</p>
     </article>
     <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
+        <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
     </footer>
 </main>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
     </nav>
     <hr/>
-    <pre><code><em>// nothing, tag h2 is not exists</em>
-jQuery(<span>"article h2"</span>)
+    <code><em>// nothing, tag h3 is not exists</em>
+jQuery(<span>"article h3"</span>)
   .append(<span>"Level 1"</span>)
 
 <em>// it's working</em>
 <em>// deprecated</em>
 jQuery(document).ready(function(){
-  jQuery(<span>"article h2"</span>)
+  jQuery(<span>"article h3"</span>)
     .append(<span>"Level 2"</span>)
 });
 
 <em>// it's working too</em>
 $(function(){
-  jQuery(<span>"article h2"</span>)
+  jQuery(<span>"article h3"</span>)
     .append(<span>"Level 3"</span>)
 });
 
 <em>// for jQuery 3.x+</em>
 $.ready.then(function(){
-  jQuery(<span>"article h2"</span>)
+  jQuery(<span>"article h3"</span>)
     .append(<span>"Level 4"</span>)
 });
 
 <em>// anonymous function - best practices</em>
 ;(function($, undefined){
   $(function(){
-    jQuery(<span>"article h2"</span>)
+    jQuery(<span>"article h3"</span>)
       .append(<span>"Level 5"</span>)
   });
-})(jQuery)</code></pre>
+})(jQuery)</code>
 </aside>
 </body>
 </html>

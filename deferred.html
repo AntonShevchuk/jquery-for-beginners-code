@@ -8,16 +8,12 @@
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <style>
-        .loading {
-            background: url('images/ajax-loader.gif') no-repeat right;
-        }
-
         #images div {
             height: 216px;
             width: 310px;
             float: left;
             overflow: hidden;
-            margin: 4px;
+            margin: 2rem;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
@@ -28,6 +24,9 @@
             border: 0;
             padding: 0;
             margin: 0;
+        }
+        hr {
+            clear: both;
         }
     </style>
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -86,36 +85,35 @@
     </script>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Пример работы с $.Deferred</h1>
-        <h2>С использованием AJAX и ожиданием подгрузки картинок. Код функции buildImages вы найдёте в исходном коде
-            данной страницы</h2>
-    </header>
+<header>
+    <h1>Пример работы с <code>$.Deferred</code></h1>
+    <h2>С использованием AJAX и ожиданием загрузки картинок.</h2>
+    <p>Код функции <code>buildImages</code> вы найдёте в исходном коде данной страницы</p>
+</header>
+<main>
     <article>
-        <h2>Flickr</h2>
-        <p>Попробуем загрузить картинки используя AJAX+JSONP. По получению ответа с сервера создаём объекты &laquo;Image&raquo;
-            и ждём их загрузки,
-            и лишь после этого отображаем готовый результат</p>
-        <div id="images">
-        </div>
+        <h2>Flickr API</h2>
+        <p>Попробуем загрузить картинки используя связку AJAX+JSONP. По получению ответа с сервера создаём объекты
+            &laquo;Image&raquo; и ждём их загрузки, и лишь после этого отображаем готовый результат</p>
+        <div id="images"></div>
+        <hr/>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="when.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="when.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true">Flickr
+    <code contenteditable="true">Flickr
     .search(<span>'orange'</span>)
-    .then(buildImages)</code></pre>
-    <button type="button" class="code">Run Code</button>
+    .then(buildImages)</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

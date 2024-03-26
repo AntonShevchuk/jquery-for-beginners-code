@@ -11,10 +11,11 @@
     <script type="text/javascript" src="js/code.js"></script>
     <style>
         article {
-            padding: 10px;
+            clear: both;
         }
 
-        article h2 {
+        article div {
+            float: right;
             border: #999 1px solid;
             background: #fff;
             padding: 2rem;
@@ -29,42 +30,46 @@
             padding: 2rem;
         }
 
-        article div, article p, article span {
+        article p, article span {
             background: #ccffcc;
             font-size: 1.6rem;
         }
+        hr {
+            clear: both;
+        }
     </style>
 </head>
-<body>
-<main id="content">
-    <header>
-        <h1>Пример работы свойства float</h1>
-        <h2>Смотрим... &rarr;</h2>
-    </header>
+<body class="formatter">
+<header>
+    <h1>Пример работы свойства <code>float</code></h1>
+    <h2>Смотрим... &rarr;</h2>
+</header>
+<main>
     <article>
-        <h2 style="float:right;">float:right</h2>
-        <p style="height:100px;">
-            &lt;p&gt;<br/><br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;block element<br/><br/>
-            &lt;/p&gt;
+        <div>float:right</div>
+        <p style="">
+            <br/>
+            block element
+            <br/>
         </p>
+        <hr/>
     </article>
     <article>
-        <h2 style="float:right;">float:right</h2>
-        <p style="height:100px;clear:both;">
-            &lt;p style="<strong>clear:both;</strong>"&gt;<br/><br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;block element with "clear:both" style<br/><br/>
-            &lt;/p&gt;
+        <div>float:right</div>
+        <p style="clear:both;">
+            <br/>
+            block element with "clear:both" style
+            <br/>
         </p>
+        <hr/>
     </article>
     <article>
-        <h2 style="float:right">float:right</h2>
-        <p style="height:100px;">
-            &lt;p&gt;<br/><br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;block element with text<br/><br/>
-            &lt;/p&gt;
-        </p>
-        <p>&lt;p&gt;Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+        <div>float:right</div>
+        <p>
+            block element with text
+            <br/>
+            <br/>
+            Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
             nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
@@ -75,11 +80,12 @@
             adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
             nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
             libero. Fusce et ultrices lectus.&lt;/p&gt;</p>
+        <hr/>
     </article>
     <article>
-        <h2 style="float:right">float:right</h2>
-        <span>&lt;span&gt;inline element&lt;/span&gt;</span><br/><br/>
-        <span>&lt;span&gt;Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+        <div>float:right</div>
+        <span>inline span element with text <br/><br/>
+            Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
             nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
@@ -89,17 +95,18 @@
             adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
             adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
             nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
-            libero. Fusce et ultrices lectus.&lt;/span&gt;</span>
+            libero. Fusce et ultrices lectus.</span>
+        <hr/>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="html.example.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="css.priority.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="html.example.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="css.priority.html" title="go next" rel="next">Next</a>
     </nav>
 </aside>
 </body>

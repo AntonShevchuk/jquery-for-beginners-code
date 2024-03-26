@@ -11,44 +11,44 @@
     <script type="text/javascript">
       $(function () {
         $('#menu1 li a').click(function (event) {
-          alert('Hello!')
+          alert('👋 The link in "#menu1" says "Hello!"\n\n⚠️ The page will be reloaded!')
         })
         $('#menu2 li a').click(function (event) {
-          alert('Hello!')
+          alert('👋 The link in "#menu2" says "Hello!"')
           event.preventDefault()
         })
 
         $('#menu3 li a').click(function (event) {
-          alert('Hello!')
+          alert('👋 The link in "#menu3" says "Hello!"')
           event.preventDefault()
         })
         $('#menu3').click(function (event) {
-          alert('Menu3!')
+          alert('👋 The menu "#menu3" says "Hi!"')
         })
 
         $('#menu4 li a').click(function (event) {
-          alert('Hello!')
+          alert('👋 The link in "#menu4" says "Hello!"')
           event.preventDefault()
           event.stopPropagation()
         })
         $('#menu4').click(function (event) {
-          alert('Menu4!')
+          alert('👋 The menu "#menu4" says "Hi!"')
         })
 
         $('#menu5 li a').click(function (event) {
-          alert('Hello!')
+          alert('👋 The link in "#menu5" says "Hello!"')
           return false
         }).click(function (event) {
-          alert('Hello Again!')
+          alert('👋 The link in "#menu5" says "Hello Again!"')
           return false
         })
 
         $('#menu6 li a').click(function (event) {
-          alert('Hello!')
+          alert('👋 The link in "#menu6" says "Hello!"')
           event.stopImmediatePropagation()
           return false
         }).click(function (event) {
-          alert('Hello Again!')
+          alert('👋 The link in "#menu6" says "Hello Again!"')
           return false
         })
       })
@@ -62,111 +62,132 @@
         }
 
         article li {
-            margin: 2px;
-        }
-
-        article a,
-        article span {
-            display: block;
-            padding: 4px 8px;
+            margin: 1rem 2rem;
+            padding: 1rem 2rem;
             border: 1px solid #456;
             border-radius: 2px;
             cursor: pointer;
             text-align: center;
         }
-
-        article a:hover,
-        article span:hover {
+        article li:hover {
             background: #ccffcc;
         }
 
+        article a {
+            display: block;
+        }
+
+        hr {
+            clear: both
+        }
     </style>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Работа с событиями</h1>
-        <h2>Это основы-основ, не пропустите</h2>
-    </header>
+<header>
+    <h1>Работа с событиями</h1>
+    <h2>Это основы-основ, не пропустите</h2>
+    <p>Кликабельные элементы меню с обработчиками событий</p>
+</header>
+<main>
     <article>
         <ul id="menu1">
             <li>#menu1</li>
-            <li><a href="index.html" title="Go to home">&lt;a&gt;</a></li>
+            <li><a href="#menu1" title="Go to home">&lt;a&gt;</a></li>
         </ul>
         <ul id="menu2">
             <li>#menu2</li>
-            <li><a href="index.html" title="Go to home">&lt;a&gt;</a></li>
+            <li><a href="#menu2" title="Go to home">&lt;a&gt;</a></li>
         </ul>
         <ul id="menu3">
             <li>#menu3</li>
-            <li><a href="index.html" title="Go to home">&lt;a&gt;</a></li>
-            <li><span>&lt;span&gt;</span></li>
+            <li><a href="#menu3" title="Go to home">&lt;a&gt;</a></li>
         </ul>
         <ul id="menu4">
             <li>#menu4</li>
-            <li><a href="index.html" title="Go to home">&lt;a&gt;</a></li>
-            <li><span>&lt;span&gt;</span></li>
+            <li><a href="#menu4" title="Go to home">&lt;a&gt;</a></li>
         </ul>
         <ul id="menu5">
             <li>#menu5</li>
-            <li><a href="index.html" title="Go to home">&lt;a&gt;</a></li>
+            <li><a href="#menu5" title="Go to home">&lt;a&gt;</a></li>
         </ul>
         <ul id="menu6">
             <li>#menu6</li>
-            <li><a href="index.html" title="Go to home">&lt;a&gt;</a></li>
+            <li><a href="#menu6" title="Go to home">&lt;a&gt;</a></li>
         </ul>
+        <hr/>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="events.mouse.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="events.mouse.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code>$(<span>"#menu1 li a"</span>).click(function(event){
-  alert(<span>"Hello!"</span>);
-});</code></pre>
-    <pre><code>$(<span>"#menu2 li a"</span>).click(function(event){
-  alert(<span>"Hello!"</span>);
-  event.preventDefault();
-});</code></pre>
-    <pre><code>$(<span>"#menu3 li a"</span>).click(function(event){
-  alert(<span>"Hello!"</span>);
-  event.preventDefault();
-});</code></pre>
-    <pre><code>$(<span>"#menu3"</span>).click(function(event){
-  alert(<span>"Menu3!"</span>);
-});</code></pre>
-    <pre><code>$(<span>"#menu4 li a"</span>).click(function(event){
-  alert(<span>"Hello!"</span>);
+    <code><em>// меню 1
+//  - отработка клика по ссылке
+//  - переход по ссылке</em>
+$(<span>"#menu1 li a"</span>)
+  .click(function(event){
+    alert(<span>"👋 Link 1 ..."</span>);
+  });</code>
+    <code><em>// меню 2
+//  - отработка клика по ссылке
+//  - без перехода по ссылке</em>
+$(<span>"#menu2 li a"</span>)
+  .click(function(event){
+    alert(<span>"👋 Link 2 ..."</span>);
+    event.preventDefault();
+  });</code>
+    <code><em>// меню 3
+//  - отработка клика по ссылке
+//  - без перехода по ссылке
+//  - событие всплывает до меню</em>
+$(<span>"#menu3 li a"</span>)
+  .click(function(event){
+    alert(<span>"👋 Link 3 ..."</span>);
+    event.preventDefault();
+  });</code>
+    <code><em>// меню 3
+//  - отработка клика по меню</em>
+  $(<span>"#menu3"</span>)
+    .click(function(event){
+    alert(<span>"☝️ Menu 3 ..."</span>);
+  });</code>
+    <code>$(<span>"#menu4 li a"</span>).click(function(event){
+  alert(<span>"👋 Link 4 ..."</span>);
   event.preventDefault();
   event.stopPropagation();
-});</code></pre>
-    <pre><code>$(<span>"#menu4"</span>).click(function(event){
-  alert(<span>"Menu3!"</span>);
-});</code></pre>
-    <pre><code>$(<span>"#menu5 li a"</span>).click(function(event){
-  alert(<span>"Hello!"</span>);
+});</code>
+    <code>$(<span>"#menu4"</span>)
+.click(function(event){
+  alert(<span>"☝️ Menu 4 ..."</span>);
+});</code>
+    <code>$(<span>"#menu5 li a"</span>)
+.click(function(event){
+  alert(<span>"👋 Link 5 ..."</span>);
   return false;
-});</code></pre>
-    <pre><code>$(<span>"#menu5 li a"</span>).click(function(event){
-  alert(<span>"Hello again!"</span>);
+});</code>
+    <code>$(<span>"#menu5 li a"</span>)
+.click(function(event){
+  alert(<span>"👋 Link 5, again ..."</span>);
   return false;
-});</code></pre>
-    <pre><code>$(<span>"#menu6 li a"</span>).click(function(event){
-  alert(<span>"Hello!"</span>);
+});</code>
+    <code>$(<span>"#menu6 li a"</span>)
+.click(function(event){
+  alert(<span>"👋 Link 6 ..."</span>);
   event.stopImmediatePropagation();
   return false;
-});</code></pre>
-    <pre><code>$(<span>"#menu6 li a"</span>).click(function(event){
-  alert(<span>"Hello again!"</span>);
+});</code>
+    <code>$(<span>"#menu6 li a"</span>)
+.click(function(event){
+  alert(<span>"👋 Link 6, never ..."</span>);
   return false;
-});</code></pre>
+});</code>
 </aside>
 </body>
 </html>

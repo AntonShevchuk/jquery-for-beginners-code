@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
+<header>
+    <h1>Пример HTML5</h1>
+    <h2>Простая, правильная страница, и вполне релевантная вёрстка</h2>
+    <p>Для стилизации используется CSS-фреймворк Tailwind</p>
+</header>
 <main>
-    <header>
-        <h1>Пример HTML5</h1>
-        <h2>Простая, правильная страница, и вполне релевантная вёрстка</h2>
-    </header>
     <article>
-        <h2>Article Title</h2>
+        <h3>Article Title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -28,7 +29,7 @@
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
     </article>
     <article>
-        <h2>Article Title</h2>
+        <h3>Article Title</h3>
         <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
@@ -41,17 +42,16 @@
             nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
             libero. Fusce et ultrices lectus.</p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
-
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="css.float.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="css.float.html" title="go next" rel="next">Next</a>
     </nav>
 </aside>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 </body>
 </html>

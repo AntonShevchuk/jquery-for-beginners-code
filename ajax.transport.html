@@ -12,7 +12,7 @@
     <script>
       $.ajaxTransport('image', function (options) {
         if (options.type === 'GET' && options.async) {
-          var image
+          let image
           return {
             send: function (_, callback) {
               image = new Image()
@@ -45,11 +45,11 @@
     </script>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Своя реализация AJAX-транспорта</h1>
-        <h2>Пример надуманный</h2>
-    </header>
+<header>
+    <h1>Своя реализация AJAX-транспорта</h1>
+    <h2>Пример надуманный, код рабочий</h2>
+</header>
+<main>
     <article>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
@@ -64,23 +64,23 @@
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.
         </p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true">$.ajax(<span>'images/events.png'</span>, {
+    <code>$.ajax(<span>'images/events.png'</span>, {
     dataType:<span>'image'</span>,
     success: function(data) {
         $(<span>'article'</span>).html(data);
     }
-});</code></pre>
-    <button type="button" class="code">Run Code</button>
+});</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

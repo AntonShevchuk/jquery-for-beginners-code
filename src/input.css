@@ -1,0 +1,416 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply min-h-screen text-slate-950 bg-gradient-to-t from-slate-50 to-slate-200;
+    }
+
+    h1 {
+        @apply text-2xl py-8 px-4;
+    }
+
+    h2 {
+        @apply text-xl py-4 px-4;
+    }
+
+    h3 {
+        @apply text-xl pt-2 pb-1 px-4;
+    }
+
+    h4, h5, h6 {
+        @apply text-lg pt-1 pb-0 px-4;
+    }
+
+    a {
+        @apply underline underline-offset-2 decoration-sky-800;
+    }
+
+    a:hover {
+        @apply decoration-2;
+    }
+
+    header, main, footer {
+        @apply container max-w-3xl;
+    }
+
+    header {
+        @apply mt-4 border border-slate-300 bg-slate-50 rounded-t-lg;
+
+        h1 {
+            @apply text-slate-900 pb-1;
+        }
+
+        h2 {
+            @apply font-normal text-slate-700;
+        }
+
+        p {
+            @apply font-normal text-base text-slate-500 py-4 px-4 pt-0;
+        }
+    }
+
+    main {
+        @apply border-l border-r border-slate-300 bg-white;
+
+        article {
+            @apply py-2;
+
+            p {
+                @apply text-base leading-normal p-4 px-4 text-justify;
+
+                img {
+                    @apply float-start m-3 p-1 border border-gray-300 rounded;
+                }
+            }
+
+            blockquote {
+                @apply text-base leading-normal text-slate-500 p-4 px-4 mx-4 text-justify;
+                @apply border-l-slate-500 border-l-4
+            }
+
+            span {
+                @apply text-base leading-normal;
+            }
+
+            button[type=button] {
+                @apply my-2 ml-4 px-2 py-1 bg-amber-200 rounded;
+
+                &:hover {
+                    @apply transition hover:bg-amber-500;
+                }
+            }
+        }
+
+        form {
+            @apply p-4;
+
+            fieldset {
+                @apply p-4 border border-gray-300 rounded;
+            }
+
+            input, textarea, select, button {
+                @apply p-2 my-2 border border-gray-300 rounded shadow-sm;
+                @apply ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-slate-800
+            }
+
+            select {
+                @apply w-96 rounded-md border-0 py-1.5
+            }
+
+            button {
+                @apply transition hover:bg-slate-200;
+            }
+        }
+    }
+
+    footer {
+        @apply mb-4 border border-slate-300 bg-slate-50 rounded-b-lg;
+
+        p {
+            @apply p-4;
+        }
+    }
+
+    aside {
+        @apply absolute top-0 right-0 m-4 w-96 p-2 overflow-auto max-h-[90vh];
+        @apply bg-white border border-slate-300 rounded-md shadow;
+
+        &[id=output] {
+            @apply left-0;
+            code {
+                @apply leading-4 max-h-[90vh] overflow-y-scroll;
+            }
+        }
+
+        nav {
+            @apply top-0 flex justify-between bg-white;
+
+            a {
+                @apply no-underline py-1 px-2 rounded;
+
+                &:hover {
+                    @apply transition hover:bg-slate-200;
+                }
+
+                &[rel="prev"]:before {
+                    content: "←";
+                    @apply mr-0.5;
+                }
+
+                &[rel="index"]:before {
+                    content: "§";
+                    @apply mr-0.5;
+                }
+
+                &[href="#"]:after {
+                    content: "↻";
+                    @apply ml-0.5;
+                }
+
+                &[rel="next"]:after {
+                    content: "→";
+                    @apply ml-0.5;
+                }
+            }
+        }
+
+        div {
+            @apply max-h-[80vh] overflow-y-scroll;
+        }
+
+        hr {
+            @apply my-2 mx-1;
+        }
+
+        p {
+            @apply text-base p-2;
+        }
+
+        code {
+            @apply block leading-normal whitespace-pre-wrap px-2 py-1 mt-2;
+        }
+
+        input {
+            @apply p-1 m-0.5 text-base font-mono;
+        }
+
+        label {
+            @apply px-0.5 m-0.5 text-base font-bold font-mono;
+        }
+
+        button[type=button] {
+            @apply my-1 px-2 py-1 min-w-24 bg-slate-100 rounded;
+
+            &:hover {
+                @apply transition hover:bg-slate-200;
+            }
+        }
+    }
+}
+
+@layer components {
+    code {
+        @apply inline-block py-0.5 px-1 bg-slate-50 rounded font-mono relative;
+
+        span {
+            @apply text-green-600;
+        }
+
+        em {
+            @apply text-gray-500;
+        }
+
+        i {
+            @apply text-red-800 not-italic;
+        }
+
+        &[contenteditable] {
+            @apply bg-green-50 border border-green-100;
+        }
+
+        &[contenteditable]::after {
+            content: "✎";
+
+            @apply absolute top-0 right-0 inline-flex items-center justify-center w-6 h-6 m-1;
+            @apply text-sm font-semibold text-black bg-amber-100 rounded-full;
+        }
+    }
+
+    .accordion {
+        article {
+            @apply p-0;
+            h3 {
+                @apply border-b border-slate-300 bg-slate-100;
+                @apply cursor-pointer;
+                background-image: url(../images/arrows.png);
+                background-position: 98% 12px;
+                background-repeat: no-repeat;
+
+                &:hover {
+                    @apply bg-slate-200
+                }
+            }
+            p {
+                @apply hidden border-b border-slate-300;
+            }
+        }
+    }
+
+    .events {
+        @apply list-none p-0;
+        li {
+            @apply p-[2px];
+        }
+
+        li span {
+            @apply rounded-full inline-block px-1 mx-1 mr-2 min-w-6 text-center bg-amber-400 text-white;
+        }
+    }
+}
+
+@layer utilities {
+    .formatter {
+
+        h1, h2, h3 {
+            @apply text-lg text-slate-900 pt-2 pb-1 px-4;
+        }
+
+        h1 {
+            &::before {
+                content: "<h1>";
+                @apply mx-2 text-base text-sky-700;
+            }
+
+            &::after {
+                content: "</h1>";
+                @apply mx-2 text-base text-sky-700;
+            }
+        }
+        h2 {
+            &::before {
+                content: "<h2>";
+                @apply mx-2 text-base text-sky-700;
+            }
+
+            &::after {
+                content: "</h2>";
+                @apply mx-2 text-base text-sky-700;
+            }
+        }
+        h3 {
+            &::before {
+                content: "<h3>";
+                @apply ml-2 mx-1 text-base text-sky-700;
+            }
+
+            &::after {
+                content: "</h3>";
+                @apply mx-1 text-base text-sky-700;
+            }
+        }
+        p {
+            @apply ml-2;
+            &::before {
+                content: "<p>";
+                @apply mr-1 text-base text-sky-700;
+            }
+
+            &::after {
+                content: "</p>";
+                @apply ml-1 text-base text-sky-700;
+            }
+        }
+        li {
+            @apply ml-8;
+            &::before {
+                content: "<li>";
+                @apply mr-1 text-base text-sky-700;
+            }
+
+            &::after {
+                content: "</li>";
+                @apply ml-1 text-base text-sky-700;
+            }
+        }
+
+        header, main, article, article ul, footer {
+            background-image: url( "data:image/svg+xml,%3Csvg width='10' height='10' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cellipse style='fill: rgb(245, 158, 11);' cx='6' cy='1' rx='1' ry='1'/%3E%3C/svg%3E" );
+            background-position: left;
+            background-repeat: repeat-y;
+        }
+
+        header {
+            &::before {
+                content: "<header>";
+                @apply ml-1 pl-2;
+                @apply border-l-amber-500 border-l-4;
+                @apply text-base text-sky-700;
+            }
+
+            &::after {
+                content: "</header>";
+                @apply ml-1 pl-2;
+                @apply border-l-amber-500 border-l-4;
+                @apply text-base text-sky-700;
+            }
+        }
+
+        main {
+            &::before {
+                content: "<main>";
+                @apply ml-1 pl-2;
+                @apply border-l-amber-500 border-l-4;
+                @apply text-base text-sky-700;
+            }
+
+            &::after {
+                content: "</main>";
+                @apply ml-1 pl-2;
+                @apply border-l-amber-500 border-l-4;
+                @apply text-base text-sky-700;
+            }
+        }
+        article {
+            @apply ml-6 mt-4 py-0;
+            &::before {
+                content: "<article>";
+                @apply ml-1 pl-2;
+                @apply border-l-amber-500 border-l-4;
+                @apply text-base text-sky-700;
+            }
+
+            &::after {
+                content: "</article>";
+                @apply ml-1 pl-2;
+                @apply border-l-amber-500 border-l-4;
+                @apply text-base text-sky-700;
+            }
+            span {
+                &::before {
+                    content: "<span>";
+                    @apply inline-block mr-1 text-base text-sky-700;
+                }
+
+                &::after {
+                    content: "</span>";
+                    @apply inline-block ml-1 text-base text-sky-700;
+                }
+            }
+        }
+
+        ul {
+            @apply ml-7 mt-4 py-0;
+            &::before {
+                content: "<ul>";
+                @apply ml-1 pl-2;
+                @apply border-l-amber-500 border-l-4;
+                @apply text-base text-sky-700;
+            }
+
+            &::after {
+                content: "</ul>";
+                @apply ml-1 pl-2;
+                @apply border-l-amber-500 border-l-4;
+                @apply text-base text-sky-700;
+            }
+        }
+
+        footer {
+            &::before {
+                content: "<footer>";
+                @apply block ml-1 pl-2;
+                @apply border-l-amber-500 border-l-4;
+                @apply text-base text-sky-700;
+            }
+
+            &::after {
+                content: "</footer>";
+                @apply block ml-1 pl-2;
+                @apply border-l-amber-500 border-l-4;
+                @apply text-base text-sky-700;
+            }
+        }
+    }
+}

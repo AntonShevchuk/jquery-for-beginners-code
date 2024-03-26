@@ -23,15 +23,15 @@
     </script>
 </head>
 <body>
-<main id="content" class="wrapper box slides">
-    <header>
-        <h1>Анимация</h1>
-        <h2>SlideUp/SlideDown/SlideToggle</h2>
-    </header>
-    <article id="stick" class="box">
-        <h2>Article</h2>
+<header>
+    <h1>Анимация</h1>
+    <h2>Методы <code>slideUp()</code>, <code>slideDown()</code> и <code>slideToggle()</code></h2>
+</header>
+<main>
+    <article>
+        <h3>Article Title</h3>
         <p>
-            <img src="images/photo-bumblebee-tumb.jpg" alt="Bumblebee" class="left" width="200"/>
+            <img src="images/photo-bumblebee-thumb.jpg" alt="Bumblebee" class="left" width="200"/>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -44,9 +44,9 @@
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
     </article>
     <article>
-        <h2>Article</h2>
+        <h3>Article Title</h3>
         <p>
-            <img src="images/photo-chamomile-tumb.jpg" alt="Chamomile" class="left" width="200"/>
+            <img src="images/photo-chamomile-thumb.jpg" alt="Chamomile" class="left" width="200"/>
             Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
@@ -60,9 +60,9 @@
             libero. Fusce et ultrices lectus.</p>
     </article>
     <article>
-        <h2>Article</h2>
+        <h3>Article Title</h3>
         <p>
-            <img src="images/photo-maple-leaf-tumb.jpg" alt="Maple Leaf" class="left" width="200"/>
+            <img src="images/photo-maple-leaf-thumb.jpg" alt="Maple Leaf" class="left" width="200"/>
             Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
             laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
             non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
@@ -72,30 +72,32 @@
             magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
             cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="hide.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="fade.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="hide.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="fade.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code><em>// callback function</em>
+    <code><em>// callback function</em>
 function changeClass() {
-    $(this).prev().toggleClass(<span>'active'</span>)
-}</code></pre>
-    <pre><code
-            contenteditable="true">$(<span>'article p'</span>).slideUp(<span>'slow'</span>, changeClass)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true">$(<span>'article p'</span>).slideDown(<span>'slow'</span>, changeClass)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code
-            contenteditable="true">$(<span>'article p'</span>).slideToggle(<span>'slow'</span>, changeClass)</code></pre>
-    <button type="button" class="code">Run Code</button>
+  $(this).prev()
+    .toggleClass(<span>'active'</span>)
+}</code>
+    <code contenteditable="true">$(<span>'article p'</span>)
+  .slideUp(<span>'slow'</span>, changeClass)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true">$(<span>'article p'</span>)
+  .slideDown(<span>'slow'</span>, changeClass)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true">$(<span>'article p'</span>)
+  .slideToggle(<span>'slow'</span>, changeClass)</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

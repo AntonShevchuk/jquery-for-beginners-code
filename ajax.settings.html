@@ -7,46 +7,47 @@
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/code.js"></script>
     <style>
-        article {
-            border: 1px dotted #ccc
+        main main {
+            border: 0;
+            padding: 10px
         }
     </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>ajax()</h1>
-        <h2>Пример использования метода ajax(), аналогичный предыдущему примеру с load()</h2>
-        <p><code>$(<span>'article'</span>).load(<span>'index.html main'</span>)</code></p>
-    </header>
+<header>
+    <h1>Пример использования метода <code>ajax()</code></h1>
+    <h2>Код аналогичный предыдущему примеру с <code>load()</code>:</h2>
+    <p><code>$(<span>'article'</span>).load(<span>'index.html main'</span>)</code></p>
+</header>
+<main>
     <article>
         <h2>Пробуем загрузить контент &rarr;</h2>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="ajax.load.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="ajax.datatype.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="ajax.load.html" title="go prev" rel="prev">Back</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="ajax.datatype.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true"><em>// AJAX is easy</em>
+    <code contenteditable="true"><em>// AJAX is easy</em>
 $.ajax({
   url: <span>'index.html'</span>,
   success: function(data) {
     let part = $(data).filter(<span>'main'</span>);
-     $(<span>'article'</span>).append(part);
+    $(<span>'article'</span>).append(part);
   }
-})</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// AJAX with Promise</em>
+})</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// AJAX with Promise</em>
 $.ajax({
   url: <span>'index.html'</span>,
   success: function(data) {
@@ -54,11 +55,10 @@ $.ajax({
     $(<span>'article'</span>).append(part);
   }
 }).then(function() {
-   $(<span>'article'</span>)
-      .show()
+   $(<span>'article main'</span>)
       .fadeOut(2000);
-})</code></pre>
-    <button type="button" class="code">Run Code</button>
+})</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

@@ -16,11 +16,11 @@
         }
 
         #box {
-            background: #55f;
+            background: #1da85e;
             position: relative;
             margin: 10px;
-            width: 92px;
-            height: 92px;
+            width: 100px;
+            height: 100px;
         }
 
         #box span {
@@ -29,9 +29,10 @@
             font-size: 22px;
             line-height: 22px;
             text-align: center;
-            width: 22px;
-            margin: 6px 8px;
-            padding: 5px 1px;
+            width: 24px;
+            height: 34px;
+            margin: 8px 11px;
+            padding: 5px 0;
             border: 1px solid #000;
             border-radius: 2px;
         }
@@ -42,11 +43,11 @@
     </style>
 </head>
 <body>
+<header>
+    <h1>Очередь</h1>
+    <h2>Пример работы с очередью и без анимировании элементов</h2>
+</header>
 <main id="content">
-    <header>
-        <h1>Очередь</h1>
-        <h2>Пример работы с очередью и без анимировании элементов</h2>
-    </header>
     <article>
         <div id="box">
             <span>&spades;</span>
@@ -55,44 +56,46 @@
             <span class="red">&diams;</span>
         </div>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="animate.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="animate.game.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="animate.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="animate.game.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true"><em>// with queue</em>
+    <div>
+    <code contenteditable="true"><em>// with queue</em>
 $(<span>'#box'</span>).animate({
-    <span>'left'</span>:<span>'+=100'</span>
+  <span>'left'</span>:<span>'+=100'</span>
 }, 2000).animate({
-    <span>'top'</span>:<span>'+=100'</span>
-}, 2000)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// without queue</em>
+  <span>'top'</span>:<span>'+=100'</span>
+}, 2000)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// without queue</em>
 $(<span>'#box'</span>).animate({
-    <span>'left'</span>:<span>'-=100'</span>
+  <span>'left'</span>:<span>'-=100'</span>
 }, 2000).animate({
-    <span>'top'</span>:<span>'-=100'</span>
-}, {queue:false, duration:2000})</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// stop current</em>
-$(<span>'#box'</span>).stop()</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// stop all animation</em>
-$(<span>'#box'</span>).stop(true)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// stop current animation, goto end, clear queue</em>
-$(<span>'#box'</span>).stop(true, true)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// stop current animation</em>
-$(<span>'#box'</span>).stop(false, true)</code></pre>
-    <button type="button" class="code">Run Code</button>
+  <span>'top'</span>:<span>'-=100'</span>
+}, {queue:false, duration:2000})</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// stop current</em>
+$(<span>'#box'</span>).stop()</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// stop all animation</em>
+$(<span>'#box'</span>).stop(true)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// stop current animation, goto end, clear queue</em>
+$(<span>'#box'</span>).stop(true, true)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// stop current animation</em>
+$(<span>'#box'</span>).stop(false, true)</code>
+    <button type="button">Run Code</button>
+    </div>
 </aside>
 </body>
 </html>

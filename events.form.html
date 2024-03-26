@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
-      var sel = function (ev) {
+      let sel = function (ev) {
         /*if (ev.target != undefined) {
             $('#element').html(ev.target.id);
         }*/
 
-        var el = '#' + ev.type
+        let el = '#' + ev.type
 
-        var counter = $(el).find('span').html()
+        let counter = $(el).find('span').html()
         if (counter === '') counter = 0
         $(el)
           .find('span')
@@ -24,35 +24,25 @@
           .css({ background: '#fe3456', color: '#ffffff' })
       }
 
-      //		    $('body').error(sel);
-      //			$('body').load(sel);
-
       $(function (ev) {
-        $('#text')
+        $('#first')
           .blur(sel)
-          .change(sel)
           .focus(sel)
-          .keypress(sel)
-          .select(sel)
-
-        $('#text2')
-          .parent()
           .focusin(sel)
           .focusout(sel)
+
+        $('#last')
           .keydown(sel)
           .keypress(sel)
           .keyup(sel)
 
         $('textarea')
-          .blur(sel)
           .change(sel)
-          .focus(sel)
-          .keydown(sel)
-          .keypress(sel)
-          .keyup(sel)
           .select(sel)
 
-        $('#options').change(sel)
+        $('select').change(sel)
+
+        $('input[name=checkbox]').change(sel)
         $('input[name=radio]').change(sel)
 
         $('form')
@@ -63,50 +53,21 @@
       })
     </script>
     <style>
-        ul.events {
-            list-style: none;
-            padding: 0;
-        }
-
-        .events li {
-            padding: 2px;
-        }
-
-        .events li span {
-            border-radius: 2px;
-            -moz-border-radius: 2px;
-            -webkit-border-radius: 2px;
-            display: inline-block;
-            padding: 0 4px;
-            margin: 0 4px;
-            min-width: 20px;
-            text-align: center;
-            background: #fe3456;
-            color: #ffffff;
-        }
-
-        fieldset {
-            padding: 10px;
-            margin: 10px;
-            border: 1px solid #ddd;
-            border-radius: 2px;
-            -moz-border-radius: 2px;
-            -webkit-border-radius: 2px;
-        }
     </style>
 </head>
 <body>
-<main id="content">
     <header>
         <h1>События формы</h1>
         <h2>Отправка, редактирование и т.д.</h2>
     </header>
-    <article>
-        <form action="">
-            <fieldset>
-                <p><input type="text" id="text" name="text"/></p>
-                <p><input type="text" id="text2" name="text2" value="try input"/></p>
-                <p><textarea cols="64" rows="16">Lorem ipsum dolor sit amet, consectetur adipiscing lit. Phasellus rutrum,
+    <main>
+        <article>
+            <form>
+                <fieldset>
+                    <label for="first"></label><input type="text" id="first" name="first" placeholder="First name"/>
+                    <label for="last"></label><input type="text" id="last" name="last" placeholder="Last name"/>
+                    <label>
+<textarea name="editor" cols="64" rows="16">Lorem ipsum dolor sit amet, consectetur adipiscing lit. Phasellus rutrum,
 lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
 in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
 euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
@@ -116,51 +77,83 @@ nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
 tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
 fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
 lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</textarea>
-                </p>
-                <p>
-                    <select name="select" id="options">
+                    </label>
+                    <label for="options">Choose option: </label>
+                    <select id="options" name="select">
                         <option>Option 1</option>
                         <option>Option 2</option>
                         <option>Option 3</option>
                     </select>
-                </p>
-                <p>
-                    <label><input type="radio" name="radio" id="radio-1" value="1"/> choose 1</label><br/>
-                    <label><input type="radio" name="radio" id="radio-2" value="2"/> choose 2</label><br/>
-                    <label><input type="radio" name="radio" id="radio-3" value="3"/> choose 3</label><br/>
-                </p>
-                <input type="submit" name="submit" class="button"/>
-            </fieldset>
-        </form>
-    </article>
+                    <hr/>
+                    <label><input type="checkbox" name="checkbox" value="1"/> Checkbox</label><br/>
+                    <hr/>
+                    <label><input type="radio" name="radio" value="chosen 1"/> Choose 1</label><br/>
+                    <label><input type="radio" name="radio" value="chosen 2"/> Choose 2</label><br/>
+                    <label><input type="radio" name="radio" value="chosen 3"/> Choose 3</label><br/>
+                    <hr/>
+                    <button type="submit">Send Form</button>
+                </fieldset>
+            </form>
+        </article>
+    </main>
     <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
+        <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
     </footer>
-</main>
 <aside>
     <nav>
-        <a href="events.mouse.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="events.namespace.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="events.mouse.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="events.namespace.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
+    <code><em>// обработчики событий для first</em>
+$(<span>'#first'</span>)
+  .blur(<span>'counter'</span>)
+  .focus(<span>'counter'</span>)
+  .focusin(<span>'counter'</span>)
+  .focusout(<span>'counter'</span>)</code>
+    <code><em>// обработчики событий для last</em>
+$(<span>'#last'</span>)
+  .keydown(<span>'counter'</span>)
+  .keypress(<span>'counter'</span>)
+  .keyup(<span>'counter'</span>)</code>
+    <code><em>// обработчики для textarea</em>
+$(<span>'textarea'</span>)
+  .change(<span>'counter'</span>)
+  .select(<span>'counter'</span>)</code>
+    <code><em>// обработчик для select</em>
+$(<span>'select'</span>)
+  .change(<span>'counter'</span>)</code>
+    <code><em>// обработчик для checkbox</em>
+$(<span>'input[name=checkbox]'</span>)
+  .change(<span>'counter'</span>)</code>
+    <code><em>// обработчик для radio buttons</em>
+$(<span>'input[name=radio]'</span>)
+  .change(<span>'counter'</span>)</code>
+    <code><em>// обработчик для form</em>
+$(<span>'form'</span>)
+  .submit(<span>'counter'</span>)</code>
+</aside>
+<aside id="output">
+    <h4>Events:</h4>
+    <hr/>
     <ul class="events">
-        <li id="change"><span>0</span><strong>change</strong>( fn ) - измение элемента</li>
-        <li id="focus"><span>0</span><strong>focus</strong>( fn ) - фокус на элементе</li>
-        <li id="blur"><span>0</span><strong>blur</strong>( fn ) - фокус ушел с элемента</li>
-        <li id="focusin"><span>0</span><strong>focusin</strong>( fn ) - фокус на элементе, событие предка</li>
-        <li id="focusout"><span>0</span><strong>focusout</strong>( fn ) - фокус ушел с элемента, событие предка</li>
-        <li id="keydown"><span>0</span><strong>keydown</strong>( fn ) - нажатие клавиши на клавиатуре</li>
-        <li id="keypress"><span>0</span><strong>keypress</strong>( fn ) - нажатие клавиши на клавиатуре
+        <li id="change"><span>0</span><strong>change</strong> - изменение элемента</li>
+        <li id="focus"><span>0</span><strong>focus</strong> - фокус на элементе</li>
+        <li id="blur"><span>0</span><strong>blur</strong> - фокус ушел с элемента</li>
+        <li id="focusin"><span>0</span><strong>focusin</strong> - фокус на элементе, событие предка</li>
+        <li id="focusout"><span>0</span><strong>focusout</strong> - фокус ушел с элемента, событие предка</li>
+        <li id="keydown"><span>0</span><strong>keydown</strong> - нажатие клавиши на клавиатуре</li>
+        <li id="keypress"><span>0</span><strong>keypress</strong> - нажатие клавиши на клавиатуре
             keydown+keyup
         </li>
-        <li id="keyup"><span>0</span><strong>keyup</strong>( fn ) - отжатие клавиши на клавиатуре</li>
+        <li id="keyup"><span>0</span><strong>keyup</strong> - отжатие клавиши на клавиатуре</li>
 
-        <li id="select"><span>0</span><strong>select</strong>( fn ) - выбор текста - актуален только для
+        <li id="select"><span>0</span><strong>select</strong> - выбор текста - актуален только для
             input[type=text] и textarea
         </li>
-        <li id="submit"><span>0</span><strong>submit</strong>( fn ) - отправка формы</li>
+        <li id="submit"><span>0</span><strong>submit</strong> - отправка формы</li>
     </ul>
 </aside>
 </body>

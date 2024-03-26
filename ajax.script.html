@@ -11,34 +11,34 @@
     <script type="text/javascript" src="js/code.js"></script>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Метод loadScript()</h1>
-        <h2>Пример использования</h2>
-    </header>
+<header>
+    <h1>Метод <code>loadScript()</code></h1>
+    <h2>Пример использования</h2>
+</header>
+<main>
     <article>
         <h2>Пробуем загрузить JavaScript файл по клику &rarr;</h2>
-        <p>Код подгружаемого скрипта доступен по ссылке <a href="/ajax/example.js">/ajax/example.js</a></p>
+        <blockquote>Код подгружаемого скрипта доступен по ссылке <a href="/ajax/example.js">/ajax/example.js</a></blockquote>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="ajax.datatype.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="ajax.live.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="ajax.datatype.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="ajax.live.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true"><em>// AJAX is easy</em>
+    <code contenteditable="true"><em>// AJAX is easy</em>
 $.getScript(<span>'ajax/example.js'</span>, function(){
     $(<span>'article'</span>)
         .find(<span>'p'</span>)
-        .css(<span>'color'</span>,<span>'red'</span>);
-})</code></pre>
-    <button type="button" class="code">Run Code</button>
+        .css(<span>'color'</span>,<span>'green'</span>);
+})</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

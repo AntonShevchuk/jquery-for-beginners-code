@@ -15,9 +15,6 @@
             display: none;
         }
     </style>
-
-<!--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>-->
-<!--    <script src="https://cdn.jsdelivr.net/npm/jquery-ui@1.13.2/dist/jquery-ui.min.js"></script>-->
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
@@ -266,9 +263,9 @@
         <p>После инициации плагина, разделы станут кликабельными</p>
     </header>
     <article>
-        <h2>Article</h2>
+        <h3>Article Title</h3>
         <p>
-            <img src="images/photo-bumblebee-tumb.jpg" alt="Bumblebee" class="left" width="200"/>
+            <img src="images/photo-bumblebee-thumb.jpg" alt="Bumblebee" class="left" width="200"/>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -281,9 +278,9 @@
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
     </article>
     <article>
-        <h2>Article</h2>
+        <h3>Article Title</h3>
         <p>
-            <img src="images/photo-chamomile-tumb.jpg" alt="Chamomile" class="left" width="200"/>
+            <img src="images/photo-chamomile-thumb.jpg" alt="Chamomile" class="left" width="200"/>
             Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
@@ -297,9 +294,9 @@
             libero. Fusce et ultrices lectus.</p>
     </article>
     <article>
-        <h2>Article</h2>
+        <h3>Article Title</h3>
         <p>
-            <img src="images/photo-maple-leaf-tumb.jpg" alt="Maple Leaf" class="left" width="200"/>
+            <img src="images/photo-maple-leaf-thumb.jpg" alt="Maple Leaf" class="left" width="200"/>
             Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
             laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
             non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
@@ -310,49 +307,52 @@
             cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
     </article>
     <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
+        <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
     </footer>
 </main>
 <aside>
     <nav>
-        <a href="tabs.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="tabs.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <pre><code><em>// init widget
+    <code><em>// init widget
 // run animation by click on the articles</em>
-$(<span>'article'</span>).expose()</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code><em>// try widget API
+$(<span>'article'</span>).expose()</code>
+    <button type="button">Run Code</button>
+    <code><em>// try widget API
 // run animation programmatically</em>
-$(<span>'article:eq(0)'</span>).expose('mask')</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// configuration was changed</em>
-$(<span>'article'</span>).expose({speed:2000})</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// run widget and try to click on image</em>
-$(<span>'article img'</span>).expose({speed:100})</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code><em>// try widget API - trigger</em>
+$(<span>'article:eq(0)'</span>)
+  .expose(<span>'mask'</span>)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// configuration was changed</em>
+$(<span>'article'</span>)
+  .expose({speed: <i>2000</i>})</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// run widget and try to click on image</em>
+$(<span>'article img'</span>)
+  .expose({speed: <i>100</i>})</code>
+    <button type="button">Run Code</button>
+    <code><em>// try widget API - trigger</em>
 $(<span>'article:eq(0)'</span>).on(<span>'exposemask'</span>,
-    function(){
-        $(this).css(<span>'color'</span>, <span>'red'</span>);
-    });
+  function(){
+    $(this).css(<span>'color'</span>, <span>'red'</span>);
+  });
 $(<span>'article:eq(0)'</span>).on(<span>'exposeunmask'</span>,
-    function(){
-        $(this).css(<span>'color'</span>, <span>'black'</span>);
-    })</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code><em>// try widget API - call method</em>
-$(<span>'article:eq(1)'</span>).expose(<span>'mask'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true"><em>// configuration was changed</em>
+  function(){
+    $(this).css(<span>'color'</span>, <span>'black'</span>);
+  })</code>
+    <button type="button">Run Code</button>
+    <code><em>// try widget API - call method</em>
+$(<span>'article:eq(1)'</span>).expose(<span>'mask'</span>)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// configuration was changed</em>
 $(<span>'article:eq(1)'</span>).expose(
-    <span>'color'</span>,
-    <span>'rgba(255, 0, 0, 0.5)'</span>
-)</code></pre>
-    <button type="button" class="code">Run Code</button>
+  <span>'color'</span>,
+  <span>'rgba(255, 0, 0, 0.5)'</span>
+)</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

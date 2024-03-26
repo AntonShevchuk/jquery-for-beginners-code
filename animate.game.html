@@ -47,7 +47,7 @@
               $box.animate({ 'top': '+=100' }, { queue: 'y', step: stepY }).dequeue('y')
               break
           }
-
+            return false;
         })
       })
     </script>
@@ -61,13 +61,11 @@
         }
 
         #box {
-            background: #55f;
+            background: #1da85e;
             position: relative;
             margin: 10px;
-            width: 92px;
-            height: 92px;
-            left: 270px;
-            top: 0;
+            width: 100px;
+            height: 100px;
         }
 
         #box span {
@@ -76,13 +74,12 @@
             font-size: 22px;
             line-height: 22px;
             text-align: center;
-            width: 22px;
-            margin: 6px 8px;
-            padding: 5px 1px;
+            width: 24px;
+            height: 34px;
+            margin: 8px 11px;
+            padding: 5px 0;
             border: 1px solid #000;
             border-radius: 2px;
-            -moz-border-radius: 2px;
-            -webkit-border-radius: 2px;
         }
 
         .red {
@@ -91,11 +88,11 @@
     </style>
 </head>
 <body>
+<header>
+    <h1>Произвольная очередь анимации</h1>
+    <h2>Используя стрелочки на клавиатуре перемещайте элемент (&larr; и &rarr;, &uarr; и &darr;)</h2>
+</header>
 <main id="content">
-    <header>
-        <h1>Произвольная очередь анимации</h1>
-        <h2>Своя очередь, попробуйте использовать стрелочки на клавиатуре (&larr; и &rarr;, &uarr; и &darr;)</h2>
-    </header>
     <article>
         <p>
             X: <span id="log-x">0px</span>
@@ -110,37 +107,51 @@
             <span class="red">&diams;</span>
         </div>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="animate.queue.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="menu.drop-down.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="animate.queue.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="menu.drop-down.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true">$(<span>'#box'</span>).animate({
-    <span>'left'</span>:<span>'-=100'</span>
-}, {queue:'x', duration:2000}).dequeue('x')</code></pre>
-    <button type="button" class="code">Left</button>
-    <pre><code contenteditable="true">$(<span>'#box'</span>).animate({
-    <span>'left'</span>:<span>'+=100'</span>
-}, {queue:'x', duration:2000}).dequeue('x')</code></pre>
-    <button type="button" class="code">Right</button>
-    <pre><code contenteditable="true">$(<span>'#box'</span>).animate({
-    <span>'top'</span>:<span>'-=250'</span>
-}, {queue:'y', duration:2000}).dequeue('y')</code></pre>
-    <button type="button" class="code">Up</button>
-    <pre><code contenteditable="true">$(<span>'#box'</span>).animate({
-    <span>'top'</span>:<span>'+=250'</span>
-}, {queue:'y', duration:2000}).dequeue('y')</code></pre>
-    <button type="button" class="code">Down</button>
-    <pre><code contenteditable="true">$(<span>'#box'</span>).stop(<span>'x'</span>, true);
-$(<span>'#box'</span>).stop(<span>'y'</span>, true);</code></pre>
-    <button type="button" class="code">Stop</button>
+    <div>
+    <code contenteditable="true">$(<span>'#box'</span>).animate({
+  <span>'left'</span>: <span>'-=100'</span>
+}, {
+  <span>'queue'</span>: <span>'x'</span>,
+  <span>'duration'</span>: <i>2000</i>
+}).dequeue('x')</code>
+    <button type="button">← Left</button>
+    <code contenteditable="true">$(<span>'#box'</span>).animate({
+  <span>'left'</span>:<span>'+=100'</span>
+}, {
+  <span>'queue'</span>: <span>'x'</span>,
+  <span>'duration'</span>: <i>2000</i>
+}).dequeue('x')</code>
+    <button type="button">Right →</button>
+    <code contenteditable="true">$(<span>'#box'</span>).animate({
+  <span>'top'</span>:<span>'-=250'</span>
+}, {
+  <span>'queue'</span>: <span>'y'</span>,
+  <span>'duration'</span>: <i>2000</i>
+}).dequeue('y')</code>
+    <button type="button">↑ Up</button>
+    <code contenteditable="true">$(<span>'#box'</span>).animate({
+  <span>'top'</span>:<span>'+=250'</span>
+}, {
+  <span>'queue'</span>: <span>'y'</span>,
+  <span>'duration'</span>: <i>2000</i>
+}).dequeue('y')</code>
+    <button type="button">↓ Down</button>
+    <code contenteditable="true">$(<span>'#box'</span>).stop(<span>'x'</span>, true);
+$(<span>'#box'</span>).stop(<span>'y'</span>, true);</code>
+    <button type="button">Stop</button>
+    </div>
 </aside>
 </body>
 </html>

@@ -19,14 +19,14 @@
         }
     </style>
 </head>
-<body>
-<main id="content">
-    <header>
-        <h1>Пример манипуляций над классами</h1>
-        <h2>Пробуем... &rarr;</h2>
-    </header>
+<body class="formatter">
+<header>
+    <h1>Пример манипуляций над классами</h1>
+    <h2>Пробуем... &rarr;</h2>
+</header>
+<main>
     <article>
-        <h2>Article Title</h2>
+        <h3>Article Title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -39,7 +39,7 @@
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
     </article>
     <article>
-        <h2>Article Title</h2>
+        <h3>Article Title</h3>
         <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
@@ -52,58 +52,58 @@
             nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
             libero. Fusce et ultrices lectus.</p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="css.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="property.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="css.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="property.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true">$(<span>'p'</span>).addClass(<span>'redFont'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code contenteditable="true">$(<span>'p'</span>).addClass(<span>'redFont'</span>)</code>
+    <button type="button">Run Code</button>
 
-    <pre><code contenteditable="true">$(<span>'p'</span>).addClass(<span>'redFont greenBg'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code contenteditable="true">$(<span>'p'</span>).addClass(<span>'redFont greenBg'</span>)</code>
+    <button type="button">Run Code</button>
 
-    <pre><code contenteditable="true">$(<span>'p'</span>).addClass(function(i){
+    <code contenteditable="true">$(<span>'p'</span>).addClass(function(i){
     if (i%2) return <span>'greenBg'</span>
-})</code></pre>
-    <button type="button" class="code">Run Code</button>
+})</code>
+    <button type="button">Run Code</button>
 
-    <pre><code contenteditable="true">alert($(<span>'p'</span>).hasClass(<span>'greenBg'</span>))</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code contenteditable="true">alert($(<span>'p'</span>).hasClass(<span>'greenBg'</span>))</code>
+    <button type="button">Run Code</button>
 
-    <pre><code
-            contenteditable="true">alert($(<span>'p'</span>).hasClass(<span>'redFont greenBg'</span>))</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code
+            contenteditable="true">alert($(<span>'p'</span>).hasClass(<span>'redFont greenBg'</span>))</code>
+    <button type="button">Run Code</button>
 
-    <pre><code contenteditable="true">$(<span>'p'</span>).toggleClass(<span>'greenBg'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code contenteditable="true">$(<span>'p'</span>).toggleClass(<span>'greenBg'</span>)</code>
+    <button type="button">Run Code</button>
 
-    <pre><code contenteditable="true">$(<span>'p'</span>).toggleClass(<span>'redFont greenBg'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code contenteditable="true">$(<span>'p'</span>).toggleClass(<span>'redFont greenBg'</span>)</code>
+    <button type="button">Run Code</button>
 
-    <pre><code contenteditable="true">$(<span>'p'</span>).toggleClass(
+    <code contenteditable="true">$(<span>'p'</span>).toggleClass(
     <span>'redFont'</span>, <em>// add class if</em>
     $(<span>'#check'</span>).is(<span>':checked'</span>)
-)</code></pre>
-    <button type="button" class="code">Run Code</button>
+)</code>
+    <button type="button">Run Code</button>
     <label><input type="checkbox" id="check"/>#check</label>
 
-    <pre><code contenteditable="true">$(<span>'p'</span>).toggleClass(function(i,class) {
+    <code contenteditable="true">$(<span>'p'</span>).toggleClass(function(i,class) {
     if (class == <span>'redFont'</span>) {
          return <span>'greenBg'</span>
     }
-});</code></pre>
-    <button type="button" class="code">Run Code</button>
+});</code>
+    <button type="button">Run Code</button>
 
-    <pre><code contenteditable="true">$(<span>'p'</span>).removeClass()</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code contenteditable="true">$(<span>'p'</span>).removeClass()</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

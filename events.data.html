@@ -9,32 +9,14 @@
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
-    <script>
-      $(function () {
-        $('p')
-          .on('getData', function (event, prop, value) {
-            output('getData: ' + prop + '\n')
-            return 83 + '\n'
-          })
-          .on('setData', function (event, prop, value) {
-            output('setData: ' + prop + '=' + value + '\n')
-          })
-          .on('changeData', function (event, prop, value) {
-            output('changeData: ' + prop + '=' + value + '\n')
-            $.data(this, prop, 42)
-          })
-        $('article').on('getData', function () {
-          output('getData on <article>')
-        })
-      })
-    </script>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Работа с событиями setData/GetData</h1>
-        <h2>Пример надуманный, всё это работало до версии 1.9</h2>
-    </header>
+<header>
+    <h1>Работа с методом <code>data()</code></h1>
+
+    <p>Cобытия <del>setData</del>, <del>getData</del>, и <del>changeData</del> устарели с версии 1.8, и удалены в 1.9</p>
+</header>
+<main>
     <article>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
@@ -49,27 +31,35 @@
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.
         </p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true">$(<span>'p'</span>).data(<span>'answer'</span>, 38)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre data-append="#output"><code contenteditable="true">$(<span>'p'</span>).data(<span>'answer'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre data-append="#output"><code contenteditable="true">$.data($(<span>'p'</span>).get(0), <span>'answer'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code contenteditable="true">$(<span>'p'</span>).data(<span>'answer'</span>, 38)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true">$(<span>'p'</span>).data(
+  <span>'answer'</span>,
+  { <span>"key"</span>: <span>"value"</span>}
+)</code>
+    <button type="button">Run Code</button>
+    <code data-append="#output">$(<span>'p'</span>).data(<span>'answer'</span>)</code>
+    <button type="button">Run Code</button>
+    <code data-append="#output">$.data($(<span>'p'</span>).get(0), <span>'answer'</span>)</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>'p'</span>).removeData(<span>'answer'</span>)</code>
+    <button type="button">Run Code</button>
 </aside>
 <aside id="output">
-    <h3>Output</h3>
-    <pre></pre>
+    <h4>Output:</h4>
+    <hr/>
+    <code></code>
 </aside>
 </body>
 </html>

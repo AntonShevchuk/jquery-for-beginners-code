@@ -5,7 +5,7 @@
  */
 (function ($, undefined) {
   $(function () {
-    $('pre + button').click(function () {
+    $('code + button').click(function () {
       let code = $(this).prev().text()
       let replace = $(this).prev().data('replace')
       let append = $(this).prev().data('append')
@@ -18,16 +18,17 @@
         eval(code)
       }
     })
+
     // apply style from button
-    $('button.style').click(function (){
+    $('button[data-style]').click(function (){
       let rule = this.innerText
       $('head').append('<style>' + rule + '</style>')
       return false;
     })
+
     // highlight jquery element
-    $('button.element').click(function () {
+    $('button[data-highlight]').click(function () {
       let fnc = this.innerText
-      console.log(fnc)
       if (fnc) {
         let els = eval(fnc)
         els
@@ -41,12 +42,12 @@
 })(jQuery)
 
 function replaceOutput (selector, text) {
-  if (!text) text = ''
-  $(selector).find('pre').text(text)
+  if (text === '') text = ''
+  $(selector).find("code").text(text)
 }
 
 function appendOutput (selector, text) {
-  $(selector).find('pre').append(text)
+  $(selector).find("code").append(text + "\n")
 }
 
 function output (text) {

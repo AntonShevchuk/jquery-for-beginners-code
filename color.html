@@ -86,13 +86,13 @@
     </script>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Пример расширения анимации</h1>
-        <h2>Код плагина для анимации цвета доступен в исходном коде этой страницы</h2>
-    </header>
+<header>
+    <h1>Пример расширения анимации</h1>
+    <h2>Код плагина для анимации цвета доступен в исходном коде этой страницы</h2>
+</header>
+<main>
     <article>
-        <h2>Article Title</h2>
+        <h3>Article Title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -105,7 +105,7 @@
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
     </article>
     <article>
-        <h2>Article Title</h2>
+        <h3>Article Title</h3>
         <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
@@ -119,7 +119,7 @@
             libero. Fusce et ultrices lectus.</p>
     </article>
     <article>
-        <h2>Article</h2>
+        <h3>Article Title</h3>
         <p>Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
             laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
             non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
@@ -129,17 +129,17 @@
             magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
             cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <pre><code><em>// run animation after loading</em>
+    <code><em>// run animation after loading</em>
 $(function () {
   $(<span>'p:eq(0)'</span>)
     .animate({ color: <span>'#ff0000'</span> }, 1000)
@@ -147,7 +147,7 @@ $(function () {
     .animate({ color: <span>'#ff0000'</span> }, 3000)
   $(<span>'p:eq(2)'</span>)
     .animate({ color: <span>'#ff0000'</span> }, 5000)
-})</code></pre>
+})</code>
 </aside>
 </body>
 </html>

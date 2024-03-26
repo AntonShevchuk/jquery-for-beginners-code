@@ -15,24 +15,24 @@
       $(function () {
 
         $output = jQuery('.output')
-        let sel = $('menu select')
+        let sel = $('aside select')
 
         for (let x in jQuery.easing) {
           if (x !== 'linear' && x !== 'swing' &&
-            x !== 'jswing' && x !== 'def')
+            x !== 'jswing' && x !== 'def' && x !== '_default')
             sel.append($('<option>').attr('value', x).text(x))
         }
 
         sel.change(function () {
-          $('menu img').attr({
+          $('aside img').attr({
             'src': 'images/' + sel.val() + '.png',
             'alt': sel.val()
           })
         })
 
         $('#button').click(function () {
-          $('.square').animate({ top: 400 }, 2000, sel.val(), function () {
-            $(this).css({ top: 20 })
+          $('.square').animate({ top: 360 }, 2000, sel.val(), function () {
+            $(this).delay(1).css({ top: 40 })
           })
         })
 
@@ -41,27 +41,34 @@
     <style>
         article {
             position: relative;
-            height: 500px;
+            height: 480px;
         }
 
-        menu img {
-            margin: 10px;
+        aside img {
+            margin: 10px auto;
             padding: 4px;
             border: 1px solid #999;
             border-radius: 4px;
         }
 
-        menu div {
-            padding: 4px 16px;
+        aside select {
+            width: 214px;
+        }
+
+        aside #button {
+            min-width: 50px;
+            width: 50px;
+            height: 40px;
         }
 
         .square {
             width: 100px;
             height: 100px;
-
-            top: 20px;
+            top: 40px;
             left: 40px;
-            background: #ccf;
+            border-radius: 4px;
+            box-shadow: 0 0 4px 0 rgba(0,0,0,0.75);
+            background: #ff7300;
             position: absolute;
         }
 
@@ -72,33 +79,34 @@
     </style>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Использование плагина <a href="https://gsgd.co.uk/sandbox/jquery/easing/">easing</a></h1>
-        <h2>Плагин из разряда &laquo;must have&raquo;</h2>
-    </header>
+<header>
+    <h1>Использование плагина <a href="https://gsgd.co.uk/sandbox/jquery/easing/">easing</a></h1>
+    <h2>Плагин из разряда &laquo;must have&raquo;</h2>
+</header>
+<main>
     <article>
         <div class="square"></div>
         <div class="output"></div>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
     <div>
-        <label for="easing">Easing</label>: <select id="easing" name="easing">
-        <option>linear</option>
-        <option>swing</option>
-    </select>
-        <input type="button" name="button" id="button" class="button" value="Go&raquo;"/>
+        <label for="easing">Easing</label>:
+        <select id="easing" name="easing">
+            <option>linear</option>
+            <option>swing</option>
+        </select>`
+        <button id="button" type=button>Go&raquo;</button>
     </div>
-    <img src="images/linear.png" class="alignleft" alt="Linear"/>
+    <img src="images/linear.png" alt="Linear"/>
 </aside>
 </body>
 </html>

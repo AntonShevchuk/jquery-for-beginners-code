@@ -11,15 +11,15 @@
     <script type="text/javascript" src="js/code.js"></script>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Анимация</h1>
-        <h2>Hide/Show/Toggle</h2>
-    </header>
-    <article id="stick" class="box">
-        <h2>Article</h2>
+<header>
+    <h1>Анимация</h1>
+    <h2>Методы <code>hide()</code>, <code>show()</code> и <code>toggle()</code></h2>
+</header>
+<main>
+    <article>
+        <h3>Article Title</h3>
         <p>
-            <img src="images/photo-bumblebee-tumb.jpg" alt="Bumblebee" class="left" width="200"/>
+            <img src="images/photo-bumblebee-thumb.jpg" alt="Bumblebee" width="200"/>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -32,9 +32,9 @@
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
     </article>
     <article>
-        <h2>Article</h2>
+        <h3>Article Title</h3>
         <p>
-            <img src="images/photo-chamomile-tumb.jpg" alt="Chamomile" class="left" width="200"/>
+            <img src="images/photo-chamomile-thumb.jpg" alt="Chamomile" width="200"/>
             Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
@@ -48,9 +48,9 @@
             libero. Fusce et ultrices lectus.</p>
     </article>
     <article>
-        <h2>Article</h2>
+        <h3>Article Title</h3>
         <p>
-            <img src="images/photo-maple-leaf-tumb.jpg" alt="Maple Leaf" class="left" width="200"/>
+            <img src="images/photo-maple-leaf-thumb.jpg" alt="Maple Leaf" width="200"/>
             Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
             laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
             non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
@@ -60,32 +60,46 @@
             magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
             cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="slide.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="slide.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code contenteditable="true">$(<span>'article img'</span>).hide()</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true">$(<span>'article img'</span>).show()</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true">$(<span>'article img'</span>).hide(<span>'slow'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true">$(<span>'article img'</span>).show(<span>'slow'</span>)</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true">$(<span>'article img'</span>).toggle()</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code contenteditable="true">$(<span>'article img'</span>).toggle(<span>'slow'</span>, function(){
+
+    <p>Базовое использование</p>
+
+    <code>$(<span>'article img'</span>).hide()</code>
+    <button type="button">Run Code</button>
+
+    <code>$(<span>'article img'</span>).show()</code>
+    <button type="button">Run Code</button>
+
+    <code>$(<span>'article img'</span>).toggle()</code>
+    <button type="button">Run Code</button>
+
+    <p>Примеры использования с параметрами.<br/>
+        Вы можете вносить изменение в приведенный код</p>
+
+    <code contenteditable="true">$(<span>'article img'</span>).hide(<span>'slow'</span>)</code>
+    <button type="button">Run Code</button>
+
+    <code contenteditable="true">$(<span>'article img'</span>).show(<span>'slow'</span>)</code>
+    <button type="button">Run Code</button>
+
+
+    <code contenteditable="true"><em>// toggle + callback</em>
+$(<span>'article img'</span>)
+  .toggle(<span>'slow'</span>, function(){
     $(this).toggle(<span>'slow'</span>)
-})</code></pre>
-    <button type="button" class="code">Run Code</button>
+  })</code>
+    <button type="button">Run Code</button>
 </aside>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 </body>
 </html>

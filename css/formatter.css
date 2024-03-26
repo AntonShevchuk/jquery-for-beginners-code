@@ -25,7 +25,7 @@ main {
 main:before {
     color: #777;
     font-size: 1.4rem;
-    content: '<main id="content">'
+    content: '<main>'
 }
 
 main:after {

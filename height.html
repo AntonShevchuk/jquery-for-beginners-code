@@ -10,10 +10,6 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <style>
-        article {
-            border: 1px solid #000;
-        }
-
         #block {
             width: 400px;
             height: 40px;
@@ -30,12 +26,12 @@
             text-indent: 8px;
         }
 
-        .contentBox {
+        .content-box {
             box-sizing: content-box;
         }
 
-        .borderBox {
-            box-sizing: content-box;
+        .border-box {
+            box-sizing: border-box;
         }
 
         @media screen and (max-width: 480px) {
@@ -54,56 +50,62 @@
     </style>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Пример вычисление &laquo;высот&raquo;</h1>
-    </header>
-    <div id="output">
-        <h3>Output</h3>
-        <pre></pre>
-    </div>
+<header>
+    <h1>Пример вычисление &laquo;высот&raquo;</h1>
+    <h2>Для <code>box-sizing: content-box</code></h2>
+</header>
+<main>
     <article>
-        <div id="block">
+        <div id="block" class="content-box">
             <div id="text">Content</div>
         </div>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="property.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="form.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="property.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="form.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
     <h3>Style</h3>
-    <pre><code>#block {
-    height:40px;
-    margin:40px;
-    padding:40px;
-    border:40px solid #777;
-}</code></pre>
+    <code>#block {
+  height: <i>40</i>px;
+  margin: <i>40</i>px;
+  padding: <i>40</i>px;
+  border: <i>40</i>px solid #777;
+}</code>
     <!--<h3>Switch <em>box-sizing</em></h3>-->
-    <!--<pre><code contenteditable="true">$(<span>'#block'</span>).addClass(<span>'borderBox'</span>)</code></pre>-->
-    <!--<button type="button" class="code">Run Code</button>-->
-    <!--<pre><code contenteditable="true">$(<span>'#block'</span>).addClass(<span>'contentBox'</span>)</code></pre>-->
-    <!--<button type="button" class="code">Run Code</button>-->
+    <!--<code contenteditable="true">$(<span>'#block'</span>).addClass(<span>'borderBox'</span>)</code>-->
+    <!--<button type="button">Run Code</button>-->
+    <!--<code contenteditable="true">$(<span>'#block'</span>).addClass(<span>'contentBox'</span>)</code>-->
+    <!--<button type="button">Run Code</button>-->
     <h3>Получаем высоту</h3>
     <p>Лишь значение height</p>
-    <pre data-replace="#output"><code>$(<span>'#block'</span>).height()</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code data-replace="#output">$(<span>'#block'</span>).height()</code>
+    <button type="button">Run Code</button>
     <p>Значение height + padding</p>
-    <pre data-replace="#output"><code>$(<span>'#block'</span>).innerHeight()</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code data-replace="#output">$(<span>'#block'</span>).innerHeight()</code>
+    <button type="button">Run Code</button>
     <p>Значение height + padding + border</p>
-    <pre data-replace="#output"><code>$(<span>'#block'</span>).outerHeight()</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code data-replace="#output">$(<span>'#block'</span>).outerHeight()</code>
+    <button type="button">Run Code</button>
     <p>Значение height + padding + border + margin</p>
-    <pre data-replace="#output"><code>$(<span>'#block'</span>).outerHeight(true)</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code data-replace="#output">$(<span>'#block'</span>).outerHeight(true)</code>
+    <button type="button">Run Code</button>
+
+    <p>Поменяем свойство box-sizing </p>
+    <code>$(<span>'#block'</span>).toggleClass("content-box border-box")</code>
+    <button type="button">Run Code</button>
+</aside>
+<aside id="output">
+    <h4>Output:</h4>
+    <hr/>
+    <code></code>
 </aside>
 </body>
 </html>

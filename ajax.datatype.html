@@ -7,6 +7,11 @@
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
+    <style>
+        article code {
+            margin: 0 1rem;
+        }
+    </style>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script>
@@ -34,57 +39,60 @@
     </style>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Метод ajax()</h1>
-        <h2>Пример загрузки разных типов данных</h2>
-    </header>
+<header>
+    <h1>Метод <code>ajax()</code></h1>
+    <h2>Пример загрузки разных типов данных</h2>
+</header>
+<main>
     <article>
         <h3>Text</h3>
-        <pre><code id="text">...</code></pre>
+        <code id="text">...</code>
         <h3>HTML</h3>
-        <pre><code id="html">...</code></pre>
+        <code id="html">...</code>
         <h3>XML</h3>
-        <pre><code id="xml">...</code></pre>
+        <code id="xml">...</code>
         <h3>JSON</h3>
-        <pre><code id="json">...</code></pre>
+        <code id="json">...</code>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="ajax.settings.html" title="go prev" class="button" rel="prev">&larr; Prev</a>
-        <a href="index.html" title="back to Index" class="button" rel="index">Index &sect;</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
-        <a href="ajax.script.html" title="go next" class="button" rel="next">Next &rarr;</a>
+        <a href="ajax.settings.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="ajax.script.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <pre><code>$.ajax({
-    url: <span>"ajax/example.txt"</span>,  <em>// отткель</em>
-    dataType: <span>"text"</span>,         <em>// формат</em>
-    success: toTextContainer  <em>// callback</em>
-});</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code>$.ajax({
-    url: <span>"ajax/example.html"</span>, <em>// отткель</em>
-    dataType: <span>"html"</span>,         <em>// формат</em>
-    success: toHtmlContainer  <em>// callback</em>
-});</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code>$.ajax({
-    url: <span>"ajax/example.xml"</span>, <em>// отткель</em>
-    dataType: <span>"xml"</span>,         <em>// формат</em>
-    success: toXmlContainer  <em>// callback</em>
-});</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code>$.ajax({
-    url: <span>"ajax/example.json"</span>, <em>// отткель</em>
-    dataType: <span>"json"</span>,         <em>// формат</em>
-    success: toJsonContainer  <em>// callback</em>
-});</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code>$.ajax({
+  <em>// отткель</em>
+  url: <span>"ajax/example.txt"</span>,
+  <em>// формат</em>
+  dataType: <span>"text"</span>,
+  <em>// callback</em>
+  success: toTextContainer
+});</code>
+    <button type="button">Run Code</button>
+    <code>$.ajax({
+  url: <span>"ajax/example.html"</span>,
+  dataType: <span>"html"</span>,
+  success: toHtmlContainer
+});</code>
+    <button type="button">Run Code</button>
+    <code>$.ajax({
+  url: <span>"ajax/example.xml"</span>,
+  dataType: <span>"xml"</span>,
+  success: toXmlContainer
+});</code>
+    <button type="button">Run Code</button>
+    <code>$.ajax({
+  url: <span>"ajax/example.json"</span>,
+  dataType: <span>"json"</span>,
+  success: toJsonContainer
+});</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

@@ -57,11 +57,11 @@
     </script>
 </head>
 <body>
-<main id="content">
-    <header>
-        <h1>Пример создания фильтра для Sizzle</h1>
-        <h2>Пробуем найти элементы по своему фильтру</h2>
-    </header>
+<header>
+    <h1>Пример создания фильтра для Sizzle</h1>
+    <h2>Пробуем найти элементы по своему фильтру</h2>
+</header>
+<main>
     <article>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia quam nec enim scelerisque porta.
@@ -97,31 +97,31 @@
             Praesent a nibh vel nisl sodales tincidunt at ac leo.
         </p>
     </article>
-    <footer>
-        © Anton Shevchuk — <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
-    </footer>
 </main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" class="button" rel="prev">&larr; Back</a>
-        <a href="#" title="reload" class="button" onclick="window.location.reload();return false">Reload &curren;</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <pre><code>$(<span>'a:internal'</span>).css({
-    color:<span>'#ff5555'</span>,
-    fontSize:<span>'24px'</span>
-});</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code>$(<span>'a:anchor'</span>).css({
-    color:<span>'#33aa33'</span>,
-    fontSize:<span>'24px'</span>
-});</code></pre>
-    <button type="button" class="code">Run Code</button>
-    <pre><code>$(<span>'a:external'</span>).css({
-    color:<span>'#5555ff'</span>,
-    fontSize:<span>'24px'</span>
-});</code></pre>
-    <button type="button" class="code">Run Code</button>
+    <code>$(<span>'a:internal'</span>).css({
+  color:<span>'#ff5555'</span>,
+  fontSize:<span>'24px'</span>
+});</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>'a:anchor'</span>).css({
+  color:<span>'#33aa33'</span>,
+  fontSize:<span>'24px'</span>
+});</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>'a:external'</span>).css({
+  color:<span>'#5555ff'</span>,
+  fontSize:<span>'24px'</span>
+});</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>
