@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Пример создания обработчика события "click"</title>
+    <link rel="profile" href="https://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+</head>
+<body>
+<header>
+    <h1>Метод <code>click()</code></h1>
+</header>
+<main>
+    <article>
+        <p>
+            <a href="https://anton.shevchuk.name/" title="jQuery для начинающих" target="_blank">ссылка на мой блог シ</a>
+        </p>
+    </article>
+</main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
+<aside>
+    <nav>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+    </nav>
+    <hr/>
+    <p>Click on the link</p>
+    <code><em>// trigger native browser event</em>
+$("a").get(0).click()</code>
+    <button type="button">Run Code</button>
+    <code><em>// jquery handler doesn't work</em>
+$("a").click()</code>
+    <button type="button">Run Code</button>
+    <code><em>// doesn't work too</em>
+$("a").trigger(<span>"click"</span>)</code>
+    <button type="button">Run Code</button>
+</aside>
+</body>
+</html>
