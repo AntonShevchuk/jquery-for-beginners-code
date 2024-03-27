@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Работа с событиями setData/GetData</title>
+    <title>Работа с методом data()</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -14,11 +14,13 @@
 <header>
     <h1>Работа с методом <code>data()</code></h1>
 
-    <p>Cобытия <del>setData</del>, <del>getData</del>, и <del>changeData</del> устарели с версии 1.8, и удалены в 1.9</p>
+    <h2>Cобытия <del>setData</del>, <del>getData</del>, и <del>changeData</del> устарели с версии 1.8, и удалены в 1.9</h2>
 </header>
 <main>
     <article>
-        <p>
+        <p data-question="Главный вопрос жизни, Вселенной и всего такого">
+            &lt;p data-question="Главный вопрос жизни, Вселенной и всего такого"&gt;
+            <br/>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
@@ -29,6 +31,8 @@
             tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
             fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
             lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.
+            <br/>
+            &lt;/p&gt;
         </p>
     </article>
 </main>
@@ -37,21 +41,31 @@
 </footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="property.html" title="go prev" rel="prev">Prev</a>
         <a href="index.html" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="height.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <code contenteditable="true">$(<span>'p'</span>).data(<span>'answer'</span>, 38)</code>
+    <code data-append="#output">$(<span>'p'</span>).data(<span>'question'</span>)</code>
     <button type="button">Run Code</button>
-    <code contenteditable="true">$(<span>'p'</span>).data(
+    <code data-append="#output">$(<span>'p'</span>).attr(<span>'data-question'</span>)</code>
+    <button type="button">Run Code</button>
+    <code data-append="#output">$(<span>'p'</span>).data(<span>'answer'</span>)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// just number</em>
+$(<span>'p'</span>).data(<span>'answer'</span>, 42)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// or object</em>
+$(<span>'p'</span>).data(
   <span>'answer'</span>,
   { <span>"key"</span>: <span>"value"</span>}
 )</code>
     <button type="button">Run Code</button>
-    <code data-append="#output">$(<span>'p'</span>).data(<span>'answer'</span>)</code>
-    <button type="button">Run Code</button>
     <code data-append="#output">$.data($(<span>'p'</span>).get(0), <span>'answer'</span>)</code>
+    <button type="button">Run Code</button>
+    <code data-append="#output"><em>// attribute without changes</em>
+$(<span>'p'</span>).attr(<span>'data-answer'</span>)</code>
     <button type="button">Run Code</button>
     <code>$(<span>'p'</span>).removeData(<span>'answer'</span>)</code>
     <button type="button">Run Code</button>
