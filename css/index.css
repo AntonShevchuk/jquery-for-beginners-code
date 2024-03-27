@@ -791,7 +791,11 @@ main {
       line-height: 1.75rem;
     }
     p {
-      padding: 1rem;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    p {
+      padding-top: 1rem;
     }
     blockquote {
       margin-top: 0.5rem;
@@ -1251,6 +1255,9 @@ code {
       padding: 0.75rem;
     }
     article {
+      p {
+        padding: 1rem;
+      }
       div {
         display: flex;
       }

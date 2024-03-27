@@ -51,7 +51,7 @@
             }
 
             p {
-                @apply p-4;
+                @apply pt-4 px-0;
             }
 
             blockquote {
@@ -146,6 +146,10 @@
 
             article {
                 @apply p-3 my-0;
+
+                p {
+                    @apply p-4;
+                }
 
                 div {
                     @apply flex flex-wrap justify-around py-4;
