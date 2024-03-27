@@ -8,23 +8,23 @@
 /**
  * All your code SHOULD be inside module
  *
- * @link http://learn.javascript.ru/closures-module
+ * @link https://learn.javascript.ru/closures-module
  *
- * @param jQuery $  - be sure `$` is `jQuery`
- * @param window w  - be sure `w` is `window`
+ * @param jQuery $ - be sure `$` is `jQuery`
+ * @param window w - be sure `w` is `window`
  */
 (function ($, w) {
   /**
    * Use ONLY private variables inside module
    * or use `let` and `const` if it possible in your project
    */
-  var version = '1.0'
+  const version = '1.0'
 
   /**
    * Simple cache function for jQuery lookup with lazy loading
-   * its needs for avoid spend time and memory to init and store jQuery objects
+   * its needs for avoiding spend time and memory to init and store jQuery objects
    */
-  var $function = function (selector) {
+  const $function = function (selector) {
     var elements
     /**
      * @return jQuery
@@ -40,8 +40,8 @@
   /**
    * Define simple functions
    */
-  var $headers = $function('h2')
-  var $articles = $function('article')
+  let $headers = $function('h2')
+  let $articles = $function('article')
 
   /**
    * Only ONE function for handle document ready event
@@ -50,7 +50,7 @@
   $(function () {
     // use function-element for cache selector
     // use `on` syntax, to easy support event handler
-    // use namespace to prevent side-effect with another handlers
+    // use namespace to prevent side effect with other handlers
     // use simple named function as callback, for readability and reusability
     $headers().on('click.styleguide', loadJSON)
 

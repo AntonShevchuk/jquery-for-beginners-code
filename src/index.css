@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    header {
+        @apply mx-auto my-4 p-8 max-w-4xl w-5/6;
+        @apply bg-gray-100 border border-gray-200 rounded;
+
+        h1 {
+            @apply text-4xl;
+
+            small {
+                @apply text-gray-700;
+            }
+        }
+
+        p {
+            @apply mt-2
+        }
+
+        a {
+            @apply w-36 py-2 mt-4 rounded text-white leading-none inline-flex items-center justify-center;
+
+            &:first-of-type {
+                @apply bg-blue-600 hover:bg-blue-700 mr-1
+            }
+            &:last-of-type {
+                @apply bg-green-700 hover:bg-green-800
+            }
+
+            img {
+                @apply inline-block mr-2;
+            }
+        }
+    }
+
+    main {
+        @apply mx-auto max-w-4xl;
+
+        article {
+            @apply my-4;
+
+            h2 {
+                @apply block bg-white px-4 py-4 z-50;
+                @apply text-2xl;
+            }
+            h3 {
+                @apply sticky top-0 block bg-white px-4 py-4 z-50 border-b-2 border-b-gray-100;
+                @apply text-xl;
+            }
+
+            p {
+                @apply p-4;
+            }
+
+            blockquote {
+                @apply ml-5 my-2 px-3 py-1 text-base text-gray-600 border-l-4 border-l-gray-400;
+            }
+
+            ol {
+                @apply pl-2 space-y-1 list-decimal list-inside;
+                li {
+                    @apply p-2 pl-4 ml-2;
+
+                    ol {
+                        @apply list-none;
+
+                        li:before {
+                            content: "—";
+                            @apply mx-2;
+                        }
+                    }
+
+                }
+            }
+
+            ul {
+                @apply border rounded border-gray-100;
+                @apply divide-y divide-gray-200;
+
+                li {
+                    @apply p-4;
+
+                    p {
+                        @apply my-0
+                    }
+                }
+            }
+
+            a {
+                @apply text-blue-600 hover:text-blue-700;
+
+                &:hover {
+                    @apply underline;
+                }
+            }
+        }
+    }
+
+    footer {
+        @apply mx-auto my-1 max-w-4xl w-5/6 border-t border-t-gray-100;
+
+        p {
+            @apply p-4;
+
+            a {
+                @apply underline;
+            }
+        }
+    }
+}
+
+@layer components {
+    pre {
+        @apply bg-slate-50 rounded mx-4 p-2;
+
+        code {
+            @apply block text-gray-900;
+        }
+    }
+    code {
+        @apply inline-block py-0.5 px-1 bg-slate-50 rounded font-mono relative;
+        @apply text-red-900;
+
+        span {
+            @apply text-green-600;
+        }
+
+        em {
+            @apply text-gray-500;
+        }
+
+        i {
+            @apply text-red-800 not-italic;
+        }
+    }
+}
+
+@layer utilities {
+    .guide {
+        @apply flex flex-wrap justify-center;
+
+        main {
+            @apply max-w-4xl w-3/4 mx-2;
+
+            article {
+                @apply p-3 my-0;
+
+                div {
+                    @apply flex flex-wrap justify-around py-4;
+
+                    pre {
+                        @apply w-full md:w-5/12;
+                    }
+                }
+            }
+
+            pre {
+                &.good {
+                    @apply p-0;
+                    code {
+                        @apply px-4 py-2 bg-green-100 overflow-x-scroll;
+                    }
+                }
+                &.bad {
+                    @apply p-0;
+                    code {
+                        @apply px-4 py-2 bg-red-100 overflow-x-scroll;
+                    }
+                }
+            }
+        }
+
+        nav {
+            @apply max-w-60 w-1/4 sticky top-2 h-fit mt-6;
+
+            ul {
+                @apply flex flex-col;
+
+                li {
+                    @apply mb-2;
+                }
+
+                ul {
+                    @apply mt-2;
+                    a {
+                        @apply text-gray-800 pl-4 text-base;
+                    }
+                }
+            }
+
+            a {
+                @apply border-l-4 border-l-white pl-2 text-lg;
+                &.active {
+                    @apply border-l-4 border-l-blue-600;
+                }
+                &:hover {
+                    @apply border-l-4 border-l-blue-600;
+                }
+            }
+        }
+    }
+}
