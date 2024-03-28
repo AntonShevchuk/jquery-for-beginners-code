@@ -1130,8 +1130,24 @@ code {
   width: 50%;
 }
 
+.w-1\/4 {
+  width: 25%;
+}
+
+.w-3\/4 {
+  width: 75%;
+}
+
 .w-48 {
   width: 12rem;
+}
+
+.w-64 {
+  width: 16rem;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .border-collapse {
@@ -1211,12 +1227,21 @@ code {
   padding: 0.125rem;
 }
 
+.p-2 {
+  padding: 0.5rem;
+}
+
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .lowercase {
   text-transform: lowercase;
+}
+
+.text-sky-700 {
+  --tw-text-opacity: 1;
+  color: rgb(3 105 161 / var(--tw-text-opacity));
 }
 
 .blur {

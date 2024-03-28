@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Пример расширения функции step для animate()</title>
+    <title>Пример расширения функции "step" для "animate()"</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -13,7 +13,7 @@
         $.Tween.propHooks.shiver = {
           set: function (tween) {
             // начальное расположение элемента
-            var left = $(tween.elem).css('left')
+            let left = $(tween.elem).css('left')
 
             // относительное расположение элемента
             tween.elem.style.position = 'relative'
@@ -22,7 +22,7 @@
                 // финиш
                 tween.elem.style.left = left
               } else if (Math.round(1000 * progress) % 2 === 0) {
-                // непосредственно измение свойств элемента
+                // непосредственно изменение свойств элемента
                 tween.elem.style.left = -Math.round(Math.random() * tween.end) + tween.unit
               } else {
                 // непосредственно изменение свойств элемента
@@ -42,7 +42,7 @@
 <body>
 <header>
     <h1>Анимация</h1>
-    <h2>Пример расширения функции step</h2>
+    <h2>Пример расширения функции <code>step</code></h2>
 </header>
 <main>
     <article>
