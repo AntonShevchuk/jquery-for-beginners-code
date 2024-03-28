@@ -41,18 +41,25 @@
 </footer>
 <aside>
     <nav>
-        <a href="property.html" title="go prev" rel="prev">Prev</a>
+        <a href="properties.html" title="go prev" rel="prev">Prev</a>
         <a href="index.html" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
         <a href="height.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <code data-append="#output">$(<span>'p'</span>).data(<span>'question'</span>)</code>
-    <button type="button">Run Code</button>
-    <code data-append="#output">$(<span>'p'</span>).attr(<span>'data-question'</span>)</code>
-    <button type="button">Run Code</button>
-    <code data-append="#output">$(<span>'p'</span>).data(<span>'answer'</span>)</code>
-    <button type="button">Run Code</button>
+    <div>
+        <code data-append="#output"><em>// data attribute or data-object</em>
+$(<span>'p'</span>).data(<span>'question'</span>)</code>
+        <button type="button">Run Code</button>
+        <code data-append="#output"><em>// attribute without changes</em>
+$(<span>'p'</span>).attr(<span>'data-question'</span>)</code>
+        <button type="button">Run Code</button>
+        <code data-append="#output"><em>// data attribute or data-object</em>
+$(<span>'p'</span>).data(<span>'answer'</span>)</code>
+        <button type="button">Run Code</button>
+        <code data-append="#output"><em>// attribute without changes</em>
+$(<span>'p'</span>).attr(<span>'data-answer'</span>)</code>
+        <button type="button">Run Code</button>
     <code contenteditable="true"><em>// just number</em>
 $(<span>'p'</span>).data(<span>'answer'</span>, 42)</code>
     <button type="button">Run Code</button>
@@ -62,13 +69,13 @@ $(<span>'p'</span>).data(
   { <span>"key"</span>: <span>"value"</span>}
 )</code>
     <button type="button">Run Code</button>
-    <code data-append="#output">$.data($(<span>'p'</span>).get(0), <span>'answer'</span>)</code>
+    <code data-append="#output"><em>// alternative way</em>
+$.data($(<span>'p'</span>).get(0), <span>'answer'</span>)</code>
     <button type="button">Run Code</button>
-    <code data-append="#output"><em>// attribute without changes</em>
-$(<span>'p'</span>).attr(<span>'data-answer'</span>)</code>
+    <code><em>// remove data from data-object</em>
+$(<span>'p'</span>).removeData(<span>'answer'</span>)</code>
     <button type="button">Run Code</button>
-    <code>$(<span>'p'</span>).removeData(<span>'answer'</span>)</code>
-    <button type="button">Run Code</button>
+    </div>
 </aside>
 <aside id="output">
     <h4>Output:</h4>

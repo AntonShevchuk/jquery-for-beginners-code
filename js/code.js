@@ -28,9 +28,14 @@
 
     // highlight jquery element
     $('button[data-highlight]').click(function () {
-      let fnc = this.innerText
-      if (fnc) {
-        let els = eval(fnc)
+      let code;
+      if ($(this).prev().is('code')) {
+        code = $(this).prev().text()
+      } else {
+        code = this.innerText
+      }
+      if (code) {
+        let els = eval(code)
         els
           .stop(true, true)
           .animate({ 'background-color': '#ff5' }, 500)

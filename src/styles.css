@@ -92,9 +92,18 @@
 
             input, textarea, select, button {
                 @apply p-2 my-2 border border-gray-300 rounded shadow-sm;
-                @apply ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-slate-800
-            }
+                @apply ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-slate-800;
+                &:disabled {
+                    @apply border-gray-100 ring-gray-200 focus:ring-gray-500;
 
+                    &:checked {
+                        @apply bg-gray-200;
+                    }
+                }
+            }
+            input:disabled + label{
+                @apply text-gray-500;
+            }
             select {
                 @apply w-96 rounded-md border-0 py-1.5
             }

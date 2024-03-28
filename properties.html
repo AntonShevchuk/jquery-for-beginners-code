@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Пример работы с атрибутами и свойствами элементов</title>
+    <link rel="profile" href="https://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script>
+      $(function(){
+        $('#target').submit(function () {
+          output($(this).serialize() + '\n');
+          return false;
+        });
+
+        let $checkbox1 = $('#checkbox');
+        let $checkbox1AttrChecked = $('#checkbox1-attr-checked');
+        let $checkbox1PropChecked = $('#checkbox1-prop-checked');
+
+        let $checkbox2 = $('#checkbox-two');
+        let $checkbox2AttrChecked = $('#checkbox2-attr-checked');
+        let $checkbox2PropChecked = $('#checkbox2-prop-checked');
+
+        let $radio1 = $('#radio-one');
+
+        let $radio1AttrChecked = $('#radio1-attr-checked');
+        let $radio1PropChecked = $('#radio1-prop-checked');
+        let $radio1AttrDisabled = $('#radio1-attr-disabled');
+        let $radio1PropDisabled = $('#radio1-prop-disabled');
+
+        let $radio2 = $('#radio-two');
+        let $radio2AttrDisabled = $('#radio2-attr-disabled');
+        let $radio2PropDisabled = $('#radio2-prop-disabled');
+
+
+        let $radio3 = $('#radio-three');
+
+        let $radio3AttrChecked = $('#radio3-attr-checked');
+        let $radio3PropChecked = $('#radio3-prop-checked');
+        let $radio3AttrDisabled = $('#radio3-attr-disabled');
+        let $radio3PropDisabled = $('#radio3-prop-disabled');
+
+        setInterval(function () {
+          $checkbox1AttrChecked.text($checkbox1.attr('checked') ? 'checked' : 'false');
+          $checkbox1PropChecked.text($checkbox1.prop('checked'));
+
+          $checkbox2AttrChecked.text($checkbox2.attr('checked') ? 'checked' : 'false');
+          $checkbox2PropChecked.text($checkbox2.prop('checked'));
+
+          $radio1AttrChecked.text($radio1.attr('checked') ? 'checked' : 'false');
+          $radio1PropChecked.text($radio1.prop('checked'));
+          $radio1AttrDisabled.text($radio1.attr('disabled') ? 'disabled' : 'false');
+          $radio1PropDisabled.text($radio1.prop('disabled'));
+
+          $radio2AttrDisabled.text($radio2.attr('disabled') ? 'disabled' : 'false');
+          $radio2PropDisabled.text($radio2.prop('disabled'));
+
+
+          $radio3AttrChecked.text($radio3.attr('checked') ? 'checked' : 'false');
+          $radio3PropChecked.text($radio3.prop('checked'));
+          $radio3AttrDisabled.text($radio3.attr('disabled') ? 'disabled' : 'false');
+          $radio3PropDisabled.text($radio3.prop('disabled'));
+        }, 300)
+      });
+    </script>
+</head>
+<body>
+<header>
+    <h1>Свойства и атрибуты</h1>
+    <h2>Почувствуй разницу между <code>attr()</code> и <code>prop()</code></h2>
+</header>
+<main>
+    <article>
+        <h3>Форма проб и ошибок</h3>
+        <form id="target" action="">
+            <fieldset>
+                <legend>Чекбоксы</legend>
+                <table class="w-full">
+                    <tr>
+                        <td class="w-1/4">
+                            <input id="checkbox" type="checkbox" name="checkbox-one" value="1"/>
+                            <label for="checkbox">чекбокс</label>
+                        </td>
+                        <td class="w-3/4">
+                            <code class="w-full p-2">
+                                attr('checked') == <span id="checkbox1-attr-checked">?</span><br/>
+                                prop('checked') == <span id="checkbox1-prop-checked">?</span>
+                            </code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="checkbox-two" type="checkbox" name="checkbox-two" value="1" checked="checked"/>
+                            <label for="checkbox-two">ещё один</label>
+                        </td>
+                        <td>
+                            <code class="w-full p-2">
+                                attr('checked') == <span id="checkbox2-attr-checked">?</span><br/>
+                                prop('checked') == <span id="checkbox2-prop-checked">?</span>
+                            </code>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <br/>
+            <fieldset>
+
+                <legend>Радиобаттоны</legend>
+                <table class="w-full">
+                    <tr>
+                        <td class="w-1/4">
+                            <input id="radio-one" type="radio" name="radio" value="1" checked/>
+                            <label for="radio-one">радио один</label>
+                        </td>
+                        <td class="w-3/4">
+                            <code class="w-full p-2">
+                                attr('checked') == <span id="radio1-attr-checked">?</span><br/>
+                                prop('checked') == <span id="radio1-prop-checked">?</span><br/>
+                                attr('disabled') == <span id="radio1-attr-disabled">?</span><br/>
+                                prop('disabled') == <span id="radio1-prop-disabled">?</span>
+                            </code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="radio-two" type="radio" name="radio" value="2" disabled/>
+                            <label for="radio-two">второе радио</label>
+                        </td>
+                        <td>
+                            <code class="w-full p-2">
+                                attr('disabled') == <span id="radio2-attr-disabled">?</span><br/>
+                                prop('disabled') == <span id="radio2-prop-disabled">?</span>
+                            </code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="radio-three" type="radio" name="radio" value="3"/>
+                            <label for="radio-three">третье радио</label>
+                        </td>
+                        <td>
+                            <code class="w-full p-2">
+                                attr('checked') == <span id="radio3-attr-checked">?</span><br/>
+                                prop('checked') == <span id="radio3-prop-checked">?</span><br/>
+                                attr('disabled') == <span id="radio3-attr-disabled">?</span><br/>
+                                prop('disabled') == <span id="radio3-prop-disabled">?</span>
+                            </code>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <button type="submit">Как оно там?</button>
+        </form>
+    </article>
+</main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
+
+<aside>
+    <nav>
+        <a href="class.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="data.html" title="go next" rel="next">Next</a>
+    </nav>
+    <hr/>
+    <p>Метод attr()</p>
+    <code><em>// "check"</em>
+$(<span>'#checkbox'</span>).attr(<span>'checked'</span>, <span>true</span>)</code>
+    <button type="button">Run Code</button>
+    <code><em>// "uncheck"</em>
+$(<span>'#checkbox'</span>).attr(<span>'checked'</span>, <span>false</span>)</code>
+    <button type="button">Run Code</button>
+
+    <p>Метод prop()</p>
+    <code><em>// check</em>
+$(<span>'#checkbox'</span>).prop(<span>'checked'</span>, <span>true</span>)</code>
+    <button type="button">Run Code</button>
+    <code><em>// uncheck</em>
+$(<span>'#checkbox'</span>).prop(<span>'checked'</span>, <span>false</span>)</code>
+    <button type="button">Run Code</button>
+    <code><em>// disable checkbox</em>
+$(<span>'#checkbox'</span>).prop(<span>'disabled'</span>, <span>true</span>)</code>
+    <button type="button">Run Code</button>
+    <code><em>// enable checkbox</em>
+$(<span>'#checkbox'</span>).prop(<span>'disabled'</span>, <span>false</span>)</code>
+    <button type="button">Run Code</button>
+</aside>
+
+<aside id="output">
+    <h4>Состояние формы:</h4>
+    <hr/>
+    <code></code>
+</aside>
+
+</body>
+</html>

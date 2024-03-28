@@ -81,14 +81,14 @@
 
       function runAllTests () {
         let f = {
-          'query': 'querySelectorAll(\'.my > div\')',
-          'findMore': '$(\'.my\').find(\'>div\')',
-          'context': '$(\'>div\', $(\'.my\'))',
-          'context2': '$(\'>div\', \'.my\')',
-          'fast': '$(\'.my\').children(\'div\')',
-          'normal': '$(\'.my > div\') [with QSA]',
-          'slow': '$(\'.my > div\') [without QSA]',
-          'custom': 'no jQuery, no QSA',
+          'query':    'querySelectorAll(\'.my > div\') ',
+          'findMore': '$(\'.my\').find(\'>div\')         ',
+          'context':  '$(\'>div\', $(\'.my\'))           ',
+          'context2': '$(\'>div\', \'.my\')              ',
+          'fast':     '$(\'.my\').children(\'div\')      ',
+          'normal':   '$(\'.my > div\') [with QSA]     ',
+          'slow':     '$(\'.my > div\') [without QSA]  ',
+          'custom':   'no jQuery, no QSA             ',
         }
         let text = ''
         for (let key in f) {
@@ -96,7 +96,7 @@
           for (let j = 0; j < 100; j++) {
               window[key]()
           }
-          text = text + f[key] + ': ' + (new Date - d) + ' ms\n'
+          text = text + f[key] + (new Date - d) + ' ms\n'
         }
         $('aside pre code').text('window.location.reload()')
         return text
