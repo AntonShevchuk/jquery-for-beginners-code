@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Пример анимации с использованием методов семейства Fade</title>
+    <title>Пример анимации с использованием методов "fadeIn/Out/To/Toggle"</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -11,59 +11,59 @@
     <script type="text/javascript" src="js/code.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Анимация</h1>
-        <h2>Методы <code>fadeIn()</code>, <code>fadeOut()</code>, <code>fadeTo()</code> и <code>fadeToggle()</code></h2>
-    </header>
-    <main>
-        <article id="stick" class="box">
-            <h3>Article Title</h3>
-            <p>
-                <img src="images/photo-bumblebee-thumb.jpg" alt="Bumblebee" class="left" width="200"/>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
-                lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
-                in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
-                euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
-                eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
-                at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
-                nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
-                tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
-                fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
-                lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
-        </article>
-        <article>
-            <h3>Article Title</h3>
-            <p>
-                <img src="images/photo-chamomile-thumb.jpg" alt="Chamomile" class="left" width="200"/>
-                Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
-                Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
-                turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
-                nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
-                blandit sapien bibendum. Proin vel vulputate nisl. Duis tempor imperdiet placerat. Pellentesque
-                faucibus consequat magna, et bibendum nisl egestas non. Pellentesque sit amet mattis augue.
-                Aenean at diam tincidunt purus sollicitudin gravida non in nisi. Fusce bibendum, magna in
-                adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
-                adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
-                nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
-                libero. Fusce et ultrices lectus.</p>
-        </article>
-        <article>
-            <h3>Article Title</h3>
-            <p>
-                <img src="images/photo-maple-leaf-thumb.jpg" alt="Maple Leaf" class="left" width="200"/>
-                Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
-                laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
-                non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
-                ipsum vitae massa accumsan ullamcorper. Maecenas commodo lacus turpis. Proin sit amet mauris
-                sem, imperdiet faucibus lorem. Fusce ullamcorper consectetur ligula vel pretium. Sed et elit
-                vitae orci adipiscing condimentum id sed turpis. Morbi ultrices feugiat ullamcorper. Fusce at
-                magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
-                cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
-        </article>
-    </main>
-    <footer>
-        <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
-    </footer>
+<header>
+    <h1>Анимация</h1>
+    <h2>Методы <code>fadeIn()</code>, <code>fadeOut()</code>, <code>fadeTo()</code> и <code>fadeToggle()</code></h2>
+</header>
+<main>
+    <article>
+        <h3>Article Title</h3>
+        <p>
+            <img src="images/photo-bumblebee-thumb.jpg" alt="Bumblebee" width="200"/>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+            lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+            in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+            euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+            eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+            at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+            nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+            tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+            fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+            lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
+    </article>
+    <article>
+        <h3>Article Title</h3>
+        <p>
+            <img src="images/photo-chamomile-thumb.jpg" alt="Chamomile" width="200"/>
+            Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+            Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
+            turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
+            nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
+            blandit sapien bibendum. Proin vel vulputate nisl. Duis tempor imperdiet placerat. Pellentesque
+            faucibus consequat magna, et bibendum nisl egestas non. Pellentesque sit amet mattis augue.
+            Aenean at diam tincidunt purus sollicitudin gravida non in nisi. Fusce bibendum, magna in
+            adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
+            adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
+            nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
+            libero. Fusce et ultrices lectus.</p>
+    </article>
+    <article>
+        <h3>Article Title</h3>
+        <p>
+            <img src="images/photo-maple-leaf-thumb.jpg" alt="Maple Leaf" width="200"/>
+            Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
+            laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
+            non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
+            ipsum vitae massa accumsan ullamcorper. Maecenas commodo lacus turpis. Proin sit amet mauris
+            sem, imperdiet faucibus lorem. Fusce ullamcorper consectetur ligula vel pretium. Sed et elit
+            vitae orci adipiscing condimentum id sed turpis. Morbi ultrices feugiat ullamcorper. Fusce at
+            magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
+            cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
+    </article>
+</main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
 <aside>
     <nav>
         <a href="slide.html" title="go prev" rel="prev">Prev</a>

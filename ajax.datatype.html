@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Пример работы AJAX</title>
+    <title>Пример загрузки различных типов данных</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <style>
         article code {
             margin: 0 1rem;
+        }
+        article pre {
+            font-size: 14px;
+            padding: 20px;
         }
     </style>
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -31,17 +35,11 @@
         $('#json').text(xhr.responseText)
       }
     </script>
-    <style>
-        article pre {
-            font-size: 14px;
-            padding: 20px;
-        }
-    </style>
 </head>
 <body>
 <header>
-    <h1>Метод <code>ajax()</code></h1>
-    <h2>Пример загрузки разных типов данных</h2>
+    <h1>Пример загрузки различных типов данных</h1>
+    <h2>Используем метод <code>ajax()</code></h2>
 </header>
 <main>
     <article>
