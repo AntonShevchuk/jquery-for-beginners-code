@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Пример анимации, используем методом "animate()"</title>
+    <title>Пример анимации, используем методом "animate()" с опциями</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -13,7 +13,7 @@
 <body>
 <header>
     <h1>Анимация</h1>
-    <h2>Без обёрток, лишь используя <code>animate()</code></h2>
+    <h2>Используем опции <code>animate(properties, options)</code></h2>
 </header>
 <main>
     <article>
@@ -66,41 +66,32 @@
 </footer>
 <aside>
     <nav>
-        <a href="fade.html" title="go prev" rel="prev">Prev</a>
+        <a href="animate.html" title="go prev" rel="prev">Prev</a>
         <a href="index.html" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
-        <a href="animate.options.html" title="go next" rel="next">Next</a>
+        <a href="animate.queue.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
     <div>
-    <code contenteditable="true"><em>// fadeOut()</em>
-$(<span>'article img'</span>).animate({
-  <span>'opacity'</span>:<span>'hide'</span>
+    <code contenteditable="true"><em>// change height and width</em>
+$(<span>'img:first'</span>).animate({
+  <span>'height'</span>: <span>'+=10px'</span>,
+  <span>'width'</span>: <span>'+=10px'</span>
+}, {
+  <span>'start'</span>:  () => output('start'),
+  <span>'progress'</span>: (a, i) => output(i),
+  <span>'done'</span>:   () => output('done'),
+  <span>'fail'</span>:   () => output('fail'),
+  <span>'always'</span>: () => output('always')
 })</code>
     <button type="button">Run Code</button>
-    <code contenteditable="true"><em>// fadeIn()</em>
-$(<span>'article img'</span>).animate({
-  <span>'opacity'</span>:<span>'show'</span>
-})</code>
-    <button type="button">Run Code</button>
-    <code contenteditable="true"><em>// resize to</em>
-$(<span>'article img'</span>).animate({
-  <span>'opacity'</span>:0.5,
-  <span>'height'</span>:<span>'50px'</span>,
-  <span>'width'</span>:<span>'250px'</span>
-})</code>
-    <button type="button">Run Code</button>
-    <code contenteditable="true"><em>// change current</em>
-$(<span>'article img'</span>).animate({
-  <span>'opacity'</span>:<span>'-=0.1'</span>,
-  <span>'height'</span>:<span>'+=10px'</span>
-})</code>
-    <button type="button">Run Code</button>
-    <code contenteditable="true"><em>// change current</em>
-$(<span>'article img'</span>).animate({
-  <span>'width'</span>:<span>'+=50%'</span>
-})</code>
-    <button type="button">Run Code</button>
+    </div>
+</aside>
+<aside id="output">
+    <h4>Output:</h4>
+    <hr/>
+    <div>
+    <code></code>
     </div>
 </aside>
 </body>
