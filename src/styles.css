@@ -372,7 +372,7 @@
 
             &::after {
                 content: "</article>";
-                @apply ml-1 pl-2;
+                @apply ml-1 pl-2 block;
                 @apply border-l-amber-500 border-l-4;
                 @apply text-base text-sky-700;
             }
@@ -384,6 +384,18 @@
 
                 &::after {
                     content: "</span>";
+                    @apply inline-block ml-1 text-base text-sky-700;
+                }
+            }
+            i {
+                @apply not-italic;
+                &::before {
+                    content: "<i>";
+                    @apply inline-block mr-1 text-base text-sky-700;
+                }
+
+                &::after {
+                    content: "</i>";
                     @apply inline-block ml-1 text-base text-sky-700;
                 }
             }

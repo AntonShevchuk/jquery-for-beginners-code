@@ -1675,6 +1675,10 @@ code {
   color: rgb(3 105 161 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
 .blur {
   --tw-blur: blur(8px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -2023,6 +2027,9 @@ code {
       margin-left: 0.25rem;
     }
     &::after {
+      display: block;
+    }
+    &::after {
       padding-left: 0.5rem;
     }
     &::after {
@@ -2060,6 +2067,45 @@ code {
       }
       &::after {
         content: "</span>";
+      }
+      &::after {
+        margin-left: 0.25rem;
+      }
+      &::after {
+        display: inline-block;
+      }
+      &::after {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+      &::after {
+        --tw-text-opacity: 1;
+        color: rgb(3 105 161 / var(--tw-text-opacity));
+      }
+    }
+    i {
+      font-style: normal;
+    }
+    i {
+      &::before {
+        content: "<i>";
+      }
+      &::before {
+        margin-right: 0.25rem;
+      }
+      &::before {
+        display: inline-block;
+      }
+      &::before {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+      &::before {
+        --tw-text-opacity: 1;
+        color: rgb(3 105 161 / var(--tw-text-opacity));
+      }
+      &::after {
+        content: "</i>";
       }
       &::after {
         margin-left: 0.25rem;

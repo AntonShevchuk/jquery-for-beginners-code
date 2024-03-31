@@ -7,6 +7,23 @@
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
+    <style>
+        article {
+            border-bottom: 1px solid #eee;
+        }
+        article h3 {
+            cursor: pointer;
+        }
+        article h3:hover {
+            text-decoration: underline;
+        }
+        .active {
+            color: black;
+        }
+        .active:hover {
+            color: #333;
+        }
+    </style>
     <script src="js/jquery.js"></script>
     <script src="js/code.js"></script>
     <script>
@@ -15,7 +32,7 @@
       }
 
       $(function () {
-        $('article h2').click(function () {
+        $('article h3').click(function () {
           $(this).next().slideToggle()
           $(this).toggleClass('active')
         })
