@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script>
       $(function () {
@@ -38,6 +39,14 @@
 
           logY.text(Math.floor(now) + fx.unit)
         }
+
+        setInterval(function() {
+          $player.animate(
+            { "top": "424" },
+            { duration: 500, easing: "easeOutBounce", queue: "y", step: stepY }
+          ).dequeue("y")
+        }, 500)
+
         $(document).keydown(function (e) {
           // 37 - `←` | 68 - `d` | left
           // 38 - `↑` | 82 - `r` | up
