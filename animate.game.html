@@ -11,43 +11,63 @@
     <script type="text/javascript" src="js/code.js"></script>
     <script>
       $(function () {
-        var logX = $('#log-x')
-        var logY = $('#log-y')
-        var $box = $('#box')
+        let logX = $("#log-x")
+        let logY = $("#log-y")
+        let $player = $("#player")
 
-        logX.text($box.css('left'))
-        logY.text($box.css('top'))
+        logX.text($player.css("left"))
+        logY.text($player.css("top"))
 
-        var stepX = function (now, obj) {
-          logX.text(Math.floor(now) + obj.unit)
+        let stepX = function (now, fx) {
+
+          if (fx.prop === "left" && fx.start > fx.end && now <= 6) {
+            $(this).stop().css("left", 0); // Stop the animation if "left" is less than or equal to 0
+          } else if (fx.prop === "left" && fx.start < fx.end && now > 660) {
+            $(this).stop().css("left", 660);
+          }
+
+          logX.text(Math.floor(now) + fx.unit)
         }
-        var stepY = function (now, obj) {
-          logY.text(Math.floor(now) + obj.unit)
+        let stepY = function (now, fx) {
+
+          if (fx.prop === "top" && fx.start > fx.end && now < 6) {
+            $(this).stop().css("top", 0); // Stop the animation if "top" is less than or equal to 0
+          } else if (fx.prop === "top" && fx.start < fx.end && now > 424) {
+             $(this).stop().css("top", 420);
+          }
+
+          logY.text(Math.floor(now) + fx.unit)
         }
         $(document).keydown(function (e) {
-          // 37 - left
-          // 38 - up
-          // 39 - right
-          // 40 - down
+          // 37 - `←` | 68 - `d` | left
+          // 38 - `↑` | 82 - `r` | up
+          // 39 - `→` | 71 - `g` | right
+          // 40 - `↓` | 70 - `f` | down
           switch (e.keyCode) {
             case 37:
-              $box.stop('x', true)
-              $box.animate({ 'left': '-=100' }, { queue: 'x', step: stepX }).dequeue('x')
+            case 68:
+              $player.stop("x", true)
+              $player.css("transform", "initial")
+              $player.animate({ "left": "-=100" }, { queue: "x", step: stepX }).dequeue("x")
               break
             case 38:
-              $box.stop('y', true)
-              $box.animate({ 'top': '-=100' }, { queue: 'y', step: stepY }).dequeue('y')
+            case 82:
+              $player.stop("y", true)
+              $player.animate({ "top": "-=100" }, { queue: "y", step: stepY }).dequeue("y")
               break
             case 39:
-              $box.stop('x', true)
-              $box.animate({ 'left': '+=100' }, { queue: 'x', step: stepX }).dequeue('x')
+            case 71:
+              $player.stop("x", true)
+              $player.css("transform", "scaleX(-1)")
+              $player.animate({ "left": "+=100" }, { queue: "x", step: stepX }).dequeue("x")
               break
             case 40:
-              $box.stop('y', true)
-              $box.animate({ 'top': '+=100' }, { queue: 'y', step: stepY }).dequeue('y')
+            case 70:
+              $player.stop("y", true)
+              $player.animate({ "top": "+=100" }, { queue: "y", step: stepY }).dequeue("y")
               break
           }
-            return false;
+          return false;
         })
       })
     </script>
@@ -56,41 +76,27 @@
             position: relative;
         }
 
-        article.withbox {
+        article.screen {
             height: 600px;
+            background: url("images/mario-bg.png");
         }
 
-        #box {
-            background: #1da85e;
-            position: relative;
-            margin: 10px;
-            width: 100px;
+        #player {
+            position:absolute;
+            width:100px;
             height: 100px;
+            top:424px;
+            right:24px;
+            display:none;
+            background: url("images/mario.svg") no-repeat;
         }
 
-        #box span {
-            display: inline-block;
-            background: #fff;
-            font-size: 22px;
-            line-height: 22px;
-            text-align: center;
-            width: 24px;
-            height: 34px;
-            margin: 8px 11px;
-            padding: 5px 0;
-            border: 1px solid #000;
-            border-radius: 2px;
-        }
-
-        .red {
-            color: red;
-        }
     </style>
 </head>
 <body>
 <header>
     <h1>Произвольная очередь анимации</h1>
-    <h2>Используя стрелочки на клавиатуре перемещайте элемент (&larr; и &rarr;, &uarr; и &darr;)</h2>
+    <h2>Используя стрелочки на клавиатуре перемещайте элемент (← и →, ↑ и ↓)</h2>
 </header>
 <main id="content">
     <article>
@@ -99,12 +105,8 @@
             Y: <span id="log-y">0px</span>
         </p>
     </article>
-    <article class="withbox">
-        <div id="box">
-            <span>&spades;</span>
-            <span>&clubs;</span>
-            <span class="red">&hearts;</span>
-            <span class="red">&diams;</span>
+    <article class="screen">
+        <div id="player">
         </div>
     </article>
 </main>
@@ -120,37 +122,45 @@
     </nav>
     <hr/>
     <div>
-    <code contenteditable="true">$(<span>'#box'</span>).animate({
-  <span>'left'</span>: <span>'-=100'</span>
-}, {
-  <span>'queue'</span>: <span>'x'</span>,
-  <span>'duration'</span>: <i>2000</i>
-}).dequeue('x')</code>
+    <code>$(<span>'#player'</span>).show()</code>
+    <button type="button">Start Game</button>
+    <code contenteditable="true">$(<span>"#player"</span>)
+  .css(<span>"transform"</span>, <span>"initial"</span>)
+  .animate({
+    <span>"left"</span>: <span>"-=100"</span>
+  }, {
+    <span>"queue"</span>: <span>"x"</span>,
+    <span>"duration"</span>: <i>2000</i>
+  }).dequeue("x")</code>
     <button type="button">← Left</button>
-    <code contenteditable="true">$(<span>'#box'</span>).animate({
-  <span>'left'</span>:<span>'+=100'</span>
-}, {
-  <span>'queue'</span>: <span>'x'</span>,
-  <span>'duration'</span>: <i>2000</i>
-}).dequeue('x')</code>
+    <code contenteditable="true">$(<span>"#player"</span>)
+  .css(<span>"transform"</span>, <span>"scaleX(-1)"</span>)
+  .animate({
+    <span>"left"</span>:<span>"+=100"</span>
+  }, {
+    <span>"queue"</span>: <span>"x"</span>,
+    <span>"duration"</span>: <i>2000</i>
+  }).dequeue("x")</code>
     <button type="button">Right →</button>
-    <code contenteditable="true">$(<span>'#box'</span>).animate({
-  <span>'top'</span>:<span>'-=250'</span>
+    <code contenteditable="true">$(<span>"#player"</span>).animate({
+  <span>"top"</span>:<span>"-=250"</span>
 }, {
-  <span>'queue'</span>: <span>'y'</span>,
-  <span>'duration'</span>: <i>2000</i>
-}).dequeue('y')</code>
+  <span>"queue"</span>: <span>"y"</span>,
+  <span>"duration"</span>: <i>2000</i>
+}).dequeue("y")</code>
     <button type="button">↑ Up</button>
-    <code contenteditable="true">$(<span>'#box'</span>).animate({
-  <span>'top'</span>:<span>'+=250'</span>
+    <code contenteditable="true">$(<span>"#player"</span>).animate({
+  <span>"top"</span>:<span>"+=250"</span>
 }, {
-  <span>'queue'</span>: <span>'y'</span>,
-  <span>'duration'</span>: <i>2000</i>
-}).dequeue('y')</code>
+  <span>"queue"</span>: <span>"y"</span>,
+  <span>"duration"</span>: <i>2000</i>
+}).dequeue("y")</code>
     <button type="button">↓ Down</button>
-    <code contenteditable="true">$(<span>'#box'</span>).stop(<span>'x'</span>, true);
-$(<span>'#box'</span>).stop(<span>'y'</span>, true);</code>
+    <code contenteditable="true">$(<span>"#player"</span>).stop(<span>"x"</span>, true);
+$(<span>"#player"</span>).stop(<span>"y"</span>, true);</code>
     <button type="button">Stop</button>
+        <code>$(<span>"#player"</span>).hide()</code>
+        <button type="button">End Game</button>
     </div>
 </aside>
 </body>

@@ -73,7 +73,7 @@
     </nav>
     <hr/>
     <div>
-    <code contenteditable="true"><em>// change height and width</em>
+    <code><em>// change height and width</em>
 $(<span>'img:first'</span>).animate({
   <span>'height'</span>: <span>'+=10px'</span>,
   <span>'width'</span>: <span>'+=10px'</span>
@@ -83,6 +83,15 @@ $(<span>'img:first'</span>).animate({
   <span>'done'</span>:   () => output('done'),
   <span>'fail'</span>:   () => output('fail'),
   <span>'always'</span>: () => output('always')
+})</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// change height and width</em>
+$(<span>'img:first'</span>).animate({
+  <span>'height'</span>: <span>'+=100px'</span>,
+  <span>'width'</span>: <span>'+=100px'</span>
+}, {
+  <span>'progress'</span>: (a, i) => $(<span>"h2"</span>).text(Math.round(i * 100) + '%'),
+  <span>'duration'</span>: <i>5000</i>
 })</code>
     <button type="button">Run Code</button>
     </div>

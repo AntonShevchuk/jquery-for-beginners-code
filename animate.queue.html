@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Пример работы очередей анимации</title>
+    <title>Пример работы с очередью анимации</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -44,8 +44,8 @@
 </head>
 <body>
 <header>
-    <h1>Очередь</h1>
-    <h2>Пример работы с очередью и без анимировании элементов</h2>
+    <h1>Очередь <code>fx</code></h1>
+    <h2>Пример работы с очередью анимации</h2>
 </header>
 <main id="content">
     <article>
@@ -70,30 +70,30 @@
     <hr/>
     <div>
     <code contenteditable="true"><em>// with queue</em>
-$(<span>'#box'</span>).animate({
-  <span>'left'</span>:<span>'+=100'</span>
+$(<span>"#box"</span>).animate({
+  <span>"left"</span>:<span>"+=100"</span>
 }, 2000).animate({
-  <span>'top'</span>:<span>'+=100'</span>
+  <span>"top"</span>:<span>"+=100"</span>
 }, 2000)</code>
     <button type="button">Run Code</button>
     <code contenteditable="true"><em>// without queue</em>
-$(<span>'#box'</span>).animate({
-  <span>'left'</span>:<span>'-=100'</span>
+$(<span>"#box"</span>).animate({
+  <span>"left"</span>:<span>"-=100"</span>
 }, 2000).animate({
-  <span>'top'</span>:<span>'-=100'</span>
+  <span>"top"</span>:<span>"-=100"</span>
 }, {queue:false, duration:2000})</code>
     <button type="button">Run Code</button>
-    <code contenteditable="true"><em>// stop current</em>
-$(<span>'#box'</span>).stop()</code>
+    <code><em>// stop current</em>
+$(<span>"#box"</span>).stop()</code>
     <button type="button">Run Code</button>
-    <code contenteditable="true"><em>// stop all animation</em>
-$(<span>'#box'</span>).stop(true)</code>
+    <code><em>// stop all animation</em>
+$(<span>"#box"</span>).stop(true)</code>
     <button type="button">Run Code</button>
-    <code contenteditable="true"><em>// stop current animation, goto end, clear queue</em>
-$(<span>'#box'</span>).stop(true, true)</code>
+    <code><em>// stop current animation, goto end, clear queue</em>
+$(<span>"#box"</span>).stop(true, true)</code>
     <button type="button">Run Code</button>
-    <code contenteditable="true"><em>// stop current animation</em>
-$(<span>'#box'</span>).stop(false, true)</code>
+    <code><em>// stop current animation</em>
+$(<span>"#box"</span>).stop(false, true)</code>
     <button type="button">Run Code</button>
     </div>
 </aside>

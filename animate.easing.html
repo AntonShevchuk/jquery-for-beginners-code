@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Анимация с использованием плагина easing</title>
+    <title>Пример анимации с использованием плагина easing</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -31,9 +31,31 @@
         })
 
         $('#button').click(function () {
-          $('.square').animate({ top: 360 }, 2000, sel.val(), function () {
-            $(this).delay(1).css({ top: 40 })
-          })
+
+          $('.square')
+            .animate(
+              {
+                top: 360,
+                left: 360
+              },
+              {
+                specialEasing: {
+                  top: sel.val(),
+                  left: "linear"
+                },
+                duration:2000,
+                done: function () {
+                  $('.square').delay(3).css({ top: 40, left: 40 })
+                }
+              }
+            )
+
+          // alternative based on queue
+          // $('.square')
+          //   .animate({ top: 360 }, {easing:sel.val(), duration:2000})
+          //   .animate({ left: 360 }, {queue:false, duration:2000, done: function () {
+          //       $('.square').delay(3).css({ top: 40, left: 40 })
+          //     }})
         })
 
       })
