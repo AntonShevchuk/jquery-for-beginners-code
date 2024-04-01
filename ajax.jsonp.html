@@ -11,7 +11,11 @@
     <script type="text/javascript" src="js/code.js"></script>
     <script>
       function toJsonContainer (data, status, xhr) {
-        $('#json').text(data)
+        console.log(data)
+        $('<code></code>')
+          .append(JSON.stringify(data))
+          .append("\n\n")
+          .appendTo('#json')
       }
 
       function buildImages (data) {
@@ -27,15 +31,22 @@
           images.append(div)
           if (i === 3) return false
         })
+        images.append(
+          document.createElement('hr')
+        )
       }
     </script>
     <style>
+        #json code {
+            margin: 1rem;
+            padding: 1rem;
+        }
         #images div {
             height: 216px;
             width: 310px;
             float: left;
             overflow: hidden;
-            margin: 2rem;
+            margin: 1rem 2rem;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
@@ -61,12 +72,10 @@
 </header>
 <main id="content">
 <article>
-    <code id="json"></code>
-    <hr/>
+    <div id="json"></div>
 </article>
 <article>
     <div id="images"></div>
-    <hr/>
 </article>
 </main>
 <footer>
@@ -81,13 +90,13 @@
     </nav>
     <hr/>
     <code>$.ajax({
-  url: <span>"https://anton.shevchuk.name/book/code/ajax/example.php?callback=?"</span>,
+  url: <span>"ajax/example.php?callback=?"</span>,
   dataType: <span>"jsonp"</span>,
   success: toJsonContainer
 });</code>
     <button type="button">Run Code</button>
     <code>$.ajax({
-  url: <span>"https://anton.shevchuk.name/book/code/ajax/example.php?callback=?"</span>,
+  url: <span>"ajax/example.php?callback=?"</span>,
   dataType: <span>"jsonp"</span>,
   jsonpCallback: <span>"toJsonContainer"</span>
 });</code>

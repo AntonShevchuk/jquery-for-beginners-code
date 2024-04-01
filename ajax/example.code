@@ -8,7 +8,7 @@
 
 header('content-type: application/json; charset=utf-8');
 
-$callback = isset($_REQUEST['callback'])?$_REQUEST['callback']:'alert';
+$callback = $_REQUEST['callback'] ?? 'alert';
 
 if (!preg_match('/^[a-z0-9_-]+$/i', $callback)) {
     $callback = 'alert';
