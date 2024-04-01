@@ -20,7 +20,7 @@
 <header>
     <h1>Пример использования метода <code>ajax()</code></h1>
     <h2>Код аналогичный предыдущему примеру с <code>load()</code>:</h2>
-    <p><code>$(<span>'article'</span>).load(<span>'index.html main'</span>)</code></p>
+    <p><code>$(<span>'article'</span>).load(<span>'example.html main'</span>)</code></p>
 </header>
 <main>
     <article>
@@ -40,7 +40,7 @@
     <hr/>
     <code contenteditable="true"><em>// AJAX is easy</em>
 $.ajax({
-  url: <span>'index.html'</span>,
+  url: <span>'example.html'</span>,
   success: function(data) {
     let part = $(data).filter(<span>'main'</span>);
     $(<span>'article'</span>).append(part);
@@ -49,7 +49,7 @@ $.ajax({
     <button type="button">Run Code</button>
     <code contenteditable="true"><em>// AJAX with Promise</em>
 $.ajax({
-  url: <span>'index.html'</span>,
+  url: <span>'example.html'</span>,
   success: function(data) {
     let part = $(data).filter(<span>'main'</span>);
     $(<span>'article'</span>).append(part);
