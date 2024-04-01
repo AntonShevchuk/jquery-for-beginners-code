@@ -20,15 +20,15 @@
     })
 
     // apply style from button
-    $('button[data-style]').click(function (){
+    $('button[data-style]').click(function () {
       let rule = this.innerText
       $('head').append('<style>' + rule + '</style>')
-      return false;
+      return false
     })
 
     // highlight jquery element
     $('button[data-highlight]').click(function () {
-      let code;
+      let code
       if ($(this).prev().is('code')) {
         code = $(this).prev().text()
       } else {
@@ -48,13 +48,17 @@
 
 function replaceOutput (selector, text) {
   if (text === '') text = ''
-  $(selector).find("code").text(text)
+  $(selector).find('code').text(text)
 }
 
 function appendOutput (selector, text) {
-  $(selector).find("code").append(text + "\n")
+  $(selector).find('code').append(text + '\n')
+}
+
+function out (text) {
+  replaceOutput('#output', text)
 }
 
 function output (text) {
- appendOutput("#output", text)
+  appendOutput('#output', text)
 }

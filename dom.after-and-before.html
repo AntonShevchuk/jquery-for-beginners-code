@@ -8,10 +8,10 @@
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <style>
-        article#stick:before {
-            content: '<article id="stick" class="box important">'
+        article#pinned:before {
+            content: '<article id="pinned" class="box important">'
         }
-        article:not(#stick):before {
+        article:not(#pinned):before {
             content: '<article class="box">'
         }
     </style>
@@ -24,7 +24,7 @@
     <h2>Методы <code>after()</code>, <code>before()</code>, <code>insertAfter()</code> и <code>insertBefore()</code></h2>
 </header>
 <main>
-    <article id="stick" class="box important">
+    <article id="pinned" class="box important">
         <h3>Article Title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque

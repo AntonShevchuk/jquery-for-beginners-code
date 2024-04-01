@@ -1662,6 +1662,10 @@ code {
   padding: 0.5rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -1847,6 +1851,71 @@ code {
       color: rgb(3 105 161 / var(--tw-text-opacity));
     }
   }
+  div {
+    margin-left: 1.5rem;
+  }
+  div {
+    &::before {
+      content: "<div>";
+    }
+    &::before {
+      margin-left: 0.25rem;
+    }
+    &::before {
+      padding-left: 0.5rem;
+    }
+    &::before {
+      border-left-width: 4px;
+    }
+    &::before {
+      --tw-border-opacity: 1;
+      border-left-color: rgb(245 158 11 / var(--tw-border-opacity));
+    }
+    &::before {
+      margin-right: 0.25rem;
+    }
+    &::before {
+      display: block;
+    }
+    &::before {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+    &::before {
+      --tw-text-opacity: 1;
+      color: rgb(3 105 161 / var(--tw-text-opacity));
+    }
+    &::after {
+      content: "</div>";
+    }
+    &::after {
+      margin-left: 0.25rem;
+    }
+    &::after {
+      padding-left: 0.5rem;
+    }
+    &::after {
+      border-left-width: 4px;
+    }
+    &::after {
+      --tw-border-opacity: 1;
+      border-left-color: rgb(245 158 11 / var(--tw-border-opacity));
+    }
+    &::after {
+      margin-left: 0.25rem;
+    }
+    &::after {
+      display: block;
+    }
+    &::after {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+    &::after {
+      --tw-text-opacity: 1;
+      color: rgb(3 105 161 / var(--tw-text-opacity));
+    }
+  }
   li {
     margin-left: 2rem;
   }
@@ -1880,7 +1949,7 @@ code {
       color: rgb(3 105 161 / var(--tw-text-opacity));
     }
   }
-  header, main, article, article ul, footer {
+  header, main, article, article ul, div, footer {
     background-image: url( "data:image/svg+xml,%3Csvg width='10' height='10' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cellipse style='fill: rgb(245, 158, 11);' cx='6' cy='1' rx='1' ry='1'/%3E%3C/svg%3E" );
     background-position: left;
     background-repeat: repeat-y;
@@ -2003,6 +2072,9 @@ code {
       margin-left: 0.25rem;
     }
     &::before {
+      display: block;
+    }
+    &::before {
       padding-left: 0.5rem;
     }
     &::before {
@@ -2025,6 +2097,9 @@ code {
     }
     &::after {
       margin-left: 0.25rem;
+    }
+    &::after {
+      display: block;
     }
     &::after {
       display: block;

@@ -55,7 +55,7 @@
     <h2>Для <code>box-sizing: content-box</code></h2>
 </header>
 <main>
-    <article>
+    <article class="flex justify-center text-center">
         <div id="block" class="content-box">
             <div id="text">Content</div>
         </div>
@@ -99,7 +99,8 @@
     <button type="button">Run Code</button>
 
     <p>Поменяем свойство box-sizing </p>
-    <code>$(<span>'#block'</span>).toggleClass("content-box border-box")</code>
+    <code>$(<span>'#block'</span>)
+  .toggleClass(<span>"content-box border-box"</span>)</code>
     <button type="button">Run Code</button>
 </aside>
 <aside id="output">

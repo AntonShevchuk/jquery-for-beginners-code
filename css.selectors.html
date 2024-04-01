@@ -11,8 +11,8 @@
         #content:before {
             content: '<main id="content">';
         }
-        #stick:before {
-            content: '<article id="stick" class="box important">';
+        #pinned:before {
+            content: '<article id="pinned" class="box important">';
         }
         #last:before {
             content: '<article class="box">';
@@ -28,7 +28,7 @@
         <h2>Page Description</h2>
     </header>
     <main id="content">
-    <article id="stick" class="box important">
+    <article id="pinned" class="box important">
         <h3>Article Title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
@@ -88,9 +88,9 @@
     <button type="button" class="font-mono w-full" data-highlight>$('main').find('article').find('h3')</button>
     <hr/>
     <button type="button" class="font-mono w-full" data-highlight>$('h1 + h2')</button>
-    <button type="button" class="font-mono w-full" data-highlight>$('#stick ~ article')</button>
-    <button type="button" class="font-mono w-full" data-highlight>$('#stick p').prev()</button>
-    <button type="button" class="font-mono w-full" data-highlight>$('#stick').next()</button>
+    <button type="button" class="font-mono w-full" data-highlight>$('#pinned ~ article')</button>
+    <button type="button" class="font-mono w-full" data-highlight>$('#pinned p').prev()</button>
+    <button type="button" class="font-mono w-full" data-highlight>$('#pinned').next()</button>
     <hr/>
     <button type="button" class="font-mono w-64" data-highlight>$('*')</button>
     <button type="button" class="font-mono w-64" data-highlight>$('article > h3')</button>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Песочница для экспериментов с jQuery</title>
+    <title>Манипуляции с DOM: "clone()", "detach()", "empty()" и "destroy()"</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -20,8 +20,8 @@
 </head>
 <body class="formatter">
 <header>
-    <h1>Работаем с jQuery</h1>
-    <h2>Это наша маленькая песочница</h2>
+    <h1>Манипуляции с DOM</h1>
+    <h2>Методы <code>clone()</code>, <code>detach()</code>, <code>empty()</code> и <code>destroy()</code></h2>
 </header>
 <main>
     <article id="pinned" class="box important">
@@ -57,17 +57,31 @@
 </footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="dom.wrap.html" title="go prev" rel="prev">Back</a>
         <a href="index.html" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="dom.html-and-text.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <code contenteditable="true"><em>// write your code here</em>
-
-
-
-
-</code>
+    <code><em>// clone h1</em>
+let $h1 = $(<span>"h1"</span>).clone()
+<em>// change it</em>
+$h1.prepend(<span>"A clone. "</span>)
+<em>// paste a clone</em>
+$(<span>"header"</span>).prepend($h1)</code>
+    <button type="button">Run Code</button>
+    <code><em>// detach h2</em>
+let $h2 = $(<span>"h2"</span>).detach()
+<em>// change it</em>
+$h2.prepend(<span>"Detached. "</span>)
+<em>// paste it</em>
+$(<span>"main"</span>).prepend($h2)</code>
+    <button type="button">Run Code</button>
+    <code><em>// remove content</em>
+$(<span>"p"</span>).empty()</code>
+    <button type="button">Run Code</button>
+    <code><em>// remove element</em>
+$(<span>"p"</span>).remove()</code>
     <button type="button">Run Code</button>
 </aside>
 </body>

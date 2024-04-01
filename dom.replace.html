@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Песочница для экспериментов с jQuery</title>
+    <title>Манипуляции с DOM: "replaceWith()" и "replaceAll()"</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -20,8 +20,8 @@
 </head>
 <body class="formatter">
 <header>
-    <h1>Работаем с jQuery</h1>
-    <h2>Это наша маленькая песочница</h2>
+    <h1>Манипуляции с DOM</h1>
+    <h2>Методы <code>replaceWith()</code> и <code>replaceAll()</code></h2>
 </header>
 <main>
     <article id="pinned" class="box important">
@@ -57,17 +57,19 @@
 </footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="dom.append-and-prepend.html" title="go prev" rel="prev">Prev</a>
         <a href="index.html" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="dom.wrap.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <code contenteditable="true"><em>// write your code here</em>
-
-
-
-
-</code>
+    <code>$(<span>"p"</span>).replaceWith(<span>"&lt;div&gt;🐱&lt;/div&gt;"</span>)</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>"div"</span>).replaceWith(<span>"&lt;p&gt;🐶&lt;/p&gt;"</span>)</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>"&lt;div&gt;🦊&lt;/div&gt;"</span>).replaceAll(<span>"h1"</span>)</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>"&lt;div&gt;🐼&lt;/div&gt;"</span>).replaceAll(<span>"h2"</span>)</code>
     <button type="button">Run Code</button>
 </aside>
 </body>
