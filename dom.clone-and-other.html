@@ -8,6 +8,12 @@
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <style>
+        h1 {
+            cursor: pointer;
+        }
+        h1:hover {
+            color: #0059ff;
+        }
         article#pinned:before {
             content: '<article id="pinned" class="box important">'
         }
@@ -17,6 +23,17 @@
     </style>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
+    <script>
+        $(function() {
+          $("h1")
+            .data("data", "Original data")
+            .click(function () {
+            output(
+              $(this).data("data")
+            )
+          })
+        })
+    </script>
 </head>
 <body class="formatter">
 <header>
@@ -70,6 +87,15 @@ $h1.prepend(<span>"A clone. "</span>)
 <em>// paste a clone</em>
 $(<span>"header"</span>).prepend($h1)</code>
     <button type="button">Run Code</button>
+
+    <code><em>// clone h1 with data and events</em>
+let $h1 = $(<span>"h1"</span>).clone(true)
+<em>// change it</em>
+$h1.prepend(<span>"A clone with data and events. "</span>)
+<em>// paste a clone</em>
+$(<span>"header"</span>).prepend($h1)</code>
+    <button type="button">Run Code</button>
+
     <code><em>// detach h2</em>
 let $h2 = $(<span>"h2"</span>).detach()
 <em>// change it</em>
@@ -77,12 +103,19 @@ $h2.prepend(<span>"Detached. "</span>)
 <em>// paste it</em>
 $(<span>"main"</span>).prepend($h2)</code>
     <button type="button">Run Code</button>
+
     <code><em>// remove content</em>
 $(<span>"p"</span>).empty()</code>
     <button type="button">Run Code</button>
+
     <code><em>// remove element</em>
 $(<span>"p"</span>).remove()</code>
     <button type="button">Run Code</button>
+</aside>
+<aside id="output">
+    <h4>Output:</h4>
+    <hr/>
+    <code></code>
 </aside>
 </body>
 </html>
