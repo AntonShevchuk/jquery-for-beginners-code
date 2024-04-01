@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Манипуляции с DOM: "scrollLeft()" и "scrollTop()"</title>
+    <link rel="profile" href="https://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <style>
+        main {
+            height: 480px;
+            overflow-y: scroll;
+        }
+        article {
+            width: 800px;
+        }
+    </style>
+</head>
+<body class="formatter">
+<header>
+    <h1>Манипуляции с DOM</h1>
+    <h2>Методы <code>scrollLeft()</code> и <code>scrollTop()</code></h2>
+</header>
+<main>
+    <article>
+        <h3>Article Title</h3>
+        <p>
+            <img src="images/photo-bumblebee-thumb.jpg" alt="Bumblebee" width="200"/>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+            lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+            in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+            euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+            eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+            at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+            nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+            tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+            fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+            lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
+    </article>
+    <article>
+        <h3>Article Title</h3>
+        <p>
+            <img src="images/photo-chamomile-thumb.jpg" alt="Chamomile" width="200"/>
+            Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+            Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
+            turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
+            nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
+            blandit sapien bibendum. Proin vel vulputate nisl. Duis tempor imperdiet placerat. Pellentesque
+            faucibus consequat magna, et bibendum nisl egestas non. Pellentesque sit amet mattis augue.
+            Aenean at diam tincidunt purus sollicitudin gravida non in nisi. Fusce bibendum, magna in
+            adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
+            adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
+            nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
+            libero. Fusce et ultrices lectus.</p>
+    </article>
+    <article>
+        <h3>Article Title</h3>
+        <p>
+            <img src="images/photo-maple-leaf-thumb.jpg" alt="Maple Leaf" width="200"/>
+            Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
+            laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
+            non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
+            ipsum vitae massa accumsan ullamcorper. Maecenas commodo lacus turpis. Proin sit amet mauris
+            sem, imperdiet faucibus lorem. Fusce ullamcorper consectetur ligula vel pretium. Sed et elit
+            vitae orci adipiscing condimentum id sed turpis. Morbi ultrices feugiat ullamcorper. Fusce at
+            magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
+            cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
+    </article>
+    <article>
+        <h3>Article Title</h3>
+        <p>
+            <img src="images/photo-cat-thumb.jpg" alt="Cat" width="200"/>
+            Sed enim nibh, volutpat vel nisl non, commodo venenatis leo. Sed nec neque eget arcu imperdiet convallis.
+            Integer accumsan pharetra lorem, vel ornare felis aliquam sed. Nam bibendum, leo nec porta tincidunt, nisi
+            nibh cursus lacus, ac aliquet sem tellus at nulla. Nullam quis neque sed velit imperdiet maximus in ac
+            velit. Sed porttitor, arcu vehicula aliquam semper, ex dui vehicula est, et finibus turpis nibh vitae mi.
+            Etiam nec ligula aliquam, facilisis tellus a, eleifend massa. Sed vel volutpat eros. Cras a convallis
+            ligula, non molestie sapien. Etiam vitae nibh maximus, pellentesque lectus vitae, mollis sapien. Donec quam
+            sem, consequat eget erat nec, iaculis sodales nisi. Suspendisse eget felis mattis, venenatis leo in, dapibus
+            sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce posuere purus efficitur ligula
+            mattis, sed sollicitudin diam dignissim. Sed scelerisque mauris sapien, a mollis velit viverra id.
+        </p>
+    </article>
+    <article>
+        <h3>Article Title</h3>
+        <p>
+            <img src="images/photo-snake-thumb.jpg" alt="Snake" width="200"/>
+            Aenean dui velit, consectetur quis sodales bibendum, tempor a sapien. Nam mollis mollis justo. Nunc ut
+            scelerisque odio, non consectetur odio. Donec at turpis sit amet purus eleifend rhoncus eu nec felis. Proin
+            vitae massa eu tortor posuere aliquet quis semper nisl. Nulla facilisi. Maecenas sodales vulputate mauris.
+            Cras mi nibh, ullamcorper vitae hendrerit ut, gravida sit amet tortor. Integer molestie lorem a malesuada
+            eleifend. Duis vitae dui in libero eleifend molestie non placerat quam. Aliquam urna ipsum, rhoncus
+            convallis mi et, ultrices pretium lorem. Nulla vehicula lacinia neque, sit amet semper purus porta id. Fusce
+            nec urna leo. Vestibulum eget ante consequat, suscipit velit at, pretium massa. Nullam ullamcorper ex sit
+            amet est dignissim, eget tempus felis tincidunt. Proin magna justo, scelerisque a fringilla vel,
+            sollicitudin eu turpis.</p>
+    </article>
+</main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
+<aside>
+    <nav>
+        <a href="dom.html-and-text.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+    </nav>
+    <hr/>
+    <code data-replace="#output"><em>// scroll Top position</em>
+$(<span>"main"</span>).scrollTop()</code>
+    <button type="button">Run Code</button>
+    <code data-replace="#output"><em>// scroll Left position</em>
+$(<span>"main"</span>).scrollLeft()</code>
+    <button type="button">Run Code</button>
+    <code><em>// scroll to position</em>
+$(<span>"main"</span>).scrollTop(<i>450</i>)</code>
+    <button type="button">Run Code</button>
+    <code><em>// scroll to position</em>
+$(<span>"main"</span>).scrollTop(<i>900</i>)</code>
+    <button type="button">Run Code</button>
+    <code><em>// scroll to top</em>
+$(<span>"main"</span>).scrollTop(<i>0</i>)</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// animation</em>
+$(<span>"main"</span>)
+  .animate({ scrollTop: <i>0</i> });</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// animation</em>
+$(<span>"main"</span>)
+  .animate({
+    scrollTop: <span>"+=200px"</span>
+  })</code>
+    <button type="button">Run Code</button>
+</aside>
+<aside id="output">
+    <h4>Output:</h4>
+    <hr/>
+    <code></code>
+</aside>
+</body>
+</html>
