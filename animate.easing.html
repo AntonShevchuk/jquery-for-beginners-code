@@ -11,22 +11,21 @@
     <script type="text/javascript" src="js/code.js"></script>
     <script type="text/javascript" src="js/jquery.easing.js"></script>
     <script type="text/javascript">
-      let $output = null
       $(function () {
 
-        $output = jQuery('.output')
-        let sel = $('aside select')
+        let $output = $('#output code')
+        let $select = $('aside select')
 
         for (let x in jQuery.easing) {
           if (x !== 'linear' && x !== 'swing' &&
             x !== 'jswing' && x !== 'def' && x !== '_default')
-            sel.append($('<option>').attr('value', x).text(x))
+            $select.append($('<option>').attr('value', x).text(x))
         }
 
-        sel.change(function () {
+        $select.change(function () {
           $('aside img').attr({
-            'src': 'images/' + sel.val() + '.png',
-            'alt': sel.val()
+            'src': 'images/' + $select.val() + '.png',
+            'alt': $select.val()
           })
         })
 
@@ -40,12 +39,17 @@
               },
               {
                 specialEasing: {
-                  top: sel.val(),
+                  top: $select.val(),
                   left: "linear"
                 },
-                duration:2000,
+                duration: 2000,
                 done: function () {
                   $('.square').delay(3).css({ top: 40, left: 40 })
+                },
+                step: function (now, fx) {
+                  if (fx.prop === "top") {
+                    $output.text(`top: ${Math.round(now)}`)
+                  }
                 }
               }
             )
@@ -94,10 +98,6 @@
             position: absolute;
         }
 
-        .output {
-            width: 100%;
-            background: #cfc;
-        }
     </style>
 </head>
 <body>
@@ -129,6 +129,11 @@
         <button id="button" type=button>Go&raquo;</button>
     </div>
     <img src="images/linear.png" alt="Linear"/>
+</aside>
+<aside id="output">
+    <h4>Output:</h4>
+    <hr/>
+    <code></code>
 </aside>
 </body>
 </html>

@@ -55,10 +55,6 @@ function appendOutput (selector, text) {
   $(selector).find('code').append(text + '\n')
 }
 
-function out (text) {
-  replaceOutput('#output', text)
-}
-
 function output (text) {
   appendOutput('#output', text)
 }

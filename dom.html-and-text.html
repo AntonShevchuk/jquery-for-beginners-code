@@ -62,15 +62,14 @@
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <code><em>// get text</em>
-out(
-  $(<span>"header"</span>).text()
-)</code>
+
+    <code data-replace="#output"><em>// get text</em>
+$(<span>"header"</span>).text()
+    </code>
     <button type="button">Run Code</button>
-    <code><em>// get HTML</em>
-out(
-  $(<span>"header"</span>).html()
-)</code>
+    <code data-replace="#output"><em>// get HTML</em>
+$(<span>"header"</span>).html()
+    </code>
     <button type="button">Run Code</button>
     <code><em>// set text</em>
 $(<span>"#pinned p"</span>)
