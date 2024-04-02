@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <style>
-        #content {
+        main {
             height: 480px;
             overflow: auto
         }
@@ -22,8 +22,10 @@
     <h2>Используем метод <code>load()</code></h2>
 </header>
 <main>
+    <article>
+        <h3>Пробуем загрузить контент &rarr;</h3>
+    </article>
     <article id="content">
-        <h2>Пробуем загрузить контент &rarr;</h2>
     </article>
 </main>
 <footer>
@@ -37,6 +39,7 @@
         <a href="ajax.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
+    <div>
     <code contenteditable="true"><em>// AJAX is easy</em>
 <em>// load a page</em>
 $(<span>"#content"</span>)
@@ -57,15 +60,12 @@ $(<span>"#content"</span>)
 $(<span>"#content"</span>)
   .load(<span>"example.html article:first p"</span>, function(){
     <em>// the data has been loaded</em>
-	$(<span>"article"</span>)
-      .show()
-      .fadeOut(<i>2000</i>, function() {
-        $(this)
-          .html("<span>Run again &rarr;</span>")
-          .fadeIn();
-    });
+	$(this)
+      .find(<span>"p"</span>)
+      .fadeOut(<i>2000</i>);
 })</code>
     <button type="button">Run Code</button>
+    </div>
 </aside>
 </body>
 </html>

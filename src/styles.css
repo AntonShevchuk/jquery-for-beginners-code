@@ -70,6 +70,19 @@
                 @apply border-l-slate-500 border-l-4
             }
 
+            ul {
+                @apply m-4 border rounded border-gray-100;
+                @apply divide-y divide-gray-200;
+
+                li {
+                    @apply p-4;
+
+                    p {
+                        @apply my-0
+                    }
+                }
+            }
+
             span {
                 @apply text-base leading-normal;
             }

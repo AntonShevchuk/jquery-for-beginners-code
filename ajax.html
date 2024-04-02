@@ -8,6 +8,10 @@
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <style>
+        main {
+            height: 480px;
+            overflow: auto
+        }
         main main {
             border: 0;
             padding: 10px
@@ -18,13 +22,16 @@
 </head>
 <body>
 <header>
-    <h1>Пример использования метода <code>ajax()</code></h1>
-    <h2>Код аналогичный предыдущему примеру с <code>load()</code>:</h2>
+    <h1>Пример загрузки HTML</h1>
+    <h2>Используем метод <code>ajax()</code></h2>
+    <p>Код аналогичный предыдущему примеру с <code>load()</code>:</p>
     <p><code>$(<span>'article'</span>).load(<span>'example.html main'</span>)</code></p>
 </header>
 <main>
     <article>
-        <h2>Пробуем загрузить контент &rarr;</h2>
+        <h3>Пробуем загрузить контент →</h3>
+    </article>
+    <article id="content">
     </article>
 </main>
 <footer>
@@ -38,27 +45,30 @@
         <a href="ajax.datatype.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
+    <div>
     <code contenteditable="true"><em>// AJAX is easy</em>
 $.ajax({
-  url: <span>'example.html'</span>,
+  url: <span>"example.html"</span>,
   success: function(data) {
-    let part = $(data).filter(<span>'main'</span>);
-    $(<span>'article'</span>).append(part);
+    let part = $(data).find(<span>"article"</span>)
+    $(<span>"#content"</span>).html(part)
   }
 })</code>
     <button type="button">Run Code</button>
     <code contenteditable="true"><em>// AJAX with Promise</em>
 $.ajax({
-  url: <span>'example.html'</span>,
+  url: <span>"example.html"</span>,
   success: function(data) {
-    let part = $(data).filter(<span>'main'</span>);
-    $(<span>'article'</span>).append(part);
+    let part = $(data).find(<span>"article"</span>)
+    $(<span>"#content"</span>).html(part)
   }
 }).then(function() {
-   $(<span>'article main'</span>)
-      .fadeOut(2000);
+   $(<span>"#content"</span>)
+     .find(<span>"article"</span>)
+     .fadeOut(2000);
 })</code>
     <button type="button">Run Code</button>
+    </div>
 </aside>
 </body>
 </html>

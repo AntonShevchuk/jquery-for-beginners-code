@@ -70,11 +70,12 @@
 </footer>
 <aside>
     <nav>
-        <a href="index.html" title="go prev" rel="prev">Back</a>
+        <a href="ajax.jsonp.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <code>$.ajax(<span>'images/events.png'</span>, {
+    <code>$.ajax(<span>'images/events.svg'</span>, {
     dataType:<span>'image'</span>,
     success: function(data) {
         $(<span>'article'</span>).html(data);

@@ -56,14 +56,15 @@
     </nav>
     <hr/>
     <code><em>// run, after document ready</em>
-$(<span>'article'</span>).on(<span>'click'</span>, <span>'a'</span>, function(){
-  var href = $(this).attr(<span>'href'</span>);
+$(<span>"article"</span>).on(<span>"click"</span>, <span>"a"</span>,
+function(){
+  let href = $(this).attr(<span>"href"</span>);
   $.ajax({
-    url:href,
-    dataType:<span>'html'</span>,
+    url: href,
+    dataType: <span>"html"</span>,
     success:function(data){
-      $(<span>'article'</span>).html(
-        $(<span>'article'</span>, data).contents()
+      $(<span>"article"</span>).html(
+        $(<span>"article"</span>, data).contents()
       );
     }
   });
