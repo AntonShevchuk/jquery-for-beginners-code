@@ -58,7 +58,7 @@
 <body>
     <header>
         <h1>События формы</h1>
-        <h2>Отправка, редактирование и т.д.</h2>
+        <h2>Фокус, редактирование, отправка и прочие.</h2>
     </header>
     <main>
         <article>
@@ -101,12 +101,13 @@ lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</te
     </footer>
 <aside>
     <nav>
-        <a href="events.mouse.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="go prev" rel="prev">Back</a>
         <a href="index.html" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
-        <a href="events.namespace.html" title="go next" rel="next">Next</a>
+        <a href="form.methods.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
+    <div>
     <code><em>// обработчики событий для first</em>
 $(<span>'#first'</span>)
   .blur(<span>'counter'</span>)
@@ -134,6 +135,7 @@ $(<span>'input[name=radio]'</span>)
     <code><em>// обработчик для form</em>
 $(<span>'form'</span>)
   .submit(<span>'counter'</span>)</code>
+    </div>
 </aside>
 <aside id="output">
     <h4>Events:</h4>
