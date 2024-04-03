@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Пример цепочек вызовов $.Deferred</title>
+    <title>Пример работы с объектом "$.Deferred"</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -12,8 +12,9 @@
 </head>
 <body>
 <header>
-    <h1>Пример построение цепочек <code>$.Deferred</code></h1>
-    <h2>Хотя тут уже всё переехало на стандартный <code>Promises</code></h2>
+    <h1>Пример построение последовательных вызовов</h1>
+    <h2>Используем объект <code>$.Deferred</code></h2>
+    <p>Хотя тут уже всё больше похоже на работу с <code>Promises</code></p>
 </header>
 <main>
     <article>
@@ -97,6 +98,7 @@ D.then(function() {
 })
 .then(function(){
   output(<span>"All done"</span>);
+  return true;
 });
 
 <em>// wait for 2 seconds</em>
