@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Пример работы с $.when</title>
+    <title>Пример работы с методом "$.when()"</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
+    <script>
+      const log = console.log
+      const info = console.info
+      const error = console.error
+      console.log = function () {
+        log(...arguments)
+        output(...arguments)
+      }
+      console.info = function () {
+        info(...arguments)
+        output(...arguments)
+      }
+      console.error = function () {
+        error(...arguments)
+        output(...arguments)
+      }
+    </script>
 </head>
 <body>
 <header>
@@ -73,12 +90,22 @@
     </nav>
     <hr/>
     <code contenteditable="true">$.when(
-  $(<span>"article img"</span>).slideUp(1000),
-  $(<span>"article p"</span>).hide(3000)
-).done(function(){
-  $(<span>"article"</span>).slideUp(500)
+  $(<span>"article h3"</span>).hide(<i>3000</i>),
+  $(<span>"article img"</span>).slideUp(<i>1000</i>),
+  $(<span>"article p"</span>).fadeTo(<i>2000</i>, <i>0.1</i>)
+).then(function(){
+  $(<span>"article"</span>).slideUp(<i>500</i>)
+}).done(function(){
+  console.info(<span>"done"</span>)
+}).catch(function(){
+  console.error(<span>"fail :("</span>)
 })</code>
     <button type="button">Run Code</button>
+</aside>
+<aside id="output">
+    <h4>Output:</h4>
+    <hr/>
+    <code></code>
 </aside>
 </body>
 </html>
