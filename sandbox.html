@@ -17,6 +17,23 @@
     </style>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
+    <script>
+        const log = console.log
+        const info = console.info
+        const error = console.error
+        console.log = function () {
+          log(...arguments)
+          output(...arguments)
+        }
+        console.info = function () {
+          info(...arguments)
+          output(...arguments)
+        }
+        console.error = function () {
+          error(...arguments)
+          output(...arguments)
+        }
+    </script>
 </head>
 <body class="formatter">
 <header>
@@ -26,7 +43,8 @@
 <main>
     <article id="pinned" class="box important">
         <h3>Article Title</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+        <p> <img src="images/photo-bumblebee-thumb.jpg" alt="Bumblebee" width="200"/>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
             in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
             euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
@@ -39,7 +57,8 @@
     </article>
     <article class="box">
         <h3>Article Title</h3>
-        <p>Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+        <p> <img src="images/photo-chamomile-thumb.jpg" alt="Chamomile" width="200"/>
+            Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
             Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
             turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
             nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
@@ -69,6 +88,11 @@
 
 </code>
     <button type="button">Run Code</button>
+</aside>
+<aside id="output">
+    <h4>Output:</h4>
+    <hr/>
+    <code></code>
 </aside>
 </body>
 </html>

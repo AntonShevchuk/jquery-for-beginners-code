@@ -66,17 +66,17 @@
 </footer>
 <aside>
     <nav>
-        <a href="deferred.html" title="go prev" rel="prev">Back</a>
+        <a href="deferred.flickr.html" title="go prev" rel="prev">Prev</a>
         <a href="index.html" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
-        <a href="deferred.pipe.html" title="go next" rel="next">Next</a>
+        <a href="callbacks.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
     <code contenteditable="true">$.when(
-  $(<span>'article img'</span>).slideUp(1000),
-  $(<span>'article p'</span>).hide(3000)
+  $(<span>"article img"</span>).slideUp(1000),
+  $(<span>"article p"</span>).hide(3000)
 ).done(function(){
-  $(<span>'article'</span>).slideUp(500)
+  $(<span>"article"</span>).slideUp(500)
 })</code>
     <button type="button">Run Code</button>
 </aside>

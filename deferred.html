@@ -3,100 +3,62 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Работаем с $.Deferred</title>
+    <title>Пример цепочек вызовов $.Deferred</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
-    <style>
-        #images div {
-            height: 216px;
-            width: 310px;
-            float: left;
-            overflow: hidden;
-            margin: 2rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        #images div img {
-            min-height: 216px;
-            min-width: 310px;
-            border: 0;
-            padding: 0;
-            margin: 0;
-        }
-        hr {
-            clear: both;
-        }
-    </style>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
-    <script>
-      var Flickr = {
-        search: function (query) {
-          showLoader()
-          let def = $.Deferred()
-          $.getJSON('https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?', {
-              tags: query,
-              tagmode: 'any',
-              format: 'json'
-            },
-            def.resolve
-          )
-          return def.promise()
-        }
-      }
-
-      function buildImages (data) {
-        let def = $.Deferred()
-        let limit = 4
-        let loaded = 0
-
-        $.each(data.items, function (i, item) {
-          if (i === limit) return false
-          let img = new Image()
-          img.onload = img.onerror = function () {
-            // изменяем прогресс загрузки
-            def.notify()
-          }
-          img.src = item.media.m
-          let div = $('<div></div>').append(img)
-          $(div).prependTo('#images')
-        })
-
-        def.progress(function () {
-          loaded++
-          if (limit === loaded) {
-            def.resolve()
-          }
-        })
-        def.then(hideLoader)
-      }
-
-      function showLoader () {
-        $('h1').addClass('loading')
-        $('#images').html('')
-      }
-
-      function hideLoader () {
-        $('h1').removeClass('loading')
-        $('#images').slideDown()
-      }
-    </script>
 </head>
 <body>
 <header>
-    <h1>Пример работы с <code>$.Deferred</code></h1>
-    <h2>С использованием AJAX и ожиданием загрузки картинок.</h2>
-    <p>Код функции <code>buildImages</code> вы найдёте в исходном коде данной страницы</p>
+    <h1>Пример построение цепочек <code>$.Deferred</code></h1>
+    <h2>Хотя тут уже всё переехало на стандартный <code>Promises</code></h2>
 </header>
 <main>
     <article>
-        <h2>Flickr API</h2>
-        <p>Попробуем загрузить картинки используя связку AJAX+JSONP. По получению ответа с сервера создаём объекты
-            &laquo;Image&raquo; и ждём их загрузки, и лишь после этого отображаем готовый результат</p>
-        <div id="images"></div>
-        <hr/>
+        <h3>Article Title</h3>
+        <p>
+            <img src="images/photo-bumblebee-thumb.jpg" alt="Bumblebee" class="left" width="200"/>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
+            lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
+            in libero. Donec eget sagittis nibh. Suspendisse sed tincidunt urna. Cras quis
+            euismod neque. Maecenas auctor ultricies posuere. Pellentesque luctus pulvinar dui
+            eget semper. Donec sodales odio eu sapien varius luctus. Donec dictum feugiat diam
+            at malesuada. Sed nec massa in augue condimentum faucibus quis ut diam. Quisque
+            nisl sem, semper nec vulputate vel, mattis sit amet justo. Aliquam purus felis,
+            tempor at scelerisque quis, tincidunt in neque. Etiam ut risus diam. Pellentesque
+            fermentum risus id elit feugiat cursus. Ut fringilla dictum diam, sed iaculis
+            lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</p>
+    </article>
+    <article>
+        <h3>Article Title</h3>
+        <p>
+            <img src="images/photo-chamomile-thumb.jpg" alt="Chamomile" class="left" width="200"/>
+            Duis in vestibulum sem. Cras euismod tincidunt dui, et scelerisque tellus condimentum vel.
+            Maecenas et urna sit amet risus fermentum rhoncus nec porttitor ligula. Maecenas sit amet
+            turpis enim, ut iaculis est. Duis feugiat, lacus id placerat porttitor, lorem augue gravida
+            nisi, eu porta eros risus et lectus. Maecenas vestibulum nunc vel ipsum tincidunt sit amet
+            blandit sapien bibendum. Proin vel vulputate nisl. Duis tempor imperdiet placerat. Pellentesque
+            faucibus consequat magna, et bibendum nisl egestas non. Pellentesque sit amet mattis augue.
+            Aenean at diam tincidunt purus sollicitudin gravida non in nisi. Fusce bibendum, magna in
+            adipiscing mattis, sem risus fringilla mi, nec gravida lectus lectus at nibh. Suspendisse
+            adipiscing elementum laoreet. Suspendisse sem erat, varius quis aliquet vitae, dapibus sed
+            nibh. Nullam iaculis sem at mauris faucibus in vestibulum libero pretium. Aliquam eu turpis
+            libero. Fusce et ultrices lectus.</p>
+    </article>
+    <article>
+        <h3>Article Title</h3>
+        <p>
+            <img src="images/photo-maple-leaf-thumb.jpg" alt="Maple Leaf" class="left" width="200"/>
+            Ut consequat commodo mauris, eu dignissim justo congue vel. Etiam commodo tincidunt diam,
+            laoreet ullamcorper sapien egestas quis. Etiam auctor rutrum ante, at tincidunt elit lacinia
+            non. Pellentesque molestie tellus sit amet est sodales nec rutrum leo pharetra. Donec lacinia
+            ipsum vitae massa accumsan ullamcorper. Maecenas commodo lacus turpis. Proin sit amet mauris
+            sem, imperdiet faucibus lorem. Fusce ullamcorper consectetur ligula vel pretium. Sed et elit
+            vitae orci adipiscing condimentum id sed turpis. Morbi ultrices feugiat ullamcorper. Fusce at
+            magna dolor. Sed sit amet risus massa, quis imperdiet libero. Proin justo purus, sodales nec
+            cursus et, sollicitudin at nulla. Vivamus eget nibh tellus, sit amet facilisis ante.</p>
     </article>
 </main>
 <footer>
@@ -107,13 +69,45 @@
         <a href="index.html" title="go prev" rel="prev">Back</a>
         <a href="index.html" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
-        <a href="when.html" title="go next" rel="next">Next</a>
+        <a href="deferred.flickr.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <code contenteditable="true">Flickr
-    .search(<span>'orange'</span>)
-    .then(buildImages)</code>
+    <code contenteditable="true">var D = $.Deferred();
+
+D.then(function() {
+  output(<span>"Resolve()"</span>);
+})
+.then(function() {
+  output(<span>" → Images"</span>);
+  return $(<span>"article img"</span>)
+        .slideUp(<i>2000</i>)
+        .promise();
+})
+.then(function(){
+  output(<span>" → Paragraph"</span>);
+  return $(<span>"article p"</span>)
+        .slideUp(<i>2000</i>)
+        .promise();
+})
+.then(function(){
+  output(<span>" → Articles"</span>);
+  return $(<span>"article"</span>)
+        .hide(<i>2000</i>)
+        .promise();
+})
+.then(function(){
+  output(<span>"All done"</span>);
+});
+
+<em>// wait for 2 seconds</em>
+setTimeout(() => D.resolve(), <i>2000</i>)
+</code>
     <button type="button">Run Code</button>
+</aside>
+<aside id="output">
+    <h4>Output:</h4>
+    <hr/>
+    <code></code>
 </aside>
 </body>
 </html>

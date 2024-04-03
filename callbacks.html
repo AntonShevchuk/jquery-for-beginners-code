@@ -15,6 +15,7 @@
         }
 
         #car {
+            display: none;
             width: 100px;
             height: 100px;
             position: absolute;
@@ -42,12 +43,18 @@
       var car
 
       $(function () {
-        car = $('#car')
+        car = $("#car")
+
         C.add(function (speed) {
-          output('\nSpeed 200px per ' + speed + ' ms: ')
+          output('\n')
+          output('Speed 200px every ' + speed + ' ms: ')
         })
 
         $(document).keydown(function (e) {
+          if (car.is(':hidden')) {
+            output("Please start the game →")
+            return false
+          }
           // 37 - left
           // 38 - up
           // 39 - right
@@ -120,30 +127,40 @@
 </footer>
 <aside>
     <nav>
-        <a href="deferred.pipe.html" title="go prev" rel="prev">Back</a>
+        <a href="when.html" title="go prev" rel="prev">Prev</a>
         <a href="index.html" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
-    <code><em>// use button up arrow: &uarr;</em>
+    <div>
+    <code contenteditable="true">$('#car').show()</code>
+    <button type="button">Start Game</button>
+    <code><em>// use arrow button: ↑</em>
 C.add(function(speed){
-  car.animate({top:'-=200px'}, speed)
+  car.animate(
+    {top:"-=200px"},
+    speed
+  )
 })</code>
-    <code><em>// use button down arrow: &darr;</em>
+    <code><em>// use arrow button: ↓</em>
 C.add(function(speed){
-  car.animate({top:'+=200px'}, speed)
+  car.animate({top:"+=200px"}, speed)
 })</code>
-    <code><em>// use button right arrow: &rarr;</em>
+    <code><em>// use arrow button: →</em>
 C.add(function(speed){
-  car.animate({left:'+=200px'}, speed)
+  car.animate({left:"+=200px"}, speed)
 })</code>
-    <code><em>// use button left arrow: &larr;</em>
+    <code><em>// use arrow button: ←</em>
 C.add(function(speed){
-  car.animate({left:'-=200px'}, speed)
+  car.animate({left:"-=200px"}, speed)
 })</code>
-    <code contenteditable="true"><em>// run animation</em>
+    <code contenteditable="true"><em>// restart $.Callbacks</em>
+C = $.Callbacks()</code>
+    <button type="button">Run Code</button>
+    <code contenteditable="true"><em>// run animation or press Enter</em>
 C.fire(400)</code>
     <button type="button">Run Code</button>
+    </div>
 </aside>
 <aside id="output">
     <h4>Output:</h4>

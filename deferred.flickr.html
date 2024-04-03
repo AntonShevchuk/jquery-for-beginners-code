@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Работаем с $.Deferred</title>
+    <link rel="profile" href="https://gmpg.org/xfn/11"/>
+    <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <style>
+        #progress {
+            height: 2rem;
+        }
+        #progress div {
+            background-color: #2563eb;
+            height: 0.5rem;
+            width: 0;
+        }
+        #images div {
+            height: 216px;
+            width: 310px;
+            float: left;
+            overflow: hidden;
+            margin: 2rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #images div img {
+            min-height: 216px;
+            min-width: 310px;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+        hr {
+            clear: both;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script>
+      var Flickr = {
+        search: function (query) {
+          return $.getJSON(
+            "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+            {
+              tags: query,
+              tagmode: "any",
+              format: "json"
+            }
+          )
+        }
+      }
+      function buildImages (data) {
+        let D = $.Deferred()
+        let total = data.items.length;
+        let loaded = 0
+
+        let $images = $('#images').html('').hide()
+        let $progress = $('#progress div')
+
+        $.each(data.items, function (i, item) {
+          let img = new Image()
+          img.onload = img.onerror = function () {
+            // изменяем прогресс загрузки
+            D.notify()
+          }
+          img.src = item.media.m
+          let div = $('<div></div>').append(img)
+          $(div).prependTo($images)
+        })
+
+        D.progress(function () {
+          loaded++
+
+          // обновляем прогресс-бар
+          $progress.width(100/total*loaded + '%');
+
+          if (total === loaded) {
+            D.resolve()
+          }
+        })
+        return D.promise();
+      }
+
+      function hideLoader () {
+        $('#progress div').width(0)
+        $('#images').show("slow");
+      }
+    </script>
+</head>
+<body>
+<header>
+    <h1>Пример работы с <code>$.Deferred</code></h1>
+    <h2>С использованием AJAX и ожиданием загрузки картинок.</h2>
+    <p>Код функции <code>buildImages</code> вы найдёте в исходном коде данной страницы</p>
+</header>
+<main>
+    <article>
+        <h3>Flickr API</h3>
+        <p>Попробуем загрузить картинки используя связку AJAX+JSONP. По получению ответа с сервера создаём объекты
+            &laquo;Image&raquo; и ждём их загрузки, и лишь после этого отображаем готовый результат</p>
+        <div id="progress"><div></div></div>
+        <hr/>
+        <div id="images"></div>
+        <hr/>
+    </article>
+</main>
+<footer>
+    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+</footer>
+<aside>
+    <nav>
+        <a href="deferred.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="when.html" title="go next" rel="next">Next</a>
+    </nav>
+    <hr/>
+    <code contenteditable="true">Flickr
+  .search(<span>"orange"</span>)
+  .then(buildImages)
+  .then(hideLoader)
+  .then(() => output(<span>"done"</span>))</code>
+    <button type="button">Run Code</button>
+</aside>
+<aside id="output">
+    <h4>Output:</h4>
+    <hr/>
+    <code></code>
+</aside>
+</body>
+</html>
