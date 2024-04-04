@@ -12,42 +12,37 @@
     <script type="text/javascript">
       $(function () {
         var hash = window.location.hash
-        $('article li a').click(function () {
+        $("article nav a").click(function () {
           let $this = $(this)
-          let $pan = $('article').find($this.attr('href'))
+          let $pan = $("article").find($this.attr("href"))
 
-          if (!$this.hasClass('active')) {
-            $('article li a').removeClass('active')
-            $('article p').hide()
-            $this.addClass('active')
+          if (!$this.hasClass("active")) {
+            $("article nav a").removeClass("active")
+            $("article p").hide()
+            $this.addClass("active")
             $pan.show()
-            window.location.hash = $this.attr('href')
+            window.location.hash = $this.attr("href")
           }
           return false
         })
 
         if (hash) {
-          $(`article li a[href="${hash}"]`).click()
+          $(`article nav a[href="${hash}"]`).click()
         } else {
-          $('article li a').eq(0).click()
+          $("article nav a").eq(0).click()
         }
-
       })
     </script>
-    <style type="text/css">
-        article ul {
+    <style>
+        article nav {
             padding: 0 15px 0;
             margin-bottom: -1px;
             overflow: hidden;
         }
 
-        article li {
+        article nav a {
             float: left;
-            list-style: none;
             margin: 0 4px;
-        }
-
-        article li a {
             text-decoration: none;
             display: block;
             padding: 4px 8px;
@@ -79,11 +74,11 @@
 </header>
 <main>
     <article>
-        <ul>
-            <li><a href="#pan1">First Article</a></li>
-            <li><a href="#pan2">Second Article</a></li>
-            <li><a href="#pan3">Third Article</a></li>
-        </ul>
+        <nav>
+            <a href="#pan1">First Article</a>
+            <a href="#pan2">Second Article</a>
+            <a href="#pan3">Third Article</a>
+        </nav>
 
         <p id="pan1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum,
             lectus eu varius consectetur, libero velit hendrerit augue, ut posuere enim neque
@@ -124,6 +119,10 @@
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
         <a href="widget.html" title="go next" rel="next">Next</a>
     </nav>
+    <hr/>
+    <code><em>// choose second tab</em>
+$(<span>"article nav a"</span>).eq(<i>1</i>).click()</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

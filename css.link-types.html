@@ -17,56 +17,65 @@
         }
 
         a.pdf {
-            background: url(images/file-red.gif) no-repeat;
+            background: url(images/file-red.gif) no-repeat 2px;
             padding-left: 16px;
         }
 
         a.zip {
-            background: url(images/file-orange.gif) no-repeat;
+            background: url(images/file-orange.gif) no-repeat 2px;
             padding-left: 16px;
         }
 
         a.png {
-            background: url(images/file-blue.gif) no-repeat;
+            background: url(images/file-blue.gif) no-repeat 2px;
             padding-left: 16px;
         }
 
+        a.internal:before {
+            content: "🔗";
+        }
+
+        a.anchor:before {
+            content: "⚓️";
+        }
+
         a.external {
-            background: url(images/window.gif) no-repeat;
+            background: url(images/window.gif) no-repeat 2px;
             padding-left: 16px;
         }
     </style>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.color.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
     <script type="text/javascript">
       $(function () {
-        $('button').click(function () {
-          let code = $(this).prev().text()
-          if (code) {
-            let els = eval(code)
-            els
-              .stop(true, true)
-              .animate({ 'background-color': '#ff5' }, 500)
-              .delay(100)
-              .animate({ 'background-color': '#fff' }, 500)
-          }
-
-        })
+        // $('button').click(function () {
+        //   let code = $(this).prev().text()
+        //   if (code) {
+        //     let els = eval(code)
+        //     els
+        //       .stop(true, true)
+        //       .animate({ 'background-color': '#ff5' }, 500)
+        //       .delay(100)
+        //       .animate({ 'background-color': '#fff' }, 500)
+        //   }
+        //
+        // })
       })
     </script>
     <script type="text/javascript">
       $(function () {
-        $('a[href$=pdf]').addClass('pdf')
+        $('main a[href$=pdf]').addClass('pdf')
 
-        $('a[href$=zip]').addClass('zip')
+        $('main a[href$=zip]').addClass('zip')
 
-        $('a[href$=png]').addClass('png')
+        $('main a[href$=png]').addClass('png')
 
-        $('a[href^=\\/]').addClass('internal')
+        $('main a[href^=\\/]').addClass('internal')
 
-        $('a[href^=\\#]').addClass('anchor')
+        $('main a[href^=\\#]').addClass('anchor')
 
-        $('article a[href^=https\\:\\/\\/]').addClass('external')
+        $('main a[href^=https\\:\\/\\/]').addClass('external')
           .attr({ target: '_blank' })
 
         /*
@@ -90,10 +99,9 @@
         <p><a href="?jquery.png">PNG file</a> (jquery.png)</p>
         <p><a href="?jquery.zip">Zip file</a> (jquery.zip)</p>
 
-        <p><a href="#anchor">#anchor link</a> (#anchor)</p>
-        <p><a href="https://hohli.com/">HoHli projects</a> (https://hohli.com)</p>
-        <p><a href="https://anton.shevchuk.name/">Back to Blog</a> (https://anton.shevchuk.name)</p>
-        <p><a href="/book/code/">Back to Examples</a> (/book/code)</p>
+        <p><a href="#anchor">Anchor link</a> (#anchor)</p>
+        <p><a href="/index.html">Internal link</a> (/index.html)</p>
+        <p><a href="https://anton.shevchuk.name/">External link</a> (https://anton.shevchuk.name)</p>
     </article>
 </main>
 <footer>
@@ -103,17 +111,21 @@
     <nav>
         <a href="css.selectors.html" title="go prev" rel="prev">Prev</a>
         <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="benchmark.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
     <code contenteditable="true"><em>// highlight elements</em>
-$(<span>'a[href]'</span>)</code>
-    <button type="button">Run Code</button>
-    <code contenteditable="true"><em>// highlight internal links</em>
-$(<span>'a[href^=\\/]'</span>)</code>
-    <button type="button">Run Code</button>
+$(<span>"a[href]"</span>)</code>
+    <button data-highlight type="button">Run Code</button>
     <code contenteditable="true"><em>// highlight document anchors</em>
-$(<span>'a[href^=\\#]'</span>)</code>
-    <button type="button">Run Code</button>
+$(<span>"a[href^=\\#]"</span>)</code>
+    <button data-highlight type="button">Run Code</button>
+    <code contenteditable="true"><em>// highlight internal links</em>
+$(<span>"a[href^=\\/]"</span>)</code>
+    <button data-highlight type="button">Run Code</button>
+    <code contenteditable="true"><em>// highlight external links</em>
+$(<span>"a[href^=https\\:\\/\\/]"</span>)</code>
+    <button data-highlight type="button">Run Code</button>
 </aside>
 </body>
 </html>
