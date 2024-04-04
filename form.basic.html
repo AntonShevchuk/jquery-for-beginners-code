@@ -135,7 +135,18 @@
 header(<span>"content-type: application/json; charset=utf-8"</span>);
 <b>print</b> json_encode(<var>$_POST</var>);
 </code>
-        <code contenteditable="true" data-append="#output">$(<span>"input[type=radio][name=choose]:checked"</span>).val()</code>
+        <code data-append="#output"><em>// get value of input</em>
+$(<span>"form"</span>)
+  .find(<span>"input[name=firstname]"</span>)
+  .val()</code>
+        <button type="button">Run Code</button>
+        <code contenteditable="true"><em>// set value</em>
+$(<span>"form"</span>)
+  .find(<span>"input[name=firstname]"</span>)
+  .val(<span>"Name"</span>)</code>
+        <button type="button">Run Code</button>
+        <code><em>// send the form programmatically</em>
+$(<span>"form"</span>).submit()</code>
         <button type="button">Run Code</button>
     </div>
 </aside>
