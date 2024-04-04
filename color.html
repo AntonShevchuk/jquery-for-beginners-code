@@ -143,12 +143,24 @@
     <hr/>
     <code><em>// run animation after loading</em>
 $(function () {
-  $(<span>'p:eq(0)'</span>)
-    .animate({ color: <span>'#ff0000'</span> }, 1000)
-  $(<span>'p:eq(1)'</span>)
-    .animate({ color: <span>'#ff0000'</span> }, 3000)
-  $(<span>'p:eq(2)'</span>)
-    .animate({ color: <span>'#ff0000'</span> }, 5000)
+  <em>// the first is fast</em>
+  $(<span>"p:eq(0)"</span>)
+    .animate(
+      { color: <span>"#ff0000"</span> },
+      <i>1000</i>
+    )
+  <em>// the second is slow</em>
+  $(<span>"p:eq(1)"</span>)
+    .animate(
+      { color: <span>"#ff0000"</span> },
+      <i>3000</i>
+    )
+  <em>// the last one is last</em>
+  $(<span>"p:eq(2)"</span>)
+    .animate(
+      { color: <span>"#ff0000"</span> },
+      <i>5000</i>
+    )
 })</code>
 </aside>
 </body>

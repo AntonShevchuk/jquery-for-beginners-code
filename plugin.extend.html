@@ -120,20 +120,31 @@
     </nav>
     <hr/>
     <p>Инициализация плагина, параграфы станут кликабельными</p>
-    <code>$(<span>'p'</span>).mySimplePlugin()</code>
+    <code><em>// инициализация для всех</em>
+$(<span>"p"</span>).mySimplePlugin()</code>
     <button type="button">Run Code</button>
-    <p>Инициализация с настройками</p>
-    <code contenteditable="true">$(<span>'p'</span>)
-  .mySimplePlugin(<span>'color'</span>, <span>'red'</span>)</code>
+    
+    <code contenteditable="true"><em>// меняем настройки</em>
+$(<span>"p"</span>).mySimplePlugin(
+  <span>"color"</span>,
+  <span>"red"</span>
+)</code>
     <button type="button">Run Code</button>
-    <p>Вызов метода</p>
-    <code>$(<span>'p'</span>).mySimplePlugin(<span>'reset'</span>)</code>
+
+    <code><em>// вызов метода</em>
+$(<span>"p"</span>).mySimplePlugin(<span>"reset"</span>)</code>
     <button type="button">Run Code</button>
-    <p>Вызов несуществующего метода</p>
-    <code>$(<span>'p'</span>).mySimplePlugin(<span>'wrongMethod'</span>)</code>
+
+    <code><em>// вызов несуществующего метода</em>
+$(<span>"p"</span>).mySimplePlugin(<span>"wrongMethod"</span>)</code>
     <button type="button">Run Code</button>
-    <p>Отключение плагина</p>
-    <code>$(<span>'p'</span>).mySimplePlugin(<span>'destroy'</span>)</code>
+    
+    <code><em>// отключение плагина</em>
+$(<span>"p"</span>).mySimplePlugin(<span>"destroy"</span>)</code>
+    <button type="button">Run Code</button>
+    
+    <code><em>// чтобы не клацать самому</em>
+$(<span>"p"</span>).click()</code>
     <button type="button">Run Code</button>
 </aside>
 </body>

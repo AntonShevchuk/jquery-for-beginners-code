@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Пример плагина с лобальными настройками</title>
+    <title>Пример плагина с глобальными настройками</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
@@ -89,14 +89,20 @@
         <a href="plugin.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <code>$(<span>'p:eq(0)'</span>)
+    <code><em>// инициируем плагин для первого</em>
+$(<span>"p:eq(0)"</span>)
   .mySimplePlugin()</code>
     <button type="button">Run Code</button>
-    <code>$(<span>'p:eq(1)'</span>)
-  .mySimplePlugin({<span>'color'</span>:<span>'red'</span>})</code>
+    <code><em>// инициируем для второго</em>
+$(<span>"p:eq(1)"</span>)
+  .mySimplePlugin({<span>"color"</span>:<span>"red"</span>})</code>
     <button type="button">Run Code</button>
-    <code>$(<span>'p:eq(2)'</span>)
-  .mySimplePlugin({<span>'color'</span>:<span>'blue'</span>})</code>
+    <code><em>// инициируем для третьего</em>
+$(<span>"p:eq(2)"</span>)
+  .mySimplePlugin({<span>"color"</span>:<span>"blue"</span>})</code>
+    <button type="button">Run Code</button>
+    <code><em>// чтобы не клацать самому</em>
+$(<span>"p"</span>).click()</code>
     <button type="button">Run Code</button>
 </aside>
 </body>
