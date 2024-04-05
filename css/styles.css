@@ -1064,9 +1064,7 @@ footer {
   border-color: rgb(203 213 225 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity));
-  p {
-    padding: 1rem;
-  }
+  padding: 1rem;
 }
 
 aside {
@@ -1612,6 +1610,14 @@ code {
 
 .w-full {
   width: 100%;
+}
+
+.w-52 {
+  width: 13rem;
+}
+
+.w-2\/5 {
+  width: 40%;
 }
 
 .border-collapse {

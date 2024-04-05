@@ -128,11 +128,7 @@
     }
 
     footer {
-        @apply mb-4 border border-slate-300 bg-slate-50 rounded-b-lg;
-
-        p {
-            @apply p-4;
-        }
+        @apply mb-4 p-4 border border-slate-300 bg-slate-50 rounded-b-lg;
     }
 
     aside {

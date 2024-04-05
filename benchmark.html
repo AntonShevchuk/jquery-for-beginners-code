@@ -81,13 +81,13 @@
 
       function runAllTests () {
         let f = {
-          'query':    'querySelectorAll(\'.my > div\') ',
-          'findMore': '$(\'.my\').find(\'>div\')         ',
-          'context':  '$(\'>div\', $(\'.my\'))           ',
-          'context2': '$(\'>div\', \'.my\')              ',
-          'fast':     '$(\'.my\').children(\'div\')      ',
-          'normal':   '$(\'.my > div\') [with QSA]     ',
-          'slow':     '$(\'.my > div\') [without QSA]  ',
+          'query':    'querySelectorAll(".my > div") ',
+          'findMore': '$(".my").find(">div")         ',
+          'context':  '$(">div", $(".my"))           ',
+          'context2': '$(">div", ".my")              ',
+          'fast':     '$(".my").children("div")      ',
+          'normal':   '$(".my > div") [with QSA]     ',
+          'slow':     '$(".my > div") [without QSA]  ',
           'custom':   'no jQuery, no QSA             ',
         }
         let text = ''
@@ -96,7 +96,7 @@
           for (let j = 0; j < 100; j++) {
               window[key]()
           }
-          text = text + f[key] + (new Date - d) + ' ms\n'
+          text = text + f[key] + (new Date - d) + ' ms\n\n'
         }
         $('aside pre code').text('window.location.reload()')
         return text
@@ -10759,7 +10759,7 @@
     </article>
 </main>
 <footer>
-    <p>© <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a></p>
+    © <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
 </footer>
 <aside>
     <nav>
