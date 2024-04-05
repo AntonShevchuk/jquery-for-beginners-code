@@ -3,137 +3,151 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Пример анимации с использованием плагина easing</title>
+    <title>Пример расширения объекта easing</title>
     <link rel="profile" href="https://gmpg.org/xfn/11"/>
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/code.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.js"></script>
-    <script type="text/javascript">
-      $(function () {
-
-        let $output = $('#output code')
-        let $select = $('aside select')
-
-        for (let x in jQuery.easing) {
-          if (x !== 'linear' && x !== 'swing' &&
-            x !== 'jswing' && x !== 'def' && x !== '_default')
-            $select.append($('<option>').attr('value', x).text(x))
-        }
-
-        $select.change(function () {
-          $('aside img').attr({
-            'src': 'images/' + $select.val() + '.png',
-            'alt': $select.val()
-          })
-        })
-
-        $('#button').click(function () {
-
-          $('.square')
-            .animate(
-              {
-                top: 360,
-                left: 360
-              },
-              {
-                specialEasing: {
-                  top: $select.val(),
-                  left: "linear"
-                },
-                duration: 2000,
-                done: function () {
-                  $('.square').delay(3).css({ top: 40, left: 40 })
-                },
-                step: function (now, fx) {
-                  if (fx.prop === "top") {
-                    $output.text(`top: ${Math.round(now)}`)
-                  }
-                }
-              }
-            )
-
-          // alternative based on queue
-          // $('.square')
-          //   .animate({ top: 360 }, {easing:sel.val(), duration:2000})
-          //   .animate({ left: 360 }, {queue:false, duration:2000, done: function () {
-          //       $('.square').delay(3).css({ top: 40, left: 40 })
-          //     }})
-        })
-
-      })
-    </script>
     <style>
-        article {
+        .heart {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
             position: relative;
-            height: 480px;
-        }
-
-        aside img {
-            margin: 10px auto;
-            padding: 4px;
-            border: 1px solid #999;
             border-radius: 4px;
+            margin: 0 auto 4px;
         }
 
-        aside select {
-            width: 214px;
-        }
-
-        aside #button {
-            min-width: 50px;
-            width: 50px;
-            height: 40px;
-        }
-
-        .square {
+        .heart img {
+            position: absolute;
+            margin: 50px;
             width: 100px;
             height: 100px;
-            top: 40px;
-            left: 40px;
-            border-radius: 4px;
-            box-shadow: 0 0 4px 0 rgba(0,0,0,0.75);
-            background: #ff7300;
-            position: absolute;
+            border: 0
         }
 
+        .heart p {
+            position: absolute;
+            width: 200px;
+            padding: 0;
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 700;
+        }
+
+        .block {
+            height: 100px;
+        }
+
+        .target {
+            height: 10px;
+            border-bottom: 2px #fe3456 dotted;
+        }
     </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript">
+      $.extend($.easing, {
+        /**
+         * Heart Beat
+         *
+         * @param x
+         * @param t current time
+         * @param b begining
+         * @param c change in value
+         * @param d duration
+         *
+         * @link https://habrahabr.ru/blogs/mootools/43379/
+         */
+        heart: function (x) {
+          if (x < 0.3) return Math.pow(x, 4) * 49.4
+          if (x < 0.4) return 9 * x - 2.3
+          if (x < 0.5) return -13 * x + 6.5
+          if (x < 0.6) return 4 * x - 2
+          if (x < 0.7) return 0.4
+          if (x < 0.75) return 4 * x - 2.4
+          if (x < 0.8) return -4 * x + 3.6
+          if (x >= 0.8) return 1 - Math.sin(Math.acos(x))
+        },
+        heartIn: function (x) {
+          return x === 0 ? 0 : $.easing.heart(x)
+        },
+        heartOut: function (x) {
+          if (x < 0.3) return $.easing.heartIn(x)
+          return x === 1 ? 1 : 1 - $.easing.heart(x)
+        },
+        heartInOut: function (x) {
+          if (x < 0.5) return $.easing.heartIn(x)
+          return $.easing.heartOut(x)
+        }
+
+      })
+      $(function () {
+        $('.heart').click(function () {
+          let easing = $(this).data('easing')
+          $(this).find('img')
+            .animate({ width: '-=50px', height: '-=50px', left: '+=25px', top: '+=50px' }, 3000, easing)
+            .animate({ width: '+=50px', height: '+=50px', left: '-=25px', top: '-=50px' }, 200)
+
+        })
+      })
+    </script>
 </head>
 <body>
 <header>
-    <h1>Использование плагина <a href="https://gsgd.co.uk/sandbox/jquery/easing/">easing</a></h1>
-    <h2>Плагин из разряда &laquo;must have&raquo;</h2>
+    <h1>Пример расширять объект easing</h1>
+    <h2>Пробуем, играемся, и мотаем на ус (покликайте по сердцам)</h2>
 </header>
 <main>
-    <article>
-        <div class="square"></div>
-        <div class="output"></div>
-    </article>
+<article>
+    <div class="block">
+        <div class="target"></div>
+    </div>
+    <div class="heart" data-easing="heartIn">
+        <p>heartIn</p>
+        <img src="images/heart.png" alt="Heart"/>
+    </div>
+    <div class="heart" data-easing="heartOut">
+        <p>heartOut</p>
+        <img src="images/heart.png" alt="Heart"/>
+    </div>
+    <div class="heart" data-easing="heartInOut">
+        <p>heartInOut</p>
+        <img src="images/heart.png" alt="Heart"/>
+    </div>
+</article>
 </main>
 <footer>
     © <a href="https://anton.shevchuk.name/jquery-book/">jQuery for beginners</a>
 </footer>
 <aside>
     <nav>
-        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="animate.step.html" title="go prev" rel="prev">Prev</a>
+        <a href="index.html#90" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
+        <a href="sizzle.filter.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <div>
-        <label for="easing">Easing</label>:
-        <select id="easing" name="easing">
-            <option>linear</option>
-            <option>swing</option>
-        </select>`
-        <button id="button" type=button>Go&raquo;</button>
-    </div>
-    <img src="images/linear.png" alt="Linear"/>
-</aside>
-<aside id="output">
-    <h4>Output:</h4>
-    <hr/>
-    <code></code>
+    <code>$(<span>".target"</span>)
+  .animate(
+    {height:<span>"+=200px"</span>},
+    3000,
+    <span>"heartIn"</span>
+)</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>".target"</span>)
+  .animate(
+    {height:<span>"+=200px"</span>},
+    3000,
+    <span>"heartOut"</span>
+)</code>
+    <button type="button">Run Code</button>
+    <code>$(<span>".target"</span>)
+  .animate(
+    {height:<span>"+=200px"</span>},
+    3000,
+    <span>"heartInOut"</span>
+)</code>
+    <button type="button">Run Code</button>
 </aside>
 </body>
 </html>

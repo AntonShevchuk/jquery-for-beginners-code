@@ -78,7 +78,7 @@
                     @apply p-4;
 
                     p {
-                        @apply my-0
+                        @apply my-0;
                     }
                 }
             }

@@ -1596,6 +1596,10 @@ code {
   width: 25%;
 }
 
+.w-1\/5 {
+  width: 20%;
+}
+
 .w-3\/4 {
   width: 75%;
 }
@@ -1604,20 +1608,8 @@ code {
   width: 12rem;
 }
 
-.w-64 {
-  width: 16rem;
-}
-
 .w-full {
   width: 100%;
-}
-
-.w-52 {
-  width: 13rem;
-}
-
-.w-2\/5 {
-  width: 40%;
 }
 
 .border-collapse {
@@ -1703,10 +1695,6 @@ code {
 
 .text-center {
   text-align: center;
-}
-
-.font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .lowercase {
