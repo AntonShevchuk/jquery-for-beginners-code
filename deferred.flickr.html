@@ -38,6 +38,7 @@
     </style>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/console.js"></script>
     <script>
       var Flickr = {
         search: function (query) {
@@ -112,7 +113,7 @@
 <aside>
     <nav>
         <a href="deferred.html" title="go prev" rel="prev">Prev</a>
-        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="index.html#70" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
         <a href="when.html" title="go next" rel="next">Next</a>
     </nav>
@@ -122,8 +123,8 @@
   .then(buildImages)
   .then(hideLoader)
   .then(function() {
-    output(<span>"done"</span>)
-    return true
+    console.info(<span>"done"</span>)
+    return <i>true</i>
   })</code>
     <button type="button">Run Code</button>
 </aside>

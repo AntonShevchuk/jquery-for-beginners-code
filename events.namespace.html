@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/console.js"></script>
     <script type="text/javascript">
       $(function () {
-        $('#myButton').one("click", () => output("Add one or more event handlers\non the right side →"))
+        $('#myButton').one("click", () => output("Add one or more event handlers\non the right side →\n"))
       })
     </script>
 </head>
@@ -31,28 +32,29 @@
 <aside>
     <nav>
         <a href="events.mouse.html" title="go prev" rel="prev">Prev</a>
-        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="index.html#30" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
+    <div>
     <code>$(<span>'#myButton'</span>)
   .on(<span>'click'</span>, function(){
-    output(<span>"click"</span>);
+    console.log(<span>"click"</span>);
   })</code>
     <button type="button">Run Code</button>
     <code>$(<span>'#myButton'</span>)
   .on(<span>'click.space'</span>, function(){
-    output(<span>"click.space"</span>);
+    console.log(<span>"click.space"</span>);
   })</code>
     <button type="button">Run Code</button>
     <code>$(<span>'#myButton'</span>)
   .on(<span>'click.my'</span>, function(){
-    output(<span>"click.my"</span>);
+    console.log(<span>"click.my"</span>);
   })</code>
     <button type="button">Run Code</button>
     <code>$(<span>'#myButton'</span>)
   .on(<span>'click.my.space'</span>, function(){
-     output(<span>"click.my.space"</span>);
+    console.log(<span>"click.my.space"</span>);
   })</code>
     <button type="button">Run Code</button>
     <code>$(<span>'#myButton'</span>).trigger(<span>'click'</span>)</code>
@@ -61,6 +63,7 @@
     <button type="button">Run Code</button>
     <code>$(<span>'#myButton'</span>).off(<span>'.space'</span>)</code>
     <button type="button">Run Code</button>
+    </div>
 </aside>
 <aside id="output">
     <h4>Output:</h4>

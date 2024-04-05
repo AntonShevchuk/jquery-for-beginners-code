@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/console.js"></script>
 </head>
 <body>
 <header>
@@ -68,36 +69,38 @@
 <aside>
     <nav>
         <a href="index.html#70" title="go back" rel="prev">Back</a>
-        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="index.html#70" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
         <a href="deferred.flickr.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
+    <div>
+        <h4>Запустите и чуть-чуть подождите</h4>
     <code contenteditable="true">var D = $.Deferred();
 
 D.then(function() {
-  output(<span>"Resolve()"</span>);
+  console.log(<span>"Resolve()"</span>);
 })
 .then(function() {
-  output(<span>" → Images"</span>);
+  console.log(<span>" → Images"</span>);
   return $(<span>"article img"</span>)
         .slideUp(<i>2000</i>)
         .promise();
 })
 .then(function(){
-  output(<span>" → Paragraph"</span>);
+  console.log(<span>" → Paragraph"</span>);
   return $(<span>"article p"</span>)
         .slideUp(<i>2000</i>)
         .promise();
 })
 .then(function(){
-  output(<span>" → Articles"</span>);
+  console.log(<span>" → Articles"</span>);
   return $(<span>"article"</span>)
         .hide(<i>2000</i>)
         .promise();
 })
 .then(function(){
-  output(<span>"All done"</span>);
+  console.log(<span>"All done"</span>);
   return true;
 });
 
@@ -105,6 +108,7 @@ D.then(function() {
 setTimeout(() => D.resolve(), <i>2000</i>)
 </code>
     <button type="button">Run Code</button>
+    </div>
 </aside>
 <aside id="output">
     <h4>Output:</h4>

@@ -9,23 +9,7 @@
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
-    <script>
-      const log = console.log
-      const info = console.info
-      const error = console.error
-      console.log = function () {
-        log(...arguments)
-        output(...arguments)
-      }
-      console.info = function () {
-        info(...arguments)
-        output(...arguments)
-      }
-      console.error = function () {
-        error(...arguments)
-        output(...arguments)
-      }
-    </script>
+    <script type="text/javascript" src="js/console.js"></script>
 </head>
 <body>
 <header>
@@ -84,7 +68,7 @@
 <aside>
     <nav>
         <a href="deferred.flickr.html" title="go prev" rel="prev">Prev</a>
-        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="index.html#70" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
         <a href="callbacks.html" title="go next" rel="next">Next</a>
     </nav>

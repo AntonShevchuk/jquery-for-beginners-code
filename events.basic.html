@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="https://anton.shevchuk.name/favicon.ico"/>
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
+
     <script type="text/javascript">
       $(function () {
         $('#menu1 li a').click(function (event) {
@@ -35,12 +36,21 @@
           alert('👋 The menu "#menu4" says "Hi!"')
         })
 
+        $('#menu5').click(function (event) {
+          alert('👋 The menu "#menu5" says "Hi!"')
+        })
+
         $('#menu5 li a').click(function (event) {
           alert('👋 The link in "#menu5" says "Hello!"')
           return false
         }).click(function (event) {
           alert('👋 The link in "#menu5" says "Hello Again!"')
           return false
+        })
+
+
+        $('#menu6').click(function (event) {
+          alert('👋 The menu "#menu6" says "Hi!"')
         })
 
         $('#menu6 li a').click(function (event) {
@@ -54,17 +64,23 @@
       })
     </script>
     <style>
+        article {
+            min-height: 405px;
+        }
         article ul {
             font-size: 1.4em;
             margin: 13px;
             float: left;
             list-style: none
         }
+        article ul:hover {
+            background: #eef;
+        }
 
-        article li {
+        article ul li {
+            padding: 0 !important;
             margin: 1rem 2rem;
-            padding: 1rem 2rem;
-            border: 1px solid #456;
+            border: 1px solid #456 !important;
             border-radius: 2px;
             cursor: pointer;
             text-align: center;
@@ -73,11 +89,21 @@
             background: #ccffcc;
         }
 
-        article a {
+        article li a {
+            margin: 0;
             display: block;
         }
+        article li a:hover {
+            color: #0000CC;
+        }
 
-        hr {
+        article li code {
+            margin: 0.2rem;
+            padding: 0.5rem;
+            min-width: 100px;
+        }
+
+        footer {
             clear: both
         }
     </style>
@@ -91,30 +117,34 @@
 <main>
     <article>
         <ul id="menu1">
-            <li>#menu1</li>
-            <li><a href="#menu1" title="Go to home">&lt;a&gt;</a></li>
+            <li><code>#menu1</code></li>
+            <li><a href="#menu1" title="Go to home"><code>&lt;a&gt;</code></a></li>
         </ul>
+
         <ul id="menu2">
-            <li>#menu2</li>
-            <li><a href="#menu2" title="Go to home">&lt;a&gt;</a></li>
+            <li><code>#menu2</code></li>
+            <li><a href="#menu2" title="Go to home"><code>&lt;a&gt;</code></a></li>
         </ul>
+
         <ul id="menu3">
-            <li>#menu3</li>
-            <li><a href="#menu3" title="Go to home">&lt;a&gt;</a></li>
+            <li><code>#menu3</code></li>
+            <li><a href="#menu3" title="Go to home"><code>&lt;a&gt;</code></a></li>
         </ul>
+
         <ul id="menu4">
-            <li>#menu4</li>
-            <li><a href="#menu4" title="Go to home">&lt;a&gt;</a></li>
+            <li><code>#menu4</code></li>
+            <li><a href="#menu4" title="Go to home"><code>&lt;a&gt;</code></a></li>
         </ul>
+
         <ul id="menu5">
-            <li>#menu5</li>
-            <li><a href="#menu5" title="Go to home">&lt;a&gt;</a></li>
+            <li><code>#menu5</code></li>
+            <li><a href="#menu5" title="Go to home"><code>&lt;a&gt;</code></a></li>
         </ul>
+
         <ul id="menu6">
-            <li>#menu6</li>
-            <li><a href="#menu6" title="Go to home">&lt;a&gt;</a></li>
+            <li><code>#menu6</code></li>
+            <li><a href="#menu6" title="Go to home"><code>&lt;a&gt;</code></a></li>
         </ul>
-        <hr/>
     </article>
 </main>
 <footer>
@@ -123,71 +153,102 @@
 <aside>
     <nav>
         <a href="events.click.html" title="go prev" rel="prev">Prev</a>
-        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="index.html#30" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
         <a href="events.mouse.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
-    <code><em>// меню 1
-//  - отработка клика по ссылке
+    <div>
+    <h4>Меню 1</h4>
+    <code><em>//  - отработка клика по ссылке
 //  - переход по ссылке</em>
 $(<span>"#menu1 li a"</span>)
-  .click(function(event){
+  .click(function(<var>event</var>){
     alert(<span>"👋 Link 1 ..."</span>);
   });</code>
-    <code><em>// меню 2
-//  - отработка клика по ссылке
+
+    <h4>Меню 2</h4>
+    <code><em>//  - отработка клика по ссылке
 //  - без перехода по ссылке</em>
 $(<span>"#menu2 li a"</span>)
-  .click(function(event){
+  .click(function(<var>event</var>){
     alert(<span>"👋 Link 2 ..."</span>);
-    event.preventDefault();
+    <var>event</var>.preventDefault();
   });</code>
-    <code><em>// меню 3
-//  - отработка клика по ссылке
+
+    <h4>Меню 3</h4>
+    <code><em>//  - отработка клика по меню</em>
+$(<span>"#menu3"</span>)
+  .click(function(<var>event</var>){
+    alert(<span>"☝️ Menu 3 ..."</span>);
+  });</code>
+    <code><em>//  - отработка клика по ссылке
 //  - без перехода по ссылке
 //  - событие всплывает до меню</em>
 $(<span>"#menu3 li a"</span>)
-  .click(function(event){
+  .click(function(<var>event</var>){
     alert(<span>"👋 Link 3 ..."</span>);
-    event.preventDefault();
+    <var>event</var>.preventDefault();
   });</code>
-    <code><em>// меню 3
-//  - отработка клика по меню</em>
-  $(<span>"#menu3"</span>)
-    .click(function(event){
-    alert(<span>"☝️ Menu 3 ..."</span>);
+
+    <h4>Меню 4</h4>
+    <code><em>//  - отработка клика по меню</em>
+$(<span>"#menu4"</span>)
+  .click(function(<var>event</var>){
+    alert(<span>"☝️ Menu 4 ..."</span>);
   });</code>
-    <code>$(<span>"#menu4 li a"</span>).click(function(event){
-  alert(<span>"👋 Link 4 ..."</span>);
-  event.preventDefault();
-  event.stopPropagation();
+    <code><em>//  - отработка клика по ссылке
+//  - без перехода по ссылке
+//  - событие НЕ всплывает</em>
+$(<span>"#menu4 li a"</span>)
+  .click(function(<var>event</var>){
+    alert(<span>"👋 Link 4 ..."</span>);
+    <var>event</var>.preventDefault();
+    <var>event</var>.stopPropagation();
 });</code>
-    <code>$(<span>"#menu4"</span>)
-.click(function(event){
-  alert(<span>"☝️ Menu 4 ..."</span>);
-});</code>
-    <code>$(<span>"#menu5 li a"</span>)
-.click(function(event){
-  alert(<span>"👋 Link 5 ..."</span>);
-  return false;
-});</code>
-    <code>$(<span>"#menu5 li a"</span>)
-.click(function(event){
-  alert(<span>"👋 Link 5, again ..."</span>);
-  return false;
-});</code>
+
+    <h4>Меню 5</h4>
+    <code><em>//  - отработка клика по меню</em>
+$(<span>"#menu5"</span>)
+  .click(function(<var>event</var>){
+    alert(<span>"☝️ Menu 5 ..."</span>);
+  });</code>
+    <code><em>//  - отработка клика по ссылке
+//  - без перехода по ссылке
+//  - событие НЕ всплывает</em>
+$(<span>"#menu5 li a"</span>)
+  .click(function(<var>event</var>){
+    alert(<span>"👋 Link 5 ..."</span>);
+    return <i>false</i>;
+  });</code>
+    <code><em>//  - +1 отработка клика по ссылке
+//  - без перехода по ссылке
+//  - событие НЕ всплывает</em>
+$(<span>"#menu5 li a"</span>)
+  .click(function(<var>event</var>){
+    alert(<span>"👋 Link 5, again ..."</span>);
+    return <i>false</i>;
+  });</code>
+
+
+    <h4>Меню 6</h4>
+<code><em>//  - отработка клика по меню</em>
+$(<span>"#menu6"</span>)
+  .click(function(<var>event</var>){
+    alert(<span>"☝️ Menu 6 ..."</span>);
+  });</code>
     <code>$(<span>"#menu6 li a"</span>)
-.click(function(event){
+.click(function(<var>event</var>){
   alert(<span>"👋 Link 6 ..."</span>);
-  event.stopImmediatePropagation();
-  return false;
+  <var>event</var>.stopImmediatePropagation();
+  return <i>false</i>;
 });</code>
     <code>$(<span>"#menu6 li a"</span>)
-.click(function(event){
+.click(function(<var>event</var>){
   alert(<span>"👋 Link 6, never ..."</span>);
-  return false;
+  return <i>false</i>;
 });</code>
+    </div>
 </aside>
 </body>
 </html>

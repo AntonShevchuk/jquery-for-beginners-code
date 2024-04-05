@@ -40,10 +40,10 @@
     <script type="text/javascript" src="js/code.js"></script>
     <script>
       var C = $.Callbacks()
-      var car
+      var $car
 
       $(function () {
-        car = $("#car")
+        $car = $("#car")
 
         C.add(function (speed) {
           output('\n')
@@ -51,7 +51,7 @@
         })
 
         $(document).keydown(function (e) {
-          if (car.is(':hidden')) {
+          if ($car.is(':hidden')) {
             output("Please start the game →")
             return false
           }
@@ -65,17 +65,17 @@
               break
             case 37:
               C.add(function (speed) {
-                car.queue(function () {
+                $car.queue(function () {
                   $(this).attr('class', 'left')
                     .dequeue()
                 })
-                car.animate({ left: '-=200' }, speed, () => output('←'))
+                $car.animate({ left: '-=200' }, speed, () => output('←'))
               })
               output('Added ←')
               break
             case 38:
               C.add(function (speed) {
-                car.queue(function () {
+                $car.queue(function () {
                   $(this).attr('class', 'up')
                     .dequeue()
                 }).animate({ top: '-=200' }, speed, () => output('↑'))
@@ -85,21 +85,21 @@
               break
             case 39:
               C.add(function (speed) {
-                car.queue(function () {
+                $car.queue(function () {
                   $(this).attr('class', 'right')
                     .dequeue()
                 })
-                car.animate({ left: '+=200' }, speed, () => output('→'))
+                $car.animate({ left: '+=200' }, speed, () => output('→'))
               })
               output('Added →')
               break
             case 40:
               C.add(function (speed) {
-                car.queue(function () {
+                $car.queue(function () {
                   $(this).attr('class', 'down')
                     .dequeue()
                 })
-                car.animate({ top: '+=200' }, speed, () => output('↓'))
+                $car.animate({ top: '+=200' }, speed, () => output('↓'))
               })
               output('Added ↓')
               break
@@ -130,43 +130,60 @@
 <aside>
     <nav>
         <a href="when.html" title="go prev" rel="prev">Prev</a>
-        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="index.html#70" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
     </nav>
     <hr/>
     <div>
-    <code contenteditable="true">$('#car').show()</code>
-    <button type="button">Start Game</button>
+        <h4>Начните игру</h4>
+        <code contenteditable="true">$('#car').show()</code>
+        <button type="button">Start Game</button>
+
+        <h4>Используйте стрелки ←, →, ↑ и ↓ запрограммируйте машинку</h4>
+        <code contenteditable="true"><em>// restart $.Callbacks</em>
+C = $.Callbacks()</code>
+        <button type="button">Run Code</button>
+
+        <h4>В добрый путь</h4>
+        <code contenteditable="true"><em>// run animation or press Enter</em>
+C.fire(<i>400</i>)</code>
+        <button type="button">Run Code</button>
+
+        <h4>Под капотом</h4>
     <code><em>// use arrow button: ↑</em>
-C.add(function(speed){
-  car.animate(
-    {top:"-=200px"},
-    speed
+C.add(function(<var>speed</var>) {
+  $car.animate(
+    { top: <span>"-=200px"</span> },
+    <var>speed</var>
   )
 })</code>
     <code><em>// use arrow button: ↓</em>
-C.add(function(speed){
-  car.animate({top:"+=200px"}, speed)
+C.add(function(<var>speed</var>){
+  $car.animate(
+    { top: <span>"+=200px"</span> },
+    <var>speed</var>
+  )
 })</code>
     <code><em>// use arrow button: →</em>
-C.add(function(speed){
-  car.animate({left:"+=200px"}, speed)
+C.add(function(<var>speed</var>){
+  $car
+    .animate(
+      { left: <span>"+=200px"</span> },
+      <var>speed</var>
+    )
 })</code>
     <code><em>// use arrow button: ←</em>
-C.add(function(speed){
-  car.animate({left:"-=200px"}, speed)
+C.add(function(<var>speed</var>){
+  $car.animate(
+    { left: <span>"-=200px"</span> },
+    <var>speed</var>
+  )
 })</code>
-    <code contenteditable="true"><em>// restart $.Callbacks</em>
-C = $.Callbacks()</code>
-    <button type="button">Run Code</button>
-    <code contenteditable="true"><em>// run animation or press Enter</em>
-C.fire(400)</code>
-    <button type="button">Run Code</button>
     </div>
 </aside>
 <aside id="output">
     <h4>Output:</h4>
-<hr/>
+    <hr/>
     <code></code>
 </aside>
 </body>

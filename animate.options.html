@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/styles.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/console.js"></script>
 </head>
 <body>
 <header>
@@ -67,31 +68,40 @@
 <aside>
     <nav>
         <a href="animate.html" title="go prev" rel="prev">Prev</a>
-        <a href="index.html" title="back to Index" rel="index">Index</a>
+        <a href="index.html#40" title="back to Index" rel="index">Index</a>
         <a href="#" title="reload" onclick="window.location.reload();return false">Reload</a>
         <a href="animate.queue.html" title="go next" rel="next">Next</a>
     </nav>
     <hr/>
     <div>
     <code><em>// change height and width</em>
-$(<span>'img:first'</span>).animate({
-  <span>'height'</span>: <span>'+=10px'</span>,
-  <span>'width'</span>: <span>'+=10px'</span>
+$(<span>"img:first"</span>).animate({
+  <span>"height"</span>: <span>"+=10px"</span>,
+  <span>"width"</span>: <span>"+=10px"</span>
 }, {
-  <span>'start'</span>:  () => output('start'),
-  <span>'progress'</span>: (a, i) => output(i),
-  <span>'done'</span>:   () => output('done'),
-  <span>'fail'</span>:   () => output('fail'),
-  <span>'always'</span>: () => output('always')
+  <span>"start"</span>:  () =>
+        console.log(<span>"start"</span>),
+  <span>"progress"</span>: (a, i) =>
+        console.log(i),
+  <span>"done"</span>:   () =>
+        console.log(<span>"done"</span>),
+  <span>"fail"</span>:   () =>
+        console.log(<span>"fail"</span>),
+  <span>"always"</span>: () =>
+        console.log(<span>"always"</span>)
 })</code>
     <button type="button">Run Code</button>
     <code contenteditable="true"><em>// change height and width</em>
-$(<span>'img:first'</span>).animate({
-  <span>'height'</span>: <span>'+=100px'</span>,
-  <span>'width'</span>: <span>'+=100px'</span>
+$(<span>"img:first"</span>).animate({
+  <span>"height"</span>: <span>"+=100px"</span>,
+  <span>"width"</span>: <span>"+=100px"</span>
 }, {
-  <span>'progress'</span>: (a, i) => $(<span>"h2"</span>).text(Math.round(i * 100) + '%'),
-  <span>'duration'</span>: <i>5000</i>
+  <span>"progress"</span>: (a, i) =>
+    $(<span>"h2"</span>)
+      .text(
+        Math.round(i * <i>100</i>) + <span>"%"</span>
+      ),
+  <span>"duration"</span>: <i>5000</i>
 })</code>
     <button type="button">Run Code</button>
     </div>
