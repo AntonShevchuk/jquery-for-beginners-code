@@ -244,11 +244,8 @@
           _resetFlag: function () {
             // workaround - надо "сбросить" флаг для всех других элементов
             // надо будет придумать более красивое решение
-            $.each($.cache, function (i, el) {
-              if (typeof el.data !== 'undefined'
-                && typeof el.data.exposeIt !== 'undefined') {
-                el.data.exposeIt = false
-              }
+            $('.book-widget').each(function () {
+              $(this).data('exposeIt', false)
             })
           }
         })

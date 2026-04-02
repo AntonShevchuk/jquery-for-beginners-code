@@ -14,7 +14,7 @@
          * parse HEX color to DEC
          * e.g. #f00    => [255,0,0]
          *      #ff00ff => [255,0,255]
-         * @param {Array} color
+         * @param {String} color
          */
         function parseColor (color) {
           if (color.length !== 4 &&
@@ -62,11 +62,11 @@
             // свойство которое изменяем
             tween.prop
             // начальные значения
-            tween.start = parseColor(tween.start)
+            if (typeof tween.start === 'string') tween.start = parseColor(tween.start)
             // текущее значение
             tween.now
             // результирующие значения
-            tween.end = parseColor(tween.end)
+            if (typeof tween.end === 'string') tween.end = parseColor(tween.end)
             // еденицы измерения
             tween.unit
 

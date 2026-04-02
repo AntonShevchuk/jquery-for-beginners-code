@@ -30,7 +30,7 @@
             return false
           }
 
-          replaceOutput('#output', $(this).serialize() + '\n\n' + $(this).serializeArray() + '\n')
+          replaceOutput('#output', $(this).serialize() + '\n\n' + JSON.stringify($(this).serializeArray()) + '\n')
           return false
         })
       })
@@ -128,10 +128,10 @@ lorem pulvinar ut. Cras vel elit id velit commodo viverra sit amet vel orci.</te
     <button type="button">Run Code</button>
 
     <p>Radio buttons</p>
-    <code contenteditable="true">$(<span>"input[type=radio][name=choose][value="chosen 2"]"</span>)
+    <code contenteditable="true">$(<span>"input[type=radio][name=choose][value='chosen 2']"</span>)
   .prop(<span>"checked"</span>, true)</code>
     <button type="button">Run Code</button>
-    <code contenteditable="true">$(<span>"input[type=radio][name=choose][value="chosen 2"]"</span>)
+    <code contenteditable="true">$(<span>"input[type=radio][name=choose][value='chosen 2']"</span>)
   .prop(<span>"checked"</span>, false)</code>
     <button type="button">Run Code</button>
     <code contenteditable="true" data-append="#output">$(<span>"input[type=radio][name=choose]:checked"</span>).val()</code>

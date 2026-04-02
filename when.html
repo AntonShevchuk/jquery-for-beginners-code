@@ -74,9 +74,9 @@
     </nav>
     <hr/>
     <code contenteditable="true">$.when(
-  $(<span>"article h3"</span>).hide(<i>3000</i>),
-  $(<span>"article img"</span>).slideUp(<i>1000</i>),
-  $(<span>"article p"</span>).fadeTo(<i>2000</i>, <i>0.1</i>)
+  $(<span>"article h3"</span>).hide(<i>3000</i>).promise(),
+  $(<span>"article img"</span>).slideUp(<i>1000</i>).promise(),
+  $(<span>"article p"</span>).fadeTo(<i>2000</i>, <i>0.1</i>).promise()
 ).then(function(){
   $(<span>"article"</span>).slideUp(<i>500</i>)
 }).done(function(){
